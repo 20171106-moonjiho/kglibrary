@@ -102,7 +102,7 @@
 			<div class="header_menu">
 			<nav class="nav">
 				<ul class="gnb">
-					<li><a href="animal_find">실종동물</a></li>
+					<li><a href="bookform">책 목록 보기</a></li>
 					<li><a href="animal_protect">보호중</a></li>
 					<li><a href="centerInfo">유기동물 보호센터</a></li>
 					<li><a href="Val">자원봉사</a></li>
