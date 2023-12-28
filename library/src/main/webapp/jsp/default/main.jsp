@@ -1,6 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+		<div class="gnb_bg"></div>
+			<div class="search">
+				<div class="search_btn_wrap">
+					<h3>소장자료검색</h3>	
+					<form id="frm_main_search" method="get" action="./site/search/search00.do" onsubmit="return main_search();">
+						<div class="search_bar">
+							<select name="search_item" id="search_item">
+								<option value="search_title">자료명</option>
+								<option value="search_author">저자명</option>
+								<option value="search_publisher">발행처</option>
+							</select>
+							<div class="search_bar_text">
+								<label for="search_txt" class="search_m" style="">검색어를 입력하세요.</label>
+								<input type="text" name="search_txt" class="search_text" id="search_txt" value="">
+								<input type="submit" class="search_btn" value="검색">
+							</div>
+						</div>
+					</form>
+				</div>			
+			</div>
+			<div class="sub_bar">
+				<div class="sub_bar">
+				<div class="link_btn">
+			<ul>
+				<li><a href="#"><i class="link01 hvr-bob"></i><span>이용안내</span></a></li>
+				<li><a href="#"><i class="link02 hvr-bob"></i><span>문화행사<br>신청</span></a></li>
+				<li><a href="#"><i class="link03 hvr-bob"></i><span>전자책</span></a></li>
+				<li><a href="#"><i class="link04 hvr-bob"></i><span>회의실<br>예약현황</span></a></li>
+				<li><a href="#"><i class="link05 hvr-bob"></i><span>독서프로그램<br>게시판</span></a></li>
+				<li><a href="#"><i class="link06 hvr-bob"></i><span>희망도서 <br>바로대출 서비스</span></a></li>
+			</ul>
+		</div>
+			</div>
+			</div>
+		</div>
 		<!--컨텐츠 시작-->
 		<div class="content">
 			<div class="cont_1">
