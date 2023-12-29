@@ -7,7 +7,6 @@
 <title>Room Reservation</title>
 </head>
 <c:import url="/header"/>
-</div>
 <body>
 <div align="center">
 	<table>
