@@ -28,7 +28,7 @@
 				<li><a href="#"><i class="link01 hvr-bob"></i><span>이용안내</span></a></li>
 				<li><a href="#"><i class="link02 hvr-bob"></i><span>문화행사<br>신청</span></a></li>
 				<li><a href="#"><i class="link03 hvr-bob"></i><span>전자책</span></a></li>
-				<li><a href="#"><i class="link04 hvr-bob"></i><span>회의실<br>예약현황</span></a></li>
+				<li><a href="reservation"><i class="link04 hvr-bob"></i><span>회의실<br>예약현황</span></a></li>
 				<li><a href="#"><i class="link05 hvr-bob"></i><span>독서프로그램<br>게시판</span></a></li>
 				<li><a href="#"><i class="link06 hvr-bob"></i><span>희망도서 <br>바로대출 서비스</span></a></li>
 			</ul>
@@ -208,5 +208,4 @@
 				</div>
 			</div>
 		</div>
-		
 
