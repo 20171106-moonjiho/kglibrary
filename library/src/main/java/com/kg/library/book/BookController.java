@@ -19,16 +19,17 @@ public class BookController {
 	@Autowired 
 	private HttpSession session;
 	
-	@RequestMapping("bookform") // 도서 검색 url
-	public String bookform(String search,Model model,
+	@RequestMapping("bookForm") // 도서 검색 url
+	public String bookForm(String search,Model model,
 			@RequestParam(value="currentPage", required = false)String cp) {
 			String select = "select";	//검색 시 select 값으로 검색 확인.
 			if(search == null || search.trim().isEmpty()) {
 				search = ""; select = "all"; 
 			}
-			
-			service.bookform(cp, model, search, select); //DB 검색 및 정렬
-		return "book/bookform";
+
+			service.bookForm(cp, model, search, select); //DB 검색 및 정렬
+
+		return "book/bookForm";
 	}
 	
 	@RequestMapping("bookRegist") //도서 등록 url
@@ -42,8 +43,21 @@ public class BookController {
 	
 	@RequestMapping("bookRegistProc")
 	public String bookRegistProc(MultipartHttpServletRequest multi, RedirectAttributes ra) {
-	
+
 		String path = service.bookRegistProc(multi);
 		return path;
 	}
+	
+	@RequestMapping("bookContent")
+	public String bookContent(String no,Model model) {
+		
+		BookDTO board = service.bookContent(no);
+		if(board == null) {
+			return "redirect:bookForm";
+		}
+		
+		model.addAttribute("board", board);
+		return "book/bookContent";
+	}
+	
 }
