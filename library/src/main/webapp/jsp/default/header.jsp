@@ -121,9 +121,27 @@
 					<div class="logo">
 					<h1><a href="#"><img src="img/logo_4.png"></a></h1>
 					</div>
-					<ul class="aside_menu">
-						<li class="login"><a href="#">로그인</a></li>
-						<li class="join"><a href="#">회원가입</a></li>
+					<ul class="aside_menu">	
+						<li class="login">
+							<c:choose>
+								<c:when test="${empty sessionScope.id }">
+									<a href="login">로그인</a>
+								</c:when>
+								<c:otherwise>
+									<a href="logout">로그아웃</a>
+								</c:otherwise>
+							</c:choose>
+						</li>
+						<li class="join">
+							<c:choose>
+								<c:when test="${empty sessionScope.id }">
+									<a href="agree">회원가입</a>
+								</c:when>
+								<c:otherwise>
+									<a href="userInfo">마이페이지</a>
+								</c:otherwise>
+							</c:choose>
+						</li>		
 					</ul>
 				</div>
 			</div>

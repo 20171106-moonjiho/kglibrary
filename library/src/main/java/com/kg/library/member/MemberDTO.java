@@ -12,9 +12,8 @@ pw varchar2(100) not null,
 name varchar2(30) not null,
 email varchar2(50) not null,
 address varchar2(100),
-tel varchar2(20) not null,
-book varchar2(50) DEFAULT '-',
-studyroom varchar2(50) DEFAULT '-');
+tel varchar2(20) not null
+);
 */
 
 public class MemberDTO {
@@ -25,8 +24,6 @@ public class MemberDTO {
 	private String email;
 	private String address;
 	private String tel;
-	private String book;
-	private String studyroom;
 
 	public String getId() {
 		return id;
@@ -70,18 +67,4 @@ public class MemberDTO {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	public String getBook() {
-		return book;
-	}
-	public void setBook(String book) {
-		this.book = book;
-	}
-	public String getStudyroom() {
-		return studyroom;
-	}
-	public void setStudyroom(String studyroom) {
-		this.studyroom = studyroom;
-	}
-	
-	
 }

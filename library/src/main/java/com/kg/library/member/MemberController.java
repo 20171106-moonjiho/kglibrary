@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kg.library.member.MemberDTO;
+
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -89,4 +91,76 @@ public class MemberController {
      
         return numStr;
     }
+	
+	@RequestMapping("userInfo")
+	public String userInfo(Model model,  RedirectAttributes ra) {
+		String msg = service.userInfo(model);
+		if(msg.equals("회원 검색 완료"))
+			return "member/userInfo";
+		
+		ra.addFlashAttribute("msg", msg);
+		return "redirect:index";
+	}
+	
+	@RequestMapping("update")
+	public String update() {
+		String sessionId = (String)session.getAttribute("id");
+		if(sessionId == null)
+			return "redirect:login";
+		
+		return "member/update";
+	}
+	
+	@PostMapping("updateProc")
+	public String updateProc(MemberDTO member, Model model) {
+		String sessionId = (String)session.getAttribute("id");
+		if(sessionId == null)
+			return "redirect:login";
+		
+		member.setId(sessionId);
+		String msg = service.updateProc(member);
+		if(msg.equals("회원 수정 완료")) {
+			session.invalidate();
+			return "redirect:index";
+		}
+		
+		model.addAttribute("msg", msg);
+		return "member/update";
+	}
+	
+	@RequestMapping("delete")
+	public String delete() {
+		String sessionId = (String)session.getAttribute("id");
+		if(sessionId == null)
+			return "redirect:login";
+		
+		return "member/delete";
+	}
+	
+	@PostMapping("deleteProc")
+	public String deleteProc(MemberDTO member, Model model) {
+		String sessionId = (String)session.getAttribute("id");
+		if(sessionId == null)
+			return "redirect:login";
+		
+		member.setId(sessionId);
+		String msg = service.deleteProc(member);
+		if(msg.equals("회원 삭제 완료")) {
+			session.invalidate();
+			return "redirect:index";
+		}
+		
+		model.addAttribute("msg", msg);
+		return "member/delete";
+	}
+	
+	@RequestMapping("userHeader")
+    public String userHeader() {
+    	return "member/userHeader";
+    }
+    
+    @RequestMapping("userFooter")
+   	public String userFooter() {
+   		return "member/userFooter";
+  	}
 }

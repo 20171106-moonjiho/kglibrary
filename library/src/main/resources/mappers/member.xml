@@ -21,15 +21,12 @@ studyroom varchar2(50)); -->
 		<result column="name" property="name"/>
 		<result column="email" property="email"/>
 		<result column="address" property="address"/>
-		<result column="tel" property="tel"/>
-		<result column="book" property="book"/>
-		<result column="studyroom" property="studyroom"/>
-		
+		<result column="tel" property="tel"/>	
 	</resultMap>
 	
 	<insert id="agreeProc">
 		INSERT INTO member
-		VALUES(#{id}, #{pw}, #{name}, #{email}, #{address}, #{tel}, DEFAULT, DEFAULT)
+		VALUES(#{id}, #{pw}, #{name}, #{email}, #{address}, #{tel})
 	</insert>
 	
 	<select id="login" resultMap="member">
@@ -71,7 +68,7 @@ studyroom varchar2(50)); -->
 	
 	<update id="updateProc">
 		UPDATE member 
-		SET pw=#{pw}, email=#{email}, tel=#{tel}, name=#{name}, address=#{address} 
+		SET pw=#{pw}, name=#{name}, email=#{email}, address=#{address}, tel=#{tel} 
 		WHERE id=#{id}
 	</update>
 	
