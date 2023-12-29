@@ -14,9 +14,18 @@ public class ReservationService {
 		
 	}
 
-	public List<ReservationDTO> getReservations2() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Integer> getReservations2(ReservationDTO dto) {
+		return mapper.getReservations2(dto);
+	}
+
+	public void insert(ReservationDTO dto) {
+		int iteration = dto.getDuration();
+		for(int i = 0; i<iteration; i++) {
+			mapper.insert(dto);
+			dto.setDuration(dto.getDuration()-1);
+			dto.setReservation_time(dto.getReservation_time()+1);
+		}
+		
 	}
 	
 	

@@ -9,4 +9,8 @@ public interface ReservationMapper {
 
 	List<String> getReservations(ReservationDTO dto);
 
+	List<Integer> getReservations2(ReservationDTO dto);
+
+	void insert(ReservationDTO dto);
+
 }

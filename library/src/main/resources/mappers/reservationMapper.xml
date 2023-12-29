@@ -8,4 +8,12 @@
 		select room_num from reservation where reservation_date = #{reservation_date} and reservation_time = #{reservation_time}
 	</select>
 	
+	<select id="getReservations2">
+		select reservation_time from reservation where reservation_date = #{reservation_date} and room_num = #{room_num}
+	</select>
+	
+	<insert id="insert">
+		insert into reservation values(reservation_seq.NEXTVAL, #{room_num}, #{reservation_date}, #{reservation_time},
+		#{member}, #{duration} )
+	</insert>
 </mapper>
