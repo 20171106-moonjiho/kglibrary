@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MemberController {
-	@Autowired private MemberService service ;
+	@Autowired private MemberService service;
 	@Autowired private HttpSession session;	
 	
 	@RequestMapping("agree")
