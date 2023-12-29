@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface IMemberMapper {
 
-	int registProc(MemberDTO member);
+	int agreeProc(MemberDTO member);
 
 	MemberDTO login(String id);
 

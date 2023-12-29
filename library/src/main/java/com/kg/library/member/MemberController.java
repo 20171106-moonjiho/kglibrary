@@ -1,10 +1,13 @@
 package com.kg.library.member;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.HttpSession;
@@ -12,9 +15,28 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 public class MemberController {
 	@Autowired private MemberService service ;
-//	@Autowired private SeatService s_service;
-//	@Autowired private AirplaneDataService a_service;
-	@Autowired private HttpSession session;
+	@Autowired private HttpSession session;	
+	
+	@RequestMapping("agree")
+	public String agree() {
+		return "member/agree";
+	}
+	
+	@PostMapping("agreeProc")
+	public String agreeProc(MemberDTO member, String postcode, String detailAddress, Model model, RedirectAttributes ra) {
+		if(member.getAddress() != null && member.getAddress().trim().isEmpty() == false)
+			member.setAddress( postcode + "," + member.getAddress() + "," + detailAddress);
+		
+		String msg = service.agreeProc(member);
+		
+		if(msg.equals("회원 등록 완료")) {
+			ra.addFlashAttribute("msg", msg);
+			return "redirect:index";
+		}
+		
+		model.addAttribute("msg", msg);
+		return "member/agree";
+	}
 	
 	@RequestMapping("login")
 	public String login() {
@@ -32,13 +54,39 @@ public class MemberController {
 		return "member/login";
 	}
 
-//	@RequestMapping("logout")
-//	public String logout(RedirectAttributes ra) {
+	@RequestMapping("logout")
+	public String logout(RedirectAttributes ra) {
 //		if(session.getAttribute("kakao") != null) {
 //			kakaoService.unlink();
 //		}
-//		session.invalidate();
-//		ra.addFlashAttribute("msg", "로그 아웃");
+		session.invalidate();
+		ra.addFlashAttribute("msg", "로그 아웃");
+		return "redirect:index";
+	}
+	
+//	@RequestMapping("kakaoLogin")
+//	public String kakaoLogin(String code) {
+//		System.out.println("code : " + code);
+//		kakaoService.getAccessToken(code);
+//		kakaoService.getUserInfo();
+//		
 //		return "redirect:index";
 //	}
+//	@Autowired private KakaoService kakaoService;
+	
+	@RequestMapping("mobileCheck")
+	@ResponseBody	
+	public String sendSMS(String mobile) { // 휴대폰 문자보내기
+		Random rand  = new Random(); //랜덤숫자 생성하기 !!
+        String numStr = "";
+        for(int i=0; i<4; i++) {
+            String ran = Integer.toString(rand.nextInt(10));
+            numStr+=ran;
+        }
+             
+    	service.certifiedPhoneNumber(mobile, numStr); //휴대폰 api 쪽으로 가기 !!
+    	// // 밑에 자세한 설명나옴
+     
+        return numStr;
+    }
 }
