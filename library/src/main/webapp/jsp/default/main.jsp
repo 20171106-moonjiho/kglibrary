@@ -118,6 +118,77 @@
 				  </div>
 				</div>
 				<div class="bookpick">
+					<div class="tab-menu2">
+					  <div class="tab-btn"> 
+						<ul>
+						 <li class="on"><a href="#">추천도서</a></li>   
+						 <li><a href="#">신작도서</a></li>   
+						</ul>
+					  </div><!-- tab-btn/ -->
+
+					 <div class="tab-cont">
+						<div class="t-cont1">
+							 <ul>
+							  <li>
+								  <a href="#"><img src="img/43027973618.20231007074612.jpg" alt="">
+								  <div class="overrap">
+								  	<span class="btit">끝말잇기</span>
+									<span class="name">김영진 글·그림</span>
+									<span class="more">더보기</span>
+								  </div>
+								  </a>
+							  </li>   
+							  <li><a href="#">
+								  <img src="img/44215450626.20231124071107.jpg" alt="">
+								  <div class="overrap">
+								  	<span class="btit">끝말잇기</span>
+									<span class="name">김영진 글·그림</span>
+									<span class="more">더보기</span>
+								  </div>
+								  </a>
+								</li>   
+							  <li><a href="#">
+								  <img src="img/42353356624.20230927071315.jpg" alt="">
+								 	<div class="overrap">
+								  	<span class="btit">끝말잇기</span>
+									<span class="name">김영진 글·그림</span>
+									<span class="more">더보기</span>
+								  	</div>
+								  	</a>
+								 </li>   
+							 </ul> 
+						</div>
+						<div class="t-cont1">
+							 <ul>
+							  <li><a href="#"><img src="img/40641325628.20230718121618.jpg" alt="">
+								 <div class="overrap">
+								  	<span class="btit">끝말잇기</span>
+									<span class="name">김영진 글·그림</span>
+									<span class="more">더보기</span>
+								  </div>
+								  </a>
+								 </li>   
+							  <li><a href="#"><img src="img/40691554619.20230919124023.jpg" alt="">
+								 <div class="overrap">
+								  	<span class="btit">끝말잇기</span>
+									<span class="name">김영진 글·그림</span>
+									<span class="more">더보기</span>
+								  </div>
+								  </a>
+								 </li>   
+							  <li><a href="#"><img src="img/41236691625.20230919130622.jpg" alt="">
+								 <div class="overrap">
+								  	<span class="btit">끝말잇기</span>
+									<span class="name">김영진 글·그림</span>
+									<span class="more">더보기</span>
+								  </div>
+								  </a>
+								 </li>   
+							 </ul>   
+						</div>
+					  </div><!-- tab-cont/ -->
+
+					  </div><!-- tab-menu2/ -->
 					
 				</div>
 			</div>
