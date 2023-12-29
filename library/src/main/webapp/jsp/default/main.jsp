@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-		<div class="gnb_bg"></div>
-			<div class="search">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>		
+		<!-- 검색부분 -->
+		<div class="search">
 				<div class="search_btn_wrap">
 					<h3>소장자료검색</h3>	
 					<form id="frm_main_search" method="get" action="./site/search/search00.do" onsubmit="return main_search();">
@@ -35,7 +35,6 @@
 		</div>
 			</div>
 			</div>
-		</div>
 		<!--컨텐츠 시작-->
 		<div class="content">
 			<div class="cont_1">
