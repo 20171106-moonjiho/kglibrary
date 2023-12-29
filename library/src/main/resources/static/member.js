@@ -36,7 +36,7 @@ function updateCheck(){
 	let pw = document.getElementById('pw');
 	confirm = document.getElementById('confirm');
 	userName = document.getElementById('name');
-	email = docuument.getElementById('email');
+	email = document.getElementById('email');
 	tel = document.getElementById('tel');
 	
 	if(id.value == ""){
