@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-		<div class="gnb_bg"></div>
-			<div class="search">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>		
+		<!-- 검색부분 -->
+		<div class="search">
 				<div class="search_btn_wrap">
 					<h3>소장자료검색</h3>	
 					<form id="frm_main_search" method="get" action="./site/search/search00.do" onsubmit="return main_search();">
@@ -28,14 +28,13 @@
 				<li><a href="#"><i class="link01 hvr-bob"></i><span>이용안내</span></a></li>
 				<li><a href="#"><i class="link02 hvr-bob"></i><span>문화행사<br>신청</span></a></li>
 				<li><a href="#"><i class="link03 hvr-bob"></i><span>전자책</span></a></li>
-				<li><a href="#"><i class="link04 hvr-bob"></i><span>회의실<br>예약현황</span></a></li>
+				<li><a href="reservation"><i class="link04 hvr-bob"></i><span>회의실<br>예약현황</span></a></li>
 				<li><a href="#"><i class="link05 hvr-bob"></i><span>독서프로그램<br>게시판</span></a></li>
 				<li><a href="#"><i class="link06 hvr-bob"></i><span>희망도서 <br>바로대출 서비스</span></a></li>
 			</ul>
 		</div>
 			</div>
 			</div>
-		</div>
 		<!--컨텐츠 시작-->
 		<div class="content">
 			<div class="cont_1">
@@ -118,6 +117,77 @@
 				  </div>
 				</div>
 				<div class="bookpick">
+					<div class="tab-menu2">
+					  <div class="tab-btn"> 
+						<ul>
+						 <li class="on"><a href="#">추천도서</a></li>   
+						 <li><a href="#">신작도서</a></li>   
+						</ul>
+					  </div><!-- tab-btn/ -->
+
+					 <div class="tab-cont">
+						<div class="t-cont1">
+							 <ul>
+							  <li>
+								  <a href="#"><img src="img/43027973618.20231007074612.jpg" alt="">
+								  <div class="overrap">
+								  	<span class="btit">끝말잇기</span>
+									<span class="name">김영진 글·그림</span>
+									<span class="more">더보기</span>
+								  </div>
+								  </a>
+							  </li>   
+							  <li><a href="#">
+								  <img src="img/44215450626.20231124071107.jpg" alt="">
+								  <div class="overrap">
+								  	<span class="btit">끝말잇기</span>
+									<span class="name">김영진 글·그림</span>
+									<span class="more">더보기</span>
+								  </div>
+								  </a>
+								</li>   
+							  <li><a href="#">
+								  <img src="img/42353356624.20230927071315.jpg" alt="">
+								 	<div class="overrap">
+								  	<span class="btit">끝말잇기</span>
+									<span class="name">김영진 글·그림</span>
+									<span class="more">더보기</span>
+								  	</div>
+								  	</a>
+								 </li>   
+							 </ul> 
+						</div>
+						<div class="t-cont1">
+							 <ul>
+							  <li><a href="#"><img src="img/40641325628.20230718121618.jpg" alt="">
+								 <div class="overrap">
+								  	<span class="btit">끝말잇기</span>
+									<span class="name">김영진 글·그림</span>
+									<span class="more">더보기</span>
+								  </div>
+								  </a>
+								 </li>   
+							  <li><a href="#"><img src="img/40691554619.20230919124023.jpg" alt="">
+								 <div class="overrap">
+								  	<span class="btit">끝말잇기</span>
+									<span class="name">김영진 글·그림</span>
+									<span class="more">더보기</span>
+								  </div>
+								  </a>
+								 </li>   
+							  <li><a href="#"><img src="img/41236691625.20230919130622.jpg" alt="">
+								 <div class="overrap">
+								  	<span class="btit">끝말잇기</span>
+									<span class="name">김영진 글·그림</span>
+									<span class="more">더보기</span>
+								  </div>
+								  </a>
+								 </li>   
+							 </ul>   
+						</div>
+					  </div><!-- tab-cont/ -->
+
+					  </div><!-- tab-menu2/ -->
 					
 				</div>
 			</div>
@@ -138,5 +208,4 @@
 				</div>
 			</div>
 		</div>
-		
 

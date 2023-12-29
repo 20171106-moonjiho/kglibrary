@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
-	<link href="common.css" rel="stylesheet"> 
+	<link href="common.css" rel="stylesheet">
+	<link href="main.css" rel="stylesheet"> 
  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+	<script src="script-3.js"></script>
 	<script>
 	function chk(){
 		if(cc == 1){
@@ -119,11 +121,29 @@
 			<div class="top_bar">
 				<div class="wsize">
 					<div class="logo">
-					<h1><a href="#"><img src="img/logo_4.png"></a></h1>
+					<h1><a href="index"><img src="img/logo_4.png"></a></h1>
 					</div>
-					<ul class="aside_menu">
-						<li class="login"><a href="#">로그인</a></li>
-						<li class="join"><a href="#">회원가입</a></li>
+					<ul class="aside_menu">	
+						<li class="login">
+							<c:choose>
+								<c:when test="${empty sessionScope.id }">
+									<a href="login">로그인</a>
+								</c:when>
+								<c:otherwise>
+									<a href="logout">로그아웃</a>
+								</c:otherwise>
+							</c:choose>
+						</li>
+						<li class="join">
+							<c:choose>
+								<c:when test="${empty sessionScope.id }">
+									<a href="agree">회원가입</a>
+								</c:when>
+								<c:otherwise>
+									<a href="userInfo">마이페이지</a>
+								</c:otherwise>
+							</c:choose>
+						</li>		
 					</ul>
 				</div>
 			</div>
@@ -237,7 +257,7 @@
 								</ul>
 						</div>
 					</li>
-					<li><a href="#">나의도서관</a>
+					<li><a href="NoticeBoard">공지사항</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
 								<ul>	
@@ -255,8 +275,9 @@
 				</ul>
 				</div>
 			</div>
-			
-
+			<div class="gnb_bg"></div>
+		</div>
+		
 
 
 
