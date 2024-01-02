@@ -76,6 +76,7 @@ public class MemberController {
 //	}
 //	@Autowired private KakaoService kakaoService;
 	
+/*
 	@RequestMapping("mobileCheck")
 	@ResponseBody	
 	public String sendSMS(String mobile) { // 휴대폰 문자보내기
@@ -86,11 +87,12 @@ public class MemberController {
             numStr+=ran;
         }
              
-    //	service.certifiedPhoneNumber(mobile, numStr); //휴대폰 api 쪽으로 가기 !!
+    	service.certifiedPhoneNumber(mobile, numStr); //휴대폰 api 쪽으로 가기 !!
     	// // 밑에 자세한 설명나옴
      
         return numStr;
     }
+*/
 	
 	@RequestMapping("userInfo")
 	public String userInfo(Model model,  RedirectAttributes ra) {
@@ -112,8 +114,10 @@ public class MemberController {
 	}
 	
 	@PostMapping("updateProc")
-	public String updateProc(MemberDTO member, Model model) {
+	public String updateProc(MemberDTO member, String postcode, String detailAddress, Model model) {
 		String sessionId = (String)session.getAttribute("id");
+		if(member.getAddress() != null && member.getAddress().trim().isEmpty() == false)
+			member.setAddress( postcode + "," + member.getAddress() + "," + detailAddress);
 		if(sessionId == null)
 			return "redirect:login";
 		
