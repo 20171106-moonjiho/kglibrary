@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ page import="java.util.Arrays" %>
 <c:import url="/header" />
 <c:import url="/userHeader"/>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -14,12 +16,16 @@
 		<input type="password" name="pw" placeholder="비밀번호" id="pw"><br>
 		<input type="password" name="confirm" placeholder="비밀번호 확인 " id="confirm"	onchange="pwCheck()"><br>
 		<input type="text" name="name" id="name" value="${sessionScope.name }" readOnly ><br>
-		<input type="text" name="email" id="email" value="${sessionScope.email }" placeholder="이메일"><br>		
-		<input type="text" name="postcode" id="sample6_postcode" value="${postcode }" placeholder="우편번호">
+		<input type="text" name="email" id="email" value="${sessionScope.email }" placeholder="이메일"><br>
+		
+		<c:set var="address" value="${sessionScope.address}" />
+		<c:set var="addressArray" value="${fn:split(address, ',')}" />
+				
+		<input type="text" name="postcode" id="sample6_postcode" value="${addressArray[0] }" placeholder="우편번호">
 		<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-		<input type="text" name="address" id="sample6_address" value="${sessionScope.address }" placeholder="주소"><br>
-		<input type="text" name="detailAddress" id="sample6_detailAddress" value="${detailAddress }" placeholder="상세주소"><br>
-		<input type="text" name="tel" value="${sessionScope.tel }" placeholder="전화번호"><br>
+		<input type="text" name="address" id="sample6_address" value="${addressArray[1] }" placeholder="주소"><br>
+		<input type="text" name="detailAddress" id="sample6_detailAddress" value="${addressArray[2] }" placeholder="상세주소"><br>
+		<input type="text" name="tel" id="tel" value="${sessionScope.tel }" placeholder="전화번호"><br>
 		<input type="button" value="회원수정" onclick="updateCheck()">
 		<input type="button" value="취소" onclick="location.href='index'"><br>
 	</form>
