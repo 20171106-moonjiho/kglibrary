@@ -119,7 +119,7 @@ public class MemberController {
 		member.setId(sessionId);
 		String msg = service.updateProc(member);
 		if(msg.equals("회원 수정 완료")) {
-			session.invalidate();
+			//session.invalidate();
 			return "redirect:index";
 		}
 		
