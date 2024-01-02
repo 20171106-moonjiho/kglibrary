@@ -134,6 +134,12 @@ public class MemberService {
 		String secretPass = encoder.encode(member.getPw());
 		member.setPw(secretPass);
 		
+		session.setAttribute("id", member.getId());
+		session.setAttribute("name", member.getName());
+		session.setAttribute("email", member.getEmail());
+		session.setAttribute("address", member.getAddress());
+		session.setAttribute("tel", member.getTel());
+		
 		int result = mapper.updateProc(member);
 		if(result == 1)
 			return "회원 수정 완료";
