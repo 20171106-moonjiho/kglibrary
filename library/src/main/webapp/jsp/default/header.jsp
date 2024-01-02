@@ -147,6 +147,7 @@
 					</ul>
 				</div>
 			</div>
+
 			<div class="menu_bar">
 				<div class="menu_area active">
 					<div class="gnb_bg" style="display: none;"></div>
@@ -155,7 +156,7 @@
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
 								<ul>	
-									<li><a href="#" >통합자료 검색
+									<li><a href="bookForm" >통합자료 검색
 									</a></li>
 									<li><a href="#" >신착자료 검색
 									</a></li>

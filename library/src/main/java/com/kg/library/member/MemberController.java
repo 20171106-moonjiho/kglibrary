@@ -16,7 +16,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class MemberController {
-	@Autowired private MemberService service ;
+	@Autowired private MemberService service;
 	@Autowired private HttpSession session;	
 	
 	@RequestMapping("agree")
@@ -76,21 +76,21 @@ public class MemberController {
 //	}
 //	@Autowired private KakaoService kakaoService;
 	
-	@RequestMapping("mobileCheck")
-	@ResponseBody	
-	public String sendSMS(String mobile) { // 휴대폰 문자보내기
-		Random rand  = new Random(); //랜덤숫자 생성하기 !!
-        String numStr = "";
-        for(int i=0; i<4; i++) {
-            String ran = Integer.toString(rand.nextInt(10));
-            numStr+=ran;
-        }
-             
-    	service.certifiedPhoneNumber(mobile, numStr); //휴대폰 api 쪽으로 가기 !!
-    	// // 밑에 자세한 설명나옴
-     
-        return numStr;
-    }
+//	@RequestMapping("mobileCheck")
+//	@ResponseBody	
+//	public String sendSMS(String mobile) { // 휴대폰 문자보내기
+//		Random rand  = new Random(); //랜덤숫자 생성하기 !!
+//        String numStr = "";
+//        for(int i=0; i<4; i++) {
+//            String ran = Integer.toString(rand.nextInt(10));
+//            numStr+=ran;
+//        }
+//             
+//    	service.certifiedPhoneNumber(mobile, numStr); //휴대폰 api 쪽으로 가기 !!
+//    	// // 밑에 자세한 설명나옴
+//     
+//        return numStr;
+//    }
 	
 	@RequestMapping("userInfo")
 	public String userInfo(Model model,  RedirectAttributes ra) {
