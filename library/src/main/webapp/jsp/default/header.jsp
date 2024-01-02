@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
-	<link href="common.css" rel="stylesheet"> 
+	<link href="common.css" rel="stylesheet">
+	<link href="main.css" rel="stylesheet"> 
  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+	<script src="script-3.js"></script>
 	<script>
 	function chk(){
 		if(cc == 1){
@@ -119,14 +121,33 @@
 			<div class="top_bar">
 				<div class="wsize">
 					<div class="logo">
-					<h1><a href="#"><img src="img/logo_4.png"></a></h1>
+					<h1><a href="index"><img src="img/logo_4.png"></a></h1>
 					</div>
-					<ul class="aside_menu">
-						<li class="login"><a href="#">로그인</a></li>
-						<li class="join"><a href="#">회원가입</a></li>
+					<ul class="aside_menu">	
+						<li class="login">
+							<c:choose>
+								<c:when test="${empty sessionScope.id }">
+									<a href="login">로그인</a>
+								</c:when>
+								<c:otherwise>
+									<a href="logout">로그아웃</a>
+								</c:otherwise>
+							</c:choose>
+						</li>
+						<li class="join">
+							<c:choose>
+								<c:when test="${empty sessionScope.id }">
+									<a href="agree">회원가입</a>
+								</c:when>
+								<c:otherwise>
+									<a href="userInfo">마이페이지</a>
+								</c:otherwise>
+							</c:choose>
+						</li>		
 					</ul>
 				</div>
 			</div>
+
 			<div class="menu_bar">
 				<div class="menu_area active">
 					<div class="gnb_bg" style="display: none;"></div>
@@ -135,7 +156,7 @@
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
 								<ul>	
-									<li><a href="#" >통합자료 검색
+									<li><a href="bookForm" >통합자료 검색
 									</a></li>
 									<li><a href="#" >신착자료 검색
 									</a></li>
@@ -236,7 +257,7 @@
 								</ul>
 						</div>
 					</li>
-					<li><a href="#">나의도서관</a>
+					<li><a href="NoticeBoard">공지사항</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
 								<ul>	
@@ -255,41 +276,8 @@
 				</div>
 			</div>
 			<div class="gnb_bg"></div>
-			<div class="search">
-				<div class="search_btn_wrap">
-					<h3>소장자료검색</h3>	
-					<form id="frm_main_search" method="get" action="./site/search/search00.do" onsubmit="return main_search();">
-						<div class="search_bar">
-							<select name="search_item" id="search_item">
-								<option value="search_title">자료명</option>
-								<option value="search_author">저자명</option>
-								<option value="search_publisher">발행처</option>
-							</select>
-							<div class="search_bar_text">
-								<label for="search_txt" class="search_m" style="">검색어를 입력하세요.</label>
-								<input type="text" name="search_txt" class="search_text" id="search_txt" value="">
-								<input type="submit" class="search_btn" value="검색">
-							</div>
-						</div>
-					</form>
-				</div>			
-			</div>
-			<div class="sub_bar">
-				<div class="sub_bar">
-				<div class="link_btn">
-			<ul>
-				<li><a href="#"><i class="link01 hvr-bob"></i><span>이용안내</span></a></li>
-				<li><a href="#"><i class="link02 hvr-bob"></i><span>문화행사<br>신청</span></a></li>
-				<li><a href="#"><i class="link03 hvr-bob"></i><span>전자책</span></a></li>
-				<li><a href="#"><i class="link04 hvr-bob"></i><span>회의실<br>예약현황</span></a></li>
-				<li><a href="#"><i class="link05 hvr-bob"></i><span>독서프로그램<br>게시판</span></a></li>
-				<li><a href="#"><i class="link06 hvr-bob"></i><span>희망도서 <br>바로대출 서비스</span></a></li>
-			</ul>
 		</div>
-			</div>
-			</div>
-		</div>
-
+		
 
 
 

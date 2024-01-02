@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kg.library.reservation.ReservationMapper">
+	<select id="getReservations">
+		select room_num from reservation where reservation_date = #{reservation_date} and reservation_time = #{reservation_time}
+	</select>
+	
+	<select id="getReservations2">
+		select reservation_time from reservation where reservation_date = #{reservation_date} and room_num = #{room_num}
+	</select>
+	
+	<insert id="insert">
+		insert into reservation values(reservation_seq.NEXTVAL, #{room_num}, #{reservation_date}, #{reservation_time},
+		#{member}, #{duration} )
+	</insert>
+</mapper>

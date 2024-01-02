@@ -9,4 +9,6 @@ public interface DonateMapper {
 
 	List<DonateDTO> donateForm();
 
+	int donateWriteProc(DonateDTO dto);
+
 }

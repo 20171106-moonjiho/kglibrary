@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+
+<mapper namespace="com.kg.library.book.IBookMapper">
+
+	<insert id="bookRegistProc">
+		<selectKey order="BEFORE" keyProperty="no" resultType="int">
+			SELECT NVL(max(no),0)+1 FROM book
+		</selectKey>
+		INSERT INTO book 
+		VALUES(#{no}, #{category}, #{title_info}, #{author_info}, #{pub_info}, #{pub_year_info},
+		 #{reg_date}, #{detail_link}, #{image}, #{borrowperson}, #{book_count}, #{donation})
+	</insert>
+
+    <select id="totalCount">
+    	<choose>
+    		<when test="select == 'select'">
+    			select count(no) from book where title_info like '%'||#{search}||'%'  		
+    		</when>
+    		<otherwise>
+    			select count(no) from book
+    		</otherwise>
+    	</choose>
+    </select>
+
+    <select id="bookForm" resultType="com.kg.library.book.BookDTO">
+
+    	<choose>
+    		<when test="select == 'select'">
+    			SELECT B.* FROM (
+				SELECT ROWNUM as r, A.* FROM (
+				SELECT book.* FROM book where title_info like '%'||#{search}||'%' ORDER BY no DESC)A 
+				)B WHERE B.r BETWEEN #{begin} AND #{end}
+
+    		</when> 
+    		<otherwise>
+    			SELECT B.* FROM (
+				SELECT ROWNUM as r, A.* FROM (
+				SELECT book.* FROM book ORDER BY no DESC)A 
+				)B WHERE B.r BETWEEN #{begin} AND #{end}
+    		</otherwise>
+    	
+    	</choose>
+    </select>
+    
+	<select id="bookContent" resultType="com.kg.library.book.BookDTO">
+    	select * from book where no=#{no}	
+    </select>
+    
+</mapper>
