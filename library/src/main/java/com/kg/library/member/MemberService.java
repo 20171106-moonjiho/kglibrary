@@ -1,23 +1,24 @@
 package com.kg.library.member;
 
-import java.util.HashMap;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-import com.kg.library.member.MemberDTO;
+
+import com.kg.library.reservation.ReservationDTO;
+import com.kg.library.reservation.ReservationMapper;
 
 import jakarta.servlet.http.HttpSession;
-import net.nurigo.java_sdk.api.Message;
-import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @Service
 public class MemberService {
 	@Autowired private IMemberMapper mapper;
 	@Autowired private HttpSession session;
+	@Autowired private ReservationMapper mapper2;
 //	@Value("${coolsms.apikey}")
 //    private String apiKey;
 //
@@ -157,5 +158,32 @@ public class MemberService {
 		}
 		
 		return "아이디 또는 비밀번호를 확인 후 입력하세요";
+	}
+
+
+	public List<ReservationDTO> myReservation(String sessionId) {
+		LocalDate date = LocalDate.now();
+		List<ReservationDTO> now = new ArrayList<>();
+		List<ReservationDTO> list = mapper2.getReservations4(sessionId);
+		for(ReservationDTO reservation: list) {
+			if(!date.isAfter(LocalDate.parse(reservation.getReservation_date()))) now.add(reservation);
+		}
+		return now;
+	}
+
+
+	public void cancel(ReservationDTO dto) {
+		mapper2.cancel(dto);
+	}
+
+
+	public List<ReservationDTO> preReservation(String sessionId) {
+		LocalDate date = LocalDate.now();
+		List<ReservationDTO> pre = new ArrayList<>();
+		List<ReservationDTO> list = mapper2.getReservations4(sessionId);
+		for(ReservationDTO reservation: list) {
+			if(date.isAfter(LocalDate.parse(reservation.getReservation_date()))) pre.add(reservation);
+		}
+		return pre;
 	}
 }
