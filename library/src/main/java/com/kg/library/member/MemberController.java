@@ -86,7 +86,7 @@ public class MemberController {
             numStr+=ran;
         }
              
-    	service.certifiedPhoneNumber(mobile, numStr); //휴대폰 api 쪽으로 가기 !!
+    //	service.certifiedPhoneNumber(mobile, numStr); //휴대폰 api 쪽으로 가기 !!
     	// // 밑에 자세한 설명나옴
      
         return numStr;
