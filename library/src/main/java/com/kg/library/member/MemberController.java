@@ -112,8 +112,10 @@ public class MemberController {
 	}
 	
 	@PostMapping("updateProc")
-	public String updateProc(MemberDTO member, Model model) {
+	public String updateProc(MemberDTO member, String postcode, String detailAddress, Model model) {
 		String sessionId = (String)session.getAttribute("id");
+		if(member.getAddress() != null && member.getAddress().trim().isEmpty() == false)
+			member.setAddress( postcode + "," + member.getAddress() + "," + detailAddress);
 		if(sessionId == null)
 			return "redirect:login";
 		
