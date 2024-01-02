@@ -18,13 +18,13 @@
 			<table>
 				<tr>
 					<td><input type="text" placeholder="기증자를 입력하세요."
-						name="searchText" maxlength="200"></td>
+						name="search" maxlength="200"></td>
 					<td><button type="submit">검색</button></td>
 				</tr>
 			</table>
 		</form>
 	</div>
-	<div>
+	<div align="center">
 		<table border=1>
 			<tr>
 				<th>번호</th>
@@ -41,6 +41,7 @@
 				</tr>
 			</c:forEach>
 		</table>
+		${result }
 	</div>
 </body>
 </html>

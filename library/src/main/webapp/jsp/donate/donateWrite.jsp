@@ -18,10 +18,10 @@
 				<tbody>
 					<tr>
 						<th>기증자</th>
-						<td><input style="width: 100%;" type="text" name="id"></td>
+						<td><input style="width: 100%;" type="text" name="id" value="${sessionScope.id }"></td>
 					</tr>
 					<tr>
-						<th scope="row"><label>주요 기증 분야</label></th>
+						<th scope="row">주요 기증 분야</th>
 						<td>
 							<div>
 								<input type="text" name="subject" maxlength="100">
@@ -30,7 +30,7 @@
 						</td>
 					</tr>
 					<tr>
-						<th scope="row"><label for="input_quantity">* 도서수량</label></th>
+						<th scope="row">* 도서수량</th>
 						<td>
 							<div>
 								<input type="text" maxlength="10">책(점)
@@ -39,10 +39,9 @@
 					</tr>
 					<tr>
 					<tr>
-						<th scope="row"><label>* 기증방법</label></th>
+						<th scope="row">* 기증방법</th>
 						<td><input type="radio" id="donation_method01"
-							name="nldMethod" title="기증방법" value="직접방문" checked /> <label
-							for="donation_method01">직접방문</label> <input type="radio"
+							name="nldMethod" title="기증방법" value="직접방문" checked />직접방문<input type="radio"
 							id="donation_method02" name="nldMethod" title="기증방법" value="우편배달" />
 							<label for="donation_method02">우편발송</label></td>
 					<tr>
