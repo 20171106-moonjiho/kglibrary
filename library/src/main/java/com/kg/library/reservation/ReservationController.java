@@ -9,9 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class ReservationController {
-	@Autowired ReservationService service;
+	@Autowired private ReservationService service;
+	@Autowired private HttpSession session;
 	
 	@GetMapping("reservation")
 	public String index() {
@@ -36,16 +39,17 @@ public class ReservationController {
 	
 	@PostMapping("result")
 	public String result(Model model, ReservationDTO dto) {
-		dto.setMember("");
-		List<Integer> list = service.getReservations2(dto);
-		for(int i = 0; i<dto.getDuration(); i++) {
-			if(list.contains(dto.getReservation_time()+i) || dto.getReservation_time()+i > 20 ) {
-				model.addAttribute("list", list);
-				model.addAttribute("dto", dto);
-				return "/reservation/reservation2";
-			}
+		String sessionId = (String)session.getAttribute("id");
+		if(sessionId == null)
+			return "redirect:login";
+		dto.setMember(sessionId);
+		int res = service.insert(dto);
+		if(res!=0) {
+			List<Integer> list = service.getReservations2(dto);
+			model.addAttribute("list", list);
+			model.addAttribute("dto", dto);
+			return "myReservation";
 		}
-		service.insert(dto);
 		return "index";
 	}
 }
