@@ -27,7 +27,7 @@ public class MemberService {
 //    @Value("${coolsms.fromnumber}")
 //    private String fromNumber;
 	
-	public String agreeProc(MemberDTO member) {
+	public String joinProc(MemberDTO member) {
 		if(member.getId() == null || member.getId().trim().isEmpty()) {
 			return "아이디를 입력하세요.";
 		}
@@ -51,7 +51,7 @@ public class MemberService {
 		String secretPass = encoder.encode(member.getPw());
 		member.setPw(secretPass);
 		
-		int result = mapper.agreeProc(member);
+		int result = mapper.joinProc(member);
 		if(result == 1)
 			return "회원 등록 완료";
 		
@@ -164,4 +164,5 @@ public class MemberService {
 		
 		return "아이디 또는 비밀번호를 확인 후 입력하세요";
 	}
+	
 }

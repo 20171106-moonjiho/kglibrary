@@ -137,7 +137,7 @@
 						<li class="join">
 							<c:choose>
 								<c:when test="${empty sessionScope.id }">
-									<a href="agree">회원가입</a>
+									<a href="terms">회원가입</a>
 								</c:when>
 								<c:otherwise>
 									<a href="userInfo">마이페이지</a>
