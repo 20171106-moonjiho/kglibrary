@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:import url="/header" />
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="agree.js"></script>
+<script src="join.js"></script>
 <script src="member.js"></script>
 
 <body>
@@ -14,7 +14,7 @@
 		<font color="red" >${msg }</font>
 	</td></tr>
 	<tr><td>
-	<form action="agreeProc" method="post" id="f">
+	<form action="joinProc" method="post" id="f">
 		<input type="text" name="id" placeholder="아이디" id="id"> (*필수 항목) <br>
 		<input type="password" name="pw" placeholder="비밀번호" id="pw"><br>
 		<input type="password" name="confirm" placeholder="비밀번호 확인 " id="confirm"

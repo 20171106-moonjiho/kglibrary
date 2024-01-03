@@ -16,17 +16,17 @@ public class MemberController {
 	@Autowired private MemberService service;
 	@Autowired private HttpSession session;	
 	
-	@RequestMapping("agree")
-	public String agree() {
-		return "member/agree";
+	@RequestMapping("join")
+	public String join() {
+		return "member/join";
 	}
 	
-	@PostMapping("agreeProc")
-	public String agreeProc(MemberDTO member, String postcode, String detailAddress, Model model, RedirectAttributes ra) {
+	@PostMapping("joinProc")
+	public String joinProc(MemberDTO member, String postcode, String detailAddress, Model model, RedirectAttributes ra) {
 		if(member.getAddress() != null && member.getAddress().trim().isEmpty() == false)
 			member.setAddress( postcode + "," + member.getAddress() + "," + detailAddress);
 		
-		String msg = service.agreeProc(member);
+		String msg = service.joinProc(member);
 		
 		if(msg.equals("회원 등록 완료")) {
 			ra.addFlashAttribute("msg", msg);
@@ -34,7 +34,7 @@ public class MemberController {
 		}
 		
 		model.addAttribute("msg", msg);
-		return "member/agree";
+		return "member/join";
 	}
 	
 	@RequestMapping("login")
@@ -164,6 +164,11 @@ public class MemberController {
    	public String userFooter() {
    		return "member/userFooter";
   	}
+    
+    @RequestMapping("terms")
+	public String terms() {
+		return "member/terms";
+	}
     
     @RequestMapping("myReservation")
     public String myReservation(Model model) {
