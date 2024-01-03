@@ -84,7 +84,7 @@
 			
 		<c:choose>
 		<c:when test="${not empty board.image }">
-		<img width ="300" src="/img/test/${board.image }">
+		<img width ="300" src="/img/admin/${board.image }">
 		</c:when>
 		</c:choose>
 		</tr>

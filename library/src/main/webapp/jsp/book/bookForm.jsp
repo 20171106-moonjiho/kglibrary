@@ -130,14 +130,15 @@ a {
 				<div class="center" style="margin-top: 18px;">${result}</div>
 		</c:otherwise>
 	</c:choose>
-	
-						<c:choose>
-						 	<c:when test="${sessionScope.id eq 'admin'}">
-							<span class="right">
-								<button type="button" onclick="location.href='bookRegist'"class="submit_button" >글쓰기</button>
-							</span>
-						</c:when> 
-						</c:choose>
+				<c:choose>
+					<c:when test="${sessionScope.id eq 'admin'}">
+					<tr>
+						<span class="right">
+							<button type="button" onclick="location.href='bookRegist'"class="submit_button" >글쓰기</button>
+						</span>
+						</tr>
+					</c:when> 
+				</c:choose>				
 	
 </div>
 <c:import url="/footer" />
