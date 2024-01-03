@@ -6,7 +6,7 @@
 	function deleteCheck(){
 		result = confirm('진짜로 삭제하겠습니까?');
 		if(result == true){
-			location.href="answerBoardDeleteProc?no=${board.no}"
+			location.href="bookDeleteProc?no=${board.no}"
 		}
 	}
 	function rentCheck(){
@@ -23,7 +23,23 @@
 		}
 	    }
 	}
-
+	
+	function returnCheck(){
+		var userId = '<%= session.getAttribute("id") %>';
+		
+	    if (userId == "null" || userId.trim() == "") {
+	        alert("로그인이 필요합니다.");
+	        location.href = "login";
+	    }
+	    else{
+		result = confirm('반납 하시겠습니까?');
+		if(result == true){
+			location.href="returnProc?no=${board.no}"
+		}
+	    }
+	}
+	
+	
 
 </script>
 
@@ -49,8 +65,23 @@
 			<td whdth="100">${board.reg_date}</td>
 		</tr>
 		<tr>
+			<c:set var="borrowPerson" value="${board.borrowperson}" />
+			
 			<th width="100">대여 여부</th>
-			<td width="200">${board.borrowperson}</td>
+		<c:choose>
+   	 		<c:when test="${borrowPerson eq '대여 가능'}">
+   	 		 <td width="200">${board.borrowperson}</td>
+    		</c:when>
+    		<c:when test="${sessionScope.id eq borrowPerson}">
+   	 		<td width="200" colspan="5">
+    	   		<button type="button" onclick="returnCheck()">반납 ${rentaldate} 까지 </button>
+    	   	</td>
+    		</c:when>
+    		<c:otherwise>
+    		 <td width="200" colspan="5">대여 중  -  예상 반납 시간 : ${rentaldate} 까지</td>
+    		</c:otherwise>
+		</c:choose>
+			
 		<c:choose>
 		<c:when test="${not empty board.image }">
 		<img width ="300" src="/img/test/${board.image }">
@@ -70,17 +101,17 @@
 				<button type="button" onclick="location.href='bookForm'">목록</button>
 		<c:choose>
 			<c:when test="${sessionScope.id eq 'admin'}">
-				<button type="button" onclick="location.href='answerBoardModify?no=${board.no }'">수정</button>
 				<button type="button" onclick="deleteCheck()">삭제</button> 
 			</c:when>
 		</c:choose>
-		<c:set var="borrowPerson" value="${board.borrowperson}" />
+		
 		<c:choose>
    	 		<c:when test="${borrowPerson eq '대여 가능'}">
    	 		 <input type="hidden" id="userId" value="<%= session.getAttribute("id") %>">
     	   		<button type="button" onclick="rentCheck()">대여</button>
     		</c:when>
 		</c:choose>
+
 
 				
 			</td>

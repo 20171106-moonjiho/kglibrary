@@ -1,7 +1,11 @@
 package com.kg.library.book;
 
 import java.io.File;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +27,7 @@ public class BookService {
 	@Autowired 
 	private HttpSession session;
 	
-	public void bookForm(String cp, Model model, String search, String select) {
+	public void bookForm(String cp, Model model, String search, String select) { //책 검색 게시판
 	
 			int currentPage = 1;
 			try{
@@ -52,14 +56,16 @@ public class BookService {
 			model.addAttribute("result", result);
 		}
 
-	public String bookRegistProc(MultipartHttpServletRequest multi) {
+	public String bookRegistProc(MultipartHttpServletRequest multi) { // 책 등록
 			
 			
 			String sessionId = (String) session.getAttribute("id");
 			if (sessionId == null)
 				return "redirect:login";
 	
-
+			
+			LocalDateTime currentTime = LocalDateTime.now(); // 현재 시간 가져오기
+			Timestamp borrowtime = Timestamp.valueOf(currentTime); //형변환
 		
 			int book_count = Integer.parseInt(multi.getParameter("book_count")); //책 갯수
 			for(int i = 1; i <= book_count; i++) {
@@ -89,6 +95,7 @@ public class BookService {
 			board.setImage("");
 			board.setBorrowperson("대여 가능"); //빌린 사람
 			board.setBook_count(i); // 동일한 책 번호(책 갯수)
+			board.setBorrowdate(borrowtime);
 			
 			String donation = multi.getParameter("donation"); 
 			if(donation == null || donation.trim().isEmpty()) { // 기증자가 없을 시
@@ -143,15 +150,12 @@ public class BookService {
 					e.printStackTrace();
 					board.setImage("");
 				}
-
 				/*
 				 * file.transferTo(); 파일을 이동시키는 기능
 				 * <input type="file" name= "upfile"을 사용하여 서버에 파일 데이터가 전달되면 웹서버가 
 				 * 임시파일로 저장을 함. 임시파일로 저장된 파일을 개발자가 원하는 대로 이동 시킬 때 사용함.
 				 * 
 				 */
-
-				
 			}
 
 			mapper.bookRegistProc(board);
@@ -167,7 +171,7 @@ public class BookService {
 
 	}
 
-	public BookDTO bookContent(String no) {
+	public BookDTO bookContent(String no, Model model) { // 책 상세정보
 		
 		int n = 1;
 		try{
@@ -192,7 +196,55 @@ public class BookService {
 				board.setImage(names[12]);
 			}
 		}
+		
+		// 7일 후의 시간 계산
+		LocalDateTime storedTime = board.getBorrowdate().toLocalDateTime(); //DB 값 형 변환
+        LocalDateTime rentalday = storedTime.plus(Duration.ofDays(7)); //대여 종료 시점
+        
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"); //보이기용
+		String rentaldate = rentalday.format(formatter);//보이기용 형변환
+
+        model.addAttribute("rentaldate", rentaldate);
 		return board;
+	}
+
+	public void rentalProc(String no,String sessionId) { // 대여
+		
+		int n = 1;
+		try{
+			n = Integer.parseInt(no);
+		}catch(Exception e){
+		}
+		
+		LocalDateTime currentTime = LocalDateTime.now(); //대여 시간, 현재 시간 가져오기 
+		Timestamp borrowtime = Timestamp.valueOf(currentTime); //형변환
+			
+		mapper.rentalProc(n, sessionId, borrowtime);
+		
+	}
+
+	public void returnProc(String no) { // 반납
+		
+		int n = 1;
+		try{
+			n = Integer.parseInt(no);
+		}catch(Exception e){
+		}
+		
+		String borrowperson = "대여 가능";
+		
+		mapper.returnProc(n, borrowperson);
+		
+	}
+
+	public void bookDeleteProc(String no) {
+		int n = 1;
+		try{
+			n = Integer.parseInt(no);
+		}catch(Exception e){
+		}
+		
+		mapper.bookDeleteProc(n);
 	}
 		
 	

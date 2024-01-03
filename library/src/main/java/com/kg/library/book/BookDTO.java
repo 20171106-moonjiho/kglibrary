@@ -1,9 +1,10 @@
 package com.kg.library.book;
-
+import java.sql.Timestamp;
 /*
- * 번호(1),카테고리(2),제목(3),저작자(4),발행자(5),발행년도(6),비치일(7),상세페이지경로(8),이미지(9), 빌린 사람(10) ,책 번호(책 갯수)(11), 기증자(12)
- * 
- * create table book(
+*도서 등록(book)
+순서 - 번호(1),카테고리(2),제목(3),저작자(4),발행자(5),발행년도(6),비치일(7),상세페이지경로(8),이미지(9), 빌린 사람(10) ,책 번호(책 갯수)(11), 기증자(12),빌린 시간(13)
+
+create table book(
 no number not null,
 category varchar2(50),
 title_info varchar2(50),
@@ -16,9 +17,9 @@ image varchar2(255),
 borrowperson varchar2(50),
 book_count number,
 donation varchar2(50),
+borrowdate timestamp
 );
- */
-
+*/
 public class BookDTO {
 
 	private int no;
@@ -33,6 +34,8 @@ public class BookDTO {
 	private String borrowperson;
 	private int book_count;
 	private String donation;
+	private Timestamp borrowdate;
+	
 	public int getNo() {
 		return no;
 	}
@@ -105,6 +108,12 @@ public class BookDTO {
 	}
 	public void setDonation(String donation) {
 		this.donation = donation;
+	}
+	public Timestamp getBorrowdate() {
+		return borrowdate;
+	}
+	public void setBorrowdate(Timestamp borrowdate) {
+		this.borrowdate = borrowdate;
 	}
 	
 	
