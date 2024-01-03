@@ -213,7 +213,8 @@
 								</ul>
 						</div>
 					</li>
-					<li><a href="#">이용자마당</a>
+					
+					<li><a href="#">회의실</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
 								<ul>	
@@ -228,6 +229,7 @@
 								</ul>
 						</div>
 					</li>
+					 
 					<li><a href="#">큐레이션</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
@@ -258,17 +260,15 @@
 								</ul>
 						</div>
 					</li>
-					<li><a href="noticeBoard">공지사항</a>
+					<li><a href="noticeBoard">이용자마당</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
 								<ul>	
-									<li><a href="#" >통합자료 검색
+									<li><a href="#" >공지사항
 									</a></li>
-									<li><a href="#" >신착자료 검색
+									<li><a href="#" >묻고 답하기
 									</a></li>
-									<li><a href="#" >대출 베스트
-									</a></li>
-									<li><a href="#" >정기간행물
+									<li><a href="#" >도서관 일정
 									</a></li>
 								</ul>
 						</div>
