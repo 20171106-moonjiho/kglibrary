@@ -54,11 +54,11 @@ public class BookService {
 
 	public String bookRegistProc(MultipartHttpServletRequest multi) {
 			
-			//System.out.println("title : " + multi.getParameter("title"));
-	//		String sessionId = (String) session.getAttribute("id");
-	//		if (sessionId == null)
-	//			return "redirect:login";
-			String sessionId = "test";
+			
+			String sessionId = (String) session.getAttribute("id");
+			if (sessionId == null)
+				return "redirect:login";
+	
 
 		
 			int book_count = Integer.parseInt(multi.getParameter("book_count")); //책 갯수

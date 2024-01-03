@@ -35,8 +35,8 @@ public class BookController {
 	@RequestMapping("bookRegist") //도서 등록 url
 	public String bookRegist() {
 		String sessionId = (String) session.getAttribute("id");
-	//	if (sessionId != "admin" || sessionId.trim().isEmpty()) 
-	//		return "redirect:bookform";
+		if (sessionId != "admin" || sessionId.trim().isEmpty()) 
+			return "redirect:bookform";
 	//관리자가 아니면 등록 불가, 회원이 url을 직접적으로 치고 들어올 경우 반환하기 위하여 설정. 회원가입 확인 되면 주석 풀것
 		return "book/bookRegist";
 	}
