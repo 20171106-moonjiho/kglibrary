@@ -15,11 +15,11 @@
 						<p class="tit jsMMenuText"><a href="#" class="jsMMenuBtn">공지사항
 									</a></p>
 						<ul id="jsMMenu">
-								<li class="on">
+								<li>
 									<a href="noticeBoard">공지사항
 									</a>
 								</li>
-								<li>
+								<li class="on">
 									<a href="noticeBoard2">묻고 답하기
 									</a>
 								</li>
@@ -34,7 +34,7 @@
 			<div id="contents">
 				<div id="print_wrap">
 					<div id="cont_head">
-							<h2>공지사항</h2>
+							<h2>공지사항2</h2>
 							<!-- 현재위치 -->
 							<div id="location">
 								<ul>
@@ -91,12 +91,8 @@
 								${result}
 							</div>
 							
-							<div style="margin:0 auto;text-align:center;">
-								<div class="board_search">
-									<form id="frm_sch" action="noticeBoard">
-										<fieldset>
-										<ul>
-											<li><select id="v_search" name="search_select" title="검색형태 선택" style="width:70px;">
+							<form action="noticeBoard">
+										<select class="selectBox" name="search_select">
 												<c:choose>
 													<c:when test="${search_select == '제목' }">
 														<option value="">전체</option>
@@ -114,25 +110,19 @@
 														<option value="글쓴이">글쓴이</option>
 													</c:otherwise>
 												</c:choose>
-											</select></li>
-											<li>
-											<c:choose>
-											<c:when test="${empty search or search == 'null'}">
-												<input type="text" size="25" title="검색어를 입력하세요" id="p_keyword" name="search" class="search_input" value="">
-											</c:when>
-											<c:otherwise>
-											<input type="text" size="25" title="검색어를 입력하세요" id="p_keyword" name="search" class="search_input" value="">
-											</c:otherwise>
-											</c:choose>
-											</li>
-											<li><input type="image" src="../img/search_bt.gif" id="search_bt" name="search_bt" class="search_bt" alt="검색"></li>
-										</ul>
-										</fieldset>
-									</form>
-								</div>
-							</div>
-							
-							
+											
+											</select>
+											
+										<c:choose>
+										<c:when test="${empty search or search == 'null'}">
+											<input type="text" name="search" >
+										</c:when>
+										<c:otherwise>
+										<input type="text" name="search" >
+										</c:otherwise>
+										</c:choose>
+										<input type="image" src="../img/search_bt.gif" id="search_bt" name="search_bt" class="search_bt" alt="검색">
+							</form>
 							</c:otherwise>
 							</c:choose>
 						</div>

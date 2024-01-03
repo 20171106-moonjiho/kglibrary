@@ -3,6 +3,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 	<link href="common.css" rel="stylesheet">
 	<link href="main.css" rel="stylesheet"> 
+	<link href="notice.css" rel="stylesheet">
  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -257,7 +258,7 @@
 								</ul>
 						</div>
 					</li>
-					<li><a href="NoticeBoard">공지사항</a>
+					<li><a href="noticeBoard">공지사항</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
 								<ul>	
