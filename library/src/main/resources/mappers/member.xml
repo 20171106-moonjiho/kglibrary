@@ -24,7 +24,7 @@ studyroom varchar2(50)); -->
 		<result column="tel" property="tel"/>	
 	</resultMap>
 	
-	<insert id="agreeProc">
+	<insert id="joinProc">
 		INSERT INTO member
 		VALUES(#{id}, #{pw}, #{name}, #{email}, #{address}, #{tel})
 	</insert>
@@ -75,5 +75,5 @@ studyroom varchar2(50)); -->
 	<delete id="deleteProc">
 		DELETE FROM member WHERE id=#{id}
 	</delete>
-	
+
 </mapper>
