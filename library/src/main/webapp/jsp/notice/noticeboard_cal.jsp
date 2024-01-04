@@ -19,7 +19,7 @@
 						<p class="tit jsMMenuText"><a href="#" class="jsMMenuBtn">공지사항
 									</a></p>
 						<ul id="jsMMenu">
-								<li class="on">
+								<li >
 									<a href="noticeBoard">공지사항
 									</a>
 								</li>
@@ -27,7 +27,7 @@
 									<a href="noticeBoard2">묻고 답하기
 									</a>
 								</li>
-								<li>
+								<li class="on">
 									<a href="noticeboard_cal">도서관 일정
 									</a>
 								</li>

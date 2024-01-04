@@ -74,14 +74,13 @@ public class NoticeBoardService {
 
 
 	public String noticeboard_writeProc(MultipartHttpServletRequest multi) {
-//		String sessionId = (String) session.getAttribute("id");
-//		if (sessionId == null)
-//			return "redirect:login";
+		String sessionId = (String) session.getAttribute("id");
+		if (sessionId == null)
+			return "redirect:login";
 	
 	
 	String title = multi.getParameter("title");
 	String content = multi.getParameter("content");
-	String sessionId= "유저";
 	content = content.replace("\r\n","<br>");
 	if (title == null || title.trim().isEmpty()) {
 		return "redirect:noticeBoard";
@@ -178,9 +177,9 @@ public class NoticeBoardService {
 			return "게시글 번호에 문제가 발생했습니다. 다시 시도하세요.";
 		
 		// 로그인한 아이디와 작성자 아이디가 같은지 확인
-//		String sessionId = (String)session.getAttribute("id");
-//		if(board.getId().equals(sessionId) == false)
-//			return "작성자만 삭제 할 수 있습니다.";
+		String sessionId = (String)session.getAttribute("id");
+		if(board.getId().equals(sessionId) == false)
+			return "작성자만 삭제 할 수 있습니다.";
 		
 		String fullPath = board.getImage();
 		if(fullPath != null) { // 테이블에 파일의 경로와 이름이 있다면
@@ -231,14 +230,14 @@ public class NoticeBoardService {
 		NoticeBoardDTO check = mapper.noticeboard_Content(board.getNo());
 		if(check == null)
 			return "게시글 번호에 문제가 발생했습니다. 다시 시도하세요.";
-//		String sessionId = (String)session.getAttribute("id");	
-//		
-//		if(check.getId().equals(sessionId) == false)
-//			return "작성자만 수정 할 수 있습니다.";
+		String sessionId = (String)session.getAttribute("id");	
+		
+		if(check.getId().equals(sessionId) == false)
+			return "작성자만 수정 할 수 있습니다.";
 		if(board.getTitle() == null || board.getTitle().trim().isEmpty()) {
 			return "제목을 입력하세요.";
 		}
-		String sessionId="유저";
+
 		String content = multi.getParameter("content");
 		content = content.replace("\r\n","<br>");
 		board.setContent(content);
