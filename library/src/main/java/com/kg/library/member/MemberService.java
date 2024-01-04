@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpSession;
 
 @Service
 public class MemberService {
+	
 	@Autowired private IMemberMapper mapper;
 	@Autowired private HttpSession session;
 	@Autowired private ReservationMapper mapper2;
@@ -82,24 +83,26 @@ public class MemberService {
 		return "아이디 또는 비밀번호를 확인 후 다시 입력하세요.";
 	}
 	
-//	public void certifiedPhoneNumber(String mobile, String numStr) {
-//        Message coolsms = new Message(apiKey, apiSecret);
-// 
-//        HashMap<String, String> params = new HashMap<String, String>();
-//        params.put("to", mobile);    
-//        params.put("from", fromNumber);   
-//        params.put("type", "SMS");
-//        params.put("text", "["+numStr+"]");
-//        params.put("app_version", "test app 1.2"); // application name and version
-//
-//        try {
-//            JSONObject obj = (JSONObject) coolsms.send(params);
-//            System.out.println(obj.toString());
-//        } catch (CoolsmsException e) {
-//            System.out.println(e.getMessage());
-//            System.out.println(e.getCode());
-//        }
-//	}
+
+	/*public void certifiedPhoneNumber(String mobile, String numStr) {
+        Message coolsms = new Message(apiKey, apiSecret);
+ 
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("to", mobile);    
+        params.put("from", fromNumber);   
+        params.put("type", "SMS");
+        params.put("text", "["+numStr+"]");
+        params.put("app_version", "test app 1.2"); // application name and version
+
+        try {
+            JSONObject obj = (JSONObject) coolsms.send(params);
+            System.out.println(obj.toString());
+        } catch (CoolsmsException e) {
+            System.out.println(e.getMessage());
+            System.out.println(e.getCode());
+        }
+	}*/
+
 	
 	public String userInfo(Model model) {
 		String sessionId = (String)session.getAttribute("id");

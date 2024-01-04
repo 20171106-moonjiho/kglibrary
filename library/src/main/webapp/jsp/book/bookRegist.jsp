@@ -36,7 +36,19 @@ function bookCheck(){
 		<form action="bookRegistProc" method="post" enctype="multipart/form-data" id="f">
 	<tr><td>
 
-		<input type="text" name="category" placeholder="카테고리" id="category">
+	<!-- 	<input type="text" name="category" placeholder="카테고리" id="category"> -->
+		<select class="selectBox" name="category" id="category">
+		    <option value="소설" selected="selected">소설</option>
+   			<option value="만화">만화</option>
+   			<option value="시,에세이">시,에세이</option>
+   			<option value="인문학">인문학</option>
+   			<option value="자기계발">자기계발</option>
+   			<option value="과학">과학</option>
+   			<option value="요리">요리</option>
+    		<option value="컴퓨터IT">컴퓨터IT</option>
+    		<option value="역사,문화">역사,문화</option>
+    	</select>
+		
 		<input type="text" name="title_info" placeholder="제목" id="title_info"><br><br>
 		<input type="text" name="author_info" placeholder="저작자" id="author_info">
 		<input type="text" name="pub_info" placeholder="발행자" id="pub_info"  ><br><br>
@@ -44,6 +56,12 @@ function bookCheck(){
 		<input type="text" name = "pub_year_info" id="pub_year_info" placeholder="발행연도">
 		<input type="text" name = "book_count" id="book_count" placeholder="책 갯수"><br>	
 		<input type="text" name = donation id="donation" placeholder="기증자"><br>
+		<tr>
+				<th>내용</th>
+				<td>
+					<textarea style="width: 100%; margin-left: 10px;" rows="10" cols="30" name="detail_link"></textarea>
+				</td>
+			</tr>
 		</td>
 					<th>파일첨부</th> <br>	
 		<td><input type="file" name="upfile"></td>
