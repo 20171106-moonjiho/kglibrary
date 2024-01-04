@@ -6,7 +6,7 @@
 <c:import url="/userHeader"/>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="member.js"></script>
-<script src="agree.js"></script>
+<script src="join.js"></script>
 <div align="center">
 	<font color="red" >${msg }</font>
 	<h1>회원 수정</h1>

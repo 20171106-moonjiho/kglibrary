@@ -50,4 +50,24 @@
     	select * from book where no=#{no}	
     </select>
     
+    <select id="myBook" resultType="com.kg.library.book.BookDTO">
+
+    	<choose>
+    		<when test="select == 'select'">
+    			SELECT B.* FROM (
+				SELECT ROWNUM as r, A.* FROM (
+				SELECT book.* FROM book where title_info like '%'||#{search}||'%' ORDER BY no DESC)A 
+				)B WHERE B.r BETWEEN #{begin} AND #{end}
+
+    		</when> 
+    		<otherwise>
+    			SELECT B.* FROM (
+				SELECT ROWNUM as r, A.* FROM (
+				SELECT book.* FROM book ORDER BY no DESC)A 
+				)B WHERE B.r BETWEEN #{begin} AND #{end}
+    		</otherwise>
+    	
+    	</choose>
+    </select>
+    
 </mapper>

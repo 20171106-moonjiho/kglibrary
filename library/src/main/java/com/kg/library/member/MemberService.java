@@ -191,4 +191,10 @@ public class MemberService {
 		}
 		return pre;
 	}
+
+
+	public String myBook(String sessionId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

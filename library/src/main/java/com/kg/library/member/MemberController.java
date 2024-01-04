@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kg.library.book.BookService;
 import com.kg.library.reservation.ReservationDTO;
 
 import jakarta.servlet.http.HttpSession;
@@ -15,6 +16,7 @@ import jakarta.servlet.http.HttpSession;
 public class MemberController {
 	@Autowired private MemberService service;
 	@Autowired private HttpSession session;	
+	@Autowired private BookService b_service;
 	
 	@RequestMapping("join")
 	public String join() {
@@ -193,5 +195,15 @@ public class MemberController {
 			return "redirect:login";
 		model.addAttribute("reservations",service.preReservation(sessionId));
     	return "member/preReservation";
+    }
+    
+    @RequestMapping("myBook")
+    public String myBook(Model model) {
+    	String sessionId = (String)session.getAttribute("id");
+    	if(sessionId == null) 
+    		return "redirect:login";
+    	
+    	model.addAttribute("books", service.myBook(sessionId));
+    	return "member/myBook";
     }
 }

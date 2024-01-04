@@ -8,6 +8,8 @@
     <title>Insert title here</title>
 </head>
 <body>
+<div align="center">
+	<h2>회원가입 약관동의</h2>
     <form action="join" id="f">
         <ul class="join_box">
             <li class="checkBox check02">
@@ -249,19 +251,20 @@
             </li> 
             <li class="checkBox check01">
                 <ul class="clearfix">
-                    <li>전체 동의합니다.</li>
                     <li class="checkAllBtn">
                         <input type="checkbox" name="chkAll" id="chkAll" class="chkAll">
+                        전체 동의합니다.
                     </li>
                 </ul>
             </li>    
         </ul>
         <ul class="footBtwrap clearfix">
-            <li><input type="button" value="비동의" onclick="location.href='index'"></li>
-            <li><input type="button" value="동의" onclick="termsCheck()"></li>
+            <li><input type="button" value="회원가입" onclick="termsCheck()">
+            	<input type="button" value="이전으로" onclick="location.href='index'"></li>
         </ul>
     </form>
-    <script src="terms.js"></script>   
+    </div>
+    <script src="terms.js"></script>
 </body>
 </html>
 <c:import url="/footer" />
