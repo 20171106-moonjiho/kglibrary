@@ -124,6 +124,9 @@
 					<h1><a href="index"><img src="img/logo_4.png"></a></h1>
 					</div>
 					<ul class="aside_menu">	
+						<c:if test="${sessionScope.id eq 'admin' }">
+							<a href="admin">관리자페이지</a>
+						</c:if>
 						<li class="login">
 							<c:choose>
 								<c:when test="${empty sessionScope.id }">
