@@ -12,16 +12,22 @@
 		</selectKey>
 		INSERT INTO book 
 		VALUES(#{no}, #{category}, #{title_info}, #{author_info}, #{pub_info}, #{pub_year_info},
-		 #{reg_date}, #{detail_link}, #{image}, #{borrowperson}, #{book_count}, #{donation})
+		 #{reg_date}, #{detail_link}, #{image}, #{borrowperson}, #{book_count}, #{donation}, #{borrowdate})
 	</insert>
 
     <select id="totalCount">
     	<choose>
-    		<when test="select == 'select'">
-    			select count(no) from book where title_info like '%'||#{search}||'%'  		
+    		<when test="select == 'title'">
+    			SELECT count(no) FROM book WHERE title_info like '%'||#{search}||'%'  		
+    		</when>
+    		<when test="select == 'author'">
+    			SELECT count(no) FROM book WHERE author_info like '%'||#{search}||'%'  		
+    		</when>
+    		<when test="select == 'category'">
+    			SELECT count(no) FROM book WHERE category like '%'||#{search}||'%'  		
     		</when>
     		<otherwise>
-    			select count(no) from book
+    			SELECT count(no) FROM book
     		</otherwise>
     	</choose>
     </select>
@@ -29,13 +35,24 @@
     <select id="bookForm" resultType="com.kg.library.book.BookDTO">
 
     	<choose>
-    		<when test="select == 'select'">
+    		<when test="select == 'title'">
     			SELECT B.* FROM (
 				SELECT ROWNUM as r, A.* FROM (
-				SELECT book.* FROM book where title_info like '%'||#{search}||'%' ORDER BY no DESC)A 
+				SELECT book.* FROM book WHERE title_info like '%'||#{search}||'%' ORDER BY no DESC)A 
 				)B WHERE B.r BETWEEN #{begin} AND #{end}
-
     		</when> 
+    		<when test="select == 'author'">
+    			SELECT B.* FROM (
+				SELECT ROWNUM as r, A.* FROM (
+				SELECT book.* FROM book WHERE author_info like '%'||#{search}||'%' ORDER BY no DESC)A 
+				)B WHERE B.r BETWEEN #{begin} AND #{end}
+    		</when>     	
+    		<when test="select == 'category'">
+    			SELECT B.* FROM (
+				SELECT ROWNUM as r, A.* FROM (
+				SELECT book.* FROM book WHERE category like '%'||#{search}||'%' ORDER BY no DESC)A 
+				)B WHERE B.r BETWEEN #{begin} AND #{end}
+    		</when>  	
     		<otherwise>
     			SELECT B.* FROM (
 				SELECT ROWNUM as r, A.* FROM (
@@ -47,7 +64,21 @@
     </select>
     
 	<select id="bookContent" resultType="com.kg.library.book.BookDTO">
-    	select * from book where no=#{no}	
+    	SELECT * FROM book WHERE no=#{n}	
     </select>
+    
+    <update id="rentalProc">
+		UPDATE book 
+		SET borrowperson=#{sessionId}, borrowdate=#{borrowtime} WHERE no=#{n}
+	</update>
+    
+    <update id="returnProc">
+		UPDATE book 
+		SET borrowperson=#{borrowperson} WHERE no=#{n}
+	</update>
+    
+    <delete id="bookDeleteProc">
+    	DELETE FROM book WHERE no=#{n}
+    </delete>
     
 </mapper>

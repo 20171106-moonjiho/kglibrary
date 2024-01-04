@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -21,12 +22,13 @@ public class BookController {
 	
 	@RequestMapping("bookForm") // 도서 검색 url
 	public String bookForm(String search,Model model,
-			@RequestParam(value="currentPage", required = false)String cp) {
-			String select = "select";	//검색 시 select 값으로 검색 확인.
+			@RequestParam(value="currentPage", required = false)String cp, String select) {
+			//검색 시 select 값으로 검색(search) 확인.
 			if(search == null || search.trim().isEmpty()) {
-				search = ""; select = "all"; 
+				search = ""; select = "title"; 
 			}
 
+			
 			service.bookForm(cp, model, search, select); //DB 검색 및 정렬
 
 		return "book/bookForm";
@@ -35,8 +37,10 @@ public class BookController {
 	@RequestMapping("bookRegist") //도서 등록 url
 	public String bookRegist() {
 		String sessionId = (String) session.getAttribute("id");
-	//	if (sessionId != "admin" || sessionId.trim().isEmpty()) 
-	//		return "redirect:bookform";
+		if (!sessionId.equals("admin") || sessionId.trim().isEmpty()) {
+			System.out.println(sessionId);
+			return "redirect:bookForm";
+		}
 	//관리자가 아니면 등록 불가, 회원이 url을 직접적으로 치고 들어올 경우 반환하기 위하여 설정. 회원가입 확인 되면 주석 풀것
 		return "book/bookRegist";
 	}
@@ -51,7 +55,7 @@ public class BookController {
 	@RequestMapping("bookContent")
 	public String bookContent(String no,Model model) {
 		
-		BookDTO board = service.bookContent(no);
+		BookDTO board = service.bookContent(no, model);
 		if(board == null) {
 			return "redirect:bookForm";
 		}
@@ -59,5 +63,39 @@ public class BookController {
 		model.addAttribute("board", board);
 		return "book/bookContent";
 	}
+	
+	@RequestMapping("rentalProc")
+	public String rentalProc(String no) {
+			
+		String sessionId = (String) session.getAttribute("id");
+		if (sessionId == null || sessionId.trim().isEmpty()) 
+		return "redirect:bookContent";
+		
+		service.rentalProc(no, sessionId);
+		return "redirect:bookContent";	
+	}
+	
+	@RequestMapping("returnProc")
+	public String returnProc(String no) {
+			
+		String sessionId = (String) session.getAttribute("id");
+		if (sessionId == null || sessionId.trim().isEmpty()) 
+		return "redirect:bookContent";
+		
+		service.returnProc(no);
+		return "redirect:bookContent";	
+	}
+	
+	@RequestMapping("bookDeleteProc")
+	public String bookDeleteProc(String no) {
+		String sessionId = (String) session.getAttribute("id");
+		if (!sessionId.equals("admin") || sessionId.trim().isEmpty()) {
+			return "redirect:bookForm";
+		}
+		
+		service.bookDeleteProc(no);
+		return "redirect:bookForm";	
+	}
+	
 	
 }

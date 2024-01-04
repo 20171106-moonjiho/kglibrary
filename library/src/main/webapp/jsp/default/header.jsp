@@ -199,6 +199,9 @@
 					<h1><a href="index"><img src="img/logo_4.png"></a></h1>
 					</div>
 					<ul class="aside_menu">	
+						<c:if test="${sessionScope.id eq 'admin' }">
+							<a href="admin">관리자페이지</a>
+						</c:if>
 						<li class="login">
 							<c:choose>
 								<c:when test="${empty sessionScope.id }">
@@ -212,7 +215,7 @@
 						<li class="join">
 							<c:choose>
 								<c:when test="${empty sessionScope.id }">
-									<a href="agree">회원가입</a>
+									<a href="terms">회원가입</a>
 								</c:when>
 								<c:otherwise>
 									<a href="userInfo">마이페이지</a>

@@ -24,7 +24,7 @@ studyroom varchar2(50)); -->
 		<result column="tel" property="tel"/>	
 	</resultMap>
 	
-	<insert id="agreeProc">
+	<insert id="joinProc">
 		INSERT INTO member
 		VALUES(#{id}, #{pw}, #{name}, #{email}, #{address}, #{tel})
 	</insert>
@@ -39,7 +39,7 @@ studyroom varchar2(50)); -->
 			SELECT AAA.* 
 			FROM (SELECT rownum as r, id, name, email, tel FROM member WHERE id like '%'||#{search}||'%')AAA 
 			WHERE AAA.r BETWEEN #{begin} AND #{end}</when>
-		<when test="select == 'mobile'">
+		<when test="select == 'tel'">
 			SELECT AAA.* 
 			FROM (SELECT rownum as r, id, name, email, tel FROM member WHERE tel like '%'||#{search}||'%')AAA  
 			WHERE AAA.r BETWEEN #{begin} AND #{end}
@@ -75,5 +75,5 @@ studyroom varchar2(50)); -->
 	<delete id="deleteProc">
 		DELETE FROM member WHERE id=#{id}
 	</delete>
-	
+
 </mapper>

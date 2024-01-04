@@ -86,8 +86,10 @@ a {
 	<span> ▷ 총 ${count }개의 검색 결과가 있습니다. </span> 
 					<span class="right">
 					<select class="selectBox" name="select">
-								<option value="" selected="selected">전체</option>
-								
+			  					<option value="title" selected="selected">제목</option>
+   								<option value="author">저작자</option>
+					   			<option value="category">카테고리</option>
+    	</select>
 					</select>
 					<c:choose>
 						<c:when test="${empty search or search == 'null'}">
@@ -128,14 +130,15 @@ a {
 				<div class="center" style="margin-top: 18px;">${result}</div>
 		</c:otherwise>
 	</c:choose>
-	
-						<c:choose>
-						 	<c:when test="${sessionScope.id eq 'admin'}">
-							<span class="right">
-								<button type="button" onclick="location.href='bookRegist'"class="submit_button" >글쓰기</button>
-							</span>
-						</c:when> 
-						</c:choose>
+				<c:choose>
+					<c:when test="${sessionScope.id eq 'admin'}">
+					<tr>
+						<span class="right">
+							<button type="button" onclick="location.href='bookRegist'"class="submit_button" >글쓰기</button>
+						</span>
+						</tr>
+					</c:when> 
+				</c:choose>				
 	
 </div>
 <c:import url="/footer" />
