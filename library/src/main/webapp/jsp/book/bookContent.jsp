@@ -83,9 +83,12 @@
 		</c:choose>
 			
 		<c:choose>
-		<c:when test="${not empty board.image }">
+		<c:when test="${not empty board.image && board.category ne 'API'}">
 		<img width ="300" src="/img/admin/${board.image }">
 		</c:when>
+		<c:otherwise>
+		<img width ="300" src="${board.image }">
+		</c:otherwise>
 		</c:choose>
 		</tr>
 		<tr>

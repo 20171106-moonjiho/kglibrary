@@ -158,7 +158,7 @@
 								<ul>	
 									<li><a href="bookForm" >통합자료 검색
 									</a></li>
-									<li><a href="#" >신착자료 검색
+									<li><a href="apiBookRegist" >API 등록
 									</a></li>
 									<li><a href="#" >대출 베스트
 									</a></li>

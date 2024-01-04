@@ -27,4 +27,6 @@ public interface IBookMapper {
 
 	void bookDeleteProc(int n);
 
+	void apiRegistProc(List<BookDTO> bookList);
+
 }
