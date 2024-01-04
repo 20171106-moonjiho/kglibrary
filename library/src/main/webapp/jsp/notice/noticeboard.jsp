@@ -23,6 +23,10 @@
 									<a href="noticeBoard2">묻고 답하기
 									</a>
 								</li>
+								<li>
+									<a href="noticeboard_cal">도서관 일정
+									</a>
+								</li>
 						</ul>
 					</div>
 					<div id="jsFacetLeft">				
@@ -83,10 +87,10 @@
 							<div class="board_button">
 								<div class="fr">
 								<span class="bt"><input type="button" value="글쓰기" onclick="location.href='noticeboard_write'"
-								class="cbtn cbtn_g"></span>
+								class="cbtn cbtn_g2"></span>
 								</div>
 							</div>
-
+						 
 							<div class="board_paginate">
 								${result}
 							</div>

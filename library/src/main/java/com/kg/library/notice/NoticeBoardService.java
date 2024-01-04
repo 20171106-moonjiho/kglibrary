@@ -21,7 +21,7 @@ public class NoticeBoardService {
 	private NoticeBoardMapper mapper;
 	@Autowired
 	private HttpSession session;
-	private String filePath = "C:\\Users\\user1\\Documents\\workspace-spring-tool-suite-4-4.20.0.RELEASE\\project\\src\\main\\resources\\static\\img\\";
+	private String filePath = "C:\\Users\\user1\\git\\kglibrary\\library\\src\\main\\resources\\static\\img\\";
 	
 
 	public void noticeBoard(String search_select, String search, String cp, Model model) {
@@ -152,7 +152,7 @@ public class NoticeBoardService {
 			if(board.getImage()!=null) {
 			String[] names=board.getImage().split("/");
 			for(String name : names) {
-			System.out.println("name: " +name);
+			System.out.println("컨텐츠 name: " +name);
 			}
 			String[] fileNames = names[1].split("-",2);
 			for(String fileName : fileNames) {

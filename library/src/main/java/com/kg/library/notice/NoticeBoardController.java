@@ -29,6 +29,11 @@ public class NoticeBoardController {
 		service.noticeBoard(search_select,search,cp,model);
 		return "notice/noticeboard2";
 	}
+	@RequestMapping("noticeboard_cal")
+	public String noticeboard_cal() {
+		
+		return "notice/noticeboard_cal";
+	}
 	//공지사항 글쓰기
 	@RequestMapping("noticeboard_write")
 	public String noticeboard_write(){
@@ -40,7 +45,7 @@ public class NoticeBoardController {
 	}
 	
 	@PostMapping("noticeboard_writeProc")
-	public String animal_info_writeProc(MultipartHttpServletRequest multi) {
+	public String noticeboard_writeProc(MultipartHttpServletRequest multi) {
 		String path = service.noticeboard_writeProc(multi);
 		return path;
 	}

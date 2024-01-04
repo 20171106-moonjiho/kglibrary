@@ -1,7 +1,16 @@
 @charset "utf-8";
 /* CSS Document */
 
-body,ul,li,ol,p,h1,h2,h3,h4,h5,h6{margin: 0; padding: 0;}
+html, body, div, span, object, iframe,
+p, blockquote, pre,
+a, abbr, address, big, cite, code,
+del, dfn, em, font, ins, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, h1, h2, h3, h4, h5, h6,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, 
+table, caption, tbody, tfoot, thead, tr, th, td{margin:0;padding:0;border:0;}
+
 body{font: normal 12px "맑은고딕",Malgun Gothic, serif;}
 ul{list-style: none;}
 img{border: 0; vertical-align: top;}
