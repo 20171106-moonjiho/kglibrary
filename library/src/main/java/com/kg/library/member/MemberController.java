@@ -206,6 +206,7 @@ public class MemberController {
     
     @RequestMapping("myBook")
     public String myBook(Model model) {
+    	model.addAttribute("menu","myBook");
     	String sessionId = (String)session.getAttribute("id");
     	if(sessionId == null) 
     		return "redirect:login";

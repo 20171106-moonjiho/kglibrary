@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:import url="/header" />
+<c:import url="/userHeader"/>
 <style>
 h2 {
 	font-weight: border;
@@ -119,8 +120,20 @@ function returnCheck(no){
 }
 </script>
 
-
-	<div style="width: 1200px; margin: 0 auto; margin-top: 100px;">
+<div id="cont_head">
+		<h2>대출 목록</h2>
+		<!-- 현재위치 -->
+		<div id="location">
+			<ul>
+				<li>홈</li>
+				<li>마이페이지</li>
+				<li class="now">대출 목록</li>
+			</ul>
+		</div>
+		<!-- //현재위치 -->
+	</div>
+<div id="cont_wrap">
+	<!-- <div style="width: 1200px; margin: 0 auto; margin-top: 100px;"> -->
 	<h2> 도서 검색 </h2>
 
 	<hr class="hr1" noshade>
@@ -151,10 +164,10 @@ function returnCheck(no){
 			<c:otherwise>
 				<table style="margin-top: 30px;">
 					<tr>
-						<th width="100">번호</th>
-						<th width="500">제목</th>
+						<th width="50">번호</th>
+						<th width="350">제목</th>
 						<th width="130">작성자</th>
-						<th width="220" colspan="3">반납일</th>
+						<th width="250" colspan="3">반납일</th>
 					</tr>
 					
 					<c:forEach var="board" items="${ boards}">
@@ -177,6 +190,7 @@ function returnCheck(no){
 				<div class="center" style="margin-top: 18px;">${result}</div>
 		</c:otherwise>
 	</c:choose>		
-	
+	<!-- </div> -->
 </div>
+<c:import url="/userFooter" />
 <c:import url="/footer" />
