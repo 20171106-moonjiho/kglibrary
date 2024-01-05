@@ -232,16 +232,20 @@
 				<ul>
 					<li><a href="#">자료검색</a>
 						<div class="two_depth">
-								<p class="bmenu_tit">자료검색</p>
+								<p class="bmenu_tit">도서자료검색</p>
 								<ul>	
-									<li><a href="bookForm" >통합자료 검색
+									<li><a href="bookForm" >도서자료검색
 									</a></li>
-									<li><a href="#" >신착자료 검색
+									<li><a href="bookHope" >희망 도서 신청
 									</a></li>
-									<li><a href="#" >대출 베스트
-									</a></li>
-									<li><a href="#" >정기간행물
-									</a></li>
+									<c:choose>
+										<c:when test="${sessionScope.id eq 'admin'}">
+									
+											<li><a href="apiBookRegist" >API 등록
+											</a></li>
+										</c:when> 
+									</c:choose>	
+									
 								</ul>
 						</div>
 					</li>
