@@ -24,6 +24,9 @@
 								<li id="preReservation">
 									<a href="preReservation">지난 예약</a>
 								</li>
+								<li id="myBook">
+									<a href="myBook">대출 목록</a>
+								</li>
 								<li id="delete">
 									<a href="delete">회원 탈퇴</a>
 								</li>
@@ -32,7 +35,7 @@
 							document.getElementById('${menu}').setAttribute('class', 'on');
 						</script>
 					</div>
-					<div id="jsFacetLeft">				
+					<div id="jsFacetLeft">		
 					</div>
 				</div>
 			</div><!--사이드바 끝-->

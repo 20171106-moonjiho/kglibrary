@@ -95,7 +95,7 @@ public class BookController {
 		service.bookDeleteProc(no);
 		return "redirect:bookForm";	
 	}
-	
+
 	@RequestMapping("apiBookRegist") //도서 등록 url
 	public String apiBookRegist() {
 		
