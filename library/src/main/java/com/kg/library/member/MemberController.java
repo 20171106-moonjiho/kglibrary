@@ -17,7 +17,8 @@ public class MemberController {
 	@Autowired private HttpSession session;	
 	
 	@RequestMapping("join")
-	public String join() {
+	public String join(Model model) {
+		model.addAttribute("menu","regist");
 		return "member/join";
 	}
 	
@@ -38,7 +39,8 @@ public class MemberController {
 	}
 	
 	@RequestMapping("login")
-	public String login() {
+	public String login(Model model) {
+		model.addAttribute("menu","login");
 		return "member/login";
 	}
 	
@@ -162,6 +164,11 @@ public class MemberController {
     public String userHeader() {
     	return "member/userHeader";
     }
+	
+	@RequestMapping("userHeader2")
+    public String userHeader2() {
+    	return "member/userHeader2";
+    }
     
     @RequestMapping("userFooter")
    	public String userFooter() {
@@ -169,7 +176,8 @@ public class MemberController {
   	}
     
     @RequestMapping("terms")
-	public String terms() {
+	public String terms(Model model) {
+    	model.addAttribute("menu","regist");
 		return "member/terms";
 	}
     
