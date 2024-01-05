@@ -311,18 +311,16 @@
 						</div>
 					</li>
 					 
-					<li><a href="#">큐레이션</a>
+					<li><a href="donateguide">도서 기증</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
 								<ul>	
-									<li><a href="#" >통합자료 검색
+									<li><a href="donateguide" >기증 안내
 									</a></li>
-									<li><a href="#" >신착자료 검색
+									<li><a href="donateWrite" >기증 신청
 									</a></li>
-									<li><a href="#" >대출 베스트
-									</a></li>
-									<li><a href="#" >정기간행물
-									</a></li>
+									<li><a href="donateForm" >기증 목록
+									</a></li>									
 								</ul>
 						</div>
 					</li>
