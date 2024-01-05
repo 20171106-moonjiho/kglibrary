@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.kg.library.donate.DonateDTO;
 import com.kg.library.PageService;
 
 
@@ -47,5 +48,11 @@ public class DonateService {
 		dto.setReg_date(sdf.format(new Date()));
 		int res = mapper.donateWriteProc(dto);
 		return res;
+	}
+
+	public DonateDTO donateContent(String no) {
+		DonateDTO board = mapper.donateContent(no);
+
+		return board;
 	}
 }

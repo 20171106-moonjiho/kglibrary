@@ -9,6 +9,7 @@
 </head>
 <body>
 	<c:import url="/header" />
+
 	<div>
 		<form action="donateWriteProc" method='post'
 			enctype="multipart/form-data">
@@ -18,7 +19,8 @@
 				<tbody>
 					<tr>
 						<th>기증자</th>
-						<td><input style="width: 100%;" type="text" name="id" value="${sessionScope.id }"></td>
+						<td><input style="width: 100%;" type="text" name="id"
+							value="${sessionScope.id }"></td>
 					</tr>
 					<tr>
 						<th scope="row">주요 기증 분야</th>
@@ -33,17 +35,16 @@
 						<th scope="row">* 도서수량</th>
 						<td>
 							<div>
-								<input type="text" maxlength="10">책(점)
+								<input type="text" name="book_no" maxlength="10">책(점)
 							</div>
 						</td>
 					</tr>
 					<tr>
 					<tr>
 						<th scope="row">* 기증방법</th>
-						<td><input type="radio" id="donation_method01"
-							name="nldMethod" title="기증방법" value="직접방문" checked />직접방문<input type="radio"
-							id="donation_method02" name="nldMethod" title="기증방법" value="우편배달" />
-							<label for="donation_method02">우편발송</label></td>
+						<td><input type="radio" name="method" value="직접방문" checked />직접방문<input
+							type="radio" name="method" value="우편배달" /> <label
+							for="donation_method02">우편발송</label></td>
 					<tr>
 						<th>내용</th>
 						<td><textarea style="width: 100%; resize: none" rows="10"

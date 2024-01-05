@@ -35,7 +35,7 @@
 			<c:forEach var="board" items="${donate}">
 				<tr>
 					<td>${board.no }</td>					
-					<td>${board.id }</td>
+					<td onclick="location.href='donateContent?no=${board.no}'">${board.id }</td>
 					<td>${board.reg_date }</td>
 					<%-- <td>${donate.status }</td> --%>
 				</tr>

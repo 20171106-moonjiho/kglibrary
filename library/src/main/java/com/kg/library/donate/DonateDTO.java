@@ -4,6 +4,8 @@ create table book_donate(
 no number,
 id varchar2(30),
 subject varchar2(100),
+book_no number,
+method varchar2(50),
 content varchar2(1000),
 reg_date varchar2(20),
 PRIMARY KEY (no)
@@ -13,6 +15,8 @@ public class DonateDTO {
 	private int no;
 	private String id;
 	private String subject;
+	private int book_no;
+	private String method;
 	private String content;
 	private String reg_date;
 	
@@ -34,6 +38,18 @@ public class DonateDTO {
 	public void setSubject(String subject) {
 		this.subject = subject;
 	}
+	public int getBook_no() {
+		return book_no;
+	}
+	public void setBook_no(int book_no) {
+		this.book_no = book_no;
+	}
+	public String getMethod() {
+		return method;
+	}
+	public void setMethod(String method) {
+		this.method = method;
+	}
 	public String getContent() {
 		return content;
 	}
@@ -45,6 +61,6 @@ public class DonateDTO {
 	}
 	public void setReg_date(String reg_date) {
 		this.reg_date = reg_date;
-	}	
+	}
 		
 }

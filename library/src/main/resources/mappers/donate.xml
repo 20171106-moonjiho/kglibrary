@@ -30,7 +30,7 @@
 		<selectKey order="BEFORE" keyProperty="no" resultType="int">
 			SELECT NVL(max(no), 0)+1 FROM book_donate
 		</selectKey>
-		INSERT INTO book_donate VALUES(#{no}, #{id}, #{subject}, #{content},
+		INSERT INTO book_donate VALUES(#{no}, #{id}, #{subject}, #{book_no}, #{method}, #{content},
 		#{reg_date})
 	</insert>
 
@@ -43,5 +43,9 @@
     			select count(no) from book_donate
     		</otherwise>
     	</choose>
+    </select>
+    
+    <select id = "donateContent">
+    	SELECT * FROM book_donate WHERE no=#{no}
     </select>
 </mapper>

@@ -32,10 +32,10 @@ public class DonateController {
 	// 도서 기증--------------------------------
 	@GetMapping("/donateWrite")
 	public String donateWrite() {	
-		String msg = "";
+		
 		String sessionId = (String)session.getAttribute("id");
 		if(sessionId == null) {
-			msg="로그인 후 가능합니다.";
+			
 			return "redirect:login";
 		}
 		return "donate/donateWrite";
@@ -54,4 +54,25 @@ public class DonateController {
 		int res = service.donateWriteProc(donate);
 		return "redirect:donateForm";
 	}
+	
+	// 도서 기증 상세보기--------------------------------
+	@RequestMapping("/donateContent")
+	public String donateContent(String no, Model model) {
+		String msg = "";		
+		DonateDTO donate = service.donateContent(no);
+		
+		String sessionId = (String)session.getAttribute("id");
+		if(donate.getId().equals(sessionId) == false) {
+			msg="작성자만 확인 할 수 있습니다.";
+			return "redirect:donateForm";
+		}			
+		
+//		if(donate == null) {
+//			return "donate/donateContent";
+//		}
+		model.addAttribute("msg",msg);
+		model.addAttribute("board", donate);
+		return "donate/donateContent";
+	}
+	
 }
