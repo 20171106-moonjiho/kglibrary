@@ -4,8 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Room Reservation</title>
+<title>회의실 예약</title>
 </head>
+<body>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <c:import url="/header"/>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
@@ -13,8 +14,20 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
 <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script src="reservation.js"></script>
-<body>
-<div align="center">
+<c:import url="/reservationheader"/>
+	<div id="cont_head">
+		<h2>회의실 예약</h2>
+		<!-- 현재위치 -->
+		<div id="location">
+			<ul>
+				<li>홈</li>
+				<li>회의실</li>
+				<li class="now">회의실 예약</li>
+			</ul>
+		</div>
+		<!-- //현재위치 -->
+	</div>
+	<div id="cont_wrap">
 	<form action="reservation" method='post'>
 		날짜
 		<input type="text" id="startDate" name="reservation_date">
@@ -34,6 +47,7 @@
 		</select>
 		<button type="submit">조회</button>
 	</form>
+	<br></br>
 	<c:if test="${not empty dto }">
 		<form action="reservation2" method='post' id='f'>
 		<div class="showSeatArea">		
@@ -58,10 +72,11 @@
 		</c:forEach>
 			<input type="hidden" name="reservation_time" value="${dto.reservation_time }">
 			<input type="hidden" name="reservation_date" value="${dto.reservation_date }">
-			<input type="submit">선택
+			<input type="submit" value="선택">
 		</form>
 	</c:if>
-</div>
+	</div>
+<c:import url="/reservationfooter"/>
 <c:import url="/footer"/>
 </body>
 </html>
