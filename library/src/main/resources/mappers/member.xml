@@ -39,7 +39,7 @@ studyroom varchar2(50)); -->
 			SELECT AAA.* 
 			FROM (SELECT rownum as r, id, name, email, tel FROM member WHERE id like '%'||#{search}||'%')AAA 
 			WHERE AAA.r BETWEEN #{begin} AND #{end}</when>
-		<when test="select == 'mobile'">
+		<when test="select == 'tel'">
 			SELECT AAA.* 
 			FROM (SELECT rownum as r, id, name, email, tel FROM member WHERE tel like '%'||#{search}||'%')AAA  
 			WHERE AAA.r BETWEEN #{begin} AND #{end}

@@ -4,12 +4,25 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Reservation</title>
+<title>내 예약 조회</title>
 </head>
 <body>
 <c:import url="/header" />
 <c:import url="/userHeader"/>
-<div align="center">
+<div id="cont_head">
+		<h2>내 예약 조회</h2>
+		<!-- 현재위치 -->
+		<div id="location">
+			<ul>
+				<li>홈</li>
+				<li>마이페이지</li>
+				<li class="now">내 예약 조회</li>
+			</ul>
+		</div>
+		<!-- //현재위치 -->
+	</div>
+<div id="cont_wrap">
+	<div id="board" style="width:100%;">
 	<table>
 		<tr>
 			<td>회의실
@@ -28,6 +41,7 @@
 			</tr>
 		</c:forEach>
 	</table>
+	</div>
 </div>
 <c:import url="/userFooter"/>
 <c:import url="/footer" />

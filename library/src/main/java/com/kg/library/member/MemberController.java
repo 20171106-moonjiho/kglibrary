@@ -95,16 +95,18 @@ public class MemberController {
 	
 	@RequestMapping("userInfo")
 	public String userInfo(Model model,  RedirectAttributes ra) {
+		model.addAttribute("menu","userInfo");
 		String msg = service.userInfo(model);
 		if(msg.equals("회원 검색 완료"))
 			return "member/userInfo";
 		
 		ra.addFlashAttribute("msg", msg);
-		return "redirect:index";
+		return "redirect:login";
 	}
 	
 	@RequestMapping("update")
-	public String update() {
+	public String update(Model model) {
+		model.addAttribute("menu","update");
 		String sessionId = (String)session.getAttribute("id");
 		if(sessionId == null)
 			return "redirect:login";
@@ -132,7 +134,8 @@ public class MemberController {
 	}
 	
 	@RequestMapping("delete")
-	public String delete() {
+	public String delete(Model model) {
+		model.addAttribute("menu","delete");
 		String sessionId = (String)session.getAttribute("id");
 		if(sessionId == null)
 			return "redirect:login";
@@ -174,6 +177,7 @@ public class MemberController {
     
     @RequestMapping("myReservation")
     public String myReservation(Model model) {
+    	model.addAttribute("menu","myReservation");
     	String sessionId = (String)session.getAttribute("id");
 		if(sessionId == null)
 			return "redirect:login";
@@ -192,6 +196,7 @@ public class MemberController {
     
     @RequestMapping("preReservation")
     public String preReservation(Model model) {
+    	model.addAttribute("menu","preReservation");
     	String sessionId = (String)session.getAttribute("id");
 		if(sessionId == null)
 			return "redirect:login";

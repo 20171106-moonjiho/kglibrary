@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    
+
 
 <mapper namespace="com.kg.library.book.IBookMapper">
 	<resultMap type="com.kg.library.member.MemberDTO" id="member">
@@ -18,46 +18,56 @@
 		 #{reg_date}, #{detail_link}, #{image}, #{borrowperson}, #{book_count}, #{donation}, #{borrowdate}, #{rentaldate})
 	</insert>
 
-    <select id="totalCount">
-    	<choose>
-    		<when test="select == 'title'">
-    			SELECT count(no) FROM book WHERE title_info like '%'||#{search}||'%'  		
-    		</when>
-    		<when test="select == 'author'">
-    			SELECT count(no) FROM book WHERE author_info like '%'||#{search}||'%'  		
-    		</when>
-    		<when test="select == 'category'">
-    			SELECT count(no) FROM book WHERE category like '%'||#{search}||'%'  		
-    		</when>
-    		<otherwise>
-    			SELECT count(no) FROM book
-    		</otherwise>
-    	</choose>
-    </select>
 
-    <select id="bookForm" resultType="com.kg.library.book.BookDTO">
+	<select id="totalCount">
+		<choose>
+			<when test="select == 'title'">
+				SELECT count(no) FROM book WHERE title_info like
+				'%'||#{search}||'%'
+			</when>
+			<when test="select == 'author'">
+				SELECT count(no) FROM book WHERE author_info like
+				'%'||#{search}||'%'
+			</when>
+			<when test="select == 'category'">
+				SELECT count(no) FROM book WHERE category like
+				'%'||#{search}||'%'
+			</when>
+			<otherwise>
+				SELECT count(no) FROM book
+			</otherwise>
+		</choose>
+	</select>
 
-    	<choose>
-    		<when test="select == 'title'">
-    			SELECT B.* FROM (
+	<select id="bookForm" resultType="com.kg.library.book.BookDTO">
+
+		<choose>
+			<when test="select == 'title'">
+				SELECT B.* FROM (
 				SELECT ROWNUM as r, A.* FROM (
-				SELECT book.* FROM book WHERE title_info like '%'||#{search}||'%' ORDER BY no DESC)A 
+				SELECT book.* FROM book
+				WHERE title_info like '%'||#{search}||'%'
+				ORDER BY no DESC)A
 				)B WHERE B.r BETWEEN #{begin} AND #{end}
-    		</when> 
-    		<when test="select == 'author'">
-    			SELECT B.* FROM (
+			</when>
+			<when test="select == 'author'">
+				SELECT B.* FROM (
 				SELECT ROWNUM as r, A.* FROM (
-				SELECT book.* FROM book WHERE author_info like '%'||#{search}||'%' ORDER BY no DESC)A 
+				SELECT book.* FROM book
+				WHERE author_info like '%'||#{search}||'%'
+				ORDER BY no DESC)A
 				)B WHERE B.r BETWEEN #{begin} AND #{end}
-    		</when>     	
-    		<when test="select == 'category'">
-    			SELECT B.* FROM (
+			</when>
+			<when test="select == 'category'">
+				SELECT B.* FROM (
 				SELECT ROWNUM as r, A.* FROM (
-				SELECT book.* FROM book WHERE category like '%'||#{search}||'%' ORDER BY no DESC)A 
+				SELECT book.* FROM book
+				WHERE category like '%'||#{search}||'%' ORDER
+				BY no DESC)A
 				)B WHERE B.r BETWEEN #{begin} AND #{end}
-    		</when>  	
-    		<otherwise>
-    			SELECT B.* FROM (
+			</when>
+			<otherwise>
+				SELECT B.* FROM (
 				SELECT ROWNUM as r, A.* FROM (
 				SELECT book.* FROM book ORDER BY no DESC)A 
 				)B WHERE B.r BETWEEN #{begin} AND #{end}
@@ -73,11 +83,13 @@
     <update id="rentalProc">
 		UPDATE book 
 		SET borrowperson=#{sessionId}, borrowdate=#{borrowtime}, rentaldate=#{rentaldate} WHERE no=#{n}
+
 	</update>
-    
-    <update id="returnProc">
-		UPDATE book 
-		SET borrowperson=#{borrowperson} WHERE no=#{n}
+
+	<update id="returnProc">
+		UPDATE book
+		SET borrowperson=#{borrowperson} WHERE
+		no=#{n}
 	</update>
     
     <delete id="bookDeleteProc">
