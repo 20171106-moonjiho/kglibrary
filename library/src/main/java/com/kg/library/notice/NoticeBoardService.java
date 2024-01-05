@@ -12,7 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import com.care.boot.PageService;
+import com.kg.library.PageService;
+
 import jakarta.servlet.http.HttpSession;
 
 @Service

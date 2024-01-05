@@ -22,16 +22,18 @@ public class NoticeBoardController {
 	@RequestMapping("noticeBoard")
 	public String noticeBoard(@RequestParam(value="currentPage", required = false)String cp, Model model,String search_select,String search) {
 		service.noticeBoard(search_select,search,cp,model);
+		model.addAttribute("menu", "board");
 		return "notice/noticeboard";
 	}
 	@RequestMapping("noticeBoard2")
 	public String noticeBoard2(@RequestParam(value="currentPage", required = false)String cp, Model model,String search_select,String search) {
 		service.noticeBoard(search_select,search,cp,model);
+		model.addAttribute("menu", "board2");
 		return "notice/noticeboard2";
 	}
 	@RequestMapping("noticeboard_cal")
-	public String noticeboard_cal() {
-		
+	public String noticeboard_cal(Model model) {
+		model.addAttribute("menu", "cal");
 		return "notice/noticeboard_cal";
 	}
 	//공지사항 글쓰기
@@ -94,5 +96,16 @@ public class NoticeBoardController {
 			return "redirect:noticeboard_Content?no="+board.getNo();
 		
 		return "redirect:noticeboard_Modify?no="+board.getNo();
+	}
+	
+	//공지사이드바 템플릿
+	@RequestMapping("noticeheader")
+	public String noticeheader() {
+		return "notice/noticeheader";
+	}
+	
+	@RequestMapping("noticefooter")
+	public String noticefooter() {
+		return "notice/noticefooter";
 	}
 }
