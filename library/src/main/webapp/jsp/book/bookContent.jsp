@@ -44,13 +44,13 @@
 <div id="contents">
 	<div id="print_wrap">
 		<div id="cont_head">
-			<h2>공지사항</h2>
+			<h2>도서상세정보</h2>
 			<!-- 현재위치 -->
 			<div id="location">
 				<ul>
 					<li>홈</li>
-					<li>이용자마당</li>
-					<li class="now">공지사항</li>
+					<li>도서자료검색</li>
+					<li class="now">도서상세정보</li>
 				</ul>
 			</div>
 			<!-- //현재위치 -->

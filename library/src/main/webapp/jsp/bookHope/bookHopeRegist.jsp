@@ -4,11 +4,11 @@
 <c:import url="/bookheader"/>
 <script>
 
-function bookCheck(){
+function bookHopeCheck(){
 	let category = document.getElementById('category');
 	let title_info = document.getElementById('title_info');
 	let author_info = document.getElementById('author_info');
-	let book_count = document.getElementById('book_count');
+
 	
 	
 	if(category.value == ""){
@@ -17,8 +17,6 @@ function bookCheck(){
 		alert('제목은 필수 항목입니다.');
 	}else if(author_info.value == ""){
 		alert('저작자는 필수 항목입니다.');
-	}else if(book_count.value == ""){
-		alert('도서의 갯수는 필수 항목입니다.');
 	}else{
 		var f = document.getElementById('f');
 		f.submit();
@@ -27,29 +25,28 @@ function bookCheck(){
 
 </script>
 
-<!--컨텐츠 영역-->
-			<div id="contents">
-				<div id="print_wrap">
-					<div id="cont_head">
-							<h2>개별도서등록</h2>
-							<!-- 현재위치 -->
-							<div id="location">
-								<ul>
-									<li>홈</li>
-									<li>도서자료검색</li>
-									<li class="now">개별도서등록</li>
-								</ul>
-							</div>
-							<!-- //현재위치 -->
-						</div>
+<div id="contents">
+	<div id="print_wrap">
+		<div id="cont_head">
+			<h2>비치희망도서</h2>
+			<!-- 현재위치 -->
+			<div id="location">
+				<ul>
+					<li>홈</li>
+					<li>도서자료검색</li>
+					<li class="now">비치희망도서신청</li>
+				</ul>
+			</div>
+			<!-- //현재위치 -->
+		</div>
 
 <div align="center"style="margin-top: 100px; margin-bottom: 50px;">
-	<h1>도서 등록</h1>
+	<h1>비치 희망 도서 신청 등록</h1>
 	<table >
 	<tr><td>
 		<font color="red">${msg}</font>
 	</td></tr>
-		<form action="bookRegistProc" method="post" enctype="multipart/form-data" id="f">
+		<form action="bookHopeRegistProc" method="post" id="f">
 	<tr><td>
 
 	<!-- 	<input type="text" name="category" placeholder="카테고리" id="category"> -->
@@ -66,35 +63,32 @@ function bookCheck(){
     		<option value="기타">기타</option>
     	</select>
 		
-		<input type="text" name="title_info" placeholder="제목" id="title_info"><br><br>
+		<input type="text" name="title_info" placeholder="도서제목" id="title_info"><br><br>
 		<input type="text" name="author_info" placeholder="저작자" id="author_info">
 		<input type="text" name="pub_info" placeholder="발행자" id="pub_info"  ><br><br>
 		
 		<input type="text" name = "pub_year_info" id="pub_year_info" placeholder="발행연도">
-		<input type="text" name = "book_count" id="book_count" placeholder="책 갯수"><br>	
-		<input type="text" name = donation id="donation" placeholder="기증자"><br>
 		<tr>
-				<th>내용</th>
+				<th>신청 이유</th>
 				<td>
-					<textarea style="width: 100%; margin-left: 10px;" rows="10" cols="30" name="detail_link"></textarea>
+					<textarea style="width: 100%; margin-left: 10px;" rows="10" cols="30" name="reason"></textarea>
 				</td>
 			</tr>
 		</td>
-					<th>파일첨부</th> <br>	
-		<td><input type="file" name="upfile"></td>
 		<td>
-		<input type="button" value="도서 등록" onclick="bookCheck()">
-		<input type="button" value="취소" onclick="location.href='index'"><br>	
+		<input type="button" value="신청 등록" onclick="bookHopeCheck()">
+		<input type="button" value="취소" onclick="location.href='bookHopeForm'"><br>	
 		</td></tr>
 	</form>
 	</table>
 </div>
 
-				</div>
-					</div>
-				
-				</div>
+
 			</div>
+		</div>
+
+	</div>
+</div>
 <c:import url="/bookfooter" />
 <c:import url="/footer" />
 

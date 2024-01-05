@@ -81,15 +81,16 @@ a {
 <div id="contents">
 	<div id="print_wrap">
 		<div id="cont_head">
-			<h2>도서검색</h2>
+		<h2>비치희망도서</h2>
 			<!-- 현재위치 -->
 			<div id="location">
 				<ul>
 					<li>홈</li>
 					<li>도서자료검색</li>
-					<li class="now">도서검색</li>
+					<li class="now">비치희망도서</li>
 				</ul>
 			</div>
+	
 			<!-- //현재위치 -->
 		</div>
 
@@ -97,7 +98,7 @@ a {
 		<div id="cont_wrap">
 			<div id="board" style="width: 100%;">
 
-				<form action="bookForm">
+				<form action="bookHopeForm">
 					<span> ▷ 총 ${count }개의 검색 결과가 있습니다. </span> <span class="center">
 						<select class="selectBox" name="select">
 							<option value="title" selected="selected">제목</option>
@@ -131,7 +132,7 @@ a {
 								<tr>
 									<td class="center">${board.no }</td>
 									<td class="left"
-										onclick="location.href='bookContent?no=${board.no }'">
+										onclick="location.href='bookHopeContent?no=${board.no }'">
 										${board.title_info }</td>
 									<td class="center">${board.author_info }</td>
 									<td class="center">${board.reg_date }</td>
@@ -141,16 +142,12 @@ a {
 						<div class="center" style="margin-top: 18px;">${result}</div>
 					</c:otherwise>
 				</c:choose>
-				<c:choose>
-					<c:when test="${sessionScope.id eq 'admin'}">
-						<tr>
+				
 							<span class="right">
-								<button type="button" style="width: 150px;"  onclick="location.href='bookRegist'"
-									class="submit_button">개별 도서 등록</button>
+								<button type="button" style="width: 150px;"  onclick="location.href='bookHopeRegist'"
+									class="submit_button">비치 희망 도서 신청</button>
 							</span>
-						</tr>
-					</c:when>
-				</c:choose>
+				
 
 
 			</div>
