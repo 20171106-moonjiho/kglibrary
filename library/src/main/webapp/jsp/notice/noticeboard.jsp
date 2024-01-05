@@ -65,14 +65,14 @@
 									
 								</c:forEach>
 							</table>
-						
+						<c:if test="${sessionScope.id eq 'admin'}">
 							<div class="board_button">
 								<div class="fr">
 								<span class="bt"><input type="button" value="글쓰기" onclick="location.href='noticeboard_write'"
 								class="cbtn cbtn_g2"></span>
 								</div>
 							</div>
-						 
+						 </c:if>
 							<div class="board_paginate">
 								${result}
 							</div>

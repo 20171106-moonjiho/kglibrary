@@ -108,8 +108,10 @@
 							<div class="board_button">
 								<div class="fr">
 								<span class="bt"><input type="button" value="목록" onclick="location.href='noticeBoard'" class="cbtn cbtn_g"></span>
+								<c:if test="${sessionScope.id eq board.id}">
 								<span class="bt"><input type="button" value="수정" onclick="location.href='noticeboard_Modify?no=${board.no }'" class="cbtn cbtn_g"></span>
 								<span class="bt"><input type="button" value="삭제" onclick="deleteCheck()" class="cbtn cbtn_g"></span>
+								</c:if>
 								</div>
 							</div>
 							<!-- 
