@@ -13,6 +13,7 @@
 						    <a class="list-group-item list-group-item-action" href="update" >회원 수정</a>
 						    <a class="list-group-item list-group-item-action" href="myReservation">내 예약 조회</a>
 						    <a class="list-group-item list-group-item-action" href="preReservation">지난 예약</a>
+						    <a class="list-group-item list-group-item-action" href="myBook">내 대출 도서</a>
 						    <a class="list-group-item list-group-item-action" href="delete">회원 삭제</a>
 					    </div>
 					</div>

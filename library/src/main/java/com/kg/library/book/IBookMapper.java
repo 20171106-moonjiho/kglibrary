@@ -21,10 +21,16 @@ public interface IBookMapper {
 
 	BookDTO bookContent(int n);
 
-	void rentalProc(@Param("n")int n, @Param("sessionId")String sessionId,@Param("borrowtime")Timestamp borrowtime);
+	void rentalProc(@Param("n")int n, @Param("sessionId")String sessionId,@Param("borrowtime")Timestamp borrowtime, @Param("rentaldate")String rentaldate);
 
 	void returnProc(@Param("n")int n, @Param("borrowperson")String borrowperson);
 
 	void bookDeleteProc(int n);
+
+	List<BookDTO> myBook(@Param("id")String id);
+
+	void borrowDateExtend(@Param("n")int n, String sessionId, String rentaldate);
+	
+	void returnProc2(@Param("n")int n, @Param("borrowperson")String borrowperson);
 
 }

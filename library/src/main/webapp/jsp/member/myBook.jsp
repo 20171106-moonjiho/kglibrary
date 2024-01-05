@@ -77,18 +77,61 @@ a {
 }
 </style>
 
+<script>
+function extendCheck(no, rentaldate, borrowdate) {
+    var userId = '<%= session.getAttribute("id") %>';
+
+    if (userId == "null" || userId.trim() == "") {
+        alert("로그인이 필요합니다.");
+        location.href = "login";
+    } else {
+        var rentalDateObj = new Date(rentaldate);
+        var borrowDateObj = new Date(borrowdate);
+        
+        var timeDifference = rentalDateObj - borrowDateObj;
+
+        var daysDifference = timeDifference / (1000 * 3600 * 24);
+
+        if (daysDifference > 13) {
+            alert('연장이 불가능합니다.(대출 기한: 2주)');
+        } else {
+            result = confirm('연장하시겠습니까?');
+            if (result == true) {
+                location.href = "borrowDateExtend?no=" + no;
+            }
+        }
+    }
+}
+
+function returnCheck(no){
+	var userId = '<%= session.getAttribute("id") %>';
+	
+    if (userId == "null" || userId.trim() == "") {
+        alert("로그인이 필요합니다.");
+        location.href = "login";
+    }
+    else{
+	result = confirm('반납 하시겠습니까?');
+	if(result == true){
+		location.href="returnProc2?no=" + no
+	}
+    }
+}
+</script>
+
+
 	<div style="width: 1200px; margin: 0 auto; margin-top: 100px;">
 	<h2> 도서 검색 </h2>
 
 	<hr class="hr1" noshade>
 	
-	<form action="myBook">
-	<span> ▷ 총 ${count }개의 검색 결과가 있습니다. </span> 
+	<%-- <form action="myBook">
 					<span class="right">
 					<select class="selectBox" name="select">
-								<option value="" selected="selected">전체</option>
-								
-					</select>
+			  					<option value="title" selected="selected">제목</option>
+   								<option value="author">저작자</option>
+					   			<option value="category">카테고리</option>
+    	</select>
 					<c:choose>
 						<c:when test="${empty search or search == 'null'}">
 							<input type="text" name="search" />
@@ -99,7 +142,7 @@ a {
 					</c:choose>
 					<input type="submit" class="submit_button" value="검색" />
 					</span>
-				</form>
+				</form> --%>
 				
 		<c:choose>
 			<c:when test="${empty boards }">
@@ -111,7 +154,7 @@ a {
 						<th width="100">번호</th>
 						<th width="500">제목</th>
 						<th width="130">작성자</th>
-						<th width="200">작성일</th>
+						<th width="220" colspan="3">반납일</th>
 					</tr>
 					
 					<c:forEach var="board" items="${ boards}">
@@ -121,21 +164,19 @@ a {
 								${board.title_info }
 							</td>
 							<td class="center">${board.author_info }</td>
-							<td class="center">${board.reg_date }</td>
+							<td class="center">${board.rentaldate }</td>
+							<td width="45px">
+								<button type="button" onclick="extendCheck('${board.no}', '${board.rentaldate}', '${board.borrowdate}')" >연장</button>
+							</td>
+							<td width="45px">
+								<button type="button" onclick="returnCheck('${board.no}')">반납</button>
+							</td>
 						</tr>
 					</c:forEach>
 				</table>
 				<div class="center" style="margin-top: 18px;">${result}</div>
 		</c:otherwise>
-	</c:choose>
-	
-						<c:choose>
-						 	<c:when test="${sessionScope.id eq 'admin'}">
-							<span class="right">
-								<button type="button" onclick="location.href='bookRegist'"class="submit_button" >글쓰기</button>
-							</span>
-						</c:when> 
-						</c:choose>
+	</c:choose>		
 	
 </div>
 <c:import url="/footer" />

@@ -1,6 +1,10 @@
 package com.kg.library.member;
 
+import java.sql.Timestamp;
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +13,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.kg.library.book.BookDTO;
+import com.kg.library.book.IBookMapper;
 import com.kg.library.reservation.ReservationDTO;
 import com.kg.library.reservation.ReservationMapper;
 
@@ -20,6 +26,8 @@ public class MemberService {
 	@Autowired private IMemberMapper mapper;
 	@Autowired private HttpSession session;
 	@Autowired private ReservationMapper mapper2;
+	@Autowired private IBookMapper mapper3;
+	
 //	@Value("${coolsms.apikey}")
 //    private String apiKey;
 //
@@ -28,6 +36,8 @@ public class MemberService {
 //
 //    @Value("${coolsms.fromnumber}")
 //    private String fromNumber;
+	
+	int count = 0;
 	
 	public String joinProc(MemberDTO member) {
 		if(member.getId() == null || member.getId().trim().isEmpty()) {
@@ -196,8 +206,53 @@ public class MemberService {
 	}
 
 
-	public String myBook(String sessionId) {
-		// TODO Auto-generated method stub
-		return null;
+	public void myBook(Model model, String id) {
+		List<BookDTO> boards = mapper3.myBook(id); //도서 리스트	
+
+		model.addAttribute("boards", boards);
 	}
+
+
+	public void borrowDateExtend(Model model, String no, String sessionId) {
+	    int n = 1;
+	  
+	    try {
+	        n = Integer.parseInt(no);
+	    } catch (Exception e) {
+	        
+	    }
+	   
+	    BookDTO board = mapper3.bookContent(n);
+	    //n = board.getNo();
+	    
+//	    if (board == null) {
+//	        // 책이 존재하지 않는 경우 또는 오류가 발생한 경우
+//	        
+//	    }
+
+	    Timestamp storedTime = board.getBorrowdate();
+	    LocalDateTime storedLocalDateTime = storedTime.toLocalDateTime();
+	    LocalDateTime rentalday = storedLocalDateTime.plus(Duration.ofDays(14));
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+	    String rentaldate = rentalday.format(formatter);
+
+	    //model.addAttribute("rentaldate", rentaldate);
+	    mapper3.borrowDateExtend(n, sessionId, rentaldate);
+	    	    
+	}
+	
+	public void returnProc2(String no) { // 반납
+		
+		int n = 1;
+		try{
+			n = Integer.parseInt(no);
+		}catch(Exception e){
+		}
+		
+		String borrowperson = "대여 가능";
+		
+		mapper3.returnProc2(n, borrowperson);
+		
+	}
+
 }

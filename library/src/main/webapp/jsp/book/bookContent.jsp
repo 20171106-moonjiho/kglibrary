@@ -74,11 +74,11 @@
     		</c:when>
     		<c:when test="${sessionScope.id eq borrowPerson}">
    	 		<td width="200" colspan="5">
-    	   		<button type="button" onclick="returnCheck()">반납 ${rentaldate} 까지 </button>
+    	   		<button type="button" onclick="returnCheck()">반납 ${board.rentaldate} 까지 </button>
     	   	</td>
     		</c:when>
     		<c:otherwise>
-    		 <td width="200" colspan="5">대여 중  -  예상 반납 시간 : ${rentaldate} 까지</td>
+    		 <td width="200" colspan="5">대여 중  -  예상 반납 시간 : ${board.rentaldate} 까지</td>
     		</c:otherwise>
 		</c:choose>
 			

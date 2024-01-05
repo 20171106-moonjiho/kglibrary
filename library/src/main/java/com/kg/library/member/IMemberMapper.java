@@ -1,9 +1,12 @@
 package com.kg.library.member;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import com.kg.library.book.BookDTO;
 
 @Mapper
 public interface IMemberMapper {

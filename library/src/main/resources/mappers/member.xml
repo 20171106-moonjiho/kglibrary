@@ -75,5 +75,5 @@ studyroom varchar2(50)); -->
 	<delete id="deleteProc">
 		DELETE FROM member WHERE id=#{id}
 	</delete>
-
+    
 </mapper>
