@@ -1,23 +1,48 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원 탈퇴</title>
+</head>
+<body>
 <c:import url="/header" />
 <c:import url="/userHeader"/>
-
-<div align="center">
-<h1>회원 탈퇴</h1>
-<table>
-	<tr><td>${msg }</td></tr>
-	<tr><td>
-	<form action="deleteProc" method="post">
-		<input type="text" value="${sessionScope.id }" readonly="readonly"> <br>
-		<input type="password" placeholder="비밀번호" name="pw"><br>
-		<input type="password" placeholder="비밀번호 확인" name="confirm"><br>
-		<input type="submit" value="회원 탈퇴"> 
-		<input type="button" value="취소" onclick="location.href='index'">
-	</form>
-	</td></tr>
-</table>
+<div id="cont_head">
+		<h2>회원 탈퇴</h2>
+		<!-- 현재위치 -->
+		<div id="location">
+			<ul>
+				<li>홈</li>
+				<li>마이페이지</li>
+				<li class="now">회원 탈퇴</li>
+			</ul>
+		</div>
+		<!-- //현재위치 -->
+	</div>
+<div id="cont_wrap">
+	<div id="board" style="width:100%;">
+		<form action="deleteProc" method="post">
+			<table>
+				<tr><td colspan="2">${msg }</td></tr>
+				<tr>
+					<th>비밀번호</th>
+					<td><input type="password" name="pw"><br></td>
+				</tr>
+				<tr>
+					<th>비밀번호 확인</th>
+					<td><input type="password" name="confirm"><br></td>
+				</tr>
+				<tr>
+					<td colspan="2"><input type="submit" value="회원 탈퇴"> 
+					<input type="button" value="취소" onclick="location.href='index'">
+				</td></tr>
+			</table>
+		</form>
+	</div>
 </div>
-
 <c:import url="/userFooter"/>
 <c:import url="/footer" />
+</body>
+</html>
