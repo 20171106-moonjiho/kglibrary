@@ -5,19 +5,17 @@
 
 
 <mapper namespace="com.kg.library.book.IBookMapper">
-
+	<resultMap type="com.kg.library.member.MemberDTO" id="member">
+		<id column="id" property="id"/>
+	</resultMap>
+	
 	<insert id="bookRegistProc">
 		<selectKey order="BEFORE" keyProperty="no" resultType="int">
 			SELECT NVL(max(no),0)+1 FROM book
 		</selectKey>
-		INSERT INTO book
-		VALUES(#{no}, #{category}, #{title_info},
-		#{author_info}, #{pub_info},
-		#{pub_year_info},
-		#{reg_date},
-		#{detail_link}, #{image}, #{borrowperson}, #{book_count},
-		#{donation},
-		#{borrowdate})
+		INSERT INTO book 
+		VALUES(#{no}, #{category}, #{title_info}, #{author_info}, #{pub_info}, #{pub_year_info},
+		 #{reg_date}, #{detail_link}, #{image}, #{borrowperson}, #{book_count}, #{donation}, #{borrowdate}, #{rentaldate})
 	</insert>
 
 
@@ -71,25 +69,21 @@
 			<otherwise>
 				SELECT B.* FROM (
 				SELECT ROWNUM as r, A.* FROM (
-				SELECT
-				book.* FROM book
-				ORDER BY no DESC)A
-				)B WHERE B.r BETWEEN #{begin} AND
-				#{end}
-			</otherwise>
+				SELECT book.* FROM book ORDER BY no DESC)A 
+				)B WHERE B.r BETWEEN #{begin} AND #{end}
+    		</otherwise>
+    	
+    	</choose>
+    </select>
+    
+	<select id="bookContent" resultType="com.kg.library.book.BookDTO">
+    	SELECT * FROM book WHERE no=#{n}	
+    </select>
+    
+    <update id="rentalProc">
+		UPDATE book 
+		SET borrowperson=#{sessionId}, borrowdate=#{borrowtime}, rentaldate=#{rentaldate} WHERE no=#{n}
 
-		</choose>
-	</select>
-
-	<select id="bookContent"
-		resultType="com.kg.library.book.BookDTO">
-		SELECT * FROM book WHERE no=#{n}
-	</select>
-
-	<update id="rentalProc">
-		UPDATE book
-		SET borrowperson=#{sessionId},
-		borrowdate=#{borrowtime} WHERE no=#{n}
 	</update>
 
 	<update id="returnProc">
@@ -97,9 +91,25 @@
 		SET borrowperson=#{borrowperson} WHERE
 		no=#{n}
 	</update>
-
-	<delete id="bookDeleteProc">
-		DELETE FROM book WHERE no=#{n}
-	</delete>
-
+    
+    <delete id="bookDeleteProc">
+    	DELETE FROM book WHERE no=#{n}
+    </delete>
+    
+    <select id="myBook" resultType="com.kg.library.book.BookDTO">
+		<!-- SELECT B.* FROM (
+		SELECT ROWNUM as r, A.* FROM ( -->
+		SELECT book.* FROM book WHERE borrowperson = #{id}
+		<!-- )B -->
+    </select>
+    
+    <update id="borrowDateExtend">
+    	UPDATE book SET rentaldate = #{rentaldate} WHERE no=#{n} AND borrowperson = #{sessionId}
+    </update>
+    
+    <update id="returnProc2">
+		UPDATE book 
+		SET borrowperson=#{borrowperson} WHERE no=#{n}
+	</update>
+    
 </mapper>

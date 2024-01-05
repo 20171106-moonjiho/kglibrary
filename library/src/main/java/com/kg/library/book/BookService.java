@@ -7,6 +7,7 @@ import java.net.URLEncoder;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.kg.library.PageService;
+import com.kg.library.reservation.ReservationDTO;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -73,8 +75,13 @@ public class BookService {
 	
 			
 			LocalDateTime currentTime = LocalDateTime.now(); // 현재 시간 가져오기
+			LocalDateTime plusTime = currentTime.plus(Duration.ofDays(7));
 			Timestamp borrowtime = Timestamp.valueOf(currentTime); //형변환
-		
+			Timestamp returntime = Timestamp.valueOf(plusTime); //형변환
+			
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+			String rentaldate = plusTime.format(formatter);
+			
 			int book_count = Integer.parseInt(multi.getParameter("book_count")); //책 갯수
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
@@ -155,6 +162,7 @@ public class BookService {
 			board.setBorrowperson("대여 가능"); //빌린 사람
 			board.setBook_count(i); // 동일한 책 번호(책 갯수)
 			board.setBorrowdate(borrowtime);
+			board.setRentaldate(rentaldate);
 			
 			String donation = multi.getParameter("donation"); 
 			if(donation == null || donation.trim().isEmpty()) { // 기증자가 없을 시
@@ -228,15 +236,21 @@ public class BookService {
 	public void rentalProc(String no,String sessionId) { // 대여
 		
 		int n = 1;
+		
 		try{
 			n = Integer.parseInt(no);
 		}catch(Exception e){
 		}
 		
-		LocalDateTime currentTime = LocalDateTime.now(); //대여 시간, 현재 시간 가져오기 
+		LocalDateTime currentTime = LocalDateTime.now(); //대여 시간, 현재 시간 가져오기
+		LocalDateTime plusTime = currentTime.plus(Duration.ofDays(7));
+		
 		Timestamp borrowtime = Timestamp.valueOf(currentTime); //형변환
-			
-		mapper.rentalProc(n, sessionId, borrowtime);
+		Timestamp returntime = Timestamp.valueOf(plusTime); //형변환
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		String rentaldate = plusTime.format(formatter);
+		
+		mapper.rentalProc(n, sessionId, borrowtime, rentaldate);
 		
 	}
 
@@ -351,7 +365,4 @@ public class BookService {
 
 		 model.addAttribute("apimessage", apimessage);
 	}
-	
-	
-	
 }
