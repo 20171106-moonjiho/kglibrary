@@ -123,4 +123,16 @@ public class BookController {
 
 		return "book/apiAlert";
 	}
+	
+	
+	//공지사이드바 템플릿
+	@RequestMapping("bookheader")
+	public String bookheader() {
+		return "book/bookheader";
+	}
+	
+	@RequestMapping("bookfooter")
+	public String bookfooter() {
+		return "book/bookfooter";
+	}
 }

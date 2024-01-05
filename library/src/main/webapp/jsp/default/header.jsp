@@ -3,10 +3,85 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
 	<link href="common.css" rel="stylesheet">
 	<link href="main.css" rel="stylesheet"> 
+	<link href="notice.css" rel="stylesheet">
  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+ 	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 	<script src="script-3.js"></script>
+	
+ <script>
+	// 기본 구성
+	document.addEventListener('DOMContentLoaded', function() {
+		var calendarEl = document.getElementById('calendar');
+		var calendar = new FullCalendar.Calendar(calendarEl, {
+			initialView: 'dayGridMonth'
+		});
+		calendar.render();
+	});
+
+	// db 연동
+	$(function() {
+		var calendarEl = document.getElementById('calendar'); // calendarEl 변수를 이 위치로 이동
+		var request = $.ajax({
+			url: "/production/monthPlan",
+			method: "GET",
+			dataType: "json"
+		});
+
+		request.done(function(data) {
+			console.log(data);
+
+			// FullCalendar 이벤트로 변환
+			var events = data.map(function(item) {
+				return {
+					start: item.expectedProductionStartDate,
+					end: item.expectedProductionEndDate,
+					title: item.productionPlanCode
+				};
+			});
+			var events = [
+				{
+					start: '2024-01-19',
+					end: '2024-01-19',
+					title: '휴관일'
+				},
+				{
+					start: '2024-01-25',
+					end: '2024-01-28',
+					title: '문화의날 행사'
+				},
+				{
+					start: '2024-02-06',
+					end: '2024-02-06',
+					title: 'KG도서관 발표일'
+				}
+				// 여러 이벤트를 추가할 수 있습니다.
+				// {
+				//   start: '다른 이벤트의 시작일',
+				//   end: '다른 이벤트의 종료일',
+				//   title: '다른 이벤트의 제목'
+				// },
+				// ...
+			];
+			var calendar = new FullCalendar.Calendar(calendarEl, {
+				initialView: 'dayGridMonth',
+				headerToolbar: {
+					left: 'prev,next today',
+					center: 'title',
+					right: 'dayGridMonth,timeGridWeek,timeGridDay'
+				},
+				events: events
+			});
+
+			calendar.render();
+		});
+
+		request.fail(function(jqXHR, textStatus) {
+			alert("Request failed: " + textStatus);
+		});
+	});
+</script>
 	<script>
 	function chk(){
 		if(cc == 1){
@@ -157,16 +232,20 @@
 				<ul>
 					<li><a href="#">자료검색</a>
 						<div class="two_depth">
-								<p class="bmenu_tit">자료검색</p>
+								<p class="bmenu_tit">도서자료검색</p>
 								<ul>	
-									<li><a href="bookForm" >통합자료 검색
+									<li><a href="bookForm" >도서자료검색
 									</a></li>
-									<li><a href="apiBookRegist" >API 등록
+									<li><a href="bookHope" >희망 도서 신청
 									</a></li>
-									<li><a href="#" >대출 베스트
-									</a></li>
-									<li><a href="#" >정기간행물
-									</a></li>
+									<c:choose>
+										<c:when test="${sessionScope.id eq 'admin'}">
+									
+											<li><a href="apiBookRegist" >API 등록
+											</a></li>
+										</c:when> 
+									</c:choose>	
+									
 								</ul>
 						</div>
 					</li>
@@ -215,7 +294,8 @@
 								</ul>
 						</div>
 					</li>
-					<li><a href="#">이용자마당</a>
+					
+					<li><a href="reservation">회의실</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
 								<ul>	
@@ -230,6 +310,7 @@
 								</ul>
 						</div>
 					</li>
+					 
 					<li><a href="#">큐레이션</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
@@ -260,17 +341,15 @@
 								</ul>
 						</div>
 					</li>
-					<li><a href="NoticeBoard">공지사항</a>
+					<li><a href="noticeBoard">이용자마당</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
 								<ul>	
-									<li><a href="#" >통합자료 검색
+									<li><a href="noticeBoard" >공지사항
 									</a></li>
-									<li><a href="#" >신착자료 검색
+									<li><a href="#" >묻고 답하기
 									</a></li>
-									<li><a href="#" >대출 베스트
-									</a></li>
-									<li><a href="#" >정기간행물
+									<li><a href="noticeboard_cal" >도서관 일정
 									</a></li>
 								</ul>
 						</div>
