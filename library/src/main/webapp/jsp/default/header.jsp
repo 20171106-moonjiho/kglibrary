@@ -299,13 +299,7 @@
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
 								<ul>	
-									<li><a href="#" >통합자료 검색
-									</a></li>
-									<li><a href="#" >신착자료 검색
-									</a></li>
-									<li><a href="#" >대출 베스트
-									</a></li>
-									<li><a href="#" >정기간행물
+									<li><a href="reservation" >회의실 예약
 									</a></li>
 								</ul>
 						</div>

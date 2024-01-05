@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.kg.library.book.BookDTO;
 import com.kg.library.reservation.ReservationDTO;
 
 import jakarta.servlet.http.HttpSession;
@@ -17,7 +19,8 @@ public class MemberController {
 	@Autowired private HttpSession session;	
 	
 	@RequestMapping("join")
-	public String join() {
+	public String join(Model model) {
+		model.addAttribute("menu","regist");
 		return "member/join";
 	}
 	
@@ -38,7 +41,8 @@ public class MemberController {
 	}
 	
 	@RequestMapping("login")
-	public String login() {
+	public String login(Model model) {
+		model.addAttribute("menu","login");
 		return "member/login";
 	}
 	
@@ -162,6 +166,11 @@ public class MemberController {
     public String userHeader() {
     	return "member/userHeader";
     }
+	
+	@RequestMapping("userHeader2")
+    public String userHeader2() {
+    	return "member/userHeader2";
+    }
     
     @RequestMapping("userFooter")
    	public String userFooter() {
@@ -169,7 +178,8 @@ public class MemberController {
   	}
     
     @RequestMapping("terms")
-	public String terms() {
+	public String terms(Model model) {
+    	model.addAttribute("menu","regist");
 		return "member/terms";
 	}
     
@@ -201,4 +211,39 @@ public class MemberController {
 		model.addAttribute("reservations",service.preReservation(sessionId));
     	return "member/preReservation";
     }
+    
+    @RequestMapping("myBook")
+    public String myBook(Model model) {
+    	model.addAttribute("menu","myBook");
+    	String sessionId = (String)session.getAttribute("id");
+    	if(sessionId == null) 
+    		return "redirect:login";
+    	
+    	service.myBook(model, sessionId);
+    	
+    	return "member/myBook";
+    }
+    
+    @RequestMapping("borrowDateExtend")
+    public String borrowDateExtend(Model model, String no) {
+        String sessionId = (String) session.getAttribute("id");
+        if (sessionId == null)
+            return "redirect:login";
+        
+        service.borrowDateExtend(model, no, sessionId);
+        //model.addAttribute("board", board);
+        return "redirect:myBook";
+    }
+
+    @RequestMapping("returnProc2")
+	public String returnProc2(String no) {
+			
+		String sessionId = (String) session.getAttribute("id");
+		if (sessionId == null || sessionId.trim().isEmpty()) 
+		return "redirect:myBook";
+		
+		service.returnProc2(no);
+		return "redirect:myBook";	
+	}
+
 }
