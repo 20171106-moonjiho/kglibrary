@@ -17,13 +17,15 @@ public class ReservationController {
 	@Autowired private HttpSession session;
 	
 	@GetMapping("reservation")
-	public String index() {
+	public String index(Model model) {
+		model.addAttribute("menu", "reservation");
 		return "/reservation/reservation";
 	}
 	
 	@PostMapping("reservation")
 	public String reservation(Model model, ReservationDTO dto) {
 		List<String> list = service.getReservations(dto);
+		model.addAttribute("menu", "reservation");
 		model.addAttribute("dto", dto);
 		model.addAttribute("reservations", list);
 		return "/reservation/reservation";
@@ -32,6 +34,7 @@ public class ReservationController {
 	@RequestMapping("reservation2")
 	public String reservation2(Model model, ReservationDTO dto) {
 		List<Integer> list = service.getReservations2(dto);
+		model.addAttribute("menu", "reservation");
 		model.addAttribute("list", list);
 		model.addAttribute("dto", dto);
 		return "/reservation/reservation2";
@@ -52,4 +55,14 @@ public class ReservationController {
 		}
 		return "index";
 	}
+	
+	@RequestMapping("reservationheader")
+	public String reservationheader() {
+		return "reservation/reservationheader";
+	}
+	
+	@RequestMapping("reservationfooter")
+	public String reservationfooter() {
+		return "reservation/reservationfooter";
+	}	
 }

@@ -32,12 +32,14 @@
 									<c:choose>
 									<c:when test="${empty boards }">
 										<h1>등록된 데이터가 존재하지 않습니다.</h1>
-										<div class="board_button">
-											<div class="fr">
-											<span class="bt"><input type="button" value="글쓰기" onclick="location.href='noticeboard_write'"
-											class="cbtn cbtn_g2"></span>
+										<c:if test="${sessionScope.id eq 'admin'}">
+											<div class="board_button">
+												<div class="fr">
+												<span class="bt"><input type="button" value="글쓰기" onclick="location.href='noticeboard_write'"
+												class="cbtn cbtn_g2"></span>
+												</div>
 											</div>
-										</div>
+										 </c:if>
 									</c:when>
 									<c:otherwise>
 							<div class="board_total">
