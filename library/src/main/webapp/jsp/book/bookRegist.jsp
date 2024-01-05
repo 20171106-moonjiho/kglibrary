@@ -27,7 +27,7 @@ function bookCheck(){
 
 </script>
 
-<div align="center">
+<div align="center"style="margin-top: 100px; margin-bottom: 50px;">
 	<h1>도서 등록</h1>
 	<table >
 	<tr><td>

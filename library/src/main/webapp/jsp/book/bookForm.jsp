@@ -77,14 +77,14 @@ a {
 }
 </style>
 
-	<div style="width: 1200px; margin: 0 auto; margin-top: 100px;">
+	<div style="width: 1200px; margin: 0 auto; margin-top: 100px; margin-bottom:50px;">
 	<h2> 도서 검색 </h2>
 
 	<hr class="hr1" noshade>
 	
 	<form action="bookForm">
 	<span> ▷ 총 ${count }개의 검색 결과가 있습니다. </span> 
-					<span class="right">
+					<span class="center">
 					<select class="selectBox" name="select">
 			  					<option value="title" selected="selected">제목</option>
    								<option value="author">저작자</option>
@@ -108,11 +108,11 @@ a {
 				<h1> 등록된 데이터가 존재하지 않습니다. </h1>
 			</c:when>
 			<c:otherwise>
-				<table style="margin-top: 30px;">
+				<table style="padding-top: 30px;">
 					<tr>
-						<th width="100">번호</th>
+						<th width="70">번호</th>
 						<th width="500">제목</th>
-						<th width="130">작성자</th>
+						<th width="300">작성자</th>
 						<th width="200">작성일</th>
 					</tr>
 					
@@ -126,7 +126,7 @@ a {
 							<td class="center">${board.reg_date }</td>
 						</tr>
 					</c:forEach>
-				</table>
+					</table>
 				<div class="center" style="margin-top: 18px;">${result}</div>
 		</c:otherwise>
 	</c:choose>
@@ -139,6 +139,6 @@ a {
 						</tr>
 					</c:when> 
 				</c:choose>				
-	
+
 </div>
 <c:import url="/footer" />

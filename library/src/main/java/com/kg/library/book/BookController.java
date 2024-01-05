@@ -109,9 +109,18 @@ public class BookController {
 	}
 	
 	@RequestMapping("apiRegistProc") //도서 등록
-	public String apiRegistProc() {
+	public String apiRegistProc(String pageNum, String select, String search, Model model) {
 
-		service.apiRegistProc();
-		return "book/bookForm";
+		if(search == null || search.trim().isEmpty()) {
+			return "redirect:apiBookRegist";
+		}
+		if(select == null || select.trim().isEmpty()) {
+			return "redirect:apiBookRegist";
+		}
+
+		service.apiRegistProc(pageNum, select, search, model);
+		System.out.println("등록");
+
+		return "book/apiAlert";
 	}
 }

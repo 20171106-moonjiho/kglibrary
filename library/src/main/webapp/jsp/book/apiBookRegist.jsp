@@ -76,69 +76,62 @@ a {
 	text-decoration-line: none;
 }
 </style>
+<script type="text/javascript">
 
-	<div style="width: 1200px; margin: 0 auto; margin-top: 100px;">
+function apiCheck(){
+	let search = document.getElementById('search');
+	let pageNum = document.getElementById('pageNum');
+
+	if(search.value == ""){
+		alert('제목은 필수 항목입니다.');
+	}else if(pageNum.value == ""){
+		alert('페이지 번호는 필수 항목입니다.');
+	}else{
+		var f = document.getElementById('f');
+		f.submit();
+	}
+}
+
+function apimessageAlert(apimessage){
+	
+	if(apimessage == 'search'){
+		alert('등록되었습니다.');
+	}else{
+		alert('검색값이 없습니다.');
+	}
+}
+
+
+</script>
+
+
+
+	<div style="width: 1200px; margin: 0 auto; margin-top: 100px; margin-bottom: 100px">
 	<h2> 도서 검색 </h2>
 
 	<hr class="hr1" noshade>
 	
-	<form action="bookForm">
-	<span> ▷ 총 ${count }개의 검색 결과가 있습니다. </span> 
-					<span class="right">
+	<form action="apiRegistProc" method="post" id="f">
+	<span> 10종류씩 도서가 등록 가능합니다.<br>
+	(수량 정정이 필요할 시 관리자를 호출해주세요)<br>
+	 등록할 페이지 번호를 입력해 주세요. ${apimessage}<br><br> </span> 
+					<span class="center">
 					<select class="selectBox" name="select">
 			  					<option value="title" selected="selected">제목</option>
-   								<option value="author">저작자</option>
-					   			<option value="category">카테고리</option>
-    	</select>
-					</select>
+    				</select>
+
 					<c:choose>
 						<c:when test="${empty search or search == 'null'}">
-							<input type="text" name="search" />
+							<input type="text" name="search" id="search" />
 						</c:when>
-						<c:otherwise>
-							<input type="text" name="search" value="${search }"/>
-						</c:otherwise>
+
 					</c:choose>
-					<input type="submit" class="submit_button" value="검색" />
-					</span>
-				</form>
-				
-		<c:choose>
-			<c:when test="${empty boards }">
-				<h1> 등록된 데이터가 존재하지 않습니다. </h1>
-			</c:when>
-			<c:otherwise>
-				<table style="margin-top: 30px;">
-					<tr>
-						<th width="100">번호</th>
-						<th width="500">제목</th>
-						<th width="130">작성자</th>
-						<th width="200">작성일</th>
-					</tr>
+					<input type="text" name="pageNum" placeholder="등록할 페이지 번호" id="pageNum">
 					
-					<c:forEach var="board" items="${ boards}">
-						<tr>
-							<td class="center">${board.no }</td>
-							<td class="left" onclick="location.href='bookContent?no=${board.no }'">
-								${board.title_info }
-							</td>
-							<td class="center">${board.author_info }</td>
-							<td class="center">${board.reg_date }</td>
-						</tr>
-					</c:forEach>
-				</table>
-				<div class="center" style="margin-top: 18px;">${result}</div>
-		</c:otherwise>
-	</c:choose>
-				<c:choose>
-					<c:when test="${sessionScope.id eq 'admin'}">
-					<tr>
-						<span class="right">
-							<button type="button" onclick="location.href='bookRegist'"class="submit_button" >글쓰기</button>
-						</span>
-						</tr>
-					</c:when> 
-				</c:choose>				
-	
+					<input type="button" value="도서 등록" onclick="apiCheck()">
+					</span>
+
+				</form>
+
 </div>
 <c:import url="/footer" />

@@ -44,7 +44,7 @@
 </script>
 
 
-<div align="center" style="margin-top: 100px;">
+<div align="center" style="margin-top: 100px; margin-bottom:50px;">
 	<h1>${board.title_info}</h1>
 		
 	<table border='1' style="margin-top: 50px;">
@@ -52,17 +52,17 @@
 			<th width="100">제목</th>
 			<td width="200">${board.title_info}</td>
 			<th width="100">작성자</th>
-			<td width="100">${board.author_info }</td>
+			<td width="200">${board.author_info }</td>
 			<th width="70">발행자</th>
-			<td whdth="100">${board.pub_info}</td>
+			<td whdth="200">${board.pub_info}</td>
 		</tr>
 		<tr>
 			<th width="100">카테고리</th>
 			<td width="200">${board.category}</td>
 			<th width="100">발행연도</th>
-			<td width="100">${board.pub_year_info }</td>
+			<td width="200">${board.pub_year_info }</td>
 			<th width="70">비치일</th>
-			<td whdth="100">${board.reg_date}</td>
+			<td whdth="200">${board.reg_date}</td>
 		</tr>
 		<tr>
 			<c:set var="borrowPerson" value="${board.borrowperson}" />

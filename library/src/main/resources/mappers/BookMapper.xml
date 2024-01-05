@@ -20,24 +20,6 @@
 		#{borrowdate})
 	</insert>
 
-	<insert id="apiRegistProc">
-		<selectKey order="BEFORE" keyProperty="bookList[0].no"
-			resultType="int">
-			SELECT NVL(max(no), 0) + 1 FROM book
-		</selectKey>
-		<foreach collection="bookList" item="book" separator=";">
-			INSERT INTO book
-			VALUES(
-			#{book.no}, #{book.category}, #{book.title_info},
-			#{book.author_info}, #{book.pub_info},
-			#{book.pub_year_info},
-			#{book.reg_date},
-			#{book.detail_link}, #{book.image}, #{book.borrowperson}, #{book.book_count},
-			#{book.donation}, #{book.borrowdate}
-			)
-		</foreach>
-	</insert>
-
 
 	<select id="totalCount">
 		<choose>

@@ -266,24 +266,26 @@ public class BookService {
 		
 	private String accessToken;
 
-	public void apiRegistProc() { //Open Api 받아 오는 곳
+	public void apiRegistProc(String pageNum, String select, String search, Model model) { //Open Api 받아 오는 곳
 
-		
+		String apimessage = "none";
 		try {
 			String baseUrl = "https://www.nl.go.kr/NL/search/openApi/search.do";
             String apiKey = "ed1b7493daabfd52d2b4315bf7a15020761ac4ba059345f9bcc932308d6d0ffb";
             String category = "도서";
-            String keyword = "해리포터";
+            String keyword = search;
             int pageSize = 10;
-            int pageNum = 1;
-
+            
+            String encodedUrl = "";
             // 각 부분을 따로 인코딩하고 URL을 조합
-            String encodedUrl = baseUrl + "?key=" + URLEncoder.encode(apiKey, "UTF-8") +
+            
+            	encodedUrl = baseUrl + "?key=" + URLEncoder.encode(apiKey, "UTF-8") +
                     "&kwd=" + URLEncoder.encode(keyword, "UTF-8") +
                     "&category=" + URLEncoder.encode(category, "UTF-8") +
                     "&pageSize=" + pageSize +
                     "&pageNum=" + pageNum;
-			
+        
+            
 			URL url = new URL(encodedUrl);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("POST");
@@ -314,6 +316,9 @@ public class BookService {
           
 			
             System.out.println("size = " + itemArray.size());
+            if(itemArray.size() == 0) {
+            	apimessage = "not_search";
+            }else {
             	for(int i =0; i < itemArray.size(); i++) {
             		
                 JsonNode bookNode = itemArray.get(i); // 한번 가공해야 함.
@@ -334,13 +339,17 @@ public class BookService {
             
                 bookList.add(bookDTO);
                 mapper.bookRegistProc(bookDTO);
+                
             }
-			
-
+            	apimessage = "search";
+            }
+           
+            
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
+		 model.addAttribute("apimessage", apimessage);
 	}
 	
 	
