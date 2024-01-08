@@ -127,7 +127,7 @@ a {
 				
 		<c:choose>
 			<c:when test="${empty boards }">
-				<h1> 등록된 데이터가 존재하지 않습니다. </h1>
+				<h2> 대출 도서가 없습니다. </h2>
 			</c:when>
 			<c:otherwise>
 				<table style="margin-top: 30px;">

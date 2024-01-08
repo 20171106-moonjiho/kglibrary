@@ -24,11 +24,12 @@
 	</div>
 <div id="cont_wrap">
 	<div align="center">
+	<h1>회원로그인</h1><br>
 	<table>
 	<tr><td>
 		<font color="red" >${msg }</font>
 	</td></tr>
-	<tr><td>
+	<tr><td align="center">
 	<form action="loginProc" method="post" id="f">
 		<input type="text" name="id" placeholder="아이디" id="id"><br>
 		<input type="password" name="pw" placeholder="비밀번호" id="pw"><br>
@@ -40,7 +41,8 @@
 		카카오 이미지 링크
 		https://developers.kakao.com/tool/demo/login/login?method=dynamic
 	 -->
-	<tr><td>
+	<tr><td align="center">
+		<br>
 		<a href="https://kauth.kakao.com/oauth/authorize?response_type=code
 		&client_id=d3a13977a0273b816e425220da2d6622
 		&redirect_uri=http://localhost/kakaoLogin">
