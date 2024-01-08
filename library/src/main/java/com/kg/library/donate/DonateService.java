@@ -24,7 +24,7 @@ public class DonateService {
 			currentPage = 1;
 		}
 		
-		int pageBlock = 1;
+		int pageBlock = 10;
 		int end = pageBlock * currentPage;
 		int begin = end - pageBlock + 1;
 		

@@ -275,14 +275,9 @@
             	<input type="button" value="이전으로" onclick="location.href='index'"></li>
         </ul>
     </form>
-<<<<<<< HEAD
     <script src="terms.js"></script>
 </div>
 <c:import url="/userFooter" /> 
-<c:import url="/footer" />   
-=======
-    </div>
-    <script src="terms.js"></script>
->>>>>>> branch 'master' of https://github.com/20171106-moonjiho/kglibrary.git
+<c:import url="/footer" />
 </body>
 </html>
