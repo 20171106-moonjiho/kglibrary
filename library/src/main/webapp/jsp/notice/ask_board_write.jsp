@@ -1,17 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>공지사항</title>
-</head>
-<body>
 <c:import url="/header" />
-<c:import url="/noticeheader"/>
 <script>
-function noticemf_Check(){
+function notice_w_Check(){
 	var title = document.getElementsByName('title');
 	var content = document.getElementsByName('content');
 	var checkbox = document.getElementById('agree1');
@@ -27,7 +19,6 @@ function noticemf_Check(){
 	}
 }
 </script>
-
 <style>
 .card{width: 800px; margin: 0 auto;}
 .selectBox {
@@ -112,14 +103,48 @@ function noticemf_Check(){
 }
 </style>
 
+<div id="container">
+		<!--사이드바 시작-->
+			<div class="swsize">
+				<div id="sidebar">
+					<div class="stit">
+						<p class="eng"></p>
+						<h2>이용자마당</h2>
+					</div>
+					<div id="sidemenu">
+						<p class="tit jsMMenuText"><a href="#" class="jsMMenuBtn">공지사항
+									</a></p>
+						<ul id="jsMMenu">
+								<li class="on">
+									<a href="noticeBoard">공지사항
+									</a>
+								</li>
+								<li>
+									<a href="ask_board">묻고 답하기
+									</a>
+								</li>
+								<li>
+									<a href="noticeboard_cal">도서관 일정
+									</a>
+								</li>
+						</ul>
+					</div>
+					<div id="jsFacetLeft">				
+					</div>
+				</div>
+			</div><!--사이드바 끝-->
+			
+			<!--컨텐츠 영역-->
+			<div id="contents">
+				<div id="print_wrap">
 					<div id="cont_head">
-							<h2>게시글 수정</h2>
+							<h2>게시글 등록</h2>
 							<!-- 현재위치 -->
 							<div id="location">
 								<ul>
 									<li>홈</li>
 									<li>이용자마당</li>
-									<li class="now">공지사항</li>
+									<li class="now">묻고 답하기</li>
 								</ul>
 							</div>
 							<!-- //현재위치 -->
@@ -127,8 +152,11 @@ function noticemf_Check(){
 					
 					<div id="cont_wrap">
 						<div id="board" style="width:100%;">
-							<form action="noticeboard_ModifyProc" method='post' id="f" enctype="multipart/form-data">
-							<input type="hidden" name="no" value="${board.no }" />
+							<form action="ask_board_writeProc" method='post' id="f" enctype="multipart/form-data">
+							<input type="hidden" name="no" value="${no }" />
+							<input type="hidden" name="ref" value="${ref }" />
+							<input type="hidden" name="step" value="${step }" />
+							<input type="hidden" name="depth" value="${depth }" />
 								<div class="table_bwrite">
 									<table cellspacing="0" summary="묻고 답하기의 이름, 비밀번호, 내용을 입력">
 										<colgroup>
@@ -141,11 +169,9 @@ function noticemf_Check(){
 										</tr>
 									</thead>
 									<tbody>
-									
 										<tr>
 											<th scope="row"><label for="b_subject"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 제목</label></th>
-											<td>
-											<input type="text" size="100" id="b_subject" name="title" class="board_input subject" value="${board.title }" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="" maxlength="100" style="width:70%">
+											<td><input type="text" size="100" id="b_subject" name="title" class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="" maxlength="100" style="width:70%">
 											<span class="text1">* 100자리 이내로 입력해주세요.</span>
 											</td>
 										</tr>
@@ -153,7 +179,7 @@ function noticemf_Check(){
 										<tr>
 											<th scope="row"><label for="b_subject"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 내용</label></th>
 											<td>
-											<textarea name="content" placeholder="내용을 입력하세요." style="width:90%; height: 230px;">${board.content }</textarea>
+											<textarea name="content" placeholder="내용을 입력하세요." style="width:90%; height: 230px;"></textarea>
 											</td>
 										</tr>
 										<tr>
@@ -167,7 +193,7 @@ function noticemf_Check(){
 												4. 업로드할 사진의 파일은 <span style="color: lightcoral">jpg, jpeg, png만</span> 가능합니다.
 											</p>
 											<br>
-											<input type="file" name="upfile">${board.image }<br>
+											<input type="file" name="upfile"><br>
 											</td>
 										</tr>
 										<!-- 개인정보수집동의 항목 -->
@@ -190,16 +216,21 @@ function noticemf_Check(){
 									</tbody>
 									</table>
 								</div>
+								
 								<div class="board_button2">
-									<span><input id="submitbtn" type="button" value="글쓰기" onclick="noticemf_Check()"class="cbtn cbtn_point" ></span>
-									<span><input type="button" value="목록"	 onclick="location.href='noticeBoard'" class="cbtn cbtn_g"></span>
+									<span><input id="submitbtn" type="button" value="글쓰기" onclick="notice_w_Check()"class="cbtn cbtn_point" ></span>
+									<span><input type="button" value="목록"	 onclick="location.href='ask_Board'" class="cbtn cbtn_g"></span>
 								</div>
 								
 							</form>
+						
+						<!-- board 끝 -->			
 						</div>
 					</div>
+				
+				</div>
+			</div>
+			<!--컨테이너끝 -->
+		</div>
 	
-<c:import url="/noticefooter"/>
-<c:import url="/footer" />
-</body>
-</html>
+<c:import url="/footer" />  
