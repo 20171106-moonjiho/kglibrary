@@ -4,17 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항</title>
+<title>묻고 답하기</title>
 </head>
 <body>
 <c:import url="/header" />
 <c:import url="/noticeheader"/>
-			
-			<!--컨텐츠 영역-->
-			<div id="contents">
-				<div id="print_wrap">
 					<div id="cont_head">
-							<h2>공지사항2</h2>
+							<h2>묻고 답하기</h2>
 							<!-- 현재위치 -->
 							<div id="location">
 								<ul>
@@ -107,10 +103,6 @@
 							</c:choose>
 						</div>
 					</div>
-				
-				</div>
-			</div>
-			<!--컨테이너끝 -->
 <c:import url="/noticefooter"/>
 <c:import url="/footer" />
 </body>

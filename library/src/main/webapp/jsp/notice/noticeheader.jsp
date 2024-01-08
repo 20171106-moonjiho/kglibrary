@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<script src="notice.js"></script>
 <div id="container">
 		<!--사이드바 시작-->
 			<div class="swsize">
@@ -32,4 +33,7 @@
 					<div id="jsFacetLeft">				
 					</div>
 				</div>
-			</div><!--사이드바 끝-->
+			</div><!--사이드바 끝-->			
+			<!--컨텐츠 영역-->
+			<div id="contents">
+				<div id="print_wrap">

@@ -1,55 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>공지사항</title>
+</head>
+<body>
 <c:import url="/header" />
-
-<script>
-	function deleteCheck() {
-		result = confirm('진짜로 삭제하겠습니까?');
-		if (result == true) {
-			location.href = 'ContentDeleteProc3?no=${board.no}'
-		}
-	}
-</script>
-
-
-<style>
-
-</style>
-<div id="container">
-		<!--사이드바 시작-->
-			<div class="swsize">
-				<div id="sidebar">
-					<div class="stit">
-						<p class="eng"></p>
-						<h2>이용자마당</h2>
-					</div>
-					<div id="sidemenu">
-						<p class="tit jsMMenuText"><a href="#" class="jsMMenuBtn">공지사항
-									</a></p>
-						<ul id="jsMMenu">
-								<li class="on">
-									<a href="noticeBoard">공지사항
-									</a>
-								</li>
-								<li>
-									<a href="noticeBoard2">묻고 답하기
-									</a>
-								</li>
-								<li>
-									<a href="noticeboard_cal">도서관 일정
-									</a>
-								</li>
-						</ul>
-					</div>
-					<div id="jsFacetLeft">				
-					</div>
-				</div>
-			</div><!--사이드바 끝-->
-			
-			<!--컨텐츠 영역-->
-			<div id="contents">
-				<div id="print_wrap">
+<c:import url="/noticeheader"/>
 					<div id="cont_head">
 							<h2>게시글 등록</h2>
 							<!-- 현재위치 -->
@@ -106,6 +66,7 @@
 							</div>
 							
 							<div class="board_button">
+								<input type="hidden" id="board_no" value="${board.no }">
 								<div class="fr">
 								<span class="bt"><input type="button" value="목록" onclick="location.href='noticeBoard'" class="cbtn cbtn_g"></span>
 								<c:if test="${sessionScope.id eq board.id}">
@@ -124,11 +85,6 @@
 							 -->
 						</div>
 					</div>
-				
-				</div>
-			</div>
-			<!--컨테이너끝 -->
-		</div>
 		<!-- 
 <div class="title">
 							<span style="color: lightcoral; font-weight: 500;">제목 :</span>
@@ -154,4 +110,7 @@
 									<button type="button" onclick="deleteCheck()">삭제</button>
 							</div>
 							 -->
+<c:import url="/noticefooter"/>
 <c:import url="/footer" />
+</body>
+</html>
