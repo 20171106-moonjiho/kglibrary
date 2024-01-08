@@ -1,29 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script src="notice.js"></script>
 <div id="container">
 		<!--사이드바 시작-->
 			<div class="swsize">
 				<div id="sidebar">
 					<div class="stit">
 						<p class="eng"></p>
-						<h2>이용자마당</h2>
+						<h2>사이트이용</h2>
 					</div>
 					<div id="sidemenu">
 						<p class="tit jsMMenuText"><a href="#" class="jsMMenuBtn">공지사항
 									</a></p>
 						<ul id="jsMMenu">
-								<li id="board">
-									<a href="noticeBoard">공지사항
-									</a>
+								<li id="login">
+									<a href="login">로그인</a>
 								</li>
-								<li id="board2">
-									<a href="noticeBoard2">묻고 답하기
-									</a>
+								<li id="regist">
+									<a href="terms">회원가입</a>
 								</li>
-								<li id="cal">
-									<a href="noticeboard_cal">도서관 일정
-									</a>
+								<li id="#">
+									<a href="#">아이디/비밀번호 찾기</a>
 								</li>
 						</ul>
 						<script>
@@ -33,7 +29,7 @@
 					<div id="jsFacetLeft">				
 					</div>
 				</div>
-			</div><!--사이드바 끝-->			
-			<!--컨텐츠 영역-->
-			<div id="contents">
-				<div id="print_wrap">
+			</div><!--사이드바 끝-->
+			
+		<div id="contents">
+			<div id="print_wrap">

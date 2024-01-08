@@ -13,4 +13,6 @@ public interface DonateMapper {
 
 	int totalCount(String select, String search);
 
+	DonateDTO donateContent(String no);
+
 }

@@ -38,7 +38,8 @@ public class NoticeBoardController {
 	}
 	//공지사항 글쓰기
 	@RequestMapping("noticeboard_write")
-	public String noticeboard_write(){
+	public String noticeboard_write(Model model){
+		model.addAttribute("menu", "board");
 //		String sessionID=(String)session.getAttribute("id");
 //		if(sessionID==null) {
 //			return "redirect:login";
@@ -58,6 +59,7 @@ public class NoticeBoardController {
 		if(board == null) {
 			return "redirect:noticeboard";
 		}
+		model.addAttribute("menu", "board");
 		model.addAttribute("board",board);
 		return "notice/noticeboard_Content";
 	}
@@ -80,6 +82,7 @@ public class NoticeBoardController {
 //		String sessionId = (String) session.getAttribute("id");
 //		if(sessionId == null)
 //			return "redirect:login";
+		model.addAttribute("menu", "board");
 		String path = service.noticeboard_Modify(no, model);
 		return path;
 	}

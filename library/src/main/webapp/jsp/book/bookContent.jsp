@@ -131,7 +131,6 @@ a {
 			<!-- //현재위치 -->
 		</div>
 
-
 		<div id="cont_wrap">
 			<div id="board" style="width: 100%;">
 
@@ -180,12 +179,12 @@ a {
 								<c:when test="${sessionScope.id eq borrowPerson}">
 									<td width="200" colspan="5">
 										<button type="button" onclick="returnCheck()">반납
-											${rentaldate} 까지</button>
+											${board.rentaldate} 까지</button>
 									</td>
 								</c:when>
 								<c:otherwise>
 									<td width="200" colspan="5">대여 중 - 예상 반납 시간 :
-										${rentaldate} 까지</td>
+										${board.rentaldate} 까지</td>
 								</c:otherwise>
 							</c:choose>
 

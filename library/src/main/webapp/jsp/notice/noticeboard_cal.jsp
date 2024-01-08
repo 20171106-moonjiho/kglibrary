@@ -9,10 +9,6 @@
 <body>
 <c:import url="/header" />
 <c:import url="/noticeheader"/>
-			
-			<!--컨텐츠 영역-->
-			<div id="contents">
-				<div id="print_wrap">
 					<div id="cont_head">
 							<h2>도서관 일정</h2>
 							<!-- 현재위치 -->
@@ -35,10 +31,6 @@
 						<!-- 캘린더 끝 -->
 						</div>
 					</div>
-				
-				</div>
-			</div>
-			<!--컨테이너끝 -->
 <c:import url="/noticefooter"/>
 <c:import url="/footer" />
 </body>

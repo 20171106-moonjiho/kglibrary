@@ -7,6 +7,7 @@ import java.net.URLEncoder;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.kg.library.PageService;
+import com.kg.library.reservation.ReservationDTO;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -65,23 +67,30 @@ public class BookService {
 
 	public String bookRegistProc(MultipartHttpServletRequest multi) { // 책 등록
 
-		String sessionId = (String) session.getAttribute("id");
-		if (sessionId == null)
-			return "redirect:login";
-
-		LocalDateTime currentTime = LocalDateTime.now(); // 현재 시간 가져오기
-		Timestamp borrowtime = Timestamp.valueOf(currentTime); // 형변환
-
-		int book_count = Integer.parseInt(multi.getParameter("book_count")); // 책 갯수
-
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-
-		String fullPath = "";
-
-		if (multi.getParameter("category").equals("API")) // API에서 받아온 이미지 라면
-		{
-			fullPath = multi.getParameter("image");
-		} else { // 사용자가 직접 올린 이미지라면
+			String sessionId = (String) session.getAttribute("id");
+			if (sessionId == null)
+				return "redirect:login";
+	
+			
+			LocalDateTime currentTime = LocalDateTime.now(); // 현재 시간 가져오기
+			LocalDateTime plusTime = currentTime.plus(Duration.ofDays(7));
+			Timestamp borrowtime = Timestamp.valueOf(currentTime); //형변환
+			Timestamp returntime = Timestamp.valueOf(plusTime); //형변환
+			
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+			String rentaldate = plusTime.format(formatter);
+			
+			int book_count = Integer.parseInt(multi.getParameter("book_count")); //책 갯수
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+			
+			String fullPath = "";
+			
+			if(multi.getParameter("category").equals("API")) //API에서 받아온 이미지 라면
+			{
+				fullPath = multi.getParameter("image");
+			}
+			else { //사용자가 직접 올린 이미지라면
 			MultipartFile file = multi.getFile("upfile");
 			if (file.getSize() != 0) { // 클라이언트라 파일을 업로드 했다면
 				// 파일 이름
@@ -151,13 +160,13 @@ public class BookService {
 			board.setBorrowperson("대여 가능"); // 빌린 사람
 			board.setBook_count(i); // 동일한 책 번호(책 갯수)
 			board.setBorrowdate(borrowtime);
-
-			String donation = multi.getParameter("donation");
-			if (donation == null || donation.trim().isEmpty()) { // 기증자가 없을 시
-				board.setDonation("없음");
-			} else {
-				board.setDonation(donation);
-			}
+			board.setRentaldate(rentaldate);
+			
+			String donation = multi.getParameter("donation"); 
+			if(donation == null || donation.trim().isEmpty()) { // 기증자가 없을 시
+			board.setDonation("없음"); }
+			else {
+			board.setDonation(donation); }
 
 			System.out.println(board.getCategory());
 			System.out.println(board.getTitle_info());
@@ -220,16 +229,23 @@ public class BookService {
 	public void rentalProc(String no, String sessionId) { // 대여
 
 		int n = 1;
-		try {
+		
+		try{
 			n = Integer.parseInt(no);
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
-
-		LocalDateTime currentTime = LocalDateTime.now(); // 대여 시간, 현재 시간 가져오기
-		Timestamp borrowtime = Timestamp.valueOf(currentTime); // 형변환
-
-		mapper.rentalProc(n, sessionId, borrowtime);
-
+		
+		LocalDateTime currentTime = LocalDateTime.now(); //대여 시간, 현재 시간 가져오기
+		LocalDateTime plusTime = currentTime.plus(Duration.ofDays(7)); //대여 시간
+		
+		Timestamp borrowtime = Timestamp.valueOf(currentTime); //형변환
+		Timestamp returntime = Timestamp.valueOf(plusTime); //형변환
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+		String rentaldate = plusTime.format(formatter);
+		
+		mapper.rentalProc(n, sessionId, borrowtime, rentaldate);
+		
 	}
 
 	public void returnProc(String no) { // 반납
@@ -344,12 +360,12 @@ public class BookService {
 					bookDTO.setPub_year_info(bookNode.path("pub_year_info").asText()); // 발행일
 					bookDTO.setReg_date(sdf.format(new Date())); // 등록 시간
 					bookDTO.setDetail_link(bookNode.path("detail_link").asText()); // 상세 정보
-					bookDTO.setImage(bookNode.path("image_url").asText()); //
-					bookDTO.setBorrowperson("대여 가능");
-					bookDTO.setBook_count(1);
-					bookDTO.setDonation(" ");
-					bookDTO.setBorrowdate(borrowtime);
-
+					bookDTO.setImage(bookNode.path("image_url").asText()); //이미지 url
+					bookDTO.setBorrowperson("대여 가능"); // 대여구분, 대여자
+					bookDTO.setBook_count(1);	// 책 갯수 고정
+					bookDTO.setDonation(" ");	// 기부자 없음
+					bookDTO.setBorrowdate(borrowtime); //대여 시작 시간 기본값
+					bookDTO.setRentaldate(sdf.format(new Date())); //대여 끝나는 시간 기본값
 					bookList.add(bookDTO);
 					mapper.bookRegistProc(bookDTO);
 

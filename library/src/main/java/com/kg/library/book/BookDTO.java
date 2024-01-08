@@ -1,5 +1,6 @@
 package com.kg.library.book;
 import java.sql.Timestamp;
+
 /*
 *도서 등록(book)
 순서 - 번호(1),카테고리(2),제목(3),저작자(4),발행자(5),발행년도(6),비치일(7),상세페이지경로(8),이미지(9), 빌린 사람(10) ,책 번호(책 갯수)(11), 기증자(12),빌린 시간(13)
@@ -17,11 +18,13 @@ image varchar2(255),
 borrowperson varchar2(50),
 book_count number,
 donation varchar2(50),
-borrowdate timestamp
+borrowdate timestamp,
+rentaldate VARCHAR2(50)
 );
 alter table book modify title_info varchar2(500);
 alter table book modify author_info varchar2(500);
 alter table book modify pub_info varchar2(500);
+ALTER TABLE book ADD rentaldate VARCHAR2(50);
 
 */
 public class BookDTO {
@@ -39,6 +42,7 @@ public class BookDTO {
 	private int book_count;
 	private String donation;
 	private Timestamp borrowdate;
+	private String rentaldate;
 	
 	public int getNo() {
 		return no;
@@ -119,7 +123,10 @@ public class BookDTO {
 	public void setBorrowdate(Timestamp borrowdate) {
 		this.borrowdate = borrowdate;
 	}
-	
-	
-	
+	public String getRentaldate() {
+		return rentaldate;
+	}
+	public void setRentaldate(String rentaldate) {
+		this.rentaldate = rentaldate;
+	}
 }
