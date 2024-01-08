@@ -10,9 +10,6 @@
 <c:import url="/header" />
 <c:import url="/noticeheader"/>
 			
-			<!--컨텐츠 영역-->
-			<div id="contents">
-				<div id="print_wrap">
 					<div id="cont_head">
 							<h2>묻고 답하기</h2>
 							<!-- 현재위치 -->
