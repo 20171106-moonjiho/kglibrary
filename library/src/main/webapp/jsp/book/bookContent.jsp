@@ -26,8 +26,7 @@
 	}
 	
 	function returnCheck(){
-		var userId = '<%=session.getAttribute("id")%>
-	';
+		var userId = '<%=session.getAttribute("id")%>';
 
 		if (userId == "null" || userId.trim() == "") {
 			alert("로그인이 필요합니다.");
