@@ -8,9 +8,9 @@ import java.sql.Timestamp;
 create table book(
 no number not null,
 category varchar2(50),
-title_info varchar2(255),
-author_info varchar2(255),
-pub_info varchar2(255),
+title_info varchar2(500),
+author_info varchar2(500),
+pub_info varchar2(500),
 pub_year_info varchar2(50),
 reg_date varchar2(50),
 detail_link varchar2(200),
@@ -18,7 +18,8 @@ image varchar2(255),
 borrowperson varchar2(50),
 book_count number,
 donation varchar2(50),
-borrowdate timestamp
+borrowdate timestamp,
+rentaldate VARCHAR2(50)
 );
 alter table book modify title_info varchar2(500);
 alter table book modify author_info varchar2(500);

@@ -163,7 +163,7 @@
 								<ul>	
 									<li><a href="bookForm" >도서자료검색
 									</a></li>
-									<li><a href="bookHope" >희망 도서 신청
+									<li><a href="bookHopeForm" >비치 희망 도서
 									</a></li>
 									<c:choose>
 										<c:when test="${sessionScope.id eq 'admin'}">
