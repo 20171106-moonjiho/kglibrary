@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="com.kg.library.board.BoardMapper">
+ 	<select id="getList" resultType="com.kg.library.board.BoardDTO">
+		SELECT * FROM 
+		( SELECT ROWNUM rn, A.* FROM 
+		(SELECT * FROM board2 ORDER BY ref DESC, step ASC)A)
+		 WHERE rn BETWEEN #{begin} AND #{end}
+	
+	</select>
+	
+<!-- ref가 정렬되어 있는 상태에서 step을 오름차순으로 해야 가능 -->
+<!-- 	 
+SELECT * FROM board2 ORDER BY ref DESC ref 내림차순
+결과를 유지한 상태로 step을 오름차순
+그 결과를 A로 지칭하고 A의 결과에
+SELECT ROWNUM rn 로 행번호 지정
+ -->
+	
+	<select id="getCount" resultType="Integer">
+		SELECT count(*) FROM board2
+	</select>
+	
+	<select id="maxNum" resultType="Integer">
+		SELECT nvl(max(NUM), 0)+1 FROM board2
+	</select>
+	
+	<update id="updateStep">
+		UPDATE board2 SET step=step+1 WHERE ref = #{ref} AND step > #{step}
+	</update>
+	
+	<insert id="write">
+		<selectKey order="BEFORE" keyProperty="num" resultType="int">
+			SELECT nvl(max(num),0) + 1 FROM board2
+		</selectKey>
+		INSERT INTO board2 VALUES(#{num}, #{writer},#{email},#{subject}, #{pass}, 0, #{ref}, #{step}, #{depth}, #{regDate}, #{ip}, #{content})
+	</insert>
+	
+	<update id="updateReadCount">
+		UPDATE board2 SET readcount=readcount+1 WHERE num=#{num}
+	</update>
+	
+	<select id="getContent" resultType="com.kg.library.board.BoardDTO">
+		SELECT * FROM board2 WHERE num=#{num}
+	</select>
+
+	<delete id="boardDeleteProc">
+		DELETE FROM board2 WHERE num=#{num}
+	</delete>
+	
+	<select id="pass">
+		SELECT pass FROM board2 WHERE num=#{num}
+	</select>
+	
+	<select id="getPass" resultType="String">
+		SELECT pass FROM board2 WHERE num=#{num}
+	</select>
+	
+	<update id="update">
+		UPDATE board2 SET writer=#{writer}, email=#{email}, subject=#{subject}, content=#{content} WHERE num=#{num}
+	</update>
+    </mapper>

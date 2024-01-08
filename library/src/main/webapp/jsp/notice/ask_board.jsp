@@ -14,13 +14,13 @@
 			<div id="contents">
 				<div id="print_wrap">
 					<div id="cont_head">
-							<h2>공지사항2</h2>
+							<h2>묻고 답하기</h2>
 							<!-- 현재위치 -->
 							<div id="location">
 								<ul>
 									<li>홈</li>
 									<li>이용자마당</li>
-									<li class="now">공지사항</li>
+									<li class="now">묻고 답하기</li>
 								</ul>
 							</div>
 							<!-- //현재위치 -->
@@ -50,8 +50,18 @@
 								</tr>
 								<c:forEach var="board" items="${boards }">
 									<tr>
-										<td class="notice"><a href="noticeboard_Content?no=${board.no }">${board.no }</a></td>
-										<td class="notice title"><a href="noticeboard_Content?no=${board.no }">${board.title }</a></td>
+										<td class="notice"><a href="ask_board_Content?no=${board.no }">${board.no }</a></td>
+										<td class="notice title">
+										<c:if test="${board.getDepth() > 0}">
+											<img src="../img/level.gif" width="${5 * board.getDepth()}">
+											<img src="../img/re.gif">
+										</c:if>
+										<c:if test="${board.getDepth() == 0}">
+											<img src="../img/level.gif" width="0">
+										</c:if>
+										<a href="ask_board_Content?no=${board.no }">
+										${board.title }</a>
+										</td>
 										<td class="notice">${board.id }</td>
 										<td class="notice">${board.writeDate }</td>
 										<td class="notice">${board.hits }</td>
@@ -62,7 +72,7 @@
 						
 							<div class="board_button">
 								<div class="fr">
-								<span class="bt"><input type="button" value="글쓰기" onclick="location.href='noticeboard_write'"
+								<span class="bt"><input type="button" value="글쓰기" onclick="location.href='ask_board_write'"
 								class="cbtn cbtn_g"></span>
 								</div>
 							</div>
@@ -71,7 +81,7 @@
 								${result}
 							</div>
 							
-							<form action="noticeBoard">
+							<form action="ask_board">
 										<select class="selectBox" name="search_select">
 												<c:choose>
 													<c:when test="${search_select == '제목' }">

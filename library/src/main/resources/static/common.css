@@ -150,12 +150,12 @@ padding: 0; position: relative; cursor: text;font-size: 20px; color: #000; line-
 	width: 620px;
 	height: 280px; /*원래 auto*/
 	clear: both;
-	border: 1px solid #e5e5e5;
+	/*border: 1px solid #e5e5e5;*/
 	border-radius: 10px;
 	overflow: hidden;
 	float: left;
 	margin-right: 2%;
-	background-color: #666;
+	/*background-color: #666;*/
 	}
 .goto{width: 456px;height: 280px;float: left;}
 .goto ul {overflow:hidden;font-size:0; overflow:hidden; }
@@ -187,7 +187,7 @@ padding: 0; position: relative; cursor: text;font-size: 20px; color: #000; line-
 .footer .addr ul{display: inline-block; width: 100%; font-size: 15px; color: #fff;}
 .footer .addr ul li{float: left; padding: 0 20px; background: url("../img/copy_line.gif") no-repeat 0 50%;}
 .footer .addr ul li:first-child{padding-left: 0; background: 0;margin-left: 0;}
-.footer .addr ul li a{color: #fff; display: block; text-decoration: none;}
+.footer .addr ul li a{color: rgb(255, 255, 255); display: block; text-decoration: none;}
 
 .footer .addr_bottom{width: 1100px; margin: 0 auto; display: inline-block; text-align: left;}
 .footer .addr_bottom .addr_right{width: 100%; letter-spacing: -1px;}

@@ -94,6 +94,7 @@
 				</div>
 			</div>
 			<div class="innor col3">
+			<!-- 팝업존 -->
 				<div class="popupzone">
 					<!-- Swiper -->
 					<div class="swiper mySwiper">
@@ -116,6 +117,7 @@
 					</div>
 				  </div>
 				</div>
+				<!-- 북픽 -->
 				<div class="bookpick">
 					<div class="tab-menu2">
 					  <div class="tab-btn"> 
@@ -194,8 +196,52 @@
 			
 			<div class="innor col4">
 				<div id="div_calendar" class="calendar_wrap">
-				
+					<div class="swiper mySwiper2">
+					    <div class="swiper-wrapper">
+					      <div class="swiper-slide">
+					       <img src="img/41236691625.20230919130622.jpg" alt="">
+					      </div>
+					      <div class="swiper-slide">
+					        <img src="img/40691554619.20230919124023.jpg" alt="">
+					      </div>
+					      <div class="swiper-slide">
+					        <img src="img/40641325628.20230718121618.jpg" alt="">
+					      </div>
+					       <div class="swiper-slide">
+					       <img src="img/41236691625.20230919130622.jpg" alt="">
+					      </div>
+					      <div class="swiper-slide">
+					        <img src="img/40691554619.20230919124023.jpg" alt="">
+					      </div>
+					      <div class="swiper-slide">
+					        <img src="img/40641325628.20230718121618.jpg" alt="">
+					      </div>
+					    </div>
+					 </div>
+					 <script>
+					 var swiper = new Swiper(".mySwiper2", {
+					      effect: "coverflow",
+					      grabCursor: true,
+					      //centeredSlides: true,
+					       autoplay: {
+					        delay: 5000,
+					        disableOnInteraction: false
+					      },
+					      slidesPerView: 3,
+					      coverflowEffect: {
+					        rotate: 50,
+					        stretch: 0,
+					        depth: 100,
+					        modifier: 1,
+					        slideShadows: true,
+					      },
+					      pagination: {
+					        el: ".swiper-pagination",
+					      },
+					    });
+					  </script>
 				</div>
+				
 				<div class="goto">
 					<ul>
 						<li class="ban01 button-2"><a href="#">책누리<br>안내</a></li>

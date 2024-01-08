@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:import url="/header" />
 <script>
-function notice_w_Check(){
+function noticemf_Check(){
 	var title = document.getElementsByName('title');
 	var content = document.getElementsByName('content');
 	var checkbox = document.getElementById('agree1');
@@ -102,14 +102,13 @@ function notice_w_Check(){
 	border-radius: 10px;
 }
 </style>
-
 <div id="container">
 		<!--사이드바 시작-->
 			<div class="swsize">
 				<div id="sidebar">
 					<div class="stit">
 						<p class="eng"></p>
-						<h2>이용자마당</h2>
+						<h2>게시글 수정</h2>
 					</div>
 					<div id="sidemenu">
 						<p class="tit jsMMenuText"><a href="#" class="jsMMenuBtn">공지사항
@@ -138,13 +137,13 @@ function notice_w_Check(){
 			<div id="contents">
 				<div id="print_wrap">
 					<div id="cont_head">
-							<h2>게시글 등록</h2>
+							<h2>묻고 답하기</h2>
 							<!-- 현재위치 -->
 							<div id="location">
 								<ul>
 									<li>홈</li>
 									<li>이용자마당</li>
-									<li class="now">공지사항</li>
+									<li class="now">묻고 답하기</li>
 								</ul>
 							</div>
 							<!-- //현재위치 -->
@@ -152,7 +151,8 @@ function notice_w_Check(){
 					
 					<div id="cont_wrap">
 						<div id="board" style="width:100%;">
-							<form action="noticeboard_writeProc" method='post' id="f" enctype="multipart/form-data">
+							<form action="ask_board_ModifyProc" method='post' id="f" enctype="multipart/form-data">
+							<input type="hidden" name="no" value="${board.no }" />
 								<div class="table_bwrite">
 									<table cellspacing="0" summary="묻고 답하기의 이름, 비밀번호, 내용을 입력">
 										<colgroup>
@@ -165,27 +165,11 @@ function notice_w_Check(){
 										</tr>
 									</thead>
 									<tbody>
-									<!-- 
-										<tr>
-											<th scope="row"><label for="b_name"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 이름</label></th>
-											<td><input type="text" size="20" id="b_name" name="b_name" class="board_input" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="배종원" maxlength="30" readonly="readonly" style="border: 1px solid rgb(205, 205, 205); background: rgb(255, 255, 255);"> <span class="text1">* 30자 이내로 입력해주세요. </span></td>
-										</tr>	
-										
-										<tr>
-											<th scope="row"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 공개여부</th>
-											<td>
-												<input type="radio" id="b_open_Y" name="b_open" value="Y" checked=""><label for="b_open_Y">공개</label>
-												<input type="radio" id="b_open_N" name="b_open" value="N"><label for="b_open_N">비공개</label>
-											</td>
-										</tr>	
-										<tr>
-											<th scope="row"><img height="10" width="7" alt="*(필수항목)" src="/img/ic_vcheck.gif"> <label for="b_phone1">연락처</label></th>
-											<td><input type="text" size="4" title="연락처 첫번째" id="b_phone1" name="b_phone1" class="board_input only_number" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="" maxlength="4"> - <input type="text" size="4" title="연락처 두번째" id="b_phone2" name="b_phone2" class="board_input only_number" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="" maxlength="4"> - <input type="text" size="4" title="연락처 세번째" id="b_phone3" name="b_phone3" class="board_input only_number" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="" maxlength="4"> <span class="text1">* 숫자만 입력해주세요. </span></td>
-										</tr>
-									-->
+									
 										<tr>
 											<th scope="row"><label for="b_subject"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 제목</label></th>
-											<td><input type="text" size="100" id="b_subject" name="title" class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="" maxlength="100" style="width:70%">
+											<td>
+											<input type="text" size="100" id="b_subject" name="title" class="board_input subject" value="${board.title }" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="" maxlength="100" style="width:70%">
 											<span class="text1">* 100자리 이내로 입력해주세요.</span>
 											</td>
 										</tr>
@@ -193,7 +177,7 @@ function notice_w_Check(){
 										<tr>
 											<th scope="row"><label for="b_subject"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 내용</label></th>
 											<td>
-											<textarea name="content" placeholder="내용을 입력하세요." style="width:90%; height: 230px;"></textarea>
+											<textarea name="content" placeholder="내용을 입력하세요." style="width:90%; height: 230px;">${board.content }</textarea>
 											</td>
 										</tr>
 										<tr>
@@ -207,7 +191,7 @@ function notice_w_Check(){
 												4. 업로드할 사진의 파일은 <span style="color: lightcoral">jpg, jpeg, png만</span> 가능합니다.
 											</p>
 											<br>
-											<input type="file" name="upfile"><br>
+											<input type="file" name="upfile">${board.image }<br>
 											</td>
 										</tr>
 										<!-- 개인정보수집동의 항목 -->
@@ -230,89 +214,17 @@ function notice_w_Check(){
 									</tbody>
 									</table>
 								</div>
-								
 								<div class="board_button2">
-									<span><input id="submitbtn" type="button" value="글쓰기" onclick="notice_w_Check()"class="cbtn cbtn_point" ></span>
-									<span><input type="button" value="목록"	 onclick="location.href='noticeBoard'" class="cbtn cbtn_g"></span>
+									<span><input id="submitbtn" type="button" value="글쓰기" onclick="noticemf_Check()"class="cbtn cbtn_point" ></span>
+									<span><input type="button" value="목록"	 onclick="location.href='ask_board'" class="cbtn cbtn_g"></span>
 								</div>
 								
 							</form>
-							<!-- 
-							<form action="noticeboard_writeProc" method='post' id="f" enctype="multipart/form-data">
-								<div class="card">
-										
-										<div class="card-write">
-											<div class="title-w">
-												<span class="subject_title">제목</span>
-												<input type="text" name="title" placeholder="제목을 입력하세요.">
-											</div>
-																
-											<div class="msg">
-											<span class="subject_title">내용</span>
-												<textarea name="content" placeholder="내용을 입력하세요."></textarea>
-												<div style="border-bottom: 1px dotted #dedede; width: 90%; margin-top: 5px; margin-bottom: 5px;"></div>
-												<p style="font-size:13px; ">
-												<span style="color: lightcoral">※ 사진첨부시 주의사항</span><br>
-												1. 사진용량이 너무 크거나, bmp 파일은 에러가 발생할 수 있습니다.<br>
-												2. 사진의 파일명은 반드시 영문으로 등록해주세요.<br>
-												3. 사진에 상세 입력사항을 넣거나 타사이트 주소를 게시할 경우 등록글은 삭제됩니다.<br>
-												4. 업로드할 사진의 파일은 <span style="color: lightcoral">jpg, jpeg, png만</span> 가능합니다.
-												</p>
-												<input type="file" name="upfile"><br>
-											</div>
-											
-										</div>
-										<div class="btn-w">
-											<input type="button" value="글쓰기" onclick="find_info_Check()"> 
-											<input type="button" value="목록"	 onclick="location.href='noticeBoard'">
-										</div>
-								</div>
-							</form>
-							 -->
-						<!-- board 끝 -->			
 						</div>
 					</div>
-				
 				</div>
 			</div>
 			<!--컨테이너끝 -->
 		</div>
-		<!-- 
-<div style="margin: 0 auto; margin-top:100px;">
-	<form action="noticeboard_writeProc" method='post' id="f" enctype="multipart/form-data">
-	<div class="card">
-			<div class="card-header1" style="text-align: center;">
-				<h1>게시글 등록</h1>
-			</div>
 
-
-			<div class="card-write">
-				
-			<div class="title-w">
-				<span class="subject_title">제목</span>
-				<input type="text" name="title" placeholder="제목을 입력하세요.">
-			</div>
-								
-			<div class="msg">
-			<span class="subject_title">내용</span>
-				<textarea name="content" placeholder="내용을 입력하세요."></textarea>
-				<div style="border-bottom: 1px dotted #dedede; width: 90%; margin-top: 5px; margin-bottom: 5px;"></div>
-				<p style="font-size:13px; ">
-				<span style="color: lightcoral">※ 사진첨부시 주의사항</span><br>
-				1. 사진용량이 너무 크거나, bmp 파일은 에러가 발생할 수 있습니다.<br>
-				2. 사진의 파일명은 반드시 영문으로 등록해주세요.<br>
-				3. 사진에 상세 입력사항을 넣거나 타사이트 주소를 게시할 경우 등록글은 삭제됩니다.<br>
-				4. 업로드할 사진의 파일은 <span style="color: lightcoral">jpg, jpeg, png만</span> 가능합니다.
-				</p>
-				<input type="file" name="upfile"><br>
-			</div>
-		</div>
-			<div class="btn-w">
-				<input type="button" value="글쓰기" onclick="find_info_Check()"> 
-				<input type="button" value="목록"	 onclick="location.href='noticeBoard'">
-				</div>
-			</div>
-		</form>
-</div>	
- -->
 <c:import url="/footer" />  

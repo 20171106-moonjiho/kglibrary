@@ -6,10 +6,13 @@
 function noticemf_Check(){
 	var title = document.getElementsByName('title');
 	var content = document.getElementsByName('content');
+	var checkbox = document.getElementById('agree1');
 	if(title[0].value == ""){
 		alert('제목을 입력해주세요.');
 	}else if(content[0].value == ""){
 		alert('내용은 필수 사항입니다.');
+	}else if(!checkbox.checked){
+		alert('약관에 동의해주세요.');
 	}else{
 		var f = document.getElementById('f');
 		f.submit();
@@ -116,7 +119,7 @@ function noticemf_Check(){
 									</a>
 								</li>
 								<li>
-									<a href="noticeBoard2">묻고 답하기
+									<a href="ask_board">묻고 답하기
 									</a>
 								</li>
 								<li>

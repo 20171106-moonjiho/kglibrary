@@ -7,7 +7,7 @@
 	function deleteCheck() {
 		result = confirm('진짜로 삭제하겠습니까?');
 		if (result == true) {
-			location.href = 'ContentDeleteProc3?no=${board.no}'
+			location.href = 'ContentDeleteProc?no=${board.no}'
 		}
 	}
 </script>
@@ -51,13 +51,13 @@
 			<div id="contents">
 				<div id="print_wrap">
 					<div id="cont_head">
-							<h2>공지사항</h2>
+							<h2>묻고 답하기</h2>
 							<!-- 현재위치 -->
 							<div id="location">
 								<ul>
 									<li>홈</li>
 									<li>이용자마당</li>
-									<li class="now">공지사항</li>
+									<li class="now">묻고 답하기</li>
 								</ul>
 							</div>
 							<!-- //현재위치 -->
@@ -107,21 +107,18 @@
 							
 							<div class="board_button">
 								<div class="fr">
-								<span class="bt"><input type="button" value="목록" onclick="location.href='noticeBoard'" class="cbtn cbtn_g"></span>
+								<span class="bt"><input type="button" value="목록" onclick="location.href='ask_board'" class="cbtn cbtn_g"></span>
+								<span class="bt">
+								<input type="button" value="답글" 
+								class="cbtn cbtn_g" onclick="location.href='ask_board_write?no=${board.no }&ref=${board.ref }&step=${board.step }&depth=${board.depth }'">
+								</span>
 								<c:if test="${sessionScope.id eq board.id}">
-								<span class="bt"><input type="button" value="수정" onclick="location.href='noticeboard_Modify?no=${board.no }'" class="cbtn cbtn_g"></span>
+								<span class="bt"><input type="button" value="수정" onclick="location.href='ask_board_Modify?no=${board.no }'" class="cbtn cbtn_g"></span>
 								<span class="bt"><input type="button" value="삭제" onclick="deleteCheck()" class="cbtn cbtn_g"></span>
 								</c:if>
 								</div>
 							</div>
-							<!-- 
-							<div class="button_bar">
-									<button type="button" onclick="location.href='noticeBoard'" class="cbtn cbtn_g">목록</button>
-										<button type="button"
-											onclick="location.href='noticeboard_Modify?no=${board.no }'">수정</button>
-										<button type="button" onclick="deleteCheck()">삭제</button>
-							</div>
-							 -->
+							
 						</div>
 					</div>
 				
@@ -129,29 +126,4 @@
 			</div>
 			<!--컨테이너끝 -->
 		</div>
-		<!-- 
-<div class="title">
-							<span style="color: lightcoral; font-weight: 500;">제목 :</span>
-								${board.title }
-							</div>
-							<div class="user">
-								<span style="color: lightcoral; font-weight: 500;">작성자 : </span>${board.id }
-							</div>
-							<div class="time">
-								<span style="color: lightcoral; font-weight: 500;">작성일 : </span>${board.writeDate }
-							</div>
-							<div class="contents">
-								<c:if test="${board.image != null}">
-									<img src="../img/${board.id}/${board.image}">
-									<br>
-								</c:if>
-								${board.content }
-							</div>
-							<div class="button_bar">
-								<button type="button" onclick="location.href='noticeBoard'">목록</button>
-									<button type="button"
-										onclick="location.href='noticeboard_Modify?no=${board.no }'">수정</button>
-									<button type="button" onclick="deleteCheck()">삭제</button>
-							</div>
-							 -->
-<c:import url="/footer" />
+		
