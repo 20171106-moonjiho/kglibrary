@@ -1,105 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>비치희망도서 상세정보</title>
+</head>
+<link href="book2.css" rel="stylesheet">
+<body>
 <c:import url="/header" />
 <c:import url="/bookheader" />
-<style>
-h2 {
-	font-weight: border;
-}
-
-.hr1 {
-	border: 0;
-	height: 2px;
-	background: #d3d3d3;
-}
-
-.grey {
-	color: #727272;
-}
-
-#strong {
-	font-weight: 900;
-}
-
-table {
-	width: 100%;
-	border-top: 1px solid #d3d3d3;
-	border-collapse: collapse;
-}
-
-th {
-	background-color: #d3d3d3;
-	border-top: 3px solid #727272;
-}
-
-th, td {
-	border-bottom: 1px solid #d3d3d3;
-	padding: 10px;
-}
-
-.greylist {
-	width: 50px;
-	height: 30px;
-	font-weight: 900;
-	color: white;
-	text-align: center;
-	background: grey;
-	border: solid 2px white;
-	border-radius: 5px;
-}
-
-.submit_button {
-	width: 80px;
-	height: 30px;
-	font-weight: 900;
-	color: white;
-	text-align: center;
-	background: linear-gradient(to bottom, grey, black);
-	border: solid 2px white;
-	border-radius: 5px;
-}
-
-.left {
-	text-align: left;
-}
-
-.right {
-	float: right;
-}
-
-.center {
-	text-align: center;
-}
-
-a {
-	color: black;
-	text-decoration-line: none;
-}
-</style>
-
-
 <script>
-	function deleteCheck(){
-		result = confirm('진짜로 삭제하겠습니까?');
-		if(result == true){
-			location.href="bookHopeDeleteProc?no=${board.no}"
-		}
-	}
-	
-	
 </script>
-
-<div id="contents">
-	<div id="print_wrap">
 		<div id="cont_head">
-			<h2>비치희망도서</h2>
+			<h2>비치희망도서 상세정보</h2>
 			<!-- 현재위치 -->
 			<div id="location">
 				<ul>
 					<li>홈</li>
 					<li>도서자료검색</li>
-					<li class="now">비치희망도서상세정보</li>
+					<li class="now">비치희망도서 상세정보</li>
 				</ul>
 			</div>
 			<!-- //현재위치 -->
@@ -141,12 +61,9 @@ a {
 								<button type="button" onclick="location.href='bookHopeForm'">목록</button>
 								<c:choose>
 									<c:when test="${sessionScope.id eq board.hope_user || sessionScope.id eq 'admin'}">
-										<button type="button" onclick="deleteCheck()">삭제</button>
+										<button type="button" onclick="deleteHopeCheck('${board.no}')">삭제</button>
 									</c:when>
-								</c:choose> 
-
-
-
+								</c:choose>
 							</td>
 						</tr>
 
@@ -155,21 +72,7 @@ a {
 
 			</div>
 		</div>
-
-	</div>
-</div>
-
 <c:import url="/bookfooter" />
 <c:import url="/footer" />
-
-
-
-
-
-
-
-
-
-
-
-
+</body>
+</html>

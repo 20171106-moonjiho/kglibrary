@@ -1,85 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>비치희망도서</title>
+</head>
+<link href="book2.css" rel="stylesheet">
+<body>
 <c:import url="/header" />
 <c:import url="/bookheader" />
-<style>
-h2 {
-	font-weight: border;
-}
-
-.hr1 {
-	border: 0;
-	height: 2px;
-	background: #d3d3d3;
-}
-
-.grey {
-	color: #727272;
-}
-
-#strong {
-	font-weight: 900;
-}
-
-table {
-	width: 100%;
-	border-top: 1px solid #d3d3d3;
-	border-collapse: collapse;
-}
-
-th {
-	background-color: #d3d3d3;
-	border-top: 3px solid #727272;
-}
-
-th, td {
-	border-bottom: 1px solid #d3d3d3;
-	padding: 10px;
-}
-
-.greylist {
-	width: 50px;
-	height: 30px;
-	font-weight: 900;
-	color: white;
-	text-align: center;
-	background: grey;
-	border: solid 2px white;
-	border-radius: 5px;
-}
-
-.submit_button {
-	width: 80px;
-	height: 30px;
-	font-weight: 900;
-	color: white;
-	text-align: center;
-	background: linear-gradient(to bottom, grey, black);
-	border: solid 2px white;
-	border-radius: 5px;
-}
-
-.left {
-	text-align: left;
-}
-
-.right {
-	float: right;
-}
-
-.center {
-	text-align: center;
-}
-
-a {
-	color: black;
-	text-decoration-line: none;
-}
-</style>
-
-<div id="contents">
-	<div id="print_wrap">
 		<div id="cont_head">
 			<h2>비치희망도서</h2>
 			<!-- 현재위치 -->
@@ -103,7 +33,8 @@ a {
 						<select class="selectBox" name="select">
 							<option value="board_title" selected="selected">제목</option>
 							<option value="hope_user">신청자</option>
-					</select> </select> <c:choose>
+					</select>
+						<c:choose>
 							<c:when test="${empty search or search == 'null'}">
 								<input type="text" name="search" />
 							</c:when>
@@ -149,13 +80,7 @@ a {
 				</span>
 			</div>
 		</div>
-
-	</div>
-</div>
-
-
-
-
-
 <c:import url="/bookfooter" />
 <c:import url="/footer" />
+</body>
+</html>
