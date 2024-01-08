@@ -157,7 +157,7 @@
 				<div class="menu_area active">
 					<div class="gnb_bg" style="display: none;"></div>
 				<ul>
-					<li><a href="#">자료검색</a>
+					<li><a href="bookForm">자료검색</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">도서자료검색</p>
 								<ul>	
@@ -266,7 +266,7 @@
 								<ul>	
 									<li><a href="noticeBoard" >공지사항
 									</a></li>
-									<li><a href="#" >묻고 답하기
+									<li><a href="noticeBoard2" >묻고 답하기
 									</a></li>
 									<li><a href="noticeboard_cal" >도서관 일정
 									</a></li>
