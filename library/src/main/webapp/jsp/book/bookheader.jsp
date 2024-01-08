@@ -18,7 +18,7 @@
 									</a>
 								</li>
 								<li id="board2">
-									<a href="bookHope">비치 희망 도서
+									<a href="bookHopeForm">비치 희망 도서
 									</a>
 								</li>
 								

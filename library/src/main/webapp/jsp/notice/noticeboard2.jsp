@@ -102,24 +102,11 @@
 								<input type="image" src="../img/search_bt.gif" id="search_bt"
 									name="search_bt" class="search_bt" alt="검색">
 							</form>
-<<<<<<< HEAD
 							</c:otherwise>
 							</c:choose>
 						</div>
 					</div>
 <c:import url="/noticefooter"/>
 <c:import url="/footer" />
-=======
-						</c:otherwise>
-					</c:choose>
-				</div>
-			</div>
-
-		</div>
-	</div>
-	<!--컨테이너끝 -->
-	<c:import url="/noticefooter" />
-	<c:import url="/footer" />
->>>>>>> branch 'master' of https://github.com/20171106-moonjiho/kglibrary.git
 </body>
 </html>

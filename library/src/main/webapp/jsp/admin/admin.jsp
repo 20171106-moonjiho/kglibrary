@@ -4,44 +4,53 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 관리</title>
 </head>
 <body>
 <c:import url="/header"/>
-<div align="center">
-		회원 목록
+<c:import url="/adminHeader"/>
+<div id="cont_head">
+		<h2>회원 관리</h2>
+		<!-- 현재위치 -->
+		<div id="location">
+			<ul>
+				<li>홈</li>
+				<li>관리자페이지</li>
+				<li class="now">회원 관리</li>
+			</ul>
+		</div>
+		<!-- //현재위치 -->
+	</div>
+	<div id="cont_wrap">
 		<form>
-			<table>
-				<tr>
-					<select class="selectBox" name="select">
-			  					<option value="id" selected="selected">아이디</option>
-   								<option value="tel">전화번호</option>
-    				</select>
-					<td><input type="text" name="search"></td>
-					<td><button type="submit">검색</button></td>
-				</tr>
-			</table>
+			<select class="selectBox" name="select">
+			  	<option value="id" selected="selected">아이디</option>
+   				<option value="tel">전화번호</option>
+    		</select>
+    		<input type="text" name="search">
+			<button type="submit">검색</button>
 		</form>
-	<div align="center">
-		<table border=1>
+	<div id="board" style="width:100%;">
+		<table>
 			<tr>
 				<th>아이디</th>
 				<th>이름</th>
 				<th>전화번호</th>
-				<th>탈퇴</th>
+				<th>삭제</th>
 			</tr>
 			<c:forEach var="member" items="${members}">
 				<tr>
 					<td>${member.id }</td>					
 					<td>${member.name }</td>
 					<td>${member.tel }</td>
-					<td><button type="button" onclick="location.href='adminDelete?id=${member.id }'" >취소</button></td>
+					<td><button type="button" onclick="location.href='adminDelete?id=${member.id }'" >삭제</button></td>
 				</tr>
 			</c:forEach>
 		</table>
 		${result }
 	</div>
 </div>
+<c:import url="/adminFooter"/>
 <c:import url="/footer"/>
 </body>
 </html>
