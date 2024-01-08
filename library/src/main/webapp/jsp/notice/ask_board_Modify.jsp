@@ -1,15 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>공지사항</title>
-</head>
-<body>
 <c:import url="/header" />
-<c:import url="/noticeheader"/>
 <script>
 function noticemf_Check(){
 	var title = document.getElementsByName('title');
@@ -27,7 +19,6 @@ function noticemf_Check(){
 	}
 }
 </script>
-
 <style>
 .card{width: 800px; margin: 0 auto;}
 .selectBox {
@@ -111,15 +102,48 @@ function noticemf_Check(){
 	border-radius: 10px;
 }
 </style>
-
+<div id="container">
+		<!--사이드바 시작-->
+			<div class="swsize">
+				<div id="sidebar">
+					<div class="stit">
+						<p class="eng"></p>
+						<h2>게시글 수정</h2>
+					</div>
+					<div id="sidemenu">
+						<p class="tit jsMMenuText"><a href="#" class="jsMMenuBtn">공지사항
+									</a></p>
+						<ul id="jsMMenu">
+								<li class="on">
+									<a href="noticeBoard">공지사항
+									</a>
+								</li>
+								<li>
+									<a href="ask_board">묻고 답하기
+									</a>
+								</li>
+								<li>
+									<a href="noticeboard_cal">도서관 일정
+									</a>
+								</li>
+						</ul>
+					</div>
+					<div id="jsFacetLeft">				
+					</div>
+				</div>
+			</div><!--사이드바 끝-->
+			
+			<!--컨텐츠 영역-->
+			<div id="contents">
+				<div id="print_wrap">
 					<div id="cont_head">
-							<h2>게시글 수정</h2>
+							<h2>묻고 답하기</h2>
 							<!-- 현재위치 -->
 							<div id="location">
 								<ul>
 									<li>홈</li>
 									<li>이용자마당</li>
-									<li class="now">공지사항</li>
+									<li class="now">묻고 답하기</li>
 								</ul>
 							</div>
 							<!-- //현재위치 -->
@@ -127,7 +151,7 @@ function noticemf_Check(){
 					
 					<div id="cont_wrap">
 						<div id="board" style="width:100%;">
-							<form action="noticeboard_ModifyProc" method='post' id="f" enctype="multipart/form-data">
+							<form action="ask_board_ModifyProc" method='post' id="f" enctype="multipart/form-data">
 							<input type="hidden" name="no" value="${board.no }" />
 								<div class="table_bwrite">
 									<table cellspacing="0" summary="묻고 답하기의 이름, 비밀번호, 내용을 입력">
@@ -192,14 +216,15 @@ function noticemf_Check(){
 								</div>
 								<div class="board_button2">
 									<span><input id="submitbtn" type="button" value="글쓰기" onclick="noticemf_Check()"class="cbtn cbtn_point" ></span>
-									<span><input type="button" value="목록"	 onclick="location.href='noticeBoard'" class="cbtn cbtn_g"></span>
+									<span><input type="button" value="목록"	 onclick="location.href='ask_board'" class="cbtn cbtn_g"></span>
 								</div>
 								
 							</form>
 						</div>
 					</div>
-	
-<c:import url="/noticefooter"/>
-<c:import url="/footer" />
-</body>
-</html>
+				</div>
+			</div>
+			<!--컨테이너끝 -->
+		</div>
+
+<c:import url="/footer" />  

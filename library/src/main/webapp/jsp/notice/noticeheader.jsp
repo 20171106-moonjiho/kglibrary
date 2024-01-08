@@ -18,7 +18,7 @@
 									</a>
 								</li>
 								<li id="board2">
-									<a href="noticeBoard2">묻고 답하기
+									<a href="ask_board">묻고 답하기
 									</a>
 								</li>
 								<li id="cal">

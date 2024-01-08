@@ -10,6 +10,24 @@
 <body>
 <c:import url="/header" />
 <c:import url="/noticeheader"/>
+<script>
+function notice_w_Check(){
+	var title = document.getElementsByName('title');
+	var content = document.getElementsByName('content');
+	var checkbox = document.getElementById('agree1');
+	if(title[0].value == ""){
+		alert('제목을 입력해주세요.');
+	}else if(content[0].value == ""){
+		alert('내용은 필수 사항입니다.');
+	}else if(!checkbox.checked){
+		alert('약관에 동의해주세요.');
+	}else{
+		var f = document.getElementById('f');
+		f.submit();
+	}
+}
+</script>
+
 <style>
 .card{width: 800px; margin: 0 auto;}
 .selectBox {
@@ -93,6 +111,7 @@
 	border-radius: 10px;
 }
 </style>
+
 					<div id="cont_head">
 							<h2>게시글 등록</h2>
 							<!-- 현재위치 -->
@@ -121,24 +140,7 @@
 										</tr>
 									</thead>
 									<tbody>
-									<!-- 
-										<tr>
-											<th scope="row"><label for="b_name"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 이름</label></th>
-											<td><input type="text" size="20" id="b_name" name="b_name" class="board_input" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="배종원" maxlength="30" readonly="readonly" style="border: 1px solid rgb(205, 205, 205); background: rgb(255, 255, 255);"> <span class="text1">* 30자 이내로 입력해주세요. </span></td>
-										</tr>	
-										
-										<tr>
-											<th scope="row"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 공개여부</th>
-											<td>
-												<input type="radio" id="b_open_Y" name="b_open" value="Y" checked=""><label for="b_open_Y">공개</label>
-												<input type="radio" id="b_open_N" name="b_open" value="N"><label for="b_open_N">비공개</label>
-											</td>
-										</tr>	
-										<tr>
-											<th scope="row"><img height="10" width="7" alt="*(필수항목)" src="/img/ic_vcheck.gif"> <label for="b_phone1">연락처</label></th>
-											<td><input type="text" size="4" title="연락처 첫번째" id="b_phone1" name="b_phone1" class="board_input only_number" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="" maxlength="4"> - <input type="text" size="4" title="연락처 두번째" id="b_phone2" name="b_phone2" class="board_input only_number" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="" maxlength="4"> - <input type="text" size="4" title="연락처 세번째" id="b_phone3" name="b_phone3" class="board_input only_number" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="" maxlength="4"> <span class="text1">* 숫자만 입력해주세요. </span></td>
-										</tr>
-									-->
+			
 										<tr>
 											<th scope="row"><label for="b_subject"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 제목</label></th>
 											<td><input type="text" size="100" id="b_subject" name="title" class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="" maxlength="100" style="width:70%">
@@ -193,39 +195,7 @@
 								</div>
 								
 							</form>
-							<!-- 
-							<form action="noticeboard_writeProc" method='post' id="f" enctype="multipart/form-data">
-								<div class="card">
-										
-										<div class="card-write">
-											<div class="title-w">
-												<span class="subject_title">제목</span>
-												<input type="text" name="title" placeholder="제목을 입력하세요.">
-											</div>
-																
-											<div class="msg">
-											<span class="subject_title">내용</span>
-												<textarea name="content" placeholder="내용을 입력하세요."></textarea>
-												<div style="border-bottom: 1px dotted #dedede; width: 90%; margin-top: 5px; margin-bottom: 5px;"></div>
-												<p style="font-size:13px; ">
-												<span style="color: lightcoral">※ 사진첨부시 주의사항</span><br>
-												1. 사진용량이 너무 크거나, bmp 파일은 에러가 발생할 수 있습니다.<br>
-												2. 사진의 파일명은 반드시 영문으로 등록해주세요.<br>
-												3. 사진에 상세 입력사항을 넣거나 타사이트 주소를 게시할 경우 등록글은 삭제됩니다.<br>
-												4. 업로드할 사진의 파일은 <span style="color: lightcoral">jpg, jpeg, png만</span> 가능합니다.
-												</p>
-												<input type="file" name="upfile"><br>
-											</div>
-											
-										</div>
-										<div class="btn-w">
-											<input type="button" value="글쓰기" onclick="find_info_Check()"> 
-											<input type="button" value="목록"	 onclick="location.href='noticeBoard'">
-										</div>
-								</div>
-							</form>
-							 -->
-						<!-- board 끝 -->			
+							
 						</div>
 					</div>
 				
@@ -233,44 +203,7 @@
 			</div>
 			<!--컨테이너끝 -->
 		</div>
-		<!-- 
-<div style="margin: 0 auto; margin-top:100px;">
-	<form action="noticeboard_writeProc" method='post' id="f" enctype="multipart/form-data">
-	<div class="card">
-			<div class="card-header1" style="text-align: center;">
-				<h1>게시글 등록</h1>
-			</div>
 
-
-			<div class="card-write">
-				
-			<div class="title-w">
-				<span class="subject_title">제목</span>
-				<input type="text" name="title" placeholder="제목을 입력하세요.">
-			</div>
-								
-			<div class="msg">
-			<span class="subject_title">내용</span>
-				<textarea name="content" placeholder="내용을 입력하세요."></textarea>
-				<div style="border-bottom: 1px dotted #dedede; width: 90%; margin-top: 5px; margin-bottom: 5px;"></div>
-				<p style="font-size:13px; ">
-				<span style="color: lightcoral">※ 사진첨부시 주의사항</span><br>
-				1. 사진용량이 너무 크거나, bmp 파일은 에러가 발생할 수 있습니다.<br>
-				2. 사진의 파일명은 반드시 영문으로 등록해주세요.<br>
-				3. 사진에 상세 입력사항을 넣거나 타사이트 주소를 게시할 경우 등록글은 삭제됩니다.<br>
-				4. 업로드할 사진의 파일은 <span style="color: lightcoral">jpg, jpeg, png만</span> 가능합니다.
-				</p>
-				<input type="file" name="upfile"><br>
-			</div>
-		</div>
-			<div class="btn-w">
-				<input type="button" value="글쓰기" onclick="find_info_Check()"> 
-				<input type="button" value="목록"	 onclick="location.href='noticeBoard'">
-				</div>
-			</div>
-		</form>
-</div>	
- -->
 <c:import url="/noticefooter"/>
 <c:import url="/footer" />
 </body>

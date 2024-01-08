@@ -4,11 +4,13 @@
 	<link href="common.css" rel="stylesheet">
 	<link href="main.css" rel="stylesheet"> 
 	<link href="notice.css" rel="stylesheet">
+	<link href="swiper.css" rel="stylesheet">
  	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
  	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 	<script src="script-3.js"></script>
+
 	<script>
 	function chk(){
 		if(cc == 1){
@@ -64,56 +66,7 @@
 		});
 	</script>
 	<style>
-.swiper {
-      width: 100%;
-      height: 100%;
-    }
-
-    .swiper-slide {
-      text-align: center;
-      font-size: 18px;
-      background: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .swiper-slide img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .autoplay-progress {
-      position: absolute;
-      right: 16px;
-      bottom: 16px;
-      z-index: 10;
-      width: 48px;
-      height: 48px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      color: var(--swiper-theme-color);
-    }
-
-    .autoplay-progress svg {
-      --progress: 0;
-      position: absolute;
-      left: 0;
-      top: 0px;
-      z-index: 10;
-      width: 100%;
-      height: 100%;
-      stroke-width: 4px;
-      stroke: var(--swiper-theme-color);
-      fill: none;
-      stroke-dashoffset: calc(125.6 * (1 - var(--progress)));
-      stroke-dasharray: 125.6;
-      transform: rotate(-90deg);
-    }	
+	
 </style>
 
 <div id="wrap">
@@ -266,7 +219,7 @@
 								<ul>	
 									<li><a href="noticeBoard" >공지사항
 									</a></li>
-									<li><a href="noticeBoard2" >묻고 답하기
+									<li><a href="ask_board" >묻고 답하기
 									</a></li>
 									<li><a href="noticeboard_cal" >도서관 일정
 									</a></li>
