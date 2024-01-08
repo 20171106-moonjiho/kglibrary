@@ -13,55 +13,44 @@
 		INSERT INTO bookHope
 		VALUES(#{no},#{board_title}, #{hope_user}, #{category}, #{title_info},
 		#{author_info}, #{pub_info},
-		#{pub_year_info}, #{reason})
+		#{pub_year_info}, #{reason},#{hopedate})
 	</insert>
 
 
 	<select id="totalCount">
 		<choose>
-			<when test="select == 'title'">
+			<when test="select == 'board_title'">
 				SELECT count(no) FROM bookHope WHERE title_info like
 				'%'||#{search}||'%'
 			</when>
-			<when test="select == 'author'">
-				SELECT count(no) FROM bookHope WHERE author_info like
-				'%'||#{search}||'%'
-			</when>
-			<when test="select == 'category'">
-				SELECT count(no) FROM bookHope WHERE category like
+			<when test="select == 'hope_user'">
+				SELECT count(no) FROM bookHope WHERE hope_user like
 				'%'||#{search}||'%'
 			</when>
 			<otherwise>
 				SELECT count(no) FROM bookHope
 			</otherwise>
 		</choose>
+		
 	</select>
 
 	<select id="bookHopeForm" resultType="com.kg.library.bookHope.BookHopeDTO">
 
 		<choose>
-			<when test="select == 'title'">
+			<when test="select == 'board_title'">
 				SELECT B.* FROM (
 				SELECT ROWNUM as r, A.* FROM (
 				SELECT bookHope.* FROM bookHope
-				WHERE title_info like '%'||#{search}||'%'
+				WHERE board_title like '%'||#{search}||'%'
 				ORDER BY no DESC)A
 				)B WHERE B.r BETWEEN #{begin} AND #{end}
 			</when>
-			<when test="select == 'author'">
+			<when test="select == 'hope_user'">
 				SELECT B.* FROM (
 				SELECT ROWNUM as r, A.* FROM (
 				SELECT bookHope.* FROM bookHope
-				WHERE author_info like '%'||#{search}||'%'
+				WHERE hope_user like '%'||#{search}||'%'
 				ORDER BY no DESC)A
-				)B WHERE B.r BETWEEN #{begin} AND #{end}
-			</when>
-			<when test="select == 'category'">
-				SELECT B.* FROM (
-				SELECT ROWNUM as r, A.* FROM (
-				SELECT bookHope.* FROM bookHope
-				WHERE category like '%'||#{search}||'%' ORDER
-				BY no DESC)A
 				)B WHERE B.r BETWEEN #{begin} AND #{end}
 			</when>
 			<otherwise>

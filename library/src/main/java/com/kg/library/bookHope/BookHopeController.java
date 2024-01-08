@@ -41,14 +41,15 @@ public class BookHopeController {
 		}
 			return "bookHope/bookHopeRegist";
 	}
-	/*
+	
 	@RequestMapping("bookHopeRegistProc")
 	public String bookHopeRegistProc(BookHopeDTO bookHopeDTO, RedirectAttributes ra) {
 
-		String path = service.bookHopeRegistProc(multi);
+		
+		String path = service.bookHopeRegistProc(bookHopeDTO);
 		return path;
 	}
-	/*
+	
 	@RequestMapping("bookHopeContent")
 	public String bookHopeContent(String no,Model model) {
 		
@@ -65,12 +66,12 @@ public class BookHopeController {
 	public String bookHopeDeleteProc(String no) {
 		String sessionId = (String) session.getAttribute("id");
 		if (sessionId == null || sessionId.trim().isEmpty()) {
-			return "redirect:bookHopeForm";
+			return "redirect:login";
 		}
 		
 		service.bookHopeDeleteProc(no);
 		return "redirect:bookHopeForm";	
 	}
 
-	*/
+	
 }

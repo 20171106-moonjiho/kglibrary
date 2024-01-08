@@ -145,8 +145,9 @@ a {
 					<c:when test="${sessionScope.id eq 'admin'}">
 						<tr>
 							<span class="right">
-								<button type="button" style="width: 150px;"  onclick="location.href='bookRegist'"
-									class="submit_button">개별 도서 등록</button>
+								<button type="button" style="width: 150px;"
+									onclick="location.href='bookRegist'" class="submit_button">개별
+									도서 등록</button>
 							</span>
 						</tr>
 					</c:when>

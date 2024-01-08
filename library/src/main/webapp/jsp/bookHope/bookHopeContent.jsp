@@ -3,6 +3,82 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:import url="/header" />
 <c:import url="/bookheader" />
+<style>
+h2 {
+	font-weight: border;
+}
+
+.hr1 {
+	border: 0;
+	height: 2px;
+	background: #d3d3d3;
+}
+
+.grey {
+	color: #727272;
+}
+
+#strong {
+	font-weight: 900;
+}
+
+table {
+	width: 100%;
+	border-top: 1px solid #d3d3d3;
+	border-collapse: collapse;
+}
+
+th {
+	background-color: #d3d3d3;
+	border-top: 3px solid #727272;
+}
+
+th, td {
+	border-bottom: 1px solid #d3d3d3;
+	padding: 10px;
+}
+
+.greylist {
+	width: 50px;
+	height: 30px;
+	font-weight: 900;
+	color: white;
+	text-align: center;
+	background: grey;
+	border: solid 2px white;
+	border-radius: 5px;
+}
+
+.submit_button {
+	width: 80px;
+	height: 30px;
+	font-weight: 900;
+	color: white;
+	text-align: center;
+	background: linear-gradient(to bottom, grey, black);
+	border: solid 2px white;
+	border-radius: 5px;
+}
+
+.left {
+	text-align: left;
+}
+
+.right {
+	float: right;
+}
+
+.center {
+	text-align: center;
+}
+
+a {
+	color: black;
+	text-decoration-line: none;
+}
+</style>
+
+
 <script>
 	function deleteCheck(){
 		result = confirm('진짜로 삭제하겠습니까?');
@@ -33,8 +109,8 @@
 		<div id="cont_wrap">
 			<div id="board" style="width: 100%;">
 
-				<div align="center" style="margin-top: 100px; margin-bottom: 50px;">
-					<h1>${board.board_title}</h1>
+				<div align="center" style="margin-top: 50px; margin-bottom: 50px;">
+					<h1>${board.board_title}</h1><br><br>
 
 					<table border='1' style="margin-top: 50px;">
 						<tr>
@@ -60,13 +136,11 @@
 							</td>
 						</tr>
 
-
-
 						<tr>
 							<td colspan="6" align="center">
 								<button type="button" onclick="location.href='bookHopeForm'">목록</button>
 								<c:choose>
-									<c:when test="${sessionScope.id eq board.hope_user}">
+									<c:when test="${sessionScope.id eq board.hope_user || sessionScope.id eq 'admin'}">
 										<button type="button" onclick="deleteCheck()">삭제</button>
 									</c:when>
 								</c:choose> 

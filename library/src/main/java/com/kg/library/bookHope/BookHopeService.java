@@ -65,106 +65,52 @@ public class BookHopeService {
 			model.addAttribute("result", result);
 		}
 
-	public String bookHopeRegistProc(MultipartHttpServletRequest multi) { // 책 등록
+	public String bookHopeRegistProc(BookHopeDTO bookHopeDTO) { // 책 등록
 			
 			
 			String sessionId = (String) session.getAttribute("id");
 			if (sessionId == null)
 				return "redirect:login";
-	
 			
-			LocalDateTime currentTime = LocalDateTime.now(); // 현재 시간 가져오기
-			Timestamp borrowtime = Timestamp.valueOf(currentTime); //형변환
-		
-			int book_count = Integer.parseInt(multi.getParameter("book_count")); //책 갯수
+			BookHopeDTO board = new BookHopeDTO();
 			
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+			board.setBoard_title(bookHopeDTO.getBoard_title()); //제목		
+			board.setHope_user(sessionId); //신청자
+			board.setCategory(bookHopeDTO.getCategory()); // 카테고리
+			board.setTitle_info(bookHopeDTO.getTitle_info()); //도서 제목
+			board.setAuthor_info(bookHopeDTO.getAuthor_info()); // 저작자
 			
-			String fullPath = "";
-			
-			if(multi.getParameter("category").equals("API")) //API에서 받아온 이미지 라면
-			{
-				fullPath = multi.getParameter("image");
-			}
-			else { //사용자가 직접 올린 이미지라면
-			MultipartFile file = multi.getFile("upfile");
-			if(file.getSize() != 0) {	//클라이언트라 파일을 업로드 했다면
-				// 파일 이름
-				sdf = new SimpleDateFormat("yyyyMMddHHmmss-");
-				String fileTime = sdf.format(new Date());
-				String fileName = file.getOriginalFilename();
-				
-				String suffix = fileName.substring(fileName.lastIndexOf(".")+1, fileName.length());
-				System.out.println("bookRegist-suffix : " + suffix);
-				if(suffix.equalsIgnoreCase("jpg") == false)
-					return "redirect:bookRegist";
-				
-				// 파일 저장 경로
-				String fileSaveDirectory = filePath + sessionId;
-				File f = new File(fileSaveDirectory);
-				if(f.exists() == false) {// 파일이 없다면
-					f.mkdirs(); //폴더 생성
-				}
-				System.out.println(fileSaveDirectory);
-				//String suffix = fileName.substring(beginIndex)
-							
-				fullPath =fileSaveDirectory + "\\" + fileTime + fileName;
-				System.out.println("이미지 경로 " + fullPath);
-			 //	board.setImage(fullPath);
-				
-				f = new File(fullPath);
-				try {
-				file.transferTo(f); //파일 저장
-				}catch(Exception e) {
-					e.printStackTrace();
-					fullPath = "";	//		board.setImage("");
-				}
-				/*
-				 * file.transferTo(); 파일을 이동시키는 기능
-				 * <input type="file" name= "upfile"을 사용하여 서버에 파일 데이터가 전달되면 웹서버가 
-				 * 임시파일로 저장을 함. 임시파일로 저장된 파일을 개발자가 원하는 대로 이동 시킬 때 사용함.
-				 * 
-				 */
-			}
-			}
-			sdf = new SimpleDateFormat("yyyy-MM-dd"); 
-			
-			for(int i = 1; i <= book_count; i++) {
-				BookHopeDTO board = new BookHopeDTO();
-			
-			board.setBoard_title("board_title"); //제목		
-			board.setHope_user("hope_user"); //신청자
-			board.setCategory(multi.getParameter("category")); // 카테고리
-			board.setTitle_info(multi.getParameter("title_info")); //도서 제목
-			board.setAuthor_info(multi.getParameter("author_info")); // 저작자
-			
-			String pub_info = multi.getParameter("pub_info");
+			String pub_info = bookHopeDTO.getPub_info(); //발행자
 			if(pub_info == null || pub_info.trim().isEmpty()) { //발행자가 없을 때 비움
-			board.setPub_info(multi.getParameter(" "));} 
+			board.setPub_info(" ");} 
 			else { //발행자
 			board.setPub_info(pub_info);}
 			
-			board.setPub_year_info(multi.getParameter("pub_year_info")); // 발행연도
-
+			board.setPub_year_info(bookHopeDTO.getPub_year_info()); // 발행연도
+			
+			String contents = bookHopeDTO.getReason(); //testarea enter값 변경 후 저장
+			contents = contents.replace("\r\n","<br>"); // 수정을 하겠다면 그부분 다시 relpace 해줘야함
+			board.setReason(contents); //신청 이유
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			board.setHopedate(sdf.format(new Date())); //신청 작성일
+			
+			System.out.println(board.getBoard_title());
+			System.out.println(board.getHope_user());
 			System.out.println(board.getCategory());	
 			System.out.println(board.getTitle_info());	
 			System.out.println(board.getAuthor_info());	
 			System.out.println(board.getPub_info());	
-			System.out.println(board.getPub_year_info());	
+			System.out.println(board.getPub_year_info());
+			System.out.println(board.getReason());
+			System.out.println(board.getHopedate());
 	
-			mapper.bookRegistProc(board);
-			}
+			mapper.bookHopeRegistProc(board);
+			
 			
 			return "redirect:bookHopeForm";
-			//조회수랑 게시글 번호는 Insert 명령 시 입력.
-
-			//bdto.setId((String)session.getAttribute("id"));
-			//mapper.boardWriteProc(bdto);
-			
-			//String sessionNo = (String)session.getAttribute("no");
 
 	}
-/*
+
 	public BookHopeDTO bookHopeContent(String no, Model model) { // 책 상세정보
 		
 		int n = 1;
@@ -175,35 +121,10 @@ public class BookHopeService {
 		}
 		
 		BookHopeDTO board = mapper.bookHopeContent(n);
-
-		if(board != null) {
-			System.out.println("image name = " + board.getImage());
-			
-			if(board.getImage() != null && !board.getCategory().equals("API")) { //API에서 받은 이미지가 아니면
-				String[] names = board.getImage().split("\\\\");
-				
-				for(String name : names)
-					System.out.println("BoardService-boardContent name : "+ name);
-				String[] fileNames = names[12].split("-", 2);
-				for(String fileName : fileNames)
-					System.out.println("BoardService-boardContent fileName : "+ fileName);
-				
-				board.setImage(names[12]);
-			}
-		}
-		
-		// 7일 후의 시간 계산
-		LocalDateTime storedTime = board.getBorrowdate().toLocalDateTime(); //DB 값 형 변환
-        LocalDateTime rentalday = storedTime.plus(Duration.ofDays(7)); //대여 종료 시점
-        
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"); //보이기용
-		String rentaldate = rentalday.format(formatter);//보이기용 형변환
-
-        model.addAttribute("rentaldate", rentaldate);
 		return board;
 	}
 
-
+	
 	public void bookHopeDeleteProc(String no) {
 		int n = 1;
 		try{
@@ -214,10 +135,6 @@ public class BookHopeService {
 		mapper.bookHopeDeleteProc(n);
 	}
 		
-
-
-	*/
-	
 	
 	
 }

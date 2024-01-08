@@ -81,7 +81,7 @@ a {
 <div id="contents">
 	<div id="print_wrap">
 		<div id="cont_head">
-		<h2>비치희망도서</h2>
+			<h2>비치희망도서</h2>
 			<!-- 현재위치 -->
 			<div id="location">
 				<ul>
@@ -90,7 +90,7 @@ a {
 					<li class="now">비치희망도서</li>
 				</ul>
 			</div>
-	
+
 			<!-- //현재위치 -->
 		</div>
 
@@ -101,9 +101,8 @@ a {
 				<form action="bookHopeForm">
 					<span> ▷ 총 ${count }개의 검색 결과가 있습니다. </span> <span class="center">
 						<select class="selectBox" name="select">
-							<option value="title" selected="selected">제목</option>
-							<option value="author">저작자</option>
-							<option value="category">카테고리</option>
+							<option value="board_title" selected="selected">제목</option>
+							<option value="hope_user">신청자</option>
 					</select> </select> <c:choose>
 							<c:when test="${empty search or search == 'null'}">
 								<input type="text" name="search" />
@@ -133,23 +132,21 @@ a {
 									<td class="center">${board.no }</td>
 									<td class="left"
 										onclick="location.href='bookHopeContent?no=${board.no }'">
-										${board.title_info }</td>
-									<td class="center">${board.author_info }</td>
-									<td class="center">${board.reg_date }</td>
+										${board.board_title }</td>
+									<td class="center">${board.hope_user }</td>
+									<td class="center">${board.hopedate }</td>
 								</tr>
 							</c:forEach>
 						</table>
 						<div class="center" style="margin-top: 18px;">${result}</div>
 					</c:otherwise>
 				</c:choose>
-				
-							<span class="right">
-								<button type="button" style="width: 150px;"  onclick="location.href='bookHopeRegist'"
-									class="submit_button">비치 희망 도서 신청</button>
-							</span>
-				
 
-
+				<span class="right">
+					<button type="button" style="width: 150px;"
+						onclick="location.href='bookHopeRegist'" class="submit_button">비치
+						희망 도서 신청</button>
+				</span>
 			</div>
 		</div>
 

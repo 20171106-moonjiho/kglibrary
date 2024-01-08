@@ -2,7 +2,7 @@ package com.kg.library.bookHope;
 
 /*
 
-순서 - 번호(1),제목(2),신청인(3),카테고리(4),도서 제목(5),저작자(6),발행자(7),발행년도(8),신청 이유(9)
+순서 - 번호(1),제목(2),신청인(3),카테고리(4),도서 제목(5),저작자(6),발행자(7),발행년도(8),신청 이유(9),신청 시간(10)
 
 create table bookHope(
 no number not null,
@@ -13,7 +13,9 @@ title_info varchar2(500),
 author_info varchar2(500),
 pub_info varchar2(500),
 pub_year_info varchar2(50),
-reason varchar2(200));
+reason varchar2(200),
+hopedate varchar2(30);
+
 
 */
 
@@ -28,8 +30,15 @@ public class BookHopeDTO {
 	private String pub_info;
 	private String pub_year_info;
 	private String reason;
+	private String hopedate;
 	
 	
+	public String getHopedate() {
+		return hopedate;
+	}
+	public void setHopedate(String hopedate) {
+		this.hopedate = hopedate;
+	}
 	public int getNo() {
 		return no;
 	}
