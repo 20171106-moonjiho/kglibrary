@@ -1,14 +1,10 @@
 package com.kg.library.admin;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.kg.library.member.MemberDTO;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -46,5 +42,15 @@ public class AdminController {
 		}
 		service.adminDelete(id);
 		return "redirect:admin";
+	}
+	
+	@RequestMapping("adminHeader")
+	public String adminHeader() {
+		return "/admin/adminHeader";
+	}
+	
+	@RequestMapping("adminFooter")
+	public String adminFooter() {
+		return "/admin/adminFooter";
 	}
 }

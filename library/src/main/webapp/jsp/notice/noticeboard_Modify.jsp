@@ -1,7 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>공지사항</title>
+</head>
+<body>
 <c:import url="/header" />
+<<<<<<< HEAD
 <script>
 function noticemf_Check(){
 	var title = document.getElementsByName('title');
@@ -19,6 +27,9 @@ function noticemf_Check(){
 	}
 }
 </script>
+=======
+<c:import url="/noticeheader"/>
+>>>>>>> branch 'master' of https://github.com/20171106-moonjiho/kglibrary.git
 <style>
 .card{width: 800px; margin: 0 auto;}
 .selectBox {
@@ -102,6 +113,7 @@ function noticemf_Check(){
 	border-radius: 10px;
 }
 </style>
+<<<<<<< HEAD
 <div id="container">
 		<!--사이드바 시작-->
 			<div class="swsize">
@@ -136,8 +148,10 @@ function noticemf_Check(){
 			<!--컨텐츠 영역-->
 			<div id="contents">
 				<div id="print_wrap">
+=======
+>>>>>>> branch 'master' of https://github.com/20171106-moonjiho/kglibrary.git
 					<div id="cont_head">
-							<h2>게시글 등록</h2>
+							<h2>게시글 수정</h2>
 							<!-- 현재위치 -->
 							<div id="location">
 								<ul>
@@ -222,10 +236,6 @@ function noticemf_Check(){
 							</form>
 						</div>
 					</div>
-				</div>
-			</div>
-			<!--컨테이너끝 -->
-		</div>
 	<!-- 	
 <div style="margin: 0 auto; margin-top:100px;">
 	<form action="noticeboard_ModifyProc" method='post' id="f" enctype="multipart/form-data">
@@ -265,4 +275,7 @@ function noticemf_Check(){
 		</form>
 </div>
  -->
-<c:import url="/footer" />  
+<c:import url="/noticefooter"/>
+<c:import url="/footer" />
+</body>
+</html>

@@ -10,8 +10,7 @@
 	<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 	<script src="script-3.js"></script>
-	
- 
+
 	<script>
 	function chk(){
 		if(cc == 1){
@@ -111,18 +110,22 @@
 				<div class="menu_area active">
 					<div class="gnb_bg" style="display: none;"></div>
 				<ul>
-					<li><a href="#">자료검색</a>
+					<li><a href="bookForm">자료검색</a>
 						<div class="two_depth">
-								<p class="bmenu_tit">자료검색</p>
+								<p class="bmenu_tit">도서자료검색</p>
 								<ul>	
-									<li><a href="bookForm" >통합자료 검색
+									<li><a href="bookForm" >도서자료검색
 									</a></li>
-									<li><a href="#" >신착자료 검색
+									<li><a href="bookHopeForm" >비치 희망 도서
 									</a></li>
-									<li><a href="#" >대출 베스트
-									</a></li>
-									<li><a href="#" >정기간행물
-									</a></li>
+									<c:choose>
+										<c:when test="${sessionScope.id eq 'admin'}">
+									
+											<li><a href="apiBookRegist" >API 등록
+											</a></li>
+										</c:when> 
+									</c:choose>	
+									
 								</ul>
 						</div>
 					</li>
@@ -176,30 +179,22 @@
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
 								<ul>	
-									<li><a href="#" >통합자료 검색
-									</a></li>
-									<li><a href="#" >신착자료 검색
-									</a></li>
-									<li><a href="#" >대출 베스트
-									</a></li>
-									<li><a href="#" >정기간행물
+									<li><a href="reservation" >회의실 예약
 									</a></li>
 								</ul>
 						</div>
 					</li>
 					 
-					<li><a href="#">큐레이션</a>
+					<li><a href="donateguide">도서 기증</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
 								<ul>	
-									<li><a href="#" >통합자료 검색
+									<li><a href="donateguide" >기증 안내
 									</a></li>
-									<li><a href="#" >신착자료 검색
+									<li><a href="donateWrite" >기증 신청
 									</a></li>
-									<li><a href="#" >대출 베스트
-									</a></li>
-									<li><a href="#" >정기간행물
-									</a></li>
+									<li><a href="donateForm" >기증 목록
+									</a></li>									
 								</ul>
 						</div>
 					</li>

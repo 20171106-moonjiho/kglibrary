@@ -28,7 +28,6 @@ public class BookController {
 				search = ""; select = "title"; 
 			}
 
-			
 			service.bookForm(cp, model, search, select); //DB 검색 및 정렬
 
 		return "book/bookForm";
@@ -89,13 +88,51 @@ public class BookController {
 	@RequestMapping("bookDeleteProc")
 	public String bookDeleteProc(String no) {
 		String sessionId = (String) session.getAttribute("id");
-		if (!sessionId.equals("admin") || sessionId.trim().isEmpty()) {
+		if (sessionId == null || !sessionId.equals("admin") || sessionId.trim().isEmpty()) {
 			return "redirect:bookForm";
 		}
 		
 		service.bookDeleteProc(no);
 		return "redirect:bookForm";	
 	}
+
+	@RequestMapping("apiBookRegist") //도서 등록 url
+	public String apiBookRegist() {
+		
+		String sessionId = (String)session.getAttribute("id");
+		if (sessionId == null || !sessionId.equals("admin") || sessionId.trim().isEmpty()) {
+			System.out.println(sessionId);
+			return "redirect:login";
+		}
+	//관리자가 아니면 등록 불가, 회원이 url을 직접적으로 치고 들어올 경우 반환하기 위하여 설정. 회원가입 확인 되면 주석 풀것
+		return "book/apiBookRegist";
+	}
+	
+	@RequestMapping("apiRegistProc") //도서 등록
+	public String apiRegistProc(String pageNum, String select, String search, Model model) {
+
+		if(search == null || search.trim().isEmpty()) {
+			return "redirect:apiBookRegist";
+		}
+		if(select == null || select.trim().isEmpty()) {
+			return "redirect:apiBookRegist";
+		}
+
+		service.apiRegistProc(pageNum, select, search, model);
+		System.out.println("등록");
+
+		return "book/apiAlert";
+	}
 	
 	
+	//공지사이드바 템플릿
+	@RequestMapping("bookheader")
+	public String bookheader() {
+		return "book/bookheader";
+	}
+	
+	@RequestMapping("bookfooter")
+	public String bookfooter() {
+		return "book/bookfooter";
+	}
 }
