@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
-
 <html>
 <head>
 <meta charset="UTF-8">
@@ -20,18 +18,12 @@ function apimessageAlert(apimessage){
 		window.location.href = 'apiBookRegist';
 	}
 }
-
 </script>
-
-<title>Insert title here</title>
+<title>Alert</title>
 </head>
 <body>
-				
-						 <script type="text/javascript">
-						 apimessageAlert('${apimessage}');
-						 </script>
-
-
-
+	 <script type="text/javascript">
+		 apimessageAlert('${apimessage}');
+	 </script>
 </body>
 </html>
