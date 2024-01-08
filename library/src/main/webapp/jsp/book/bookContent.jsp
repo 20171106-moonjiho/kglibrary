@@ -68,7 +68,7 @@
 							<th width="100">작성자</th>
 							<td width="200">${board.author_info }</td>
 							<th width="70">발행자</th>
-							<td whdth="200">${board.pub_info}</td>
+							<td width="200">${board.pub_info}</td>
 						</tr>
 						<tr>
 							<th width="100">카테고리</th>
@@ -76,7 +76,7 @@
 							<th width="100">발행연도</th>
 							<td width="200">${board.pub_year_info }</td>
 							<th width="70">비치일</th>
-							<td whdth="200">${board.reg_date}</td>
+							<td width="200">${board.reg_date}</td>
 						</tr>
 						<tr>
 							<c:set var="borrowPerson" value="${board.borrowperson}" />
@@ -111,7 +111,6 @@
 						<tr>
 							<th>문서내용</th>
 							<td colspan="6">${board.detail_link }</td>
-							</td>
 						</tr>
 
 

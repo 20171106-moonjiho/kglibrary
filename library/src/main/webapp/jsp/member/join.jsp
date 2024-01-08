@@ -28,11 +28,11 @@
 <div id="cont_wrap">
 	<div id="board" style="width:100%;">
 	<font color="red" >${msg }</font>
-		<form action="updateProc" method="post" id="f">
+		<form action="joinProc" method="post" id="f">
 			<table class="table_bwrite">
 				<tr>
 					<th>아이디</th>
-					<td><input type="text" id="id"><br></td>
+					<td><input type="text" name="id" id="id"><br></td>
 				</tr>
 				<tr>
 					<th>비밀번호</th>
