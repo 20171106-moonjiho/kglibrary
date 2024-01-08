@@ -9,7 +9,7 @@
 </head>
 <body>
 <c:import url="/header" />
-<<<<<<< HEAD
+<c:import url="/noticeheader"/>
 <script>
 function noticemf_Check(){
 	var title = document.getElementsByName('title');
@@ -27,9 +27,7 @@ function noticemf_Check(){
 	}
 }
 </script>
-=======
-<c:import url="/noticeheader"/>
->>>>>>> branch 'master' of https://github.com/20171106-moonjiho/kglibrary.git
+
 <style>
 .card{width: 800px; margin: 0 auto;}
 .selectBox {
@@ -113,43 +111,7 @@ function noticemf_Check(){
 	border-radius: 10px;
 }
 </style>
-<<<<<<< HEAD
-<div id="container">
-		<!--사이드바 시작-->
-			<div class="swsize">
-				<div id="sidebar">
-					<div class="stit">
-						<p class="eng"></p>
-						<h2>이용자마당</h2>
-					</div>
-					<div id="sidemenu">
-						<p class="tit jsMMenuText"><a href="#" class="jsMMenuBtn">공지사항
-									</a></p>
-						<ul id="jsMMenu">
-								<li class="on">
-									<a href="noticeBoard">공지사항
-									</a>
-								</li>
-								<li>
-									<a href="ask_board">묻고 답하기
-									</a>
-								</li>
-								<li>
-									<a href="noticeboard_cal">도서관 일정
-									</a>
-								</li>
-						</ul>
-					</div>
-					<div id="jsFacetLeft">				
-					</div>
-				</div>
-			</div><!--사이드바 끝-->
-			
-			<!--컨텐츠 영역-->
-			<div id="contents">
-				<div id="print_wrap">
-=======
->>>>>>> branch 'master' of https://github.com/20171106-moonjiho/kglibrary.git
+
 					<div id="cont_head">
 							<h2>게시글 수정</h2>
 							<!-- 현재위치 -->
@@ -236,45 +198,7 @@ function noticemf_Check(){
 							</form>
 						</div>
 					</div>
-	<!-- 	
-<div style="margin: 0 auto; margin-top:100px;">
-	<form action="noticeboard_ModifyProc" method='post' id="f" enctype="multipart/form-data">
-	<input type="hidden" name="no" value="${board.no }" />
-	<div class="card">
-			<div class="card-header1" style="text-align: center;">
-				<h1>게시글 등록</h1>
-			</div>
-
-
-			<div class="card-write">
-				
-			<div class="title-w">
-				<span class="subject_title">제목</span>
-				<input type="text" name="title" placeholder="제목을 입력하세요." value="${board.title }">
-			</div>
-								
-			<div class="msg">
-			<span class="subject_title">내용</span>
-				<textarea name="content" placeholder="내용을 입력하세요." >${board.content }</textarea>
-				<div style="border-bottom: 1px dotted #dedede; width: 90%; margin-top: 5px; margin-bottom: 5px;"></div>
-				<p style="font-size:13px; ">
-				<span style="color: lightcoral">※ 사진첨부시 주의사항</span><br>
-				1. 사진용량이 너무 크거나, bmp 파일은 에러가 발생할 수 있습니다.<br>
-				2. 사진의 파일명은 반드시 영문으로 등록해주세요.<br>
-				3. 사진에 상세 입력사항을 넣거나 타사이트 주소를 게시할 경우 등록글은 삭제됩니다.<br>
-				4. 업로드할 사진의 파일은 <span style="color: lightcoral">jpg, jpeg, png만</span> 가능합니다.
-				</p>
-				<input type="file" name="upfile">${board.image }<br>
-			</div>
-		</div>
-			<div class="btn-w">
-				<input type="button" value="글쓰기" onclick="noticemf_Check()"> 
-				<input type="button" value="목록"	 onclick="location.href='noticeBoard'">
-				</div>
-			</div>
-		</form>
-</div>
- -->
+	
 <c:import url="/noticefooter"/>
 <c:import url="/footer" />
 </body>
