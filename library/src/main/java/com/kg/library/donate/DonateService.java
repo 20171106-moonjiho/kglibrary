@@ -48,4 +48,9 @@ public class DonateService {
 		int res = mapper.donateWriteProc(dto);
 		return res;
 	}
+
+	public DonateDTO donateContent(String no) {
+		DonateDTO board = mapper.donateContent(no);
+		return board;
+	}
 }

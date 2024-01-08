@@ -1,8 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:import url="/header" />
-<c:import url="/userHeader"/>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>대출 목록</title>
+</head>
 <style>
 h2 {
 	font-weight: border;
@@ -77,47 +81,11 @@ a {
 	text-decoration-line: none;
 }
 </style>
-
+<body>
+<c:import url="/header" />
+<c:import url="/userHeader"/>
+<script src="myBook.js"></script>
 <script>
-function extendCheck(no, rentaldate, borrowdate) {
-    var userId = '<%= session.getAttribute("id") %>';
-
-    if (userId == "null" || userId.trim() == "") {
-        alert("로그인이 필요합니다.");
-        location.href = "login";
-    } else {
-        var rentalDateObj = new Date(rentaldate);
-        var borrowDateObj = new Date(borrowdate);
-        
-        var timeDifference = rentalDateObj - borrowDateObj;
-
-        var daysDifference = timeDifference / (1000 * 3600 * 24);
-
-        if (daysDifference > 13) {
-            alert('연장이 불가능합니다.(대출 기한: 2주)');
-        } else {
-            result = confirm('연장하시겠습니까?');
-            if (result == true) {
-                location.href = "borrowDateExtend?no=" + no;
-            }
-        }
-    }
-}
-
-function returnCheck(no){
-	var userId = '<%= session.getAttribute("id") %>';
-	
-    if (userId == "null" || userId.trim() == "") {
-        alert("로그인이 필요합니다.");
-        location.href = "login";
-    }
-    else{
-	result = confirm('반납 하시겠습니까?');
-	if(result == true){
-		location.href="returnProc2?no=" + no
-	}
-    }
-}
 </script>
 
 <div id="cont_head">
@@ -179,10 +147,10 @@ function returnCheck(no){
 							<td class="center">${board.author_info }</td>
 							<td class="center">${board.rentaldate }</td>
 							<td width="45px">
-								<button type="button" onclick="extendCheck('${board.no}', '${board.rentaldate}', '${board.borrowdate}')" >연장</button>
+								<button type="button" onclick="extendCheck('${sessionScope.id }','${board.no}', '${board.rentaldate}', '${board.borrowdate}')" >연장</button>
 							</td>
 							<td width="45px">
-								<button type="button" onclick="returnCheck('${board.no}')">반납</button>
+								<button type="button" onclick="returnCheck('${sessionScope.id }','${board.no}')">반납</button>
 							</td>
 						</tr>
 					</c:forEach>
@@ -194,3 +162,5 @@ function returnCheck(no){
 </div>
 <c:import url="/userFooter" />
 <c:import url="/footer" />
+</body>
+</html>

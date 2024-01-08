@@ -1,10 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+</head>
+<body>
 <c:import url="/header" />
+<c:import url="/userHeader2"/>
 <script src="member.js"></script>
-<div align="center">
-	<h1>로그인</h1>
-	<table >
+<div id="cont_head">
+		<h2>로그인</h2>
+		<!-- 현재위치 -->
+		<div id="location">
+			<ul>
+				<li>홈</li>
+				<li>사이트이용</li>
+				<li class="now">로그인</li>
+			</ul>
+		</div>
+		<!-- //현재위치 -->
+	</div>
+<div id="cont_wrap">
+	<div align="center">
+	<table>
 	<tr><td>
 		<font color="red" >${msg }</font>
 	</td></tr>
@@ -28,5 +48,9 @@
 		</a>
 	</td></tr>
 	</table>
+	</div>
 </div>
-<c:import url="/footer" />
+<c:import url="/userFooter" /> 
+<c:import url="/footer" />   
+</body>
+</html>

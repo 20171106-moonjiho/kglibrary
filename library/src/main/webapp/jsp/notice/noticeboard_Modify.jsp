@@ -1,21 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>공지사항</title>
+</head>
+<body>
 <c:import url="/header" />
-<script>
-function noticemf_Check(){
-	var title = document.getElementsByName('title');
-	var content = document.getElementsByName('content');
-	if(title[0].value == ""){
-		alert('제목을 입력해주세요.');
-	}else if(content[0].value == ""){
-		alert('내용은 필수 사항입니다.');
-	}else{
-		var f = document.getElementById('f');
-		f.submit();
-	}
-}
-</script>
+<c:import url="/noticeheader"/>
 <style>
 .card{width: 800px; margin: 0 auto;}
 .selectBox {
@@ -99,42 +93,8 @@ function noticemf_Check(){
 	border-radius: 10px;
 }
 </style>
-<div id="container">
-		<!--사이드바 시작-->
-			<div class="swsize">
-				<div id="sidebar">
-					<div class="stit">
-						<p class="eng"></p>
-						<h2>이용자마당</h2>
-					</div>
-					<div id="sidemenu">
-						<p class="tit jsMMenuText"><a href="#" class="jsMMenuBtn">공지사항
-									</a></p>
-						<ul id="jsMMenu">
-								<li class="on">
-									<a href="noticeBoard">공지사항
-									</a>
-								</li>
-								<li>
-									<a href="noticeBoard2">묻고 답하기
-									</a>
-								</li>
-								<li>
-									<a href="noticeboard_cal">도서관 일정
-									</a>
-								</li>
-						</ul>
-					</div>
-					<div id="jsFacetLeft">				
-					</div>
-				</div>
-			</div><!--사이드바 끝-->
-			
-			<!--컨텐츠 영역-->
-			<div id="contents">
-				<div id="print_wrap">
 					<div id="cont_head">
-							<h2>게시글 등록</h2>
+							<h2>게시글 수정</h2>
 							<!-- 현재위치 -->
 							<div id="location">
 								<ul>
@@ -219,10 +179,6 @@ function noticemf_Check(){
 							</form>
 						</div>
 					</div>
-				</div>
-			</div>
-			<!--컨테이너끝 -->
-		</div>
 	<!-- 	
 <div style="margin: 0 auto; margin-top:100px;">
 	<form action="noticeboard_ModifyProc" method='post' id="f" enctype="multipart/form-data">
@@ -262,4 +218,7 @@ function noticemf_Check(){
 		</form>
 </div>
  -->
-<c:import url="/footer" />  
+<c:import url="/noticefooter"/>
+<c:import url="/footer" />
+</body>
+</html>
