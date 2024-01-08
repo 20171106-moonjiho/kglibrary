@@ -62,3 +62,28 @@ function apiCheck() {
 		f.submit();
 	}
 }
+
+
+function bookHopeCheck() {
+	let category = document.getElementById('category');
+	let title_info = document.getElementById('title_info');
+	let author_info = document.getElementById('author_info');
+
+	if (category.value == "") {
+		alert('카테고리는 필수 항목입니다.');
+	} else if (title_info.value == "") {
+		alert('제목은 필수 항목입니다.');
+	} else if (author_info.value == "") {
+		alert('저작자는 필수 항목입니다.');
+	} else {
+		var f = document.getElementById('f');
+		f.submit();
+	}
+}
+
+function deleteHopeCheck(no){
+	result = confirm('진짜로 삭제하겠습니까?');
+	if(result == true){
+		location.href="bookHopeDeleteProc?no="+no
+	}
+}	

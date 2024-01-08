@@ -8,6 +8,7 @@
 <title>개별도서등록</title>
 </head>
 <link href="book.css" rel="stylesheet">
+<body>
 <c:import url="/header" />
 <c:import url="/bookheader" />
 <!--컨텐츠 영역-->
