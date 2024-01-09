@@ -57,7 +57,7 @@ public class BookService {
 			return;
 		}
 
-		String url = "bookForm?currentPage=";
+		String url = "bookForm?select=" + select + "&search=" + search + "&currentPage=";
 		String result = PageService.printPage(url, totalCount, pageBlock, currentPage);
 
 		model.addAttribute("count", totalCount);
