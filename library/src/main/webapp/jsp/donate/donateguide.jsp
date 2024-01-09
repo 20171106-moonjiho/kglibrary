@@ -8,11 +8,27 @@
 <title>기증 안내</title>
 <style>
 .book_pic {
-	width: 70%;	
+	width: 70%;
 	object-fit: cover;
 	margin: 3%;
 	padding: 0px;
 }
+
+.Don_btn {
+	right: 0;
+	bottom: 0;
+	padding: 50px;
+	margin: 0px 0px -50px 0px;
+}
+
+.Don_btn a {
+	padding: 10px;
+	border-radius: 10px;
+	background-color: #123;
+	color: white;
+	text-decoration: none;
+}
+
 </style>
 </head>
 <body>
@@ -34,7 +50,7 @@
 			</div>
 		</div>
 
-		<div >
+		<div>
 			<img src="/img/book_donate.png" class="book_pic">
 		</div>
 		<div>
@@ -43,6 +59,9 @@
 				서로 나누고 독서 활성화에 기여하고자 합니다.<br> 단, 기증받은 자료는 우리 도서관 내부 규정에 준하여
 				선정ㆍ등록하며, 사후 처리 시 기증자료에 대한 권한을 도서관에 일임함을 원칙으로 하오니 기증 시 참고하여 주시기 바랍니다.
 			</h2>
+		</div>
+		<div class="Don_btn" align="center">
+			<a href="donateWrite">신청하기</a>
 		</div>
 	</div>
 	<c:import url="/noticefooter" />
