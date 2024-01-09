@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,9 +8,9 @@
 <title>회원 관리</title>
 </head>
 <body>
-<c:import url="/header"/>
-<c:import url="/adminHeader"/>
-<div id="cont_head">
+	<c:import url="/header" />
+	<c:import url="/adminHeader" />
+	<div id="cont_head">
 		<h2>회원 관리</h2>
 		<!-- 현재위치 -->
 		<div id="location">
@@ -24,33 +25,33 @@
 	<div id="cont_wrap">
 		<form>
 			<select class="selectBox" name="select">
-			  	<option value="id" selected="selected">아이디</option>
-   				<option value="tel">전화번호</option>
-    		</select>
-    		<input type="text" name="search">
+				<option value="id" selected="selected">아이디</option>
+				<option value="tel">전화번호</option>
+			</select> <input type="text" name="search">
 			<button type="submit">검색</button>
 		</form>
-	<div id="board" style="width:100%;">
-		<table>
-			<tr>
-				<th>아이디</th>
-				<th>이름</th>
-				<th>전화번호</th>
-				<th>삭제</th>
-			</tr>
-			<c:forEach var="member" items="${members}">
+		<div id="board" style="width: 100%;">
+			<table>
 				<tr>
-					<td>${member.id }</td>					
-					<td>${member.name }</td>
-					<td>${member.tel }</td>
-					<td><button type="button" onclick="location.href='adminDelete?id=${member.id }'" >삭제</button></td>
+					<th>아이디</th>
+					<th>이름</th>
+					<th>전화번호</th>
+					<th>삭제</th>
 				</tr>
-			</c:forEach>
-		</table>
-		${result }
+				<c:forEach var="member" items="${members}">
+					<tr>
+						<td>${member.id }</td>
+						<td>${member.name }</td>
+						<td>${member.tel }</td>
+						<td><button type="button"
+								onclick="location.href='adminDelete?id=${member.id }'">삭제</button></td>
+					</tr>
+				</c:forEach>
+			</table>
+			${result }
+		</div>
 	</div>
-</div>
-<c:import url="/adminFooter"/>
-<c:import url="/footer"/>
+	<c:import url="/adminFooter" />
+	<c:import url="/footer" />
 </body>
 </html>
