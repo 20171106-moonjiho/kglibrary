@@ -77,6 +77,7 @@ public class BookController {
 	@RequestMapping("returnProc")
 	public String returnProc(String no) {
 			
+		
 		String sessionId = (String) session.getAttribute("id");
 		if (sessionId == null || sessionId.trim().isEmpty()) 
 		return "redirect:bookContent";
@@ -123,6 +124,15 @@ public class BookController {
 
 		return "book/apiAlert";
 	}
+	
+	//로그인 해야 할 때 요청 보내는 Mapping 및 sessionID 받는 값 필요.
+	@RequestMapping("requestLogin")
+	public void requestLogin() {
+		
+		
+	}
+	
+	
 	
 	
 	//공지사이드바 템플릿
