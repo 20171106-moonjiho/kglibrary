@@ -1,13 +1,11 @@
 package com.kg.library.notice;
 
-import java.sql.Timestamp;
-
 /*
 	create table ask_board(
 no number primary key,
 title varchar2(100) not null,
 id varchar2(20) not null,
-content varchar(3000) not null,
+content varchar2(3000) not null,
 writeDate varchar2(15) not null,
 hits varchar2(255),
 image varchar2(255),
