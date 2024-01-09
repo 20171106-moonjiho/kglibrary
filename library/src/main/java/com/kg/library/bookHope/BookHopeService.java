@@ -41,7 +41,7 @@ public class BookHopeService {
 				
 			}
 			
-			String url = "bookHopeForm?currentPage=";
+			String url = "bookHopeForm?select=" + select + "&search=" + search + "&currentPage=";
 			String result = PageService.printPage(url, totalCount, pageBlock, currentPage);
 			
 
