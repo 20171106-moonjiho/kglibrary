@@ -35,6 +35,10 @@
 				<tr align="center">
 					<td colspan="2">
 						<div class="card-write" align="center">
+							<select class="selectBox" name="hitbook" id="hitbook">
+								<option value="no" selected="selected">추천 없음</option>
+								<option value="yes">추천</option>
+							</select> 
 							<select class="selectBox" name="category" id="category">
 								<option value="소설" selected="selected">소설</option>
 								<option value="만화">만화</option>
