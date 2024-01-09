@@ -27,18 +27,19 @@ public class BookHopeController {
 			if(search == null || search.trim().isEmpty()) {
 				search = ""; select = "title"; 
 			}
-
+			model.addAttribute("menu", "board2");
 			service.bookHopeForm(cp, model, search, select); //DB 검색 및 정렬
 
 		return "bookHope/bookHopeForm";
 	}
 	
 	@RequestMapping("bookHopeRegist") //도서 등록 url
-	public String bookHopeRegist() {
+	public String bookHopeRegist(Model model) {
 		String sessionId = (String) session.getAttribute("id");
 		if (sessionId == null || sessionId.trim().isEmpty()) {
 			return "redirect:login";
 		}
+		model.addAttribute("menu", "board2");
 			return "bookHope/bookHopeRegist";
 	}
 	
@@ -57,7 +58,8 @@ public class BookHopeController {
 		if(board == null) {
 			return "redirect:bookHopeForm";
 		}
-		
+
+		model.addAttribute("menu", "board2");
 		model.addAttribute("board", board);
 		return "bookHope/bookHopeContent";
 	}

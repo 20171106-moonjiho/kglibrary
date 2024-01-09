@@ -28,19 +28,24 @@ public class BookController {
 				search = ""; select = "title"; 
 			}
 
+			model.addAttribute("menu", "board");
 			service.bookForm(cp, model, search, select); //DB 검색 및 정렬
 
 		return "book/bookForm";
 	}
 	
 	@RequestMapping("bookRegist") //도서 등록 url
-	public String bookRegist() {
+	public String bookRegist(Model model) {
 		String sessionId = (String) session.getAttribute("id");
-		if (!sessionId.equals("admin") || sessionId.trim().isEmpty()) {
+		if (sessionId==null || sessionId.trim().isEmpty()) {
 			System.out.println(sessionId);
 			return "redirect:bookForm";
 		}
+		if(!sessionId.equals("admin")) {
+			return "redirect:bookForm";
+		}
 	//관리자가 아니면 등록 불가, 회원이 url을 직접적으로 치고 들어올 경우 반환하기 위하여 설정. 회원가입 확인 되면 주석 풀것
+		model.addAttribute("menu", "board");
 		return "book/bookRegist";
 	}
 	
@@ -58,7 +63,8 @@ public class BookController {
 		if(board == null) {
 			return "redirect:bookForm";
 		}
-		
+
+		model.addAttribute("menu", "board");
 		model.addAttribute("board", board);
 		return "book/bookContent";
 	}
@@ -98,7 +104,7 @@ public class BookController {
 	}
 
 	@RequestMapping("apiBookRegist") //도서 등록 url
-	public String apiBookRegist() {
+	public String apiBookRegist(Model model) {
 		
 		String sessionId = (String)session.getAttribute("id");
 		if (sessionId == null || !sessionId.equals("admin") || sessionId.trim().isEmpty()) {
@@ -106,6 +112,7 @@ public class BookController {
 			return "redirect:login";
 		}
 	//관리자가 아니면 등록 불가, 회원이 url을 직접적으로 치고 들어올 경우 반환하기 위하여 설정. 회원가입 확인 되면 주석 풀것
+		model.addAttribute("menu", "board3");
 		return "book/apiBookRegist";
 	}
 	

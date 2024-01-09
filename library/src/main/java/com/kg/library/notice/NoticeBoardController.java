@@ -25,12 +25,6 @@ public class NoticeBoardController {
 		model.addAttribute("menu", "board");
 		return "notice/noticeboard";
 	}
-	@RequestMapping("noticeBoard2")
-	public String noticeBoard2(@RequestParam(value="currentPage", required = false)String cp, Model model,String search_select,String search) {
-		service.noticeBoard(search_select,search,cp,model);
-		model.addAttribute("menu", "board2");
-		return "notice/noticeboard2";
-	}
 	@RequestMapping("noticeboard_cal")
 	public String noticeboard_cal(Model model) {
 		model.addAttribute("menu", "cal");
@@ -38,12 +32,14 @@ public class NoticeBoardController {
 	}
 	//공지사항 글쓰기
 	@RequestMapping("noticeboard_write")
+
 	public String noticeboard_write(Model model){
 		model.addAttribute("menu", "board");
-//		String sessionID=(String)session.getAttribute("id");
-//		if(sessionID==null) {
-//			return "redirect:login";
-//		}
+		String sessionID=(String)session.getAttribute("id");
+		if(sessionID==null) {
+			return "redirect:login";
+		}
+
 		return "notice/noticeboard_write";
 	}
 	
@@ -66,22 +62,22 @@ public class NoticeBoardController {
 	//공지사항 삭제
 	@RequestMapping("ContentDeleteProc3")
 	public String ContentDeleteProc3(String no) {
-//		String sessionId = (String) session.getAttribute("id");
-//		if(sessionId == null)
-//			return "redirect:login";
-//		
+		String sessionId = (String) session.getAttribute("id");
+		if(sessionId == null)
+			return "redirect:login";
+		
 		String msg = service.ContentDeleteProc3(no);
-//		if(msg.equals("작성자만 삭제 할 수 있습니다."))
-//			return "redirect:noticeboard?no="+no;
-//		
+		if(msg.equals("작성자만 삭제 할 수 있습니다."))
+			return "redirect:noticeboard?no="+no;
+		
 		return "redirect:noticeBoard";
 	}
 	//공지사항 수정
 	@RequestMapping("noticeboard_Modify")
 	public String noticeboard_Modify(String no, Model model) {
-//		String sessionId = (String) session.getAttribute("id");
-//		if(sessionId == null)
-//			return "redirect:login";
+		String sessionId = (String) session.getAttribute("id");
+		if(sessionId == null)
+			return "redirect:login";
 		model.addAttribute("menu", "board");
 		String path = service.noticeboard_Modify(no, model);
 		return path;
@@ -89,9 +85,9 @@ public class NoticeBoardController {
 	
 	@PostMapping("noticeboard_ModifyProc")
 	public String noticeboard_ModifyProc(NoticeBoardDTO board, RedirectAttributes ra, MultipartHttpServletRequest multi) {
-//		String sessionId = (String) session.getAttribute("id");
-//		if(sessionId == null)
-//			return "redirect:login";
+		String sessionId = (String) session.getAttribute("id");
+		if(sessionId == null)
+			return "redirect:login";
 		String msg = service.noticeboard_ModifyProc(board,multi);
 		ra.addFlashAttribute("msg", msg);
 		 
