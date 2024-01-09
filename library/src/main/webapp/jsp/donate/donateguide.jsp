@@ -6,6 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>기증 안내</title>
+<style>
+.book_pic {
+	width: 70%;	
+	object-fit: cover;
+	margin: 3%;
+	padding: 0px;
+}
+</style>
 </head>
 <body>
 	<c:import url="/header" />
@@ -26,8 +34,8 @@
 			</div>
 		</div>
 
-		<div>
-			<img src="/img/book_donate.png">
+		<div >
+			<img src="/img/book_donate.png" class="book_pic">
 		</div>
 		<div>
 			<h2>

@@ -3,7 +3,7 @@ import java.sql.Timestamp;
 
 /*
 *도서 등록(book)
-순서 - 번호(1),카테고리(2),제목(3),저작자(4),발행자(5),발행년도(6),비치일(7),상세페이지경로(8),이미지(9), 빌린 사람(10) ,책 번호(책 갯수)(11), 기증자(12),빌린 시간(13)
+순서 - 번호(1),카테고리(2),제목(3),저작자(4),발행자(5),발행년도(6),비치일(7),상세페이지경로(8),이미지(9), 빌린 사람(10) ,책 번호(책 갯수)(11), 기증자(12),빌린 시간(13),추천 도서(14)
 
 create table book(
 no number not null,
@@ -19,12 +19,14 @@ borrowperson varchar2(50),
 book_count number,
 donation varchar2(50),
 borrowdate timestamp,
-rentaldate VARCHAR2(50)
+rentaldate VARCHAR2(50),
+hitbook varchar2(50)
 );
 alter table book modify title_info varchar2(500);
 alter table book modify author_info varchar2(500);
 alter table book modify pub_info varchar2(500);
 ALTER TABLE book ADD rentaldate VARCHAR2(50);
+alter table book add hitbook varchar2(50);
 
 */
 public class BookDTO {
@@ -43,7 +45,15 @@ public class BookDTO {
 	private String donation;
 	private Timestamp borrowdate;
 	private String rentaldate;
+	private String hitbook;
 	
+	
+	public String getHitbook() {
+		return hitbook;
+	}
+	public void setHitbook(String hitbook) {
+		this.hitbook = hitbook;
+	}
 	public int getNo() {
 		return no;
 	}

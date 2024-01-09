@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -21,7 +22,7 @@ public class DonateController {
 			@RequestParam(value="currentPage", required = false)String cp) {
 		String select = "select";
 		if(search == null || search.trim().isEmpty()) {
-			search = "";
+			search = "id";
 			select = "all";
 		}
 		
@@ -59,11 +60,22 @@ public class DonateController {
 	}
 	// 도서 기증 상세보기 --------------------------------
 	@RequestMapping("donateContent")
-	public String donateContent(String no, Model model) {
+	public String donateContent(String no, Model model, RedirectAttributes ra) {
+		String msg = "";
 		DonateDTO board = service.donateContent(no);
+		String sessionId = (String)session.getAttribute("id");
 		if(board == null) {
 			return "redirect:donateForm";
 		}
+		if(sessionId == null) {
+			return "redirect:login";
+		}
+		if(!sessionId.equals(board.getId())) {
+			msg="작성자만 확인가능합니다.";
+			ra.addFlashAttribute("msg", msg);
+			return "redirect:donateForm";
+		}
+		
 		model.addAttribute("menu", "donateForm");
 		model.addAttribute("board", board);
 		return "donate/donateContent";

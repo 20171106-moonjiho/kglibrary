@@ -19,8 +19,4 @@ public interface IBookHopeMapper {
 
 	void bookHopeRegistProc(BookHopeDTO board);
 
-
-
-
-
 }
