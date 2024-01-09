@@ -9,8 +9,8 @@
 </head>
 <link href="book2.css" rel="stylesheet">
 <body>
-<c:import url="/header" />
-<c:import url="/bookheader" />
+	<c:import url="/header" />
+	<c:import url="/bookheader" />
 	<div id="cont_head">
 		<h2>도서검색</h2>
 		<!-- 현재위치 -->
@@ -26,14 +26,12 @@
 	<div id="cont_wrap">
 		<div id="board" style="width: 100%;">
 			<form action="bookForm">
-				<span> ▷ 총 ${count }개의 검색 결과가 있습니다. </span>
-				<span class="center">
+				<span> ▷ 총 ${count }개의 검색 결과가 있습니다. </span> <span class="center">
 					<select class="selectBox" name="select">
 						<option value="title" selected="selected">제목</option>
 						<option value="author">저작자</option>
 						<option value="category">카테고리</option>
-					</select>
-					<c:choose>
+				</select> <c:choose>
 						<c:when test="${empty search or search == 'null'}">
 							<input type="text" name="search" />
 						</c:when>
@@ -58,8 +56,9 @@
 						<c:forEach var="board" items="${ boards}">
 							<tr>
 								<td class="center">${board.no }</td>
-								<td class="left" onclick="location.href='bookContent?no=${board.no }'">
-								${board.title_info }</td>
+								<td class="left"
+									onclick="location.href='bookContent?no=${board.no }'">
+									${board.title_info }</td>
 								<td class="center">${board.author_info }</td>
 								<td class="center">${board.reg_date }</td>
 							</tr>
@@ -71,14 +70,15 @@
 			<c:choose>
 				<c:when test="${sessionScope.id eq 'admin'}">
 					<span class="right">
-						<button type="button" style="width: 150px;" onclick="location.href='bookRegist'"
-						class="submit_button">개별 도서 등록</button>
+						<button type="button" style="width: 150px;"
+							onclick="location.href='bookRegist'" class="submit_button">개별
+							도서 등록</button>
 					</span>
 				</c:when>
 			</c:choose>
 		</div>
 	</div>
-<c:import url="/bookfooter" />
-<c:import url="/footer" />
+	<c:import url="/bookfooter" />
+	<c:import url="/footer" />
 </body>
 </html>
