@@ -112,4 +112,12 @@
 		SET borrowperson=#{borrowperson} WHERE no=#{n}
 	</update>
     
+    <!-- 추천도서 -->
+    <select id="hitbooks">
+    	select A.* From (select * from book  WHERE hitbook = 'yes' and book_count= 1 ORDER BY no DESC)A where <![CDATA[rownum < 4 ]]>
+    </select>
+    
+     <select id="newbooks">
+    	select A.* From (select * from book  WHERE book_count= 1 ORDER BY reg_date DESC)A where <![CDATA[rownum < 4 ]]>
+    </select>
 </mapper>

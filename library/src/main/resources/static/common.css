@@ -58,13 +58,13 @@ table{border-collapse: collapse;}
 .search .search_btn_wrap{width: 700px; margin: 0 auto;z-index: 2; position: relative; padding-top: 74px; text-align: left;}
 .search .search_btn_wrap h3{display: block;text-align: center; width: 140px; height: 46px; background: #29cbae; line-height: 48px; color: #fff; font-size: 16px;}
 .search .search_bar{width: 695px; background: #fff; position: relative; display: inline-block; border:  3px solid #29cbae;}
-.search .search_btn_wrap select{padding-left: 40px; float: left; color: #3e3e3e; font-size: 15px; width: 140px;height: 60px;display: inline-block; background: #fff url("../img/search_arr.gif") no-repeat 82.5% 50%; border: 0;}
+.search .search_btn_wrap select{padding-left: 40px; float: left; color: #3e3e3e; font-size: 15px; width: 140px;height: 60px;display: inline-block; background: #fff url("../img/search_arr.gif") no-repeat 82.5% 50%; border: 0;appearance: none;}
 .search .search_btn_wrap .search_bar .search_bar_text{width: 100%;}
 .search .search_btn_wrap .search_bar .search_btn{position: absolute; right: 0; width: 86px; height: 60px; line-height: 0; font-size: 0; text-indent:-9999px;
 border: 0; background: #fff url("../img/searchicon.png") no-repeat center 50%;}
 .search .search_btn_wrap .search_bar .search_m{position: absolute; 	cursor: text; top: 20px; left: 176px; font-size: 15px; color: #d5d5d5; display: block; z-index: 5;}
-.search .search_btn_wrap .search_bar .search_text{width: 555px; height: 60px; padding-left: 20px; box-sizing: border-box;
-padding: 0; position: relative; cursor: text;font-size: 20px; color: #000; line-height: 70px; float: left; border: 0;}
+.search .search_btn_wrap .search_bar .search_text{width: 555px; height: 60px; padding-left: 20px !important; box-sizing: border-box; padding: 0; position: relative; cursor: text;font-size: 20px; color: #000; line-height: 70px; float: left; border: 0;}
+.search_text::placeholder {font-size: 18px;line-height: 70px;}
 
 	.sub_bar{width: 1100px; margin: 0 auto; margin-top: 10px;}
 	.link_btn  {height:175px;}
