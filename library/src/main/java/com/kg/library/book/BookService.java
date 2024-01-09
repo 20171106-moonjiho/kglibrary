@@ -386,4 +386,35 @@ public class BookService {
 		model.addAttribute("apimessage", apimessage);
 	}
 
+	
+	
+	
+	
+	public BookDTO bookdata() {
+		
+		int n = 1;
+
+		BookDTO board = mapper.bookContent(n);
+
+		if (board != null) {
+			System.out.println("image name = " + board.getImage());
+
+			if (board.getImage() != null && !board.getCategory().equals("API")) { // API에서 받은 이미지가 아니면
+				String[] names = board.getImage().split("\\\\");
+
+				for (String name : names)
+					System.out.println("BoardService-boardContent name : " + name);
+				String[] fileNames = names[12].split("-", 2);
+				for (String fileName : fileNames)
+					System.out.println("BoardService-boardContent fileName : " + fileName);
+
+				board.setImage(names[12]);
+			}
+		}
+
+		return board;
+		
+		
+	}
+
 }
