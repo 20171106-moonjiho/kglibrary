@@ -4,15 +4,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>로그인</title>
+<meta charset="UTF-8">
+<title>로그인</title>
 </head>
 <link href="book.css" rel="stylesheet">
 <body>
-<c:import url="/header" />
-<c:import url="/userHeader2"/>
-<script src="member.js"></script>
-<div id="cont_head">
+	<c:import url="/header" />
+	<c:import url="/userHeader2" />
+	<script src="member.js"></script>
+	<div id="cont_head">
 		<h2>로그인</h2>
 		<!-- 현재위치 -->
 		<div id="location">
@@ -41,7 +41,7 @@
 	</form>
 	</div>
 	</td></tr>
-	<!-- 
+				<!-- 
 		카카오 이미지 링크
 		https://developers.kakao.com/tool/demo/login/login?method=dynamic
 	 -->
@@ -49,13 +49,14 @@
 		<a href="https://kauth.kakao.com/oauth/authorize?response_type=code
 		&client_id=d3a13977a0273b816e425220da2d6622
 		&redirect_uri=http://localhost/kakaoLogin">
-			<img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" />
-		</a>
-	</td></tr>
-	</table>
+							<img
+							src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" />
+					</a></td>
+				</tr>
+			</table>
+		</div>
 	</div>
-</div>
-<c:import url="/userFooter" /> 
-<c:import url="/footer" />   
+	<c:import url="/userFooter" />
+	<c:import url="/footer" />
 </body>
 </html>

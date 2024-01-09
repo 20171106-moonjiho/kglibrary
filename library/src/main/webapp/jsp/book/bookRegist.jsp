@@ -88,7 +88,6 @@
 				</table>
 			</form>
 		</div>
->>>>>>> branch 'master' of https://github.com/20171106-moonjiho/kglibrary.git
 	</div>
 	<c:import url="/bookfooter" />
 	<c:import url="/footer" />
