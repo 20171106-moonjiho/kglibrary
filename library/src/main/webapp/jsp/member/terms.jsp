@@ -1,16 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="/jsp/default/favicon.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>회원가입</title>
+<meta charset="UTF-8">
+<title>회원가입</title>
 </head>
 <script src="terms.js"></script>
 <body>
-<c:import url="/header" />
-<c:import url="/userHeader2"/>
-<div id="cont_head">
+	<c:import url="/header" />
+	<c:import url="/userHeader2" />
+	<div id="cont_head">
 		<h2>회원가입</h2>
 		<!-- 현재위치 -->
 		<div id="location">
@@ -22,16 +23,15 @@
 		</div>
 		<!-- //현재위치 -->
 	</div>
-<div id="cont_wrap">
-    <form action="join" id="f" method='post'>
-        <ul class="join_box">
-            <li class="checkBox check02">
-                <ul class="clearfix">
-                    <li class="checkBtn">도서관 이용약관 (필수)
-                    	<input type="checkbox" name="chk" class="chk" id="terms">
-                    </li>
-                </ul>
-                <textarea rows="20" cols="100" readOnly style="resize: none;">제 1 장 총 칙
+	<div id="cont_wrap">
+		<form action="join" id="f" method='post'>
+			<ul class="join_box">
+				<li class="checkBox check02">
+					<ul class="clearfix">
+						<li class="checkBtn">도서관 이용약관 (필수) <input type="checkbox"
+							name="chk" class="chk" id="terms">
+						</li>
+					</ul> <textarea rows="20" cols="100" readOnly style="resize: none;">제 1 장 총 칙
 
  제 1 조 (목적)
 본 약관은 성동구립도서관(이하 “도서관”) 사이트가 제공하는 서비스(이하 “서비스”) 및 자료의 이용 조건 및 절차, 이용자와 도서관의 권리, 의무, 책임사항 및 기타 제반 사항을 규정함을 목적으로 합니다.
@@ -200,14 +200,13 @@
 부 칙
  본 약관은 2013년 9월 1일부터 적용 및 시행됩니다.
 본 약관은 이용자가 회원에 가입함과 동시에 효력을 발생합니다. </textarea>
-            </li>
-            <li class="checkBox check03">
-                <ul class="clearfix">
-                    <li class="checkBtn">개인정보의 수집 및 이용 (필수)
-                        <input type="checkbox" name="chk" class="chk" id="collectUse">
-                    </li>
-                </ul>
-                <textarea rows="20" cols="100" readOnly style="resize: none;">① 개인정보의 수집ㆍ이용 목적
+				</li>
+				<li class="checkBox check03">
+					<ul class="clearfix">
+						<li class="checkBtn">개인정보의 수집 및 이용 (필수) <input
+							type="checkbox" name="chk" class="chk" id="collectUse">
+						</li>
+					</ul> <textarea rows="20" cols="100" readOnly style="resize: none;">① 개인정보의 수집ㆍ이용 목적
  하나의 회원증으로 참여하는 도서관의 서비스를 이용하기 위한 통합도서서비스 회원가입 및 
  성동구립도서관 통합 회원 가입 및 서비스 이용, 개인 식별, 
 고지사항 전달 등을 목적으로 개인정보를 처리합니다. 수집한 개인정보는 목적 외의 용도로 이용되지 않습니다.
@@ -222,14 +221,13 @@
 회원증분실여부, 회원증발급횟수, 현재대출책수, 현재연체책수, 총연체료, 누적연체횟수, 누적연체일
 ③ 개인정보의 보유 및 이용기간 : 가. 보존근거 : 정보주체의 동의 나. 보존기간 : 처리목적 달성 또는 탈퇴 의사 후 즉시
 ④ 동의 거부 권리 및 불이익 : 동의를 거부할 권리가 있으며, 거부 시 회원가입을 제한합니다. </textarea>
-            </li>
-            <li class="checkBox check03">
-                <ul class="clearfix">
-                    <li class="checkBtn">개인정보의 공동이용(제3자 제공)
-                        <input type="checkbox" name="chk" class="chk" id="jointUse">
-                    </li>
-                </ul>
-                <textarea rows="15" cols="100" readOnly style="resize: none;">① 개인정보를 제공받는 자
+				</li>
+				<li class="checkBox check03">
+					<ul class="clearfix">
+						<li class="checkBtn">개인정보의 공동이용(제3자 제공) <input
+							type="checkbox" name="chk" class="chk" id="jointUse">
+						</li>
+					</ul> <textarea rows="15" cols="100" readOnly style="resize: none;">① 개인정보를 제공받는 자
  가. 통합도서가입 시 가입도서관에 개인정보 수집 후 국립중앙도서관, 지역대표도서관에 개인정보를 제공합니다.
 또한 참여도서관 중 이용하지 않은 도서관을 최초 이용하는 시점에 개인정보를 제공합니다.
 나. 참여도서관 및 개인정보 제공현황은 통합도서홈페이지에서 확인 가능합니다. 
@@ -240,44 +238,40 @@
 ④ 개인정보를 제공받는 자의 개인정보 보유 및 이용 기간
  가. 보존근거 : 정보주체의 동의 나. 보존기간 : 처리목적 달성 또는 탈퇴 의사 후 즉시
 ⑤ 동의 거부 권리 및 불이익 : 동의를 거부할 권리가 있으며, 거부 시 통합도서회원가입을 제한합니다. </textarea>
-            </li>
-            <li class="checkBox check04">
-                <ul class="clearfix">
-                    <li class="checkBtn">만 14세 미만 아동의 가입
-                        <input type="checkbox" name="chk" class="chk">
-                    </li>
-                </ul>
-                <textarea rows="4" cols="100" readOnly style="resize: none;">만 14세 미만 아동의 개인정보를 처리하기 위하여 그 법정대리인의 동의를 받아야 합니다. 
+				</li>
+				<li class="checkBox check04">
+					<ul class="clearfix">
+						<li class="checkBtn">만 14세 미만 아동의 가입 <input type="checkbox"
+							name="chk" class="chk">
+						</li>
+					</ul> <textarea rows="4" cols="100" readOnly style="resize: none;">만 14세 미만 아동의 개인정보를 처리하기 위하여 그 법정대리인의 동의를 받아야 합니다. 
 법정대리인의 최소한의 정보는 법정대리인의 동의 없이 해당 아동으로부터 직접 수집할 수 있습니다. </textarea>
-            </li>
-            <li class="checkBox check05">
-                <ul class="clearfix">
-                    <li class="checkBtn">민감정보의 처리 : 장애인 회원등록시
-                        <input type="checkbox" name="chk" class="chk">
-                    </li>
-                </ul>
-                <textarea rows="10" cols="100" readOnly style="resize: none;">① 민감정보의 수집ㆍ이용 목적 : 장애인에 대한 원활한 서비스 및 편의 제공을 목적으로 민감정보를 처리합니다.
+				</li>
+				<li class="checkBox check05">
+					<ul class="clearfix">
+						<li class="checkBtn">민감정보의 처리 : 장애인 회원등록시 <input
+							type="checkbox" name="chk" class="chk">
+						</li>
+					</ul> <textarea rows="10" cols="100" readOnly style="resize: none;">① 민감정보의 수집ㆍ이용 목적 : 장애인에 대한 원활한 서비스 및 편의 제공을 목적으로 민감정보를 처리합니다.
 ② 수집하려는 민감정보의 항목 : 복지카드(장애인등록증) 또는 장애인 증명서 확인을 통한 장애인 등록 여부
 ③ 민감정보의 보유 및 이용기간
  가. 보존근거 : 정보주체의 동의 나. 보존기간 : 처리목적 달성 또는 탈퇴 의사 후 즉시
 ④ 동의 거부 권리 및 불이익 : 동의를 거부할 권리가 있으며, 거부 시 장애인 우대 서비스를 제공받을 수 없습니다. </textarea>
-            </li> 
-            <li class="checkBox check01">
-                <ul class="clearfix">
-                    <li class="checkAllBtn">
-                        <input type="checkbox" name="chkAll" id="chkAll" class="chkAll">
-                        전체 동의합니다.
-                    </li>
-                </ul>
-            </li>    
-        </ul>
-        <ul class="footBtwrap clearfix">
-            <li><input type="button" value="회원가입" onclick="termsCheck()">
-            	<input type="button" value="이전으로" onclick="location.href='index'"></li>
-        </ul>
-    </form>
-</div>
-<c:import url="/userFooter" /> 
-<c:import url="/footer" />
+				</li>
+				<li class="checkBox check01">
+					<ul class="clearfix">
+						<li class="checkAllBtn"><input type="checkbox" name="chkAll"
+							id="chkAll" class="chkAll"> 전체 동의합니다.</li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="footBtwrap clearfix">
+				<li><input type="button" value="회원가입" onclick="termsCheck()">
+					<input type="button" value="이전으로" onclick="location.href='index'"></li>
+			</ul>
+		</form>
+	</div>
+	<c:import url="/userFooter" />
+	<c:import url="/footer" />
 </body>
 </html>

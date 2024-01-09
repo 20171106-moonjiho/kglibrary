@@ -57,7 +57,7 @@ public class BookService {
 			return;
 		}
 
-		String url = "bookForm?currentPage=";
+		String url = "bookForm?select=" + select + "&search=" + search + "&currentPage=";
 		String result = PageService.printPage(url, totalCount, pageBlock, currentPage);
 
 		model.addAttribute("count", totalCount);
@@ -167,6 +167,10 @@ public class BookService {
 			board.setDonation("없음"); }
 			else {
 			board.setDonation(donation); }
+			
+			board.setHitbook(multi.getParameter("hitbook"));
+			
+			
 
 			System.out.println(board.getCategory());
 			System.out.println(board.getTitle_info());
@@ -366,7 +370,9 @@ public class BookService {
 					bookDTO.setDonation(" ");	// 기부자 없음
 					bookDTO.setBorrowdate(borrowtime); //대여 시작 시간 기본값
 					bookDTO.setRentaldate(sdf.format(new Date())); //대여 끝나는 시간 기본값
+					bookDTO.setHitbook(" "); //추천 도서
 					bookList.add(bookDTO);
+				
 					mapper.bookRegistProc(bookDTO);
 
 				}

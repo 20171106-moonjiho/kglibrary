@@ -15,8 +15,6 @@ pub_info varchar2(500),
 pub_year_info varchar2(50),
 reason varchar2(200),
 hopedate varchar2(30);
-
-
 */
 
 public class BookHopeDTO {

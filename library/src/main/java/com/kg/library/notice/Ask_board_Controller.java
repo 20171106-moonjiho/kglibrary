@@ -37,6 +37,7 @@ public class Ask_board_Controller {
 		if(sessionID==null) {
 			return "redirect:login";
 		}
+		model.addAttribute("menu", "board2");
 		model.addAttribute("no",no);
 		model.addAttribute("ref",ref);
 		model.addAttribute("step",step);
@@ -56,6 +57,7 @@ public class Ask_board_Controller {
 		if(board == null) {
 			return "redirect:ask_board";
 		}
+		model.addAttribute("menu", "board2");
 		model.addAttribute("board",board);
 		return "notice/ask_board_Content";
 	}
@@ -78,6 +80,7 @@ public class Ask_board_Controller {
 		String sessionId = (String) session.getAttribute("id");
 		if(sessionId == null)
 			return "redirect:login";
+		model.addAttribute("menu", "board2");
 		String path = ask_service.ask_board_Modify(no, model);
 		return path;
 	}

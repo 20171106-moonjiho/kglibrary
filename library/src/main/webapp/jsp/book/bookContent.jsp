@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="/jsp/default/favicon.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +10,8 @@
 </head>
 <link href="book2.css" rel="stylesheet">
 <body>
-<c:import url="/header" />
-<c:import url="/bookheader" />
+	<c:import url="/header" />
+	<c:import url="/bookheader" />
 	<div id="cont_head">
 		<h2>도서상세정보</h2>
 		<!-- 현재위치 -->
@@ -28,12 +29,12 @@
 		<div id="board" style="width: 100%;">
 			<div align="center" style="margin-top: 50px; margin-bottom: 100px;">
 				<h1>${board.title_info}</h1>
-				<br>
-				<br>
+				<br> <br>
 				<table border='1' style="margin-top: 50px;">
 					<tr>
 						<c:choose>
-							<c:when	test="${not empty board.image && board.category ne 'API'}">
+							<c:when
+								test="${not empty board.image && board.category ne 'API'}">
 								<img width="300" src="/img/admin/${board.image }">
 								<br>
 							</c:when>
@@ -68,8 +69,9 @@
 							</c:when>
 							<c:when test="${sessionScope.id eq borrowPerson}">
 								<td width="200" colspan="5">
-									<button type="button" onclick="returnCheck('${sessionScope.id}','${board.no }')">반납
-											${board.rentaldate} 까지</button>
+									<button type="button"
+										onclick="returnCheck('${sessionScope.id}','${board.no }')">반납
+										${board.rentaldate} 까지</button>
 								</td>
 							</c:when>
 							<c:otherwise>
@@ -89,11 +91,11 @@
 								<c:when test="${sessionScope.id eq 'admin'}">
 									<button type="button" onclick="deleteCheck('${board.no}')">삭제</button>
 								</c:when>
-							</c:choose>
-							<c:choose>
+							</c:choose> <c:choose>
 								<c:when test="${borrowPerson eq '대여 가능'}">
 									<input type="hidden" id="userId" value="${sessionScope.id }">
-									<button type="button" onclick="rentCheck('${sessionScope.id}','${board.no }')">대여</button>
+									<button type="button"
+										onclick="rentCheck('${sessionScope.id}','${board.no }')">대여</button>
 								</c:when>
 							</c:choose>
 						</td>
@@ -102,7 +104,7 @@
 			</div>
 		</div>
 	</div>
-<c:import url="/bookfooter" />
-<c:import url="/footer" />
+	<c:import url="/bookfooter" />
+	<c:import url="/footer" />
 </body>
 </html>

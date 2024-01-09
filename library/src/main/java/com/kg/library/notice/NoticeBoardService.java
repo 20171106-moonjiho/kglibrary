@@ -294,5 +294,18 @@ public class NoticeBoardService {
 		
 		return "게시글 수정 성공";
 	}
+
+
+	public void main_board(Model model) {
 	
-}
+	ArrayList<NoticeBoardDTO> boards = mapper.main_board();
+	for (NoticeBoardDTO board : boards) {
+	    System.out.println(board.getTitle());
+	    System.out.println(board.getNo());
+	    System.out.println(board.getWriteDate());
+		}
+	model.addAttribute("boards", boards);
+	}
+
+	}
+	

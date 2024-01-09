@@ -1,116 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="/jsp/default/favicon.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>공지사항</title>
 </head>
+<link href="book.css" rel="stylesheet">
 <body>
 <c:import url="/header" />
 <c:import url="/noticeheader"/>
-<script>
-function notice_w_Check(){
-	var title = document.getElementsByName('title');
-	var content = document.getElementsByName('content');
-	var checkbox = document.getElementById('agree1');
-	if(title[0].value == ""){
-		alert('제목을 입력해주세요.');
-	}else if(content[0].value == ""){
-		alert('내용은 필수 사항입니다.');
-	}else if(!checkbox.checked){
-		alert('약관에 동의해주세요.');
-	}else{
-		var f = document.getElementById('f');
-		f.submit();
-	}
-}
-</script>
-
-<style>
-.card{width: 800px; margin: 0 auto;}
-.selectBox {
-		  position: relative;
-		  text-align:center;
-		  width: 100px;
-		  height: 35px;
-		  border-radius: 10px;
-		  border: 1px solid #999;
-		}
-.card-header1 h1{
-	font-size: 30px;
-	font-weight: 600;
-}
-
-.card-write{
-	padding: 20px;
-}
-.card-write input, texarea{
-	margin-left: 10px;
-	padding: 10px;
-	border: 1px solid #999;
-	border-radius: 10px;
-	box-shadow: 3px 3px 10px #e6e6e6;
-}
-.card-write .subject_title{
-	font-size:13px;
-	font-family: 600;
-	margin-right: 10px;
-}
-.card-write .myinfo input[type="text"]{
-	width: 25%;
-
-}
-.card-write .title-w input[type="text"]{
-	margin-top: 20px;
-	margin-bottom: 20px;
-	width: 85.5%
-}
-.card-write .area{
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-.card-write .animalinfo{
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-.card-write .day{
-	margin-top: 20px;
-	margin-bottom: 20px;
-}
-
-.card-write .msg{
-	margin-top: 20px;
-}
-.card-write .msg textarea{
-	min-width: 90.5%;
-	max-width: 90.5%;
-	min-height: 200px;
-	max-height: 200px;
-	box-shadow: inset 3px 3px 10px #e6e6e6;
-	
-	vertical-align: top;
-}
-.card-write input[type="file"]{
-	border: none;
-	box-shadow: none;
-	padding: 10px;
-	
-}
-.btn-w{
-	text-align:center;
-	margin:0 auto;
-	padding: 10px;
-}
-.btn-w input{
-	border:none;
-	background-color: lightcoral;
-	padding: 10px;
-	color: #fff;
-	border-radius: 10px;
-}
-</style>
 
 					<div id="cont_head">
 							<h2>게시글 등록</h2>
@@ -198,12 +99,6 @@ function notice_w_Check(){
 							
 						</div>
 					</div>
-				
-				</div>
-			</div>
-			<!--컨테이너끝 -->
-		</div>
-
 <c:import url="/noticefooter"/>
 <c:import url="/footer" />
 </body>
