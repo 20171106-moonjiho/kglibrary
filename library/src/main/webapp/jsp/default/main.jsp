@@ -42,6 +42,13 @@
 					<div class="innor_left">
 						<h2>공지사항</h2>
 						<ul>
+						<c:forEach var="board" items="${boards}">
+							<li>
+								<a href="noticeboard_Content?no=${board.no }"><p class="ntit">${board.title }</p></a>
+								<span class="date">${board.writeDate }</span>
+							</li>
+						</c:forEach>
+						<!-- 
 							<li>
 								<a href="#"><p class="ntit">2024년 KG도서관 겨울 독서교실 안내</p></a>
 								<span class="date">23-12-21</span>
@@ -58,9 +65,10 @@
 								<a href="#"><p class="ntit">2023년도 희망도서 바로대출 서비스 신청 마감 안내</p></a>
 								<span class="date">23-12-21</span>
 							</li>
+						-->
 						</ul>
 						<div class="notice_more">
-							<a href="#"><img src="img/notice_btn.png" alt="새소식 자세히 보기"></a>
+							<a href="noticeBoard"><img src="img/notice_btn.png" alt="새소식 자세히 보기"></a>
 						</div>
 					</div>
 					<div class="innor_right">
