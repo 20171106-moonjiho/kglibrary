@@ -29,6 +29,7 @@ table{border-collapse: collapse;}
 .header .wsize .aside_menu li.login {background:url("../img/login_icon.gif") no-repeat 5px 50%;}
 .header .wsize .aside_menu li.logout {background:url("../img/login_icon.gif") no-repeat 5px 50%;}
 .header .wsize .aside_menu li.join {background:url("../img/join_icon.gif") no-repeat 0 50%;}
+.header .wsize .aside_menu li.admin {background:url("../img/commander.png") no-repeat 0 50%;}
 
 .header .menu_bar{position: relative; top: 0; left: 0; width: 100%; height: 60px; background: #fff; border-bottom: 1px solid #d0dae3;}
 .header .menu_bar .menu_area{width: 1100px; margin: 0 auto;}
