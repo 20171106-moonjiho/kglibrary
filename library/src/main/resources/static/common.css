@@ -57,7 +57,7 @@ table{border-collapse: collapse;}
 .search .search_btn_wrap{width: 700px; margin: 0 auto;z-index: 2; position: relative; padding-top: 74px; text-align: left;}
 .search .search_btn_wrap h3{display: block;text-align: center; width: 140px; height: 46px; background: #29cbae; line-height: 48px; color: #fff; font-size: 16px;}
 .search .search_bar{width: 695px; background: #fff; position: relative; display: inline-block; border:  3px solid #29cbae;}
-.search .search_btn_wrap select{padding-left: 40px; float: left; color: #3e3e3e; font-size: 15px; width: 140px;height: 60px;display: inline-block; background: #fff url(/nanum/site/builder/main/library01/img/search_arr.gif) no-repeat 82.5% 50%; border: 0;}
+.search .search_btn_wrap select{padding-left: 40px; float: left; color: #3e3e3e; font-size: 15px; width: 140px;height: 60px;display: inline-block; background: #fff url("../img/search_arr.gif") no-repeat 82.5% 50%; border: 0;}
 .search .search_btn_wrap .search_bar .search_bar_text{width: 100%;}
 .search .search_btn_wrap .search_bar .search_btn{position: absolute; right: 0; width: 86px; height: 60px; line-height: 0; font-size: 0; text-indent:-9999px;
 border: 0; background: #fff url("../img/searchicon.png") no-repeat center 50%;}
@@ -150,12 +150,12 @@ padding: 0; position: relative; cursor: text;font-size: 20px; color: #000; line-
 	width: 620px;
 	height: 280px; /*원래 auto*/
 	clear: both;
-	border: 1px solid #e5e5e5;
+	/*border: 1px solid #e5e5e5;*/
 	border-radius: 10px;
 	overflow: hidden;
 	float: left;
 	margin-right: 2%;
-	background-color: #666;
+	/*background-color: #666;*/
 	}
 .goto{width: 456px;height: 280px;float: left;}
 .goto ul {overflow:hidden;font-size:0; overflow:hidden; }
@@ -187,7 +187,7 @@ padding: 0; position: relative; cursor: text;font-size: 20px; color: #000; line-
 .footer .addr ul{display: inline-block; width: 100%; font-size: 15px; color: #fff;}
 .footer .addr ul li{float: left; padding: 0 20px; background: url("../img/copy_line.gif") no-repeat 0 50%;}
 .footer .addr ul li:first-child{padding-left: 0; background: 0;margin-left: 0;}
-.footer .addr ul li a{color: #fff; display: block; text-decoration: none;}
+.footer .addr ul li a{color: rgb(255, 255, 255); display: block; text-decoration: none;}
 
 .footer .addr_bottom{width: 1100px; margin: 0 auto; display: inline-block; text-align: left;}
 .footer .addr_bottom .addr_right{width: 100%; letter-spacing: -1px;}

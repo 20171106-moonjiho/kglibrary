@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>회원가입</title>
 </head>
+<script src="terms.js"></script>
 <body>
 <c:import url="/header" />
 <c:import url="/userHeader2"/>
@@ -275,7 +276,6 @@
             	<input type="button" value="이전으로" onclick="location.href='index'"></li>
         </ul>
     </form>
-    <script src="terms.js"></script>
 </div>
 <c:import url="/userFooter" /> 
 <c:import url="/footer" />

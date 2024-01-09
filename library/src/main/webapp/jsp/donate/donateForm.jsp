@@ -104,7 +104,7 @@ table.donate_board td {
 		</div>
 	</div>
 	</div>
-	<c:import url="/noticefooter" />
+	<c:import url="/donatefooter" />
 	<c:import url="/footer" />
 </body>
 </html>

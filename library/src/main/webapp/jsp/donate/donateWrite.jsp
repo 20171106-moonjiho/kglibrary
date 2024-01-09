@@ -8,31 +8,34 @@
 <title>도서 기증 신청</title>
 <style>
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    font-family: cursive;
-  }
- input,
-    textarea {
-    width: 30%;
-    padding: 5px;
-    outline: none;
-  }
-  label {
-    line-height: 1rem;
-  }
-  input[type="submit"] {
-   transform: translate(2.2%);
-   padding: 3px;
-   margin-top: 0.6rem;
-   font-family: cursive;
-   font-weight: bold;
-  }
- fieldset {
-   padding: 20px 40px;
- }
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	font-family: cursive;
+}
+
+input, textarea {
+	width: 30%;
+	padding: 5px;
+	outline: none;
+}
+
+label {
+	line-height: 1rem;
+}
+
+input[type="submit"] {
+	transform: translate(2.2%);
+	padding: 3px;
+	margin-top: 0.6rem;
+	font-family: cursive;
+	font-weight: bold;
+}
+
+fieldset {
+	padding: 20px 40px;
+}
 </style>
 </head>
 <body>
@@ -54,46 +57,47 @@ body {
 			</div>
 		</div>
 
-		<form action="donateWriteProc" method='post'
+		<%-- <form action="donateWriteProc" method='post'
 			enctype="multipart/form-data">
 			<fieldset>
 				<legend>기증 신청서</legend>
 				<div class="write_con">
-					<label for="id">기증자</label>
-					<input type="id" name="id" value="${sessionScope.id }">
+					<label for="id">기증자</label> <input type="id" name="id"
+						value="${sessionScope.id }">
 				</div>
-				
+
 				<div class="write_con">
-					<label for="subject">기증 분야</label>
-					<input type="subject" name="subject" palceholder="예시)일반도서, 아동·청소년도서" required />
+					<label for="subject">기증 분야</label> <input type="subject"
+						name="subject" palceholder="예시)일반도서, 아동·청소년도서" required />
 				</div>
-				
+
 				<div class="write_con">
-					<label for="book_no">도서 수량</label>
-					<input type="book_no" name="book_no" required />
+					<label for="book_no">도서 수량</label> <input type="book_no"
+						name="book_no" required />
 				</div>
-				
+
 				<div class="write_con">
-					<label for="method">기증 방법</label>
-					<input type="radio" name="method" value="직접방문" checked />직접방문
-					<input type="radio"	name="method" value="우편배달" />우편발송
+					<label for="method">기증 방법</label> <input type="radio" name="method"
+						value="직접방문" checked />직접방문 <input type="radio" name="method"
+						value="우편배달" />우편발송
 				</div>
-				
+
 				<div class="write_con">
 					<label for="content">내용</label>
-					<textarea style="width: 100%; resize: none" rows="10" cols="40" name="content" value="${donate.content}"></textarea>
+					<textarea style="width: 100%; resize: none" rows="10" cols="40"
+						name="content" value="${donate.content}"></textarea>
 				</div>
-				
+
 				<div align="center">
 					<form action="donateWriteProc" method='post'
-			enctype="multipart/form-data">
-						<input type="submit" value="등록">
-						<input type="button" value="취소" onclick="location.href='donateForm'">
+						enctype="multipart/form-data">
+						<input type="submit" value="등록"> <input type="button"
+							value="취소" onclick="location.href='donateForm'">
 					</form>
 				</div>
 			</fieldset>
-		</form>
-		<%-- <div>
+		</form> --%>
+		<div>
 			<form action="donateWriteProc" method='post'
 				enctype="multipart/form-data">
 				<h3>기증 내용 및 방법</h3>
@@ -141,10 +145,9 @@ body {
 					</tbody>
 				</table>
 			</form>
-		</div> --%>
-
-</div>
-	<c:import url="/noticefooter" />
+		</div>
+	</div>
+	<c:import url="/donatefooter" />
 	<c:import url="/footer" />
 </body>
 </html>

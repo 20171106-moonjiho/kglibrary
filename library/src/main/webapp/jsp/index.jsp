@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>index</title>
+<title>메인 페이지</title>
 	
 </head>
 <body>
