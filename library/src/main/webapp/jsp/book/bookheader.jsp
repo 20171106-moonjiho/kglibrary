@@ -7,7 +7,7 @@
 				<div id="sidebar">
 					<div class="stit">
 						<p class="eng"></p>
-						<h2>이용자마당</h2>
+						<h2>자료검색</h2>
 					</div>
 					<div id="sidemenu">
 						<p class="tit jsMMenuText"><a href="#" class="jsMMenuBtn">도서 자료 검색
