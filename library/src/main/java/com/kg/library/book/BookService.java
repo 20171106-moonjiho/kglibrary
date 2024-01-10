@@ -413,6 +413,8 @@ public class BookService {
 
 		return board;
 		*/
+	
+	
 	//메인화면 추천 도서
 	public void hit_book(Model model) {
 		

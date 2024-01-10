@@ -23,13 +23,14 @@ public class requestBookController {
 	
 	@Autowired
     private BookService bookservice;
-
+	
+/*
     @GetMapping("bookdata") //DB 자료 가공해서 return으로 데이터를 넘김
     public BookDTO bookdata() {
         BookDTO dataFromDB = bookservice.bookdata();
         return dataFromDB;
     }
-    
+*/  
 	@RequestMapping("requestlogin")
 	public String requestlogin(){
 		
