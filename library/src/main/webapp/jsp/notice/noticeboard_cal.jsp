@@ -8,10 +8,13 @@
 <meta charset="UTF-8">
 <title>도서관 일정</title>
 </head>
+
 <body>
 	<c:import url="/header" />
 	<c:import url="/noticeheader" />
+
 	<script src="notice_cal.js"></script>
+
 	<div id="cont_head">
 		<h2>도서관 일정</h2>
 		<!-- 현재위치 -->

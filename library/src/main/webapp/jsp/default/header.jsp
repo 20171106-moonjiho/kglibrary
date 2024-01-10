@@ -25,7 +25,7 @@
 						<li class="login">
 							<c:choose>
 								<c:when test="${empty sessionScope.id }">
-									<a href="login">로그인</a>
+									<a href="Login">로그인</a>
 								</c:when>
 								<c:otherwise>
 									<a href="logout">로그아웃</a>
@@ -78,17 +78,16 @@
 						<div class="two_depth">
 								<p class="bmenu_tit">이용안내</p>
 								<ul>	
-									<li><a href="#" >열람실 이용안내
+									<li><a href="guide_room" >열람실 이용안내
 									</a></li>
-									<li><a href="#" >성수도서관 VR 투어
+									<li><a href="guide_join" >회원가입 안내
 									</a></li>
-									<li><a href="#" >회원가입 안내
-									</a></li>
-									<li><a href="#" >도서대출/반납
+									<li><a href="guide_book" >도서대출/반납
 									</a></li>
 								</ul>
 						</div>
 					</li>
+					
 					<li><a href="#">디지털도서관</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
@@ -104,17 +103,12 @@
 								</ul>
 						</div>
 					</li>
+					 
 					<li><a href="#">문화마당</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
 								<ul>	
-									<li><a href="#" >통합자료 검색
-									</a></li>
-									<li><a href="#" >신착자료 검색
-									</a></li>
-									<li><a href="#" >대출 베스트
-									</a></li>
-									<li><a href="#" >정기간행물
+									<li><a href="#" >문화행사
 									</a></li>
 								</ul>
 						</div>
@@ -147,13 +141,13 @@
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
 								<ul>	
-									<li><a href="#" >통합자료 검색
+									<li><a href="#" >인사말
 									</a></li>
-									<li><a href="#" >신착자료 검색
+									<li><a href="#" >자료 현황
 									</a></li>
-									<li><a href="#" >대출 베스트
+									<li><a href="#" >KG 도서관
 									</a></li>
-									<li><a href="#" >정기간행물
+									<li><a href="#" >찾아오시는길
 									</a></li>
 								</ul>
 						</div>

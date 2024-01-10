@@ -5,16 +5,24 @@
 		<div class="search">
 				<div class="search_btn_wrap">
 					<h3>소장자료검색</h3>	
-					<form id="frm_main_search" method="get" action="./site/search/search00.do" onsubmit="return main_search();">
+					<form id="frm_main_search" method="get" action="bookForm">
 						<div class="search_bar">
-							<select name="search_item" id="search_item">
-								<option value="search_title">자료명</option>
-								<option value="search_author">저자명</option>
-								<option value="search_publisher">발행처</option>
+							<select name="select" id="search_item">
+								<option value="title" selected="selected">제목</option>
+								<option value="author">저작자</option>
+								<option value="category">카테고리</option>
 							</select>
 							<div class="search_bar_text">
-								<label for="search_txt" class="search_m" style="">검색어를 입력하세요.</label>
-								<input type="text" name="search_txt" class="search_text" id="search_txt" value="">
+								<!-- <label for="search_txt" class="search_m" style="">검색어를 입력하세요.</label> -->
+								<c:choose>
+									<c:when test="${empty search or search == 'null'}">
+										<input type="text" name="search" class="search_text" id="search_txt" value=""  placeholder="검색어를 입력해주세요.">
+									</c:when>
+									<c:otherwise>
+										<input type="text" name="search" class="search_text" id="search_txt" value="${search }" placeholder="검색어를 입력해주세요.">
+									</c:otherwise>
+								</c:choose>
+								<!-- <input type="text" name="search" class="search_text" id="search_txt" value=""> -->
 								<input type="submit" class="search_btn" value="검색">
 							</div>
 						</div>
@@ -48,24 +56,6 @@
 								<span class="date">${board.writeDate }</span>
 							</li>
 						</c:forEach>
-						<!-- 
-							<li>
-								<a href="#"><p class="ntit">2024년 KG도서관 겨울 독서교실 안내</p></a>
-								<span class="date">23-12-21</span>
-							</li>
-							<li>
-								<a href="#"><p class="ntit">성동구립무지개도서관, 2023년 서울시 공공도서관 운영 평가 우수 도서관 선정</p></a>
-								<span class="date">23-12-21</span>
-							</li>
-							<li>
-								<a href="#"><p class="ntit">[12월 디지털 원화전시] '나는 엄마가 둘이래요'</p></a>
-								<span class="date">23-12-21</span>
-							</li>
-							<li>
-								<a href="#"><p class="ntit">2023년도 희망도서 바로대출 서비스 신청 마감 안내</p></a>
-								<span class="date">23-12-21</span>
-							</li>
-						-->
 						</ul>
 						<div class="notice_more">
 							<a href="noticeBoard"><img src="img/notice_btn.png" alt="새소식 자세히 보기"></a>
@@ -138,61 +128,44 @@
 					 <div class="tab-cont">
 						<div class="t-cont1">
 							 <ul>
-							  <li>
-								  <a href="#"><img src="img/43027973618.20231007074612.jpg" alt="">
+							 <c:forEach var="hitbook" items="${hitbooks}" >
+							 	 <li>
+							 	 <a href="bookContent?no=${hitbook.no }">
+							 	<img src="../img/admin/${hitbook.image}" alt="">
 								  <div class="overrap">
-								  	<span class="btit">끝말잇기</span>
-									<span class="name">김영진 글·그림</span>
+								  	<span class="btit">${hitbook.title_info}</span>
+									<span class="name">${hitbook.author_info}</span>
 									<span class="more">더보기</span>
 								  </div>
 								  </a>
-							  </li>   
-							  <li><a href="#">
-								  <img src="img/44215450626.20231124071107.jpg" alt="">
-								  <div class="overrap">
-								  	<span class="btit">끝말잇기</span>
-									<span class="name">김영진 글·그림</span>
-									<span class="more">더보기</span>
-								  </div>
-								  </a>
-								</li>   
-							  <li><a href="#">
-								  <img src="img/42353356624.20230927071315.jpg" alt="">
-								 	<div class="overrap">
-								  	<span class="btit">끝말잇기</span>
-									<span class="name">김영진 글·그림</span>
-									<span class="more">더보기</span>
-								  	</div>
-								  	</a>
-								 </li>   
+							  </li>  
+							 </c:forEach>
 							 </ul> 
 						</div>
 						<div class="t-cont1">
 							 <ul>
-							  <li><a href="#"><img src="img/40641325628.20230718121618.jpg" alt="">
-								 <div class="overrap">
-								  	<span class="btit">끝말잇기</span>
-									<span class="name">김영진 글·그림</span>
+							 <c:forEach var="newbook" items="${newbooks}" >
+							 	 <li>
+							 	 <a href="bookContent?no=${newbook.no }">
+							 	 <c:choose>
+									<c:when
+										test="${not empty newbook.image && newbook.category ne 'API'}">
+										<img src="../img/admin/${newbook.image}" alt="">
+										<br>
+									</c:when>
+									<c:otherwise>
+										<img src="${newbook.image }">
+										<br>
+									</c:otherwise>
+								</c:choose>
+								  <div class="overrap">
+								  	<span class="btit">${newbook.title_info}</span>
+									<span class="name">${newbook.author_info}</span>
 									<span class="more">더보기</span>
 								  </div>
 								  </a>
-								 </li>   
-							  <li><a href="#"><img src="img/40691554619.20230919124023.jpg" alt="">
-								 <div class="overrap">
-								  	<span class="btit">끝말잇기</span>
-									<span class="name">김영진 글·그림</span>
-									<span class="more">더보기</span>
-								  </div>
-								  </a>
-								 </li>   
-							  <li><a href="#"><img src="img/41236691625.20230919130622.jpg" alt="">
-								 <div class="overrap">
-								  	<span class="btit">끝말잇기</span>
-									<span class="name">김영진 글·그림</span>
-									<span class="more">더보기</span>
-								  </div>
-								  </a>
-								 </li>   
+							  </li>  
+							 </c:forEach>
 							 </ul>   
 						</div>
 					  </div><!-- tab-cont/ -->
