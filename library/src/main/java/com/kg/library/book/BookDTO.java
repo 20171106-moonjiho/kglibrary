@@ -27,6 +27,7 @@ alter table book modify author_info varchar2(500);
 alter table book modify pub_info varchar2(500);
 ALTER TABLE book ADD rentaldate VARCHAR2(50);
 alter table book add hitbook varchar2(50);
+alter table book modify detail_link varchar2(1000);
 
 */
 public class BookDTO {

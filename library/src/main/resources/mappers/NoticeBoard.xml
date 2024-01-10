@@ -45,6 +45,10 @@
 		SELECT * FROM notice where no = #{n}
 	</select>
 	
+	<select id="main_board">
+			select A.* From (select * from notice ORDER BY no DESC)A where <![CDATA[rownum < 5 ]]>
+	</select>
+	
 	<insert id="noticeboard_writeProc">
 		<selectKey order="BEFORE" keyProperty="no" resultType="int">
 			SELECT NVL(max(no), 0)+1 FROM notice <!-- Max(no)를 했는데 null이라면 0을 

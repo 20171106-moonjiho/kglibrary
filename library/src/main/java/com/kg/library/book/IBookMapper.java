@@ -1,6 +1,7 @@
 package com.kg.library.book;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -32,6 +33,10 @@ public interface IBookMapper {
 	void borrowDateExtend(@Param("n")int n, String sessionId, String rentaldate);
 	
 	void returnProc2(@Param("n")int n, @Param("borrowperson")String borrowperson);
+
+	ArrayList<BookDTO> hitbooks();
+
+	ArrayList<BookDTO> newbooks();
 
 
 }

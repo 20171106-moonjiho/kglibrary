@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="/jsp/default/favicon.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,7 +88,6 @@
 				</table>
 			</form>
 		</div>
->>>>>>> branch 'master' of https://github.com/20171106-moonjiho/kglibrary.git
 	</div>
 	<c:import url="/bookfooter" />
 	<c:import url="/footer" />

@@ -21,4 +21,6 @@ public interface NoticeBoardMapper {
 
 	int noticeboard_ModifyProc(NoticeBoardDTO board);
 
+	ArrayList<NoticeBoardDTO> main_board();
+
 }

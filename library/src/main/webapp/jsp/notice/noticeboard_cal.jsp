@@ -1,17 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ include file="/jsp/default/favicon.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>도서관 일정</title>
 </head>
-<script src="notice_cal.js"></script>
+
 <body>
 	<c:import url="/header" />
 	<c:import url="/noticeheader" />
 
+	<script src="notice_cal.js"></script>
 
 	<div id="cont_head">
 		<h2>도서관 일정</h2>
