@@ -141,13 +141,13 @@
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
 								<ul>	
-									<li><a href="#" >인사말
+									<li><a href="introduction" >인사말
 									</a></li>
 									<li><a href="#" >자료 현황
 									</a></li>
 									<li><a href="#" >KG 도서관
 									</a></li>
-									<li><a href="#" >찾아오시는길
+									<li><a href="map" >찾아오시는길
 									</a></li>
 								</ul>
 						</div>
