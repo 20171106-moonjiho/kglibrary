@@ -305,7 +305,7 @@ public class NoticeBoardService {
 	    System.out.println(board.getWriteDate());
 		}
 	model.addAttribute("boards", boards);
-	}
+	}	
 
 	}
 	

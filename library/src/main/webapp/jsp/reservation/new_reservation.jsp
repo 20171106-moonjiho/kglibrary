@@ -8,10 +8,6 @@
 <title>회의실 예약</title>
 </head>
 <link href="reservation.css" rel="stylesheet">
-<link
-	href="http://www.gwep.or.kr/theme/page/html/css_js/common.dt_ori.daontheme_business.08.css"
-	rel="stylesheet" type="text/css">
-
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
 	integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"

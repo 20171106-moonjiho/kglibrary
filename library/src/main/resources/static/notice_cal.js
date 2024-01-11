@@ -18,45 +18,16 @@ $(function() {
 
 	request.done(function(data) {
 		console.log(data);
-
+		var events = data;
 		// FullCalendar 이벤트로 변환
-		var events = data.map(function(item) {
-			return {
-				start: item.expectedProductionStartDate,
-				end: item.expectedProductionEndDate,
-				title: item.productionPlanCode
-			};
-		});
-		var events = [
-			{
-				start: '2024-01-19',
-				end: '2024-01-19',
-				title: '휴관일'
-			},
-			{
-				start: '2024-01-25',
-				end: '2024-01-28',
-				title: '문화의날 행사'
-			},
-			{
-				start: '2024-02-06',
-				end: '2024-02-06',
-				title: 'KG도서관 발표일'
-			}
-			// 여러 이벤트를 추가할 수 있습니다.
-			// {
-			//   start: '다른 이벤트의 시작일',
-			//   end: '다른 이벤트의 종료일',
-			//   title: '다른 이벤트의 제목'
-			// },
-			// ...
-		];
+		
+		
 		var calendar = new FullCalendar.Calendar(calendarEl, {
 			initialView: 'dayGridMonth',
 			headerToolbar: {
 				left: 'prev,next today',
 				center: 'title',
-				right: 'dayGridMonth,timeGridWeek,timeGridDay'
+				right: 'dayGridMonth'
 			},
 			events: events
 		});
@@ -68,3 +39,38 @@ $(function() {
 		alert("Request failed: " + textStatus);
 	});
 });
+
+        $(function() {
+            $("#openModalBtn").click(function() {
+                $("#myModal").fadeIn();
+            });
+
+            $("#closeModalBtn").click(function() {
+                $("#myModal").fadeOut();
+            });
+        });
+        
+		  $(function() {
+		    $("#startDate").datepicker({
+		        dateFormat: 'yy-mm-dd',
+		        onSelect: function(selectedDate) {
+		            $("#endDate").datepicker("option", "minDate", selectedDate);
+		        }
+		    });
+		
+		    $("#endDate").datepicker({
+		        dateFormat: 'yy-mm-dd'
+		    });
+		});
+
+ 
+function cal_check() {
+    var startDate = document.getElementById('startDate').value;
+    var endDate = document.getElementById('endDate').value;
+    var events = document.getElementById('events').value;
+
+    if (startDate == "" || endDate == "" || events == "") {
+        alert('시작일, 종료일, 그리고 이벤트를 모두 입력해주세요.');
+    }else{document.getElementById('f').submit();}
+}
+

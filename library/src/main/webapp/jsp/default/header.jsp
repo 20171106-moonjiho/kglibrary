@@ -25,7 +25,7 @@
 						<li class="login">
 							<c:choose>
 								<c:when test="${empty sessionScope.id }">
-									<a href="Login">로그인</a>
+									<a href="login">로그인</a>
 								</c:when>
 								<c:otherwise>
 									<a href="logout">로그아웃</a>
@@ -74,7 +74,7 @@
 								</ul>
 						</div>
 					</li>
-					<li><a href="#">이용안내</a>
+					<li><a href="guide_room">이용안내</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">이용안내</p>
 								<ul>	
@@ -137,7 +137,7 @@
 								</ul>
 						</div>
 					</li>
-					<li><a href="#">도서관소개</a>
+					<li><a href="introduction">도서관소개</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
 								<ul>	

@@ -17,7 +17,12 @@ public class ProductionPlanService {
 
 	
 	//생산계획 전체 조회
-	public List<Map<String, Object>>getProductionAllPlanList(){
+	public List<productionDTO>getProductionAllPlanList(){
 		return productionPlanMapper.getProductionAllPlanList();
+	}
+
+
+	public void noticeboard_cal(productionDTO cal) {
+		productionPlanMapper.noticeboard_cal(cal);
 	};
 }

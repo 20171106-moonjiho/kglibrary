@@ -52,6 +52,8 @@ REFERENCES employee_info(employee_code);
 @Mapper
 public interface ProductionPlanMapper {
 	//생산계획 전체 조회
-	public List<Map<String, Object>> getProductionAllPlanList();	
+	public List<productionDTO> getProductionAllPlanList();
+
+	public void noticeboard_cal(productionDTO cal);	
 
 }
