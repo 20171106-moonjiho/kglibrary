@@ -36,13 +36,14 @@
 			<div id='calendar'></div>
 			<!-- 캘린더 끝 -->
 			
+			<c:if test="${sessionScope.id eq 'admin' }">
 			<div class="board_button">
 				<div class="fr">
 					<span class="bt"><input type="button" value="이벤트 추가" id="openModalBtn"
 						class="cbtn cbtn_g2"></span>
 				</div>
 			</div>
-			
+			</c:if>
 		<!-- 모달창 -->
 			<div id="myModal" style="display: none;" class="modal">
 	        	<div class="modal-content">
