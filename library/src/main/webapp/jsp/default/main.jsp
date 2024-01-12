@@ -33,7 +33,7 @@
 				<div class="sub_bar">
 				<div class="link_btn">
 			<ul>
-				<li><a href="#"><i class="link01 hvr-bob"></i><span>이용안내</span></a></li>
+				<li><a href="guide_room"><i class="link01 hvr-bob"></i><span>이용안내</span></a></li>
 				<li><a href="#"><i class="link02 hvr-bob"></i><span>문화행사<br>신청</span></a></li>
 				<li><a href="#"><i class="link03 hvr-bob"></i><span>전자책</span></a></li>
 				<li><a href="reservation"><i class="link04 hvr-bob"></i><span>회의실<br>예약현황</span></a></li>

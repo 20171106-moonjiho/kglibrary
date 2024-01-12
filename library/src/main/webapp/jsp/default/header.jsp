@@ -145,8 +145,6 @@
 									</a></li>
 									<li><a href="#" >자료 현황
 									</a></li>
-									<li><a href="#" >KG 도서관
-									</a></li>
 									<li><a href="map" >찾아오시는길
 									</a></li>
 								</ul>

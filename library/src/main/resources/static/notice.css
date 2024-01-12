@@ -74,7 +74,7 @@ input.cbtn{min-width:100px;border:none;cursor:pointer;vertical-align:middle;over
 .board_search ul li.board_search_start {float:left; width:18px; height:35px; background:url("../img/search_left.gif"); background-repeat:no-repeat;}
 .board_search ul li.board_search_end {float:left; width:18px; height:35px; background:url("../img/search_right.gif"); background-repeat:no-repeat;}
 .board_search ul li select {float:left; height:28px;}
-.board_search ul li input.search_input {float:left; margin-left:5px; background:#e5e5e5; border:1px solid #bebebe; border-right:1px solid #e1e1e1; border-bottom:1px solid #e1e1e1; height:28px; padding:2px 0 0 3px;}
+.board_search ul li input.search_input {float:left; margin-left:5px; background:#e5e5e5; border:1px solid #bebebe; border-right:1px solid #e1e1e1; border-bottom:1px solid #e1e1e1; height:25px; padding:2px 0 0 3px;}
 .board_search ul li input.search_bt {float:left;}
 
 

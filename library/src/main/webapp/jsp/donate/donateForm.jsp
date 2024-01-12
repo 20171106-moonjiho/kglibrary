@@ -25,7 +25,7 @@
 	height: 38px;
 	border: 0px;
 	font-weight: bold;
-	background: #1b5ac2;
+	background: #08ae90;
 	outline: none;
 	float: right;
 	color: #ffffff;
@@ -101,7 +101,7 @@ table.donate_board td {
 					</c:forEach>
 				</table>
 			</div>
-			${result }
+			<div class="board_paginate">${result}</div>
 		</div>
 	</div>
 	</div>

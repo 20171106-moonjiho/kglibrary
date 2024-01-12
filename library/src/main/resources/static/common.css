@@ -16,6 +16,7 @@ ul{list-style: none;}
 img{border: 0; vertical-align: top;}
 a{text-decoration: none;}
 table{border-collapse: collapse;}
+strong{font-weight:normal;font-family:'NotoKrB';}
 
 h3.tit{text-align: left;padding-top:17px;margin-bottom:20px;background:url("/img/h3_bar.gif") no-repeat 0 0;font-weight:bold !important;font-family:'NotoKrB',sans-serif;font-size:22px;font-weight:normal;color:#000;line-height:1.2;letter-spacing:-0.05em;}
 h3.tit.h3_t{margin-top:55px;}

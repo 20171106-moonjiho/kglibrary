@@ -44,3 +44,10 @@
 .m_info .box .desc ul > li > ul{ display:inline-block; width:70%; }
 .m_info .box.parking .desc ul > li  {margin-bottom:10px; line-height:35px;}
 .m_info .box.parking .desc ul > li > ul > li {margin:0; line-height:24px;}
+
+.greeting {margin-top:50px; text-align: left;}
+.greeting .gree_box {width:100%; height:280px; background:url("/img/gree_bg.jpg")no-repeat 0 0; background-size:cover;}
+.greeting .gree_box p {margin:-50px 0 0 50px; width:290px; height:290px; display:inline-block;background:url("/img/gree_bg2.png")no-repeat #4d7fd0 32px 70px; letter-spacing:-0.06em;
+font-size:23px; color:#fff; line-height:32px; padding:153px 30px 30px 30px; box-sizing:border-box; font-family:'NotoKrL', sans-serif; box-shadow: 24px 8px 22px -22px #222;}
+.greeting .gree_txt p {margin-bottom:32px;}
+.greeting .stit {color:#222; font-size:23px; font-weight:bold; line-height:35px; margin:50px 0;}
