@@ -65,10 +65,10 @@
 		예약가능
 	</div>
 	<div align="center">
-		<a href="01.php" class="btn btn_submit"
-			style="display: inline-block; width: 150px; height: 40px; line-height: 40px; margin: 20px auto; background-color: #000; margin: 0 3px;">예약현황으로</a>
+		<a href="myReservation" class="btn btn_submit"
+			style="display: inline-block; width: 150px; height: 40px; line-height: 40px; margin: 20px auto; margin: 0 3px; color: #000; border: 1px solid #dedede;">예약현황으로</a>
 		<a href="#none" onclick="f_submit();" class="btn btn_submit"
-			style="display: inline-block; width: 150px; height: 40px; line-height: 40px; margin: 20px auto; margin: 0 3px;">회의실
+			style="display: inline-block; width: 150px; height: 40px; line-height: 40px; margin: 20px auto; margin: 0 3px; color: #000; border: 1px solid #dedede;">회의실
 			예약하기</a>
 	</div>
 	<c:import url="/reservationfooter" />

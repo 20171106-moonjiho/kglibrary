@@ -38,5 +38,9 @@ public interface IBookMapper {
 
 	ArrayList<BookDTO> newbooks();
 
+	String dataStatus(BookDTO board);
+
+	
+
 
 }

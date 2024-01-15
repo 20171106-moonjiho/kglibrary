@@ -87,7 +87,7 @@
 								</ul>
 						</div>
 					</li>
-					
+					<!-- 
 					<li><a href="#">디지털도서관</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
@@ -103,7 +103,7 @@
 								</ul>
 						</div>
 					</li>
-					 
+					  -->
 					<li><a href="#">문화마당</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
@@ -143,7 +143,7 @@
 								<ul>	
 									<li><a href="introduction" >인사말
 									</a></li>
-									<li><a href="#" >자료 현황
+									<li><a href="dataStatus" >자료 현황
 									</a></li>
 									<li><a href="map" >찾아오시는길
 									</a></li>

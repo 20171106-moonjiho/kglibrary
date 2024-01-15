@@ -49,15 +49,28 @@
 	        	<div class="modal-content">
 	            	<span id="closeModalBtn" class="close">&times;</span>
 	            	
-		            <form action="noticeboard_cal_pro" method="post" id="f">
-				        <label for="datepicker">시작일 : </label>
-				        <input type="text" id="startDate" name="startDate" readonly><br>
-				        <label for="datepicker">종료일 : </label>
-				        <input type="text" id="endDate" name="endDate" readonly><br>
-				        <span>이벤트를 입력해 주세요. : </span>
-						<input type="text" id="events" name="events">
-				        <input type="button" value="확인" onclick="cal_check()">
+	            	
+	            	<form action="noticeboard_cal_pro" method="post" id="f">
+				       <table style="padding: 10px; margin-top: 50px;">
+					        <tr>
+					            <td style="width: 150px; border-right: 1px solid #dedede; font-weight: bold;" >기간 선택</td>
+					            <td>
+					            <label for="datepicker">시작일 : </label>
+					            <input type="text" id="startDate" name="startDate" readonly style="text-align: center;">
+					            <label for="datepicker"> ~ 종료일 : </label>
+					            <input type="text" id="endDate" name="endDate" readonly style="text-align: center;">
+					            </td>
+					        </tr>
+					        <tr>
+					            <td style="width: 150px; border-right: 1px solid #dedede;  font-weight: bold;">이벤트</td>
+					            <td><input type="text" id="events" name="events" style="width: 460px;"></td>
+					        </tr>
+					    </table>
+					    <p style="margin-top: 5px; text-align: right;">
+					    <input type="button" value="확인" onclick="cal_check()" class="cbtn cbtn_g2">
+					    </p>
 		   			 </form>
+
 	       		 </div>
 	        	<!-- 모달창 끝-->
 	   		 </div>

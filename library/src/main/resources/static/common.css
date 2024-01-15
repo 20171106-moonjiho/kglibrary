@@ -25,6 +25,19 @@ h4.tit{text-align: left;font-weight:bold !important ;font-family:'NotoKrB',sans-
 h4.tit.h4_t{margin-top:40px;}
 h5.tit {font-size:17px; color:#222; font-family:'NotoKrB',sans-serif; margin-left:20px; padding-left:22px; background:url("/img/h5_bul.gif") no-repeat 0 8px;}
 .info_wrap p{text-align: left;font-family:'NotoKrM', sans-serif;font-size:15px;color:#000}
+/*기본테이블*/
+.table1{width:100%;border-collapse:collapse;border:1px solid #e5e5e5;border-top:1px solid #555;}
+.table1 th,
+.table1 td{padding:15px 0;font-size:15px;text-align:center;color:#222;}
+.table1 thead th{border-left:1px solid #e5e5e5;background:#e9f0f5;}
+.table1 thead th.tline{border-top:1px solid #dfdfdf;}
+.table1 tbody th,
+.table1 tbody td{border:1px solid #dfdfdf;line-height:22px;}
+.table1 tbody tr th.table_bg{background:#edfdff;}
+.table1 tbody td{color:#555;}
+.table1 tbody td.eng{font-family:'Lato',sans-serif;font-weight:400;font-size:15px;letter-spacing:0;}
+.table1 tbody td.left{text-align:left;padding:15px 10px;}
+.table1 tbody td.right{text-align:right;padding:15px 10px;}
 
 #wrap{width: 100%; overflow: hidden;}
 .header{width: 100%;}
@@ -41,8 +54,8 @@ h5.tit {font-size:17px; color:#222; font-family:'NotoKrB',sans-serif; margin-lef
 .header .wsize .aside_menu li.admin {background:url("../img/commander.png") no-repeat 0 50%;}
 
 .header .menu_bar{position: relative; top: 0; left: 0; width: 100%; height: 60px; background: #fff; border-bottom: 1px solid #d0dae3;}
-.header .menu_bar .menu_area{width: 1100px; margin: 0 auto;}
-.menu_bar .gnb_bg{display:none;position:absolute;z-index:90; top:61px; left:50%;width:1100px;margin-left:-550px;height:200px !important;box-shadow: 0px 2px 2px 2px rgba(0,0,0,0.1); background:#FFF;}/*478*/
+.header .menu_bar .menu_area{width: 959px; margin: 0 auto;}
+.menu_bar .gnb_bg{display:none;position:absolute;z-index:90; top:61px; left:50%;width:959px;margin-left:-482px;height:200px !important;box-shadow: 0px 2px 2px 2px rgba(0,0,0,0.1); background:#FFF;}/*478*/
 .header .menu_bar .menu_area ul li{float: left; width: 137px; height: 60px; text-align: center;}
 .header .menu_bar .menu_area ul li a{display:inline-block;color:#444;z-index:90;font-size:17px;line-height:60px;font-family:'NotoKrM',sans-serif; letter-spacing:-0.075em;}
 .header .menu_bar .menu_area ul li a{font-size: 17px; color: #444; line-height: 60px; letter-spacing: -0.075em; font-weight: bold}

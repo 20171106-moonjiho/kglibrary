@@ -15,7 +15,7 @@
 				</p>
 				<ul id="jsMMenu">
 					<li id="introduction"><a href="introduction">인사말 </a></li>
-					<!--  <li id="guide_join"><a href="guide_join">자료 현황 </a></li>-->
+					<li id="dataStatus"><a href="dataStatus">자료 현황 </a></li>
 					<li id="map"><a href="map">찾아오시는길 </a></li>
 				</ul>
 				<script>
