@@ -81,8 +81,8 @@
 					</tr>
 					<tr>
 						<td colspan="2" class="content"><input type="button"
-							value="회원수정" onclick="updateCheck()"> <input
-							type="button" value="취소" onclick="location.href='index'"><br></td>
+							value="회원수정" onclick="updateCheck()" class="cbtn cbtn_g2"> <input
+							type="button" value="취소" onclick="location.href='index'" class="cbtn cbtn_g2"><br></td>
 					</tr>
 				</table>
 			</form>

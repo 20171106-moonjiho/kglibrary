@@ -104,11 +104,11 @@
 						</div>
 					</li>
 					  -->
-					<li><a href="#">문화마당</a>
+					<li><a href="cultureboard">문화마당</a>
 						<div class="two_depth">
 								<p class="bmenu_tit">자료검색</p>
 								<ul>	
-									<li><a href="#" >문화행사
+									<li><a href="cultureboard" >문화행사
 									</a></li>
 								</ul>
 						</div>

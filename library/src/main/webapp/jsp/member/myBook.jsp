@@ -30,9 +30,12 @@
 		<!-- //현재위치 -->
 	</div>
 	<div id="cont_wrap">
+		<div id="board" style="width: 100%;">
+		<!-- 
 		<h2>도서 검색</h2>
 
 		<hr class="hr1" noshade>
+		 -->
 		<c:choose>
 			<c:when test="${empty boards }">
 				<h2>대출 도서가 없습니다.</h2>
@@ -40,7 +43,7 @@
 			<c:otherwise>
 				<table style="margin-top: 30px;">
 					<tr>
-						<th width="50">번호</th>
+						<th width="100">번호</th>
 						<th width="350">제목</th>
 						<th width="130">작성자</th>
 						<th width="250" colspan="3">반납일</th>
@@ -68,6 +71,7 @@
 				<div class="center" style="margin-top: 18px;">${result}</div>
 			</c:otherwise>
 		</c:choose>
+		</div>
 	</div>
 	<c:import url="/userFooter" />
 	<c:import url="/footer" />

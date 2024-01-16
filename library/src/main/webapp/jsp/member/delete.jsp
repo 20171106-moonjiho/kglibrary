@@ -38,8 +38,9 @@
 						<td><input type="password" name="confirm"><br></td>
 					</tr>
 					<tr>
-						<td colspan="2"><input type="submit" value="회원 탈퇴"> <input
-							type="button" value="취소" onclick="location.href='index'">
+						<td colspan="2">
+						<input type="submit" value="회원 탈퇴" class="cbtn cbtn_g2"> <input
+							type="button" value="취소" onclick="location.href='index'" class="cbtn cbtn_g2">
 						</td>
 					</tr>
 				</table>
