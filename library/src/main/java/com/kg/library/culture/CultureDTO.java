@@ -36,7 +36,8 @@ package com.kg.library.culture;
     money VARCHAR2(50),
     teacher VARCHAR2(100),
     contents VARCHAR2(4000),
-    image VARCHAR2(200)
+    image VARCHAR2(200),
+    applicants VARCHAR2(50)
 );
  */
 public class CultureDTO {

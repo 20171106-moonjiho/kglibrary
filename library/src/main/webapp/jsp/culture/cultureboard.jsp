@@ -95,7 +95,11 @@
 								<li class="img_yes">
 
 									<p class="imgw">
-										<img src="../img/get_img.jpeg"
+										<c:if test="${board.image != null}">
+											<img src="../img/${board.id}/${board.image}">
+											<br>
+										</c:if>
+										<img src="#"
 											alt="11월 <직업인으로서의 변호사> 이재욱 변호사와의 만남">
 									</p>
 
@@ -103,8 +107,8 @@
 										<p class="cate"
 											style="color: #848484; text-align: left; font-weight: bold;">${board.reception_area }</p>
 										<p class="tit">
-											<a href="cultureContent?no=${board.no }" style="color: #BDBDBD; text-align: left;">
-												${board.title }</a>
+											<a href="cultureContent?no=${board.no }"
+												style="color: #BDBDBD; text-align: left;"> ${board.title }</a>
 										</p>
 										<div class="sm_box">
 											<dl>
@@ -126,15 +130,24 @@
 												<dd>
 													<strong>[선착순]</strong> <strong style="color: #ff4e00;"
 														class="eng"><span
-														style="color: #FF0000; font-weight: bold;">1</span></strong><span
+														style="color: #FF0000; font-weight: bold;">${board.applicants }</span></strong><span
 														class="eng">/${board.people }</span>
 												</dd>
 											</dl>
 										</div>
 									</div>
 									<div class="btn_box">
-										<a href="#" class="btn_sm btn_close">기간종료</a> <a href="#"
-											class="btn_sm btn_check">등록확인</a>
+									<c:choose>
+										<c:set var="applicantsInt" value="${board.applicants}" />
+    									<c:set var="peopleInt" value="${board.people}" />
+										<c:when test="${applicantsInt < peopleInt }">
+										<a href="registWrite?no=${board.no }" class="btn_sm btn_ing">행사신청</a>
+										</c:when>
+										<c:otherwise>
+										<a href="#" class="btn_sm btn_close">기간종료</a>
+										</c:otherwise>
+									</c:choose> 
+										<a href="#"	class="btn_sm btn_check">등록확인</a>
 									</div>
 								</li>
 							</c:forEach>

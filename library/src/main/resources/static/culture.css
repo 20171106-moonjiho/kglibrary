@@ -38,6 +38,7 @@ text-align: center; cursor: pointer; border: 0; letter-spacing: -0.05em; backgro
 #board .btn_sm{display:block;width:150px;height:45px;margin:5px 0;line-height:45px;font-size:14px; text-align:center;vertical-align:middle;}
 #board .btn_ing{color:#fff; border:1px solid #dd3332; background:#e64847;} /*수강신청*/
 #board .btn_check{background:#fff;color:#222;border:1px solid #222;} /*등록확인*/
+#board .btn_on{color:#fff; background:#15c8a8; border:1px solid #777;} /*기간종료*/
 #board .btn_close{color:#fff; background:#909090; border:1px solid #777;} /*기간종료*/
 #board .btn_end{background:#b7b7b7;border:1px solid #aaa;color:#fff;} /*마감*/
 #board .btn_prepare{background:#3575dc;border:1px solid #a61bbe;color:#fff;} /*접수준비*/
@@ -123,3 +124,8 @@ cursor: pointer; border: 0 none; color: #fff; background: #8b95a3;}
 #board .table_bview tbody td.content .sns{clear:both; float:right; padding-top:20px;}
 #board .table_bview tbody td.content .sns a{float:left; padding-left:3px;}
 #board .table_bview tbody td.content .photodown{background-color:#336699; color:#ffffff; padding:5px;}
+
+input.board_input {height:45px;padding:0 15px;line-height:45px;color:#757575;border:1px solid #d5dbde;cursor:text;background:#fff;}
+input.board_input:focus{border:1px solid #3db6ed;background-color:#f0f7fa;}
+input.board_input_file {width:90%; border:1px solid #cdcdcd; padding:3px 3px 0px 3px; font-size:12px; background:#fff;}
+textarea {border:1px solid #cdcdcd; font-size:12px;}

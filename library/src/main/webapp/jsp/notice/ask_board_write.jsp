@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>묻고 답하기</title>
 </head>
-<link href="book.css" rel="stylesheet">
 <body>
 	<c:import url="/header" />
 	<c:import url="/noticeheader" />
