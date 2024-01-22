@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,8 @@ public class CultureService {
 	
 	
 	public void cultureboard(String search_select, String search, String cp, Model model) {
-
+		String sessionId = (String) session.getAttribute("id");
+//		System.out.println("1111");
 		//페이지 번호
 		int currentPage = 1;// 현재 페이지
 
@@ -47,21 +49,25 @@ public class CultureService {
 		int begin = end - pageBlock + 1; // 테이블에서 가져올 시작 행 번호.
 		
 		ArrayList<CultureDTO> boards = mapper.cultureboard(begin,end,search_select,search);
-		
+//		
 		if(boards != null) {
+			List<String> apply_ckList = new ArrayList<>();
 			for(CultureDTO b : boards) {
 				if(b.getImage()!=null) {
 					String[] names= b.getImage().split("/");
-//					for(String name : names) {
-//					System.out.println("name: " +name);
-//					}
 					String[] fileNames = names[1].split("-",2);
-//					for(String fileName : fileNames) {
-//						System.out.println("fileName: " +fileName);
-//						}
 					b.setImage(names[1]);
 					}
+				if(sessionId!=null) {
+					String apply_ck = mapper.apply_ck(b.getTitle(),sessionId);
+					apply_ckList.add(apply_ck);
+					
+				}
+				String applicants = mapper.applicants(b.getTitle());
+				b.setApplicants(applicants);
+				mapper.updateApplicantsCount(applicants,b.getNo());
 			}
+			model.addAttribute("apply_ckList", apply_ckList);
 		}
 		int totalCount = mapper.totalCount(search_select, search); // 테이블의 행의 갯수 를 구해 오기위함
 		if (totalCount == 0) {
@@ -70,7 +76,7 @@ public class CultureService {
 		
 		String url = "cultureboard?search_select=" + search_select + "&search=" + search + "&currentPage=";
 		String result = PageService.printPage(url, totalCount, pageBlock, currentPage);
-		
+
 		model.addAttribute("count", totalCount);
 		model.addAttribute("boards", boards);
 		model.addAttribute("result", result);

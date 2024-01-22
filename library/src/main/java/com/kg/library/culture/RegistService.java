@@ -76,14 +76,14 @@ public class RegistService {
 			e.printStackTrace();
 		}
 		CultureDTO C_board = mapper.cultureContent(n);
-		String applicant = mapper.applicants_count(C_board);
-		int app_count = Integer.parseInt(applicant);
+//		String applicant = mapper.applicants_count(C_board);
+//		int app_count = Integer.parseInt(applicant);
+//		
+//		app_count++;
+//		String newApplicant = String.valueOf(app_count);
+//		C_board.setApplicants(newApplicant);
 		
-		app_count++;
-		String newApplicant = String.valueOf(app_count);
-		C_board.setApplicants(newApplicant);
-		
-		mapper.updateApplicantsCount(newApplicant,n);
+//		mapper.updateApplicantsCount(newApplicant,n);
 		
 		return "redirect:cultureboard";
 	}
@@ -100,6 +100,27 @@ public class RegistService {
 		n=Integer.parseInt(no);
 		RegistDTO board = mapper.registContent(n);
 
+		return board;
+	}
+
+
+	public RegistDTO registboard(String no, String sessionId) {
+		
+		int n = 1;
+		try {
+			n = Integer.parseInt(no);
+		}catch (Exception e) {
+			return null;
+		}
+		
+		CultureDTO C_board = mapper.cultureContent(n);
+		String title = C_board.getTitle();
+		
+		System.out.println(sessionId);
+		System.out.println(title);
+		RegistDTO board = mapper.registboard(title,sessionId);
+		System.out.println("board의 값은?"+board);
+		
 		return board;
 	}
 

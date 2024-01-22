@@ -101,22 +101,33 @@
 		VALUES(#{no}, #{id}, #{title},
 		#{name},#{p_name},
 		#{tel},#{email},#{address},
-		#{es_school},#{es_hak},#{es_ban},#{contents})
+		#{es_school},#{es_hak},#{es_ban},#{contents},1)
 	</insert>
 	
 	<select id="applicants_count">
 	SELECT applicants from culture where no=#{no}
 	</select>
 
-	<update id="updateApplicantsCount">
-    UPDATE culture
-    SET applicants = #{newApplicant}
-    WHERE no=#{n} <!-- 어떤 레코드를 업데이트할지에 대한 조건 -->
-	</update>
 	
 	<select id ="registCount" parameterType="com.kg.library.culture.RegistDTO">
 	SELECT count(id) FROM regist where title = #{title} and id = #{sessionId}
 	</select>
 
+	<select id ="apply_ck" parameterType="com.kg.library.culture.RegistDTO">
+	SELECT apply_ck FROM regist where title = #{title} and id = #{sessionId}
+	</select>
 	
+	<select id ="applicants" parameterType="com.kg.library.culture.RegistDTO">
+	SELECT count(no) FROM regist where title = #{title}
+	</select>
+	
+	<update id="updateApplicantsCount">
+    UPDATE culture
+    SET applicants = #{applicants}
+    WHERE no=#{no} <!-- 어떤 레코드를 업데이트할지에 대한 조건 -->
+	</update>
+	
+	<select id="registboard" resultType="com.kg.library.culture.RegistDTO">
+    SELECT * FROM regist WHERE title = #{title} AND id = #{sessionId}
+	</select>
 </mapper>

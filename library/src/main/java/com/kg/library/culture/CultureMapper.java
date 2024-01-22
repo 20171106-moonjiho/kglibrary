@@ -30,9 +30,15 @@ public interface CultureMapper {
 
 	String registCount(@Param(value = "title") String title, @Param(value = "sessionId") String sessionId);
 
-	void updateApplicantsCount(@Param(value = "newApplicant") String newApplicant, int n);
-
 	RegistDTO registContent(int n);
+
+	String apply_ck(String title, String sessionId);
+
+	String applicants(String title);
+
+	void updateApplicantsCount(@Param(value = "applicants") String applicants, @Param(value = "no") int no);
+
+	RegistDTO registboard(@Param(value = "title") String title, @Param(value = "sessionId") String sessionId);
 
 
 

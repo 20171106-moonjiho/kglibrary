@@ -1,5 +1,6 @@
 package com.kg.library.culture;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,6 +62,21 @@ public class RegistController {
 			String Path = service.registWritePro(no,title,name,p_name,tel,email,address,es_school,es_hak,es_ban,contents);
 			
 			return Path;
+		}
+		
+		@RequestMapping("registboard")
+		public String registboard(String no, Model model) {
+			String sessionId = (String) session.getAttribute("id");
+			
+			if(sessionId == null) {
+				return "redirect:login";
+			}
+			
+			RegistDTO board = service.registboard(no,sessionId);
+			model.addAttribute("menu", "cultureboard");
+			model.addAttribute("board", board);
+			
+			return "culture/registboard";
 		}
 	
 }

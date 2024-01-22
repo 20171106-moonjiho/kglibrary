@@ -13,6 +13,7 @@ es_school 학교
 es_hak 학년
 es_ban 반
 contents 내용 
+apply_ck 중복체크
  * */
 
 /*
@@ -28,7 +29,8 @@ contents 내용
     es_school VARCHAR2(100),
     es_hak VARCHAR2(100),
     es_ban VARCHAR2(100),
-    contents VARCHAR2(4000)
+    contents VARCHAR2(4000),
+    apply_ck varchar2(2)
 );
  */
 public class RegistDTO {
