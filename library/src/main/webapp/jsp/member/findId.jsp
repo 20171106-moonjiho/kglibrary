@@ -26,7 +26,6 @@
 	</div>
 <div id="cont_wrap">
 	<div align="center">
-	<h1>아이디 찾기</h1><br>
 	<table>
 	<tr><td>
 		<font color="red" >${msg }</font>
@@ -39,7 +38,7 @@
 				<th>이름</th>
 				<td><input type="text" name="name" id="name"><br></td>
 			</tr>
-			<tr>
+			<tr style="height: 60px;">
 				<th>전화번호</th>
 				<td><input type="text" name="tel" id="tel">
 				<input type="hidden" id="phoneAutChk" />
@@ -52,13 +51,12 @@
 					<input type="hidden" id="phoneDoubleChk" />
 				</td>
 			</tr>
-			<tr>
-				<td colspan="2" class="content">
-				<input type="button" value="확인" id="check">
-				<input type="button" value="취소" onclick="location.href='index'"><br>
-				</td>
-			</tr>
 		</table>
+		
+		<div class="btn" style="margin-top: 20px;">
+		<input type="button" value="확인" id="check">
+		<input type="button" value="취소" onclick="location.href='index'">
+		</div>
 	</form>
 	</div>
 	</td></tr>
