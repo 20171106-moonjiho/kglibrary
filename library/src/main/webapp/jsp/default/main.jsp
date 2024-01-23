@@ -34,7 +34,7 @@
 				<div class="link_btn">
 			<ul>
 				<li><a href="guide_room"><i class="link01 hvr-bob"></i><span>이용안내</span></a></li>
-				<li><a href="#"><i class="link02 hvr-bob"></i><span>문화행사<br>신청</span></a></li>
+				<li><a href="cultureboard"><i class="link02 hvr-bob"></i><span>문화행사<br>신청</span></a></li>
 				<li><a href="bookForm"><i class="link03 hvr-bob"></i><span>도서자료</span></a></li>
 				<li><a href="reservation"><i class="link04 hvr-bob"></i><span>회의실<br>예약현황</span></a></li>
 				<li><a href="donateguide"><i class="link06 hvr-bob"></i><span>기증신청 <br>게시판</span></a></li>
@@ -86,7 +86,7 @@
 							</li>
 						</ul>
 						<div class="notice_more">
-							<a href="#"><img src="img/notice_btn.png" alt="새소식 자세히 보기"></a>
+							<a href="cultureboard"><img src="img/notice_btn.png" alt="새소식 자세히 보기"></a>
 						</div>
 					</div>
 				</div>

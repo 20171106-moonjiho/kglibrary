@@ -75,8 +75,20 @@ public class RegistController {
 			RegistDTO board = service.registboard(no,sessionId);
 			model.addAttribute("menu", "cultureboard");
 			model.addAttribute("board", board);
-			
+			model.addAttribute("no",no);
 			return "culture/registboard";
+		}
+		
+		@RequestMapping("registDelete")
+		public String registDelete(String no) {
+			String sessionId = (String) session.getAttribute("id");
+			
+			if(sessionId == null) {
+				return "redirect:login";
+			}
+			
+			service.registDelete(no,sessionId);
+			return "redirect:cultureboard";
 		}
 	
 }

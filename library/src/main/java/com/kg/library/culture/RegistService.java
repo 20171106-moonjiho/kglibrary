@@ -116,12 +116,26 @@ public class RegistService {
 		CultureDTO C_board = mapper.cultureContent(n);
 		String title = C_board.getTitle();
 		
-		System.out.println(sessionId);
-		System.out.println(title);
 		RegistDTO board = mapper.registboard(title,sessionId);
-		System.out.println("board의 값은?"+board);
+		
 		
 		return board;
+	}
+
+
+	public void registDelete(String no,String sessionId) {
+		int n = 1;
+		try {
+			n = Integer.parseInt(no);
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		CultureDTO C_board = mapper.cultureContent(n);
+		String title = C_board.getTitle();
+		
+		mapper.registDelete(title,sessionId);
+		return;
 	}
 
 }

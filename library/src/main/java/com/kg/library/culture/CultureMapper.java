@@ -40,6 +40,10 @@ public interface CultureMapper {
 
 	RegistDTO registboard(@Param(value = "title") String title, @Param(value = "sessionId") String sessionId);
 
+	void registDelete(@Param(value = "title") String title, @Param(value = "sessionId") String sessionId);
+
+	
+
 
 
 }

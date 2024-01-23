@@ -129,3 +129,5 @@ input.board_input {height:45px;padding:0 15px;line-height:45px;color:#757575;bor
 input.board_input:focus{border:1px solid #3db6ed;background-color:#f0f7fa;}
 input.board_input_file {width:90%; border:1px solid #cdcdcd; padding:3px 3px 0px 3px; font-size:12px; background:#fff;}
 textarea {border:1px solid #cdcdcd; font-size:12px;}
+a.con_btn,input.con_btn{background:#a2a2a2; color:#fff; display:inline-block;margin:0 3px;padding:12px 25px 13px 25px; font-weight:normal;font-family:'NotoKrM';font-size:15px;line-height:normal;vertical-align:middle;text-align:center;cursor:pointer;border:0;letter-spacing:-0.05em;margin-top: 35px;}
+a.con_sbtn,input.con_sbtn{background:#a2a2a2; color:#fff; display:inline-block;margin:0 3px; padding:10px 15px; font-weight:normal;font-family:'NotoKrM';font-size:13px;line-height:normal;vertical-align:middle;text-align:center;cursor:pointer;border:0;letter-spacing:-0.05em;}

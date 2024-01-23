@@ -130,4 +130,8 @@
 	<select id="registboard" resultType="com.kg.library.culture.RegistDTO">
     SELECT * FROM regist WHERE title = #{title} AND id = #{sessionId}
 	</select>
+	
+	<delete id="registDelete">
+		delete from regist where title = #{title} AND id = #{sessionId}
+	</delete>
 </mapper>
