@@ -1,15 +1,19 @@
 package com.kg.library.member;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.kg.library.reservation.ReservationDTO;
 
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 @Controller
@@ -76,10 +80,9 @@ public class MemberController {
 //	}
 //	@Autowired private KakaoService kakaoService;
 	
-/*
 	@RequestMapping("mobileCheck")
 	@ResponseBody	
-	public String sendSMS(String mobile) { // 휴대폰 문자보내기
+	public String sendSMS(String tel) { // 휴대폰 문자보내기
 		Random rand  = new Random(); //랜덤숫자 생성하기 !!
         String numStr = "";
         for(int i=0; i<4; i++) {
@@ -87,12 +90,11 @@ public class MemberController {
             numStr+=ran;
         }
              
-    	service.certifiedPhoneNumber(mobile, numStr); //휴대폰 api 쪽으로 가기 !!
+    	service.certifiedPhoneNumber(tel, numStr); //휴대폰 api 쪽으로 가기 !!
     	// // 밑에 자세한 설명나옴
      
         return numStr;
-    }
-*/
+    }	
 	
 	@RequestMapping("userInfo")
 	public String userInfo(Model model,  RedirectAttributes ra) {
@@ -244,5 +246,98 @@ public class MemberController {
 		service.returnProc2(no);
 		return "redirect:myBook";	
 	}
+    
+    @RequestMapping("findIdPw")
+    public String findIdPw(Model model) {
+    	model.addAttribute("menu","findIdPw");
+    	return "member/findIdPw";
+    }
+    
+    @RequestMapping("findId")
+    public String findId(Model model) {
+    	model.addAttribute("menu","findIdPw");
+    	return "member/findId";
+    }
+    
+    @RequestMapping("findPw")
+    public String findPw(Model model) {
+    	model.addAttribute("menu","findIdPw");
+    	return "member/findPw";
+    }
+    
+    @PostMapping("findIdCheck")
+    public void findIdCheck(MemberDTO member) {
+    	service.nameTelCheck(member);
+    }
+    
+    @PostMapping("findPwCheck")
+    public void findPwCheck(MemberDTO member) {
+    	service.idTelCheck(member);
+    }
+    
+    @RequestMapping("mobileCheck2")
+	@ResponseBody	
+	public String sendSMS2(MemberDTO member, String tel) { // 휴대폰 문자보내기
+    	// 이름과 전화번호의 유효성을 검사
+        String checkResult = service.nameTelCheck(member);
 
+        if ("success".equals(checkResult)) {
+            // 유효하면 휴대폰 번호 전송
+            Random rand = new Random();
+            String numStr = "";
+            for (int i = 0; i < 4; i++) {
+                String ran = Integer.toString(rand.nextInt(10));
+                numStr += ran;
+            }
+
+            service.certifiedPhoneNumber(tel, numStr);
+            return numStr;
+        } else {
+            // 유효하지 않으면 에러 메시지 반환
+            return "error";
+        }
+    }
+    
+    @RequestMapping("findIdResult")
+    public String findIdResult(MemberDTO member, Model model) {
+    	model.addAttribute("menu","findIdPw");
+    	service.findIdResult(model, member);
+    	return "member/findIdResult";
+    }
+    
+    @RequestMapping("mobileCheck3")
+	@ResponseBody	
+	public String sendSMS3(MemberDTO member, String tel) { // 휴대폰 문자보내기
+    	// 이름과 전화번호의 유효성을 검사
+        String checkResult = service.idTelCheck(member);
+
+        if ("success".equals(checkResult)) {
+            // 유효하면 휴대폰 번호 전송
+            Random rand = new Random();
+            String numStr = "";
+            for (int i = 0; i < 4; i++) {
+                String ran = Integer.toString(rand.nextInt(10));
+                numStr += ran;
+            }
+
+            service.certifiedPhoneNumber(tel, numStr);
+            return numStr;
+        } else {
+            // 유효하지 않으면 에러 메시지 반환
+            return "error";
+        }
+    }
+    
+    @RequestMapping("findPwResult")
+    public String findPwResult(MemberDTO member, Model model) {
+    	model.addAttribute("menu","findIdPw");
+    	Random rand  = new Random(); //랜덤숫자 생성하기 !!
+        String numStr = "";
+        for(int i=0; i<4; i++) {
+            String ran = Integer.toString(rand.nextInt(10));
+            numStr+=ran;
+        }
+    	service.findPwResult(model, member, numStr);
+    	return "member/findPwResult";
+    }
 }

@@ -19,13 +19,13 @@ function allCheck(){
 		alert('이메일은 필수 항목입니다.');		
 	}else if(tel.value == ""){
 		alert('전화번호는 필수 항목입니다.');
-	}/*else if(phone2.value == ""){
+	}else if(phone2.value == ""){
 		alert('인증번호를 입력하세요.');
 	}else if($("#phoneAutChk").val() != "true"){
 		alert('휴대폰 인증을 완료해주세요')
 	}else if($("#phoneDoubleChk").val() != "true"){
 		alert('휴대폰 인증을 완료해주세요')
-	}*/else{
+	}else{
 		var f = document.getElementById('f');
 		f.submit();
 	}
@@ -77,6 +77,20 @@ function loginCheck(){
 		alert('아이디는 필수 항목입니다.');
 	}else if(pw.value == ""){
 		alert('비밀번호는 필수 항목입니다.');
+	}else{
+		var f = document.getElementById('f');
+		f.submit();
+	}
+}
+
+function findCheck(){
+	let name = document.getElementById('name');
+	let tel = document.getElementById('tel');
+	
+	if(name.value == ""){
+		alert('이름은 필수 항목입니다.');
+	}else if(tel.value == ""){
+		alert('전화번호는 필수 항목입니다.');
 	}else{
 		var f = document.getElementById('f');
 		f.submit();

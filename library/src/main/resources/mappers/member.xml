@@ -75,5 +75,28 @@ studyroom varchar2(50)); -->
 	<delete id="deleteProc">
 		DELETE FROM member WHERE id=#{id}
 	</delete>
-    
+	
+	<select id="findIdCheck" resultType="int">
+		SELECT count(*) FROM member WHERE name=#{name} AND tel=#{tel}
+	</select>
+	
+	<select id="findId" resultMap="member">
+		SELECT * FROM member WHERE name=#{name} AND tel=#{tel}
+	</select>
+	
+	<select id="findIdResult">
+		SELECT id FROM member WHERE name=#{name} AND tel=#{tel}
+	</select>
+	
+	<select id="findPwCheck" resultType="int">
+		SELECT count(*) FROM member WHERE id=#{id} AND tel=#{tel}
+	</select>
+	
+	<select id="findPw" resultMap="member">
+		SELECT * FROM member WHERE id=#{id} AND tel=#{tel}
+	</select>
+	
+	<update id="findPwResult">
+		UPDATE member SET pw=#{secretPass} WHERE id=#{id} AND tel=#{tel}
+	</update>
 </mapper>

@@ -6,9 +6,12 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -19,6 +22,8 @@ import com.kg.library.reservation.ReservationDTO;
 import com.kg.library.reservation.ReservationMapper;
 
 import jakarta.servlet.http.HttpSession;
+import net.nurigo.java_sdk.api.Message;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 @Service
 public class MemberService {
@@ -28,14 +33,14 @@ public class MemberService {
 	@Autowired private ReservationMapper mapper2;
 	@Autowired private IBookMapper mapper3;
 	
-//	@Value("${coolsms.apikey}")
-//    private String apiKey;
-//
-//    @Value("${coolsms.apisecret}")
-//    private String apiSecret;
-//
-//    @Value("${coolsms.fromnumber}")
-//    private String fromNumber;
+	@Value("${coolsms.apikey}")
+    private String apiKey;
+
+    @Value("${coolsms.apisecret}")
+    private String apiSecret;
+
+    @Value("${coolsms.fromnumber}")
+    private String fromNumber;
 	
 	int count = 0;
 	
@@ -94,16 +99,18 @@ public class MemberService {
 	}
 	
 
-	/*public void certifiedPhoneNumber(String mobile, String numStr) {
-        Message coolsms = new Message(apiKey, apiSecret);
+	public void certifiedPhoneNumber(String tel, String numStr) {
+		Message coolsms = new Message(apiKey, apiSecret);
  
         HashMap<String, String> params = new HashMap<String, String>();
-        params.put("to", mobile);    
+        params.put("to", tel);    
         params.put("from", fromNumber);   
         params.put("type", "SMS");
         params.put("text", "["+numStr+"]");
         params.put("app_version", "test app 1.2"); // application name and version
 
+        System.out.println("CoolSMS API Request Parameters: " + params);
+        
         try {
             JSONObject obj = (JSONObject) coolsms.send(params);
             System.out.println(obj.toString());
@@ -111,7 +118,7 @@ public class MemberService {
             System.out.println(e.getMessage());
             System.out.println(e.getCode());
         }
-	}*/
+	}
 
 	
 	public String userInfo(Model model) {
@@ -255,4 +262,70 @@ public class MemberService {
 		
 	}
 
+
+	public String nameTelCheck(MemberDTO member) {
+		if(member.getName() == null || member.getName().trim().isEmpty()) {
+			return "이름을 입력하세요.";
+		}
+		if(member.getTel() == null || member.getTel().trim().isEmpty()) {
+			return "전화번호를 입력하세요.";
+		}
+		
+		int check = mapper.findIdCheck(member.getName(), member.getTel());
+		if(check == 0) {
+			return "이름 또는 전화번호가 틀렸습니다.";
+		}
+		
+		MemberDTO result = mapper.findId(member.getName(), member.getTel());
+		if(result == null) {
+			return "error";
+		} else {
+			return "success";
+		}
+	}
+	
+	public void findIdResult(Model model, MemberDTO member) {
+		String name = member.getName();
+		String tel= member.getTel();
+	    String id = mapper.findIdResult(name, tel);
+	    System.out.println(name+tel+id);
+	    model.addAttribute("id", id);
+	}
+
+
+	public String idTelCheck(MemberDTO member) {
+		if(member.getId() == null || member.getId().trim().isEmpty()) {
+			return "아이디를 입력하세요.";
+		}
+		if(member.getTel() == null || member.getTel().trim().isEmpty()) {
+			return "전화번호를 입력하세요.";
+		}
+		
+		int check = mapper.findPwCheck(member.getId(), member.getTel());
+		if(check == 0) {
+			return "아이디 또는 전화번호가 틀렸습니다.";
+		}
+		
+		MemberDTO result = mapper.findPw(member.getId(), member.getTel());
+		if(result == null) {
+			return "error";
+		} else {
+			return "success";
+		}
+	}
+
+
+	public void findPwResult(Model model, MemberDTO member, String numStr) {
+		String id = member.getId();
+		String tel = member.getTel();
+		
+	    System.out.println(id+tel+numStr);
+	    model.addAttribute("pw", numStr);
+	    /* 암호화 과정 */
+	    BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+	    String secretPass = encoder.encode(numStr);
+	    member.setPw(secretPass);
+	    
+	    mapper.findPwResult(id, tel, secretPass);
+	}
 }

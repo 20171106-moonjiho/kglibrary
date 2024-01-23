@@ -35,7 +35,8 @@
 	<div class="card-write" align="center">
 	<form action="loginProc" method="post" id="f">
 		<input type="text" name="id" placeholder="아이디" id="id" style="width: 300px; margin-bottom: 10px;"><br>
-		<input type="password" name="pw" placeholder="비밀번호" id="pw" style="width: 300px; margin-bottom: 10px;"><br>
+		<input type="password" name="pw" placeholder="비밀번호" id="pw" style="width: 300px; margin-bottom: 2px;"><br>
+		<a href="findIdPw" style="margin-bottom: 10px; margin-left: 200px; font-size: 13px;">아이디/비밀번호 찾기</a><br>
 		<input type="button" value="로그인" onclick="loginCheck()">
 		<input type="button" value="취소" onclick="location.href='index'" style="margin-bottom: 10px;">	
 	</form>
