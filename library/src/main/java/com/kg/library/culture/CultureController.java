@@ -52,6 +52,23 @@ public class CultureController {
 		return path;
 	}
 	
+	@RequestMapping("cultureModify")
+	public String cultureModify(String no, Model model) {
+		
+		model.addAttribute("menu","cultureboard");
+		service.cultureModify(no,model);
+		return "culture/cultureModify";
+	}
+	@RequestMapping("cultureModifyPro")
+	public String cultureModifyPro(CultureDTO board, MultipartHttpServletRequest multi) {
+		String sessionId = (String) session.getAttribute("id");
+		if(sessionId == null)
+			return "redirect:login";
+		
+		service.cultureModifyPro(board,multi);
+		return "redirect:cultureContent?no="+board.getNo();
+	}
+	
 	@RequestMapping("cultureContent")
 	public String cultureContent(String no,Model model) {
 		CultureDTO board = service.cultureContent(no);
@@ -61,6 +78,17 @@ public class CultureController {
 		model.addAttribute("menu", "cultureboard");
 		model.addAttribute("board", board);
 		return "culture/cultureContent";
+	}
+	
+	@RequestMapping("CultureDeleteProc")
+	public String CultureDeleteProc(String no) {
+		String sessionId = (String) session.getAttribute("id");
+		
+		if(sessionId == null) {
+			return "redirect:login";
+		}
+		String msg = service.CultureDeleteProc(no);
+		return "redirect:cultureboard";
 	}
 	
 	

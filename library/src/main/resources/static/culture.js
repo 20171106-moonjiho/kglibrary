@@ -65,3 +65,37 @@ function culture_check() {
 	} else { document.getElementById('f').submit(); }
 }
 
+function cultureDeleteCheck() {
+	result = confirm('진짜로 삭제하겠습니까?');
+	if (result == true) {
+		var no = document.getElementById("board_no").value
+		location.href = 'CultureDeleteProc?no=' + no
+	}
+}
+
+
+function regist_check() {
+	var title = document.getElementsByName('title');
+	var name = document.getElementsByName('name');
+	var tel  = document.getElementsByName('tel');
+	var email  = document.getElementsByName('email');
+	var address  = document.getElementsByName('address');
+	var checkbox = document.getElementById('agree1');
+    var checkbox2 = document.getElementById('agree2');
+	
+	if (title[0].value == "") {
+		alert('제목을 입력해주세요.');
+	}else if(name[0].value == ""){
+		alert('이름 입력해주세요.');
+	}else if(tel[0].value == ""){
+		alert('전화번호 입력해주세요.');
+	}else if(email[0].value == ""){
+		alert('이메일 입력해주세요.');
+	}else if(address[0].value == ""){
+		alert('주소를 입력해주세요.');
+	}else if(!checkbox.checked){
+		alert('약관에 동의해주세요.');
+	}else if(!checkbox2.checked){
+		alert('약관에 동의해주세요.');
+	}else { document.getElementById('f').submit(); }
+}

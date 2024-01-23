@@ -224,5 +224,14 @@ border: 0; background: #fff url("../img/searchicon.png") no-repeat center 50%;}
 .fax{margin-left: 18px; letter-spacing: 0;}
 
 
-
+.agreeBox{width:100%;}
+.agreeBox .area{width:100%;margin-top:50px;}
+.agreeBox .area h3.tit{float:left;}
+.agreeBox .area .check{float:right;padding-top:20px;}
+.agreeBox .area .check input{vertical-align:middle;}
+.agreeBox .area .check label{vertical-align:middle;}
+.agreeBox .area .txt_box{clear:both;width:100%;height:140px;padding:20px;border:1px solid #dfdfdf;border-radius:10px;overflow-y:scroll;font-size:14px;color:#666;line-height:18px;word-break:keep-all;box-sizing:border-box; text-align: left;}
+.agreeBox .allagree{padding-bottom:40px;border-bottom:1px dashed #ccc;text-align:center;font-size:17px;color:#222;font-family:'NotoKrM';}
+.agreeBox .allagree label{color:#222;}
+.agreeBox .btn_w{padding:40px 0;}
 

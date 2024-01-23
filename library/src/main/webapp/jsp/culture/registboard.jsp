@@ -27,68 +27,52 @@
 
 	<div id="cont_wrap">
 		<div id="board" style="width: 100%;">
-
 			<div class="search_tit">
 				<h3 class="tit">문화행사 목록</h3>
-				<div class="search_box_fr2 medium">
-					<form name="frm_edu" action="cultureboard">
-						<input type="hidden" name="sh_ct_idx" value="">
-						<ul>
-							<!-- 
-							<li class="select_style medium"><select name="sh_ct_idx2"
-								title="검색분류">
-									<option value="">분류선택</option>
-
-									<option value="128">길 위의 인문학</option>
-
-									<option value="126">다문화 특화 프로그램</option>
-
-							</select></li>
- 						-->
-							<li class="select_style medium"><select name="search_select"
-								title="검색분류">
-									<c:choose>
-										<c:when test="${search_select == '행사명' }">
-											<option value="">전체</option>
-											<option value="행사명" selected="selected">행사명</option>
-										</c:when>
-										<c:otherwise>
-											<option value="" selected="selected">전체</option>
-											<option value="행사명">행사명</option>
-										</c:otherwise>
-									</c:choose>
-							</select></li>
-
-							<li class="long"><input type="text" id="v_keyword"
-								name="search" title="검색어 입력" value="" class="txt_input">
-							</li>
-							<li><input type="submit" title="검색" value="검색"
-								class="search_btn"></li>
-						</ul>
-					</form>
-				</div>
 			</div>
-
 			<c:choose>
-				<c:when test="${empty boards }">
+				<c:when test="${empty board }">
 					<h1>등록된 데이터가 존재하지 않습니다.</h1>
-					<c:if test="${sessionScope.id eq 'admin'}">
-						<div class="board_button">
-							<div class="fr">
-								<span class="bt"><input type="button" value="글쓰기"
-									onclick="location.href='cultureWrite'" class="cbtn cbtn_g2"></span>
-							</div>
-						</div>
-					</c:if>
 				</c:when>
 				<c:otherwise>
+					<div class="table_blist">
+						<table cellspacing="0" summary="의 번호, 제목, 글쓴이, 등록일, 조회수를 확인">
+							<caption></caption>
+							<colgroup>
+								<!-- <col width="10%" /> -->
+								<col width="15%">
+								<col width="*">
+								<col width="15%">
+								<col width="15%">
+							</colgroup>
+							<thead>
+								<tr>
+									<!-- <th scope="col">번호</th> -->
+									<th scope="col">이름</th>
+									<th scope="col">제목</th>
+									<th scope="col">상태</th>
+									<th scope="col" class="th_none">취소</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<!-- <td class="eng">1</td> -->
+									<td>${board.name }</td>
+									<td class="eng">${board.title }</td>
+									<td>신청완료</td>
+									<td><input type="button" value="취소하기" class="con_sbtn"
+										onclick="deleteOk('26722');"></td>
+								</tr>
+							</tbody>
+						</table>
 
-					<div class="board_total">
-						<div class="board_total_left">
-							총 <strong class="eng">${count }</strong>개의 문화행사가 등록되어 있습니다.
-						</div>
 					</div>
 
+					<!-- 버튼 -->
+					<div class="btn_w">
+						<span><a href="/SD/edusat/list.do" class="con_btn">돌아가기</a></span>
+					</div>
+					<!-- //버튼 -->
 					<div class="lesson no_top">
 						<ul>
 							<c:forEach var="board" items="${boards }" varStatus="status">
@@ -99,8 +83,7 @@
 											<img src="../img/${board.id}/${board.image}">
 											<br>
 										</c:if>
-										<img src="#"
-											alt="11월 <직업인으로서의 변호사> 이재욱 변호사와의 만남">
+										<img src="#" alt="11월 <직업인으로서의 변호사> 이재욱 변호사와의 만남">
 									</p>
 
 									<div class="cont">
@@ -137,20 +120,20 @@
 										</div>
 									</div>
 									<div class="btn_box">
-									<c:set var="applicantsInt" value="${board.applicants}" />
-									<c:set var="peopleInt" value="${board.people}" />
-									<c:choose>
-										<c:when test="${apply_ckList[status.index] == '1'}">
-									        <a href="#" class="btn_sm btn_close">신청완료</a>
-									    </c:when>
-										<c:when test="${applicantsInt < peopleInt}">
-											<a href="registWrite?no=${board.no }" class="btn_sm btn_ing">행사신청</a>
-										</c:when>
-										<c:otherwise>
-											<a href="#" class="btn_sm btn_close">모집종료</a>
-										</c:otherwise>
-										</c:choose> 
-											<a href="registboard?no=${board.no }" class="btn_sm btn_check">등록확인</a>
+										<c:set var="applicantsInt" value="${board.applicants}" />
+										<c:set var="peopleInt" value="${board.people}" />
+										<c:choose>
+											<c:when test="${apply_ckList[status.index] == '1'}">
+												<a href="#" class="btn_sm btn_close">신청완료</a>
+											</c:when>
+											<c:when test="${applicantsInt < peopleInt}">
+												<a href="registWrite?no=${board.no }" class="btn_sm btn_ing">행사신청</a>
+											</c:when>
+											<c:otherwise>
+												<a href="#" class="btn_sm btn_close">모집종료</a>
+											</c:otherwise>
+										</c:choose>
+										<a href="#" class="btn_sm btn_check">등록확인</a>
 									</div>
 								</li>
 							</c:forEach>

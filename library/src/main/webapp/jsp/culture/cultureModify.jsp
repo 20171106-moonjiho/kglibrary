@@ -30,7 +30,8 @@
 					
 					<div id="cont_wrap">
 						<div id="board" style="width:100%;">
-							<form action="culture_writeProc" method='post' id="f" enctype="multipart/form-data">
+							<form action="cultureModifyPro" method='post' id="f" enctype="multipart/form-data">
+							<input type="hidden" name="no" value="${board.no }" />
 								<div class="table_bwrite">
 									<table cellspacing="0" summary="묻고 답하기의 이름, 비밀번호, 내용을 입력">
 										<colgroup>
@@ -42,7 +43,7 @@
 			
 										<tr>
 											<th scope="row"><label for="b_subject"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 제목</label></th>
-											<td><input type="text" size="100" id="b_subject" name="title" class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="" maxlength="100" style="width:70%">
+											<td><input type="text" size="100" id="b_subject" name="title" class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="${board.title }" maxlength="100" style="width:70%">
 											<span class="text1">* 100자리 이내로 입력해주세요.</span>
 											</td>
 										</tr>
@@ -51,11 +52,11 @@
 											<th scope="row"><label for="b_subject"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 행사 기간</label></th>
 											<td><input type="text" size="100" id="class_period_start" name="class_period_start" 
 											class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);"
-											value="" maxlength="100" style="width:30%; text-align: center;" >
+											value="${board.class_period_start }" maxlength="100" style="width:30%; text-align: center;" >
 											~
 											<input type="text" size="100" id="class_period_end" name="class_period_end" 
 											class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);"
-											value="" maxlength="100" style="width:30%; text-align: center;" >
+											value="${board.class_period_end }" maxlength="100" style="width:30%; text-align: center;" >
 											</td>
 										</tr>
 										
@@ -63,50 +64,50 @@
 											<th scope="row"><label for="b_subject"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 신청 기간</label></th>
 											<td><input type="text" size="100" id="reservation_period_start" name="reservation_period_start" 
 											class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);"
-											value="" maxlength="100" style="width:30%; text-align: center;" >
+											value="${board.reservation_period_start }" maxlength="100" style="width:30%; text-align: center;" >
 											~
 											<input type="text" size="100" id="reservation_period_end" name="reservation_period_end" 
 											class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);"
-											value="" maxlength="100" style="width:30%; text-align: center;" >
+											value="${board.reservation_period_end }" maxlength="100" style="width:30%; text-align: center;" >
 											</td>
 										</tr>
 										
 										<tr>
 											<th scope="row"><label for="b_subject"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 수강 대상</label></th>
-											<td><input type="text" size="100" id="b_subject" name="target" class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="" maxlength="100" style="width:30%;text-align: center;">
+											<td><input type="text" size="100" id="b_subject" name="target" class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="${board.target }" maxlength="100" style="width:30%;text-align: center;">
 											<span class="text1">* 초,중,대학생 기준으로 적어주세요.</span>
 											</td>
 										</tr>
 										<tr>
 											<th scope="row"><label for="b_subject"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 행사 장소</label></th>
-											<td><input type="text" size="100" id="b_subject" name=event_area class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="" maxlength="100" style="width:30%;text-align: center;">
+											<td><input type="text" size="100" id="b_subject" name=event_area class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="${board.event_area }" maxlength="100" style="width:30%;text-align: center;">
 											</td>
 										</tr>
 										<tr>
 											<th scope="row"><label for="b_subject"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 접수 장소</label></th>
-											<td><input type="text" size="100" id="b_subject" name="reception_area" class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="" maxlength="100" style="width:30%;text-align: center;">
+											<td><input type="text" size="100" id="b_subject" name="reception_area" class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="${board.reception_area }" maxlength="100" style="width:30%;text-align: center;">
 											</td>
 										</tr>
 										<tr>
 											<th scope="row"><label for="b_subject"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 모집 인원</label></th>
-											<td><input type="text" size="100" id="b_subject" name="people" class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="" maxlength="100" style="width:30%;text-align: center;">
+											<td><input type="text" size="100" id="b_subject" name="people" class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="${board.people }" maxlength="100" style="width:30%;text-align: center;">
 											</td>
 										</tr>
 										<tr>
 											<th scope="row"><label for="b_subject"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 참가비</label></th>
-											<td><input type="text" size="100" id="b_subject" name="money" class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="무료" maxlength="100" style="width:30%;text-align: center;">
+											<td><input type="text" size="100" id="b_subject" name="money" class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="${board.money }" maxlength="100" style="width:30%;text-align: center;">
 											<span class="text1">* 기본 값은 무료 입니다.</span>
 											</td>
 										</tr>
 										<tr>
 											<th scope="row"><label for="b_subject"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 강사명</label></th>
-											<td><input type="text" size="100" id="b_subject" name="teacher" class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="" maxlength="100" style="width:30%;text-align: center;">
+											<td><input type="text" size="100" id="b_subject" name="teacher" class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="${board.teacher }" maxlength="100" style="width:30%;text-align: center;">
 											</td>
 										</tr>
 										<tr>
 											<th scope="row"><label for="b_subject"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 내용</label></th>
 											<td>
-											<textarea name="contents" placeholder="내용을 입력하세요." style="width:90%; height: 230px;"></textarea>
+											<textarea name="contents" placeholder="내용을 입력하세요." style="width:90%; height: 230px;">${board.contents }</textarea>
 											</td>
 										</tr>
 										<tr>
@@ -120,7 +121,7 @@
 												4. 업로드할 사진의 파일은 <span style="color: lightcoral">jpg, jpeg, png만</span> 가능합니다.
 											</p>
 											<br>
-											<input type="file" name="upfile"><br>
+											<input type="file" name="upfile">${board.image }<br>
 											</td>
 										</tr>
 									</tbody>
@@ -128,7 +129,7 @@
 								</div>
 								
 								<div class="board_button2">
-									<span><input id="submitbtn" type="button" value="글쓰기" onclick="culture_check()"class="cbtn cbtn_point" ></span>
+									<span><input id="submitbtn" type="button" value="수정하기" onclick="culture_check()"class="cbtn cbtn_point" ></span>
 									<span><input type="button" value="목록"	 onclick="location.href='cultureboard'" class="cbtn cbtn_g"></span>
 								</div>
 								
