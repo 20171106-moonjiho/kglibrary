@@ -15,11 +15,10 @@
 				<ul id="jsMMenu">
 					<li id="login"><a href="login">로그인</a></li>
 					<li id="regist"><a href="terms">회원가입</a></li>
-					<li id="#"><a href="#">아이디/비밀번호 찾기</a></li>
+					<li id="findIdPw"><a href="findIdPw">아이디/비밀번호 찾기</a></li>
 				</ul>
 				<script>
-					document.getElementById('${menu}').setAttribute('class',
-							'on');
+					document.getElementById('${menu}').setAttribute('class', 'on');
 				</script>
 			</div>
 			<div id="jsFacetLeft"></div>

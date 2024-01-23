@@ -35,7 +35,7 @@ $(function() {
 			$.ajax({
 				type: "POST", // post 형식으로 발송
 				url: "mobileCheck", // controller 위치
-				data: { mobile: tel }, // 전송할 데이터값
+				data: { tel: tel }, // 전송할 데이터값
 				cache: false,
 				success: function(data) {
 					if (data == "error") { //실패시 
