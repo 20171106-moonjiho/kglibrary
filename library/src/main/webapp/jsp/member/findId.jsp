@@ -42,12 +42,12 @@
 				<th>전화번호</th>
 				<td><input type="text" name="tel" id="tel">
 				<input type="hidden" id="phoneAutChk" />
-				<input class="signin_pass" type="button" value="입력" id="nameTelCheck"><br> <!-- phoneChk 클릭시 함수 발동 --></td>
+				<input class="signin_pass" type="button" value="인증번호 받기" id="nameTelCheck"><br> <!-- phoneChk 클릭시 함수 발동 --></td>
 			</tr>
 			<tr>
 				<th>인증번호</th>
 				<td><input class="signin_pass" id="phone2" type="text" name="phone2" title="인증번호 입력">
-					<input class="signin_pass" type="button" value="인증확인" id="findId"><br> <!-- phoneChk 클릭시 함수 발동 -->
+					<input class="signin_pass" type="button" value="인증번호 확인" id="findId"><br> <!-- phoneChk 클릭시 함수 발동 -->
 					<input type="hidden" id="phoneDoubleChk" />
 				</td>
 			</tr>
