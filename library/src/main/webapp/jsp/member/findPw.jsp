@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>로그인</title>
+<title>비밀번호 찾기</title>
 </head>
 <link href="book.css" rel="stylesheet">
 <body>
