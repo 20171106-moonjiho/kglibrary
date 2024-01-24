@@ -265,16 +265,6 @@ public class MemberController {
     	return "member/findPw";
     }
     
-    @PostMapping("findIdCheck")
-    public void findIdCheck(MemberDTO member) {
-    	service.nameTelCheck(member);
-    }
-    
-    @PostMapping("findPwCheck")
-    public void findPwCheck(MemberDTO member) {
-    	service.idTelCheck(member);
-    }
-    
     @RequestMapping("mobileCheck2")
 	@ResponseBody	
 	public String sendSMS2(MemberDTO member, String tel) { // 휴대폰 문자보내기

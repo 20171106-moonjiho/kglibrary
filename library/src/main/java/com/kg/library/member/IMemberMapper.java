@@ -25,15 +25,9 @@ public interface IMemberMapper {
 
 	int deleteProc(String id);
 	
-	MemberDTO nameTelCheck2(String id, String tel);
-
-	int findIdCheck(String name, String tel);
-
 	MemberDTO findId(String name, String tel);
 	
 	String findIdResult(@Param("name")String name, @Param("tel")String tel);
-
-	int findPwCheck(String id, String tel);
 
 	MemberDTO findPw(String id, String tel);
 
