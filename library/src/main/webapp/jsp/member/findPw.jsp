@@ -55,7 +55,7 @@
 		</table>
 		
 		<div class="btn" style="margin-top: 20px;">
-			<input type="button" value="확인" id="check">
+			<input type="button" value="확인" id="check2">
 			<input type="button" value="취소" onclick="location.href='index'">
 		</div>
 		

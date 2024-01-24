@@ -109,7 +109,7 @@ $(function(){
         }
     });
     
-    $("#check").click(function() {
+    $("#check2").click(function() {
         if ($("#phoneDoubleChk").val() == "true") { // 위에서 저장한 값을 비교함
             document.getElementById('f').submit();
         } else {

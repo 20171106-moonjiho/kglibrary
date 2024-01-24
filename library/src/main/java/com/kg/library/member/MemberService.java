@@ -264,18 +264,6 @@ public class MemberService {
 
 
 	public String nameTelCheck(MemberDTO member) {
-		if(member.getName() == null || member.getName().trim().isEmpty()) {
-			return "이름을 입력하세요.";
-		}
-		if(member.getTel() == null || member.getTel().trim().isEmpty()) {
-			return "전화번호를 입력하세요.";
-		}
-		
-		int check = mapper.findIdCheck(member.getName(), member.getTel());
-		if(check == 0) {
-			return "이름 또는 전화번호가 틀렸습니다.";
-		}
-		
 		MemberDTO result = mapper.findId(member.getName(), member.getTel());
 		if(result == null) {
 			return "error";
@@ -294,18 +282,6 @@ public class MemberService {
 
 
 	public String idTelCheck(MemberDTO member) {
-		if(member.getId() == null || member.getId().trim().isEmpty()) {
-			return "아이디를 입력하세요.";
-		}
-		if(member.getTel() == null || member.getTel().trim().isEmpty()) {
-			return "전화번호를 입력하세요.";
-		}
-		
-		int check = mapper.findPwCheck(member.getId(), member.getTel());
-		if(check == 0) {
-			return "아이디 또는 전화번호가 틀렸습니다.";
-		}
-		
 		MemberDTO result = mapper.findPw(member.getId(), member.getTel());
 		if(result == null) {
 			return "error";
