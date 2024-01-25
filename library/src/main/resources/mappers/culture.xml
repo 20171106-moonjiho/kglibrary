@@ -60,7 +60,7 @@
 		VALUES(#{no}, #{title}, #{id},
 		#{class_period_start},#{class_period_end},
 		#{reservation_period_start},#{reservation_period_end},#{target},
-		#{event_area},#{reception_area},#{people},#{money},#{teacher},#{contents},#{image},0)
+		#{event_area},#{reception_area},#{people},#{money},#{teacher},#{contents},#{image},0,#{select_cate},#{writeDate})
 	</insert>
 
 	<delete id="CultureDeleteProc">
@@ -82,7 +82,8 @@
 		money = #{money},
 		teacher = #{teacher},
 		contents = #{contents},
-		image = #{image}
+		image = #{image},
+		select_cate = #{select_cate}
 		WHERE
 		no = #{no}
 	</update>
@@ -134,4 +135,8 @@
 	<delete id="registDelete">
 		delete from regist where title = #{title} AND id = #{sessionId}
 	</delete>
+	
+	<select id="main_board">
+			select A.* From (select * from culture ORDER BY no DESC)A where <![CDATA[rownum < 5 ]]>
+	</select>
 </mapper>

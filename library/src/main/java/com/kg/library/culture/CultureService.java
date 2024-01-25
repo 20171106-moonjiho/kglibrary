@@ -103,6 +103,8 @@ public class CultureService {
 		String teacher = multi.getParameter("teacher");
 		String money = multi.getParameter("money");
 		String contents = multi.getParameter("contents");
+		String select_cate = multi.getParameter("select");
+		
 		contents = contents.replace("\r\n","<br>");
 		if (title == null || title.trim().isEmpty()) {
 			return "redirect:cultureboard";
@@ -123,7 +125,9 @@ public class CultureService {
 		board.setTeacher(teacher);
 		board.setContents(contents);
 		board.setImage("");
+		board.setSelect_cate(select_cate);
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		board.setWriteDate(sdf.format(new Date()));
 		
 		MultipartFile file = multi.getFile("upfile");
 
@@ -257,6 +261,7 @@ public class CultureService {
 		String reservation_period_start = multi.getParameter("reservation_period_start");
 		String reservation_period_end = multi.getParameter("reservation_period_end");
 		String target = multi.getParameter("target");
+		String select_cate = multi.getParameter("select");
 		String event_area = multi.getParameter("event_area");
 		String reception_area = multi.getParameter("reception_area");
 		String people = multi.getParameter("people");
@@ -271,6 +276,7 @@ public class CultureService {
 		board.setReservation_period_start(reservation_period_start);
 		board.setReservation_period_end(reservation_period_end);
 		board.setTarget(target);
+		board.setSelect_cate(select_cate);
 		board.setId(sessionId);
 		board.setEvent_area(event_area);
 		board.setReception_area(reception_area);
@@ -279,7 +285,9 @@ public class CultureService {
 		board.setTeacher(teacher);
 		board.setContents(contents);
 		board.setImage(check.getImage());
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		board.setWriteDate(sdf.format(new Date()));
 		
 		MultipartFile file = multi.getFile("upfile");
 		
@@ -321,5 +329,20 @@ public class CultureService {
 		mapper.cultureModifyPro(board);
 		return "게시글 수정 성공";
 	}
+
+
+	public void main_board(Model model) {
+		ArrayList<CultureDTO> cultures = mapper.main_board();
+		
+		for(CultureDTO b : cultures) {
+			System.out.println("여기--------------------------"+b.getSelect_cate());
+			System.out.println("여기--------------------------"+b.getTitle());
+			System.out.println("여기--------------------------"+b.getWriteDate());
+		}
+		model.addAttribute("cultures",cultures);
+	}
+
+
+	
 
 }

@@ -121,10 +121,5 @@
     	select A.* From (select * from book  WHERE book_count= 1 ORDER BY reg_date DESC)A where <![CDATA[rownum < 4 ]]>
     </select>
     
-    <select id="dataStatus">
-    	SELECT category, COUNT(*) as bookCount, SUM(COUNT(*)) OVER() as totalBookCount
-		FROM book
-		GROUP BY category
-    </select>
     
 </mapper>

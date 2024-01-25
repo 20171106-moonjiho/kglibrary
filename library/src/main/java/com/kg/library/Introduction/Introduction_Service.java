@@ -20,10 +20,8 @@ public class Introduction_Service {
 
 	public List<Map<String, Object>> dataStatus(BookDTO board) {
 		
-		//String query = mapper.dataStatus(board);
 		String query = "SELECT category, COUNT(*) as bookCount, SUM(COUNT(*)) OVER() as totalBookCount FROM book GROUP BY category";
 		List<Map<String, Object>> result = jdbcTemplate.queryForList(query);
-		//ArrayList<BookDTO> dataStatus = mapper.dataStatus(board);
 		
 		for (Map<String, Object> row : result) {
 			System.out.println("Category: " + row.get("category"));

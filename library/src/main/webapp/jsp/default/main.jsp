@@ -64,11 +64,31 @@
 					<div class="innor_right">
 						<h2>문화행사</h2>
 						<ul>
+						<c:forEach var="culture" items="${cultures }">
 							<li>
+								<c:if test="${culture.select_cate eq '어린이'}">
 								<span class="lib_name lib02">어린이</span>
-								<a href="#"><p class="ntit">2024년 겨울 독서교실 KG문학소년소녀</p></a>
-								<span class="date">23-12-21</span>
+								</c:if>
+								<c:if test="${culture.select_cate eq '청소년'}">
+								<span class="lib_name lib04">청소년</span>
+								</c:if>
+								<c:if test="${culture.select_cate eq '성인'}">
+								<span class="lib_name lib02">성인</span>
+								</c:if>
+								<c:if test="${culture.select_cate eq '누구나'}">
+								<span class="lib_name lib04">누구나</span>
+								</c:if>
+								<c:if test="${culture.select_cate eq '외국인'}">
+								<span class="lib_name lib02">외국인</span>
+								</c:if>
+								<c:if test="${culture.select_cate eq '기타'}">
+								<span class="lib_name lib02">기타</span>
+								</c:if>
+								<a href="cultureContent?no=${culture.no }"><p class="ntit">${culture.title }</p></a>
+								<span class="date">${culture.writeDate }</span>
 							</li>
+						</c:forEach>
+							<!-- 
 							<li>
 								<span class="lib_name lib04">청소년</span>
 								<a href="#"><p class="ntit">12월 직업인으로서의 간호사 김진수 간호사와의 만남 </p></a>
@@ -84,6 +104,7 @@
 								<a href="#"><p class="ntit">겨울방학 특강 달빛 그림자 가게 김우수 X 정은경 작가와의 만남 </p></a>
 								<span class="date">23-12-21</span>
 							</li>
+							 -->
 						</ul>
 						<div class="notice_more">
 							<a href="cultureboard"><img src="img/notice_btn.png" alt="새소식 자세히 보기"></a>

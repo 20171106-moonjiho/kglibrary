@@ -427,14 +427,14 @@ public class BookService {
 				}
 				String[] names = b.getImage().split("\\\\");
 				//String[] names= b.getImage().split("/");
-				for(String name:names) {
-					System.out.println("name: " +name);
-				}
+//				for(String name:names) {
+//					System.out.println("name: " +name);
+//				}
 				//String[] fileNames= names[1].split("-",2); 
 				String[] fileNames = names[12].split("-", 2);
-				for(String fileName:fileNames) {
-					System.out.println("fileName: " +fileName);
-				}
+//				for(String fileName:fileNames) {
+//					System.out.println("fileName: " +fileName);
+//				}
 				b.setImage(names[12]);
 			}
 		}
@@ -455,14 +455,14 @@ public class BookService {
 				}
 				String[] names = b.getImage().split("\\\\");
 				//String[] names= b.getImage().split("/");
-				for(String name:names) {
-					System.out.println("name: " +name);
-				}
+//				for(String name:names) {
+//					System.out.println("name: " +name);
+//				}
 				//String[] fileNames= names[1].split("-",2); 
 				String[] fileNames = names[12].split("-", 2);
-				for(String fileName:fileNames) {
-					System.out.println("fileName: " +fileName);
-				}
+//				for(String fileName:fileNames) {
+//					System.out.println("fileName: " +fileName);
+//				}
 				b.setImage(names[12]);
 			}
 		}

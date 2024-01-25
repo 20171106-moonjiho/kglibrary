@@ -3,6 +3,7 @@ package com.kg.library.book;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -38,7 +39,7 @@ public interface IBookMapper {
 
 	ArrayList<BookDTO> newbooks();
 
-	String dataStatus(BookDTO board);
+	
 
 	
 

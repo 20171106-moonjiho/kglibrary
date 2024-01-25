@@ -75,7 +75,14 @@
 										<tr>
 											<th scope="row"><label for="b_subject"><img alt="*(필수항목)" src="/img/ic_vcheck.gif"> 수강 대상</label></th>
 											<td><input type="text" size="100" id="b_subject" name="target" class="board_input subject" onfocus="focus_on1(this);" onblur="focus_off1(this);" value="${board.target }" maxlength="100" style="width:30%;text-align: center;">
-											<span class="text1">* 초,중,대학생 기준으로 적어주세요.</span>
+											<select name="select" title="메인홈카테고리">
+												<option value="어린이">어린이(1~9세)</option>
+												<option value="청소년">청소년(10~19세)</option>
+												<option value="성인">성인</option>
+												<option value="누구나">누구나</option>
+												<option value="외국인">외국인</option>
+												<option value="기타">기타</option>
+											</select>
 											</td>
 										</tr>
 										<tr>

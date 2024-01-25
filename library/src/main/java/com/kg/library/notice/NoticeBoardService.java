@@ -48,13 +48,13 @@ public class NoticeBoardService {
 			for(NoticeBoardDTO b : boards) {
 				if(b.getImage()!=null) {
 					String[] names= b.getImage().split("/");
-					for(String name : names) {
-					System.out.println("name: " +name);
-					}
+//					for(String name : names) {
+//					System.out.println("name: " +name);
+//					}
 					String[] fileNames = names[1].split("-",2);
-					for(String fileName : fileNames) {
-						System.out.println("fileName: " +fileName);
-						}
+//					for(String fileName : fileNames) {
+//						System.out.println("fileName: " +fileName);
+//						}
 					b.setImage(names[1]);
 					}
 			}
@@ -151,13 +151,13 @@ public class NoticeBoardService {
 			board.setHits(board.getHits()+1);
 			if(board.getImage()!=null) {
 			String[] names=board.getImage().split("/");
-			for(String name : names) {
-			System.out.println("컨텐츠 name: " +name);
-			}
+//			for(String name : names) {
+//			System.out.println("컨텐츠 name: " +name);
+//			}
 			String[] fileNames = names[1].split("-",2);
-			for(String fileName : fileNames) {
-				System.out.println("fileName: " +fileName);
-				}
+//			for(String fileName : fileNames) {
+//				System.out.println("fileName: " +fileName);
+//				}
 			board.setImage(names[1]);
 			}
 		}
@@ -211,13 +211,13 @@ public class NoticeBoardService {
 		
 		if(board.getImage() != null) {
 			String[] names = board.getImage().split("\\\\");
-			for(String name : names) {
-				System.out.println("게시글 수정 name: " +name);
-				}
+//			for(String name : names) {
+//				System.out.println("게시글 수정 name: " +name);
+//				}
 			String[] fileNames = names[11].split("-", 2);
-			for(String fileName : fileNames) {
-				System.out.println("게시글 수정 fileName: " +fileName);
-				}
+//			for(String fileName : fileNames) {
+//				System.out.println("게시글 수정 fileName: " +fileName);
+//				}
 			board.setImage(fileNames[1]);
 		}
 

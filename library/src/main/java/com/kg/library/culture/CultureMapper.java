@@ -42,6 +42,8 @@ public interface CultureMapper {
 
 	void registDelete(@Param(value = "title") String title, @Param(value = "sessionId") String sessionId);
 
+	ArrayList<CultureDTO> main_board();
+
 	
 
 

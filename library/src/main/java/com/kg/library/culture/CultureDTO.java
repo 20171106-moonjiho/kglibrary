@@ -37,7 +37,9 @@ package com.kg.library.culture;
     teacher VARCHAR2(100),
     contents VARCHAR2(4000),
     image VARCHAR2(200),
-    applicants VARCHAR2(50)
+    applicants VARCHAR2(50),
+    select_cate varchar2(10)
+    writeDate varchar2(50)
 );
  */
 public class CultureDTO {
@@ -59,6 +61,8 @@ public class CultureDTO {
 	private String teacher;
 	private String contents;
 	private String image;
+	private String select_cate;
+	private String writeDate;
 	
 	public int getNo() {
 		return no;
@@ -170,6 +174,18 @@ public class CultureDTO {
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	public String getSelect_cate() {
+		return select_cate;
+	}
+	public void setSelect_cate(String select_cate) {
+		this.select_cate = select_cate;
+	}
+	public String getWriteDate() {
+		return writeDate;
+	}
+	public void setWriteDate(String writeDate) {
+		this.writeDate = writeDate;
 	}
 
 }
