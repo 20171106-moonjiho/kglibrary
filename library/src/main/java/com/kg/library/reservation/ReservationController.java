@@ -82,7 +82,7 @@ public class ReservationController {
 		if (sessionId == null)
 			return "redirect:login";
 		dto.setMember(sessionId);
-		dto.setReservation_date(year_t + "-" + month_t + "-" + day_t);
+		dto.setReservation_date(year_t + "-" + String.format("%02d", Integer.parseInt(month_t)) + "-" + String.format("%02d", Integer.parseInt(day_t)));
 		dto.setRoom_num(room);
 		String[] time = time_t.split("##");
 		dto.setReservation_time(Integer.parseInt(time[0]));

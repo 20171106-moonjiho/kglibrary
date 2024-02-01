@@ -4,7 +4,7 @@ package com.kg.library.reservation;
 create table reservation(
 reservation_num number primary key,
 room_num varchar2(10),
-reservation_date varchar2(10),
+reservation_date varchar2(20),
 reservation_time number,
 member varchar2(30),
 duration number);
