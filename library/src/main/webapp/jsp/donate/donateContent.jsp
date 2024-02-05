@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ include file="/jsp/default/favicon.jsp" %>
+<%@ include file="/jsp/default/favicon.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,8 +20,8 @@ body {
 	border-left: 1px solid #999;
 	width: 700px;
 	text-align: center;
-	margin:auto;
-	padding: 20px;	
+	margin: auto;
+	padding: 20px;
 }
 
 .Do_view .Do_title {
@@ -59,14 +59,12 @@ body {
 }
 
 .Do_main {
-	
 	width: 700px;
 	margin-top: 30px;
 	padding-bottom: 30px;
 }
 
 .Do_btn {
-
 	right: 0;
 	bottom: 0;
 	padding: 50px;
@@ -84,7 +82,14 @@ body {
 <body>
 	<c:import url="/header" />
 	<c:import url="/donateheader" />
-
+		<script>
+		function deleteCheck() {
+			result = confirm('진짜로 삭제하겠습니까?');
+			if (result == true) {
+				location.href = 'donateDeleteProc?no=${board.no}'
+			}
+		}
+	</script>
 	<div id="contents">
 		<div id="print_wrap">
 			<div id="cont_head">
@@ -120,9 +125,15 @@ body {
 					</dl>
 				</div>
 				<div class="Do_main">${board.content}</div>
-				<div class="Do_btn" align="center">
-					<a href="donateForm">목록</a>
-				</div>
+
+				<c:choose>
+					<c:when test="${sessionScope.id eq 'admin' }">
+						<div class="Do_btn" align="center">
+							<a href="donateForm">목록</a>
+							<a href="#" onclick="deleteCheck()">삭제</a>
+						</div>
+					</c:when>
+				</c:choose>
 			</div>
 		</div>
 	</div>

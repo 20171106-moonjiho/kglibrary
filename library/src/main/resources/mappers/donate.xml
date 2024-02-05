@@ -48,4 +48,8 @@
     <select id = "donateContent">
     	SELECT * FROM book_donate WHERE no=${no}
     </select>
+    
+    <delete id ="donateDeleteProc">
+    	DELETE FROM book_donate WHERE no=${no}
+    </delete>
 </mapper>

@@ -64,13 +64,16 @@ public class DonateController {
 		String msg = "";
 		DonateDTO board = service.donateContent(no);
 		String sessionId = (String)session.getAttribute("id");
-		if(board == null) {
-			return "redirect:donateForm";
-		}
 		if(sessionId == null) {
 			return "redirect:login";
 		}
-		if(!sessionId.equals(board.getId())) {
+		if(board == null) {
+			return "redirect:donateForm";
+		}
+		if(sessionId.equals("admin")) {
+			
+		}
+		else if(!sessionId.equals(board.getId())) {
 			msg="작성자만 확인가능합니다.";
 			ra.addFlashAttribute("msg", msg);
 			return "redirect:donateForm";
@@ -80,6 +83,23 @@ public class DonateController {
 		model.addAttribute("board", board);
 		return "donate/donateContent";
 	}
+	
+	// 도서 기증 삭제실행 --------------------------------
+	@RequestMapping("donateDeleteProc")
+	public String donateDeleteProc(String no, Model model) {
+		String msg="게시글 삭제가 실패되었습니다.";
+		
+		int res = service.donateDeleteProc(no);
+		
+		if(res>0) {
+			msg = "게시글이 삭제되었습니다.";
+			model.addAttribute(msg);
+			return "redirect:donateForm";
+		}
+		model.addAttribute(msg);
+		return "redirect:donateForm";
+	}
+	
 	// 도서 기증 안내서   --------------------------------
 	@RequestMapping("donateguide")
 	public String donateguide(Model model) {
